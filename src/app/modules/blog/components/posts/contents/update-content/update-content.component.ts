@@ -109,7 +109,7 @@ export class UpdateContentComponent implements OnChanges {
           //copied: [this.postContent.copied_id ? this.postContent.copied_id : null]
         }),
       });
-
+        
       const attributes_default = this.postContent.attributes;
       const formControls: { [key: string]: any } = {};
       const formControls2: { [key: string]: any } = {};

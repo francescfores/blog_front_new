@@ -49,7 +49,8 @@ Open large modal
                           [postContent]="updateContent"
                           (updatedContent)="updateContentEv($event)"></app-update-content>
           <div class="w-6/12 p-2 flex   " >
-              <app-paint-contents [showEditor]="true" *ngIf="paintContent" class="flex flex-col w-full  bg-slate-400  items-center" [content]="paintContent"
+              <app-paint-contents [showEditor]="true" *ngIf="paintContent" class="flex flex-col w-full  bg-slate-400  items-center" 
+              [content]="paintContent"
                                   (selectContent)="paintContentEv($event)"></app-paint-contents>
               <div class=" gap-4 flex flex-col" *ngIf="!paintContent">
                 <div class=" flex justify-center">

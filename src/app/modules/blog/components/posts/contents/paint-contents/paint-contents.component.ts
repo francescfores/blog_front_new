@@ -9,6 +9,7 @@ import {ViewportRuler} from "@angular/cdk/overlay";
   template: `
     <div *ngIf="showEditor" class="w-full top">
       <div class="flex w-full items-center bg-bgPrim content text-textPrimary">
+        <p (click)="showTree=!showTree ">sas</p>
         <i (click)="showTree=!showTree "  class="ml-auto fa fa-book p-2" aria-hidden="true"></i>
       </div>
       <div class="p-1 text-xs" *ngIf="showTree">
@@ -35,7 +36,7 @@ import {ViewportRuler} from "@angular/cdk/overlay";
         </div>
       </div>
     </div>
-    <div  (click)="onClick(content)"  [ngClass]="getAtt(content, 'styles') + ' '+ editing()">
+    <div *ngIf="content" (click)="onClick(content)"  [ngClass]="getAtt(content, 'styles') + ' '+ editing()">
       <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
         <app-codeplayground_V2 class="flex w-full my-5"
                                [id]="content.id"
@@ -94,7 +95,6 @@ import {ViewportRuler} from "@angular/cdk/overlay";
           </app-button3d>
         }
       </ng-container>
-
       <ng-container *ngFor="let subcomponent of content.subcomponents">
         <ng-container *ngTemplateOutlet="recursiveContent; context: { $implicit: normalizarSubcomponente(subcomponent) }"></ng-container>
       </ng-container>
@@ -155,7 +155,6 @@ import {ViewportRuler} from "@angular/cdk/overlay";
               </app-button3d>
             }
           </ng-container>
-
           <ng-container *ngIf="subcomponent.subcomponents && subcomponent.subcomponents.length > 0">
             <ng-container *ngFor="let subSubcomponent of subcomponent.subcomponents">
               <ng-container *ngTemplateOutlet="recursiveContent; context: { $implicit: normalizarSubcomponente(subSubcomponent) }" ></ng-container>

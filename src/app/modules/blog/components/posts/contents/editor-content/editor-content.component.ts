@@ -64,7 +64,7 @@ export class EditorContentComponent {
 
   ngOnInit(): void {
     this.user=this.authAdminService.currentUserValue
-    //this.getParams();
+    this.getParams();
   }
 
   getContent(id:any){
@@ -101,6 +101,7 @@ export class EditorContentComponent {
   showContentEv(content:any) {
     this.paintContent=content;
     this.updateContent=content;
+    console.log('content',content)
   }
 
   createContentEv(content:any) {
@@ -113,26 +114,7 @@ export class EditorContentComponent {
 
   paintContentEv(content:any) {
     this.updateContent=content;
-
   }
 
-   readonly PostContent = PostContent;
 
-  onDragStart(event: DragEvent) {
-    if (event && event.dataTransfer) {
-      const data = event.dataTransfer.getData('text/plain');
-      console.log('Elemento arrastrado con datos:', data);
-    }  }
-
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-  }
-
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    if (event && event.dataTransfer) {
-      const data = event.dataTransfer.getData('text/plain');
-      console.log('Elemento arrastrado con datos:', data);
-    }
-  }
 }

@@ -102,10 +102,8 @@ export class ShowContentComponent {
   }
 
   onClick(content: any) {
-    setTimeout(() => {
       this.showContentEv.emit(content);
       console.log('Se hizo clic en el componente:', content);
-    });
   }
   create() {
     this.router.navigate(

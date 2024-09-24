@@ -1,1 +1,189 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr'; /* You can add global styles to this file, and also import other style files */
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/material.css';
+/*@import '~codemirror/theme/3024-day.css';*/
+/*
+  tailwind config
+*/
+
+/*autocomplet*/
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mdc-line-ripple{
+  display: none;
+
+}
+.mat-form-field-container {
+  height: 2px !important;
+}
+.mat-mdc-form-field-subscript-wrapper {
+  display: none!important;
+}
+
+.mat-mdc-form-field-bottom-align{
+  display: none!important;
+}
+.mat-mdc-form-field-subscript-wrapper {
+  height: 0 !important;
+}
+
+/* styles.css o tu archivo CSS personalizado */
+
+/* Desactivar todos los estilos de mat-autocomplete */
+.mat-autocomplete-trigger,
+.mat-autocomplete-panel {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: inherit;
+}
+
+.mat-form-field.mat-autocomplete mat-label,
+.mat-form-field.mat-autocomplete mat-placeholder {
+  color: inherit;
+}
+
+.mat-option.mat-active {
+  background-color: transparent;
+}
+
+/*autocomplet*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*@import "assets/styles/index.css";*/
+:root{
+  --rounded-sm: 0.125rem;
+  --rounded: 0.25rem;
+  --rounded-md: 0.375rem;
+  --rounded-lg: 0.5rem;
+  --rounded-xl: 0.75rem;
+  --rounded-full: 0.75rem;
+  /*--mat-autocomplete-background-color:transparent;*/
+}
+
+
+/*codemirrror color back*/
+.cm-s-material.CodeMirror {
+  /*background-color:  transparent !important;*/
+}
+.CodeMirror {
+  background-color:  transparent !important;
+  height: 100%;
+}
+.CodeMirror-scroll {
+  height: 100%;
+  overflow: hidden;
+}
+.CodeMirror textarea {
+  height: 100%;
+  /*width: 100%;*/
+}
+.cm-s-material .CodeMirror-gutters {
+  background-color:  transparent !important;
+}
+
+/* ripple for buttons*/
+.ripple-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.42);
+  transform: scale(0);
+  animation: rippleEffect 0.7s;
+  overflow: hidden;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(195, 195, 195);
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.23);
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #EC1D24;
+}
+
+@media (min-width: 768px){
+.md\:order-1 {
+  order: 1;
+}
+}
+
+
+@import url('https://fonts.cdnfonts.com/css/shlop');
+@import url('https://fonts.googleapis.com/css?family=Marvel');
+@import url('https://fonts.cdnfonts.com/css/hyper-viper');
+@import url('https://fonts.cdnfonts.com/css/lazer84');
+@import url('https://fonts.cdnfonts.com/css/da-mad-rave');
+@import url('https://fonts.cdnfonts.com/css/monster-chiller');
+@import url('https://fonts.cdnfonts.com/css/fizzy-soda');
+@import url('https://fonts.cdnfonts.com/css/tower-of-silence');
+@import url('https://fonts.cdnfonts.com/css/call-of-ops-duty');  
+@import url('https://fonts.cdnfonts.com/css/black-ops-2'); 
+@import url('https://fonts.cdnfonts.com/css/ash');
+
+@font-face {
+  /*font-family: "MarvelRegular-Dj83";*/
+  /*src: url("https://assets.codepen.io/1480814/films.EXH_____.ttf")*/
+  /*font-family: "Marvel-Regular";*/
+  /*src: url("assets/fonts/MarvelRegular-Dj83.ttf") format("truetype");*/
+  /*src: url("fonts/Ma  rvel-Regular.ttf") format("truetype");*/
+}
+
+.text_font_marvel{
+  /*height:100%;*/
+  /*width: 100%;*/
+
+  /*font-family: 'Monster Chiller', sans-serif;*/
+  /*font-family: 'Da Mad Rave', sans-serif;*/
+  /*font-family: 'Fizzy Soda', sans-serif;*/
+  /*font-family: 'Tower of Silence', sans-serif;*/
+  /*font-family: 'Tower of Silence 3D', sans-serif;*/
+  /*font-family: 'Call of Ops Duty', sans-serif;*/
+  /*font-family: "Marvel-Regular";*/
+  /*font-family: "MarvelRegular-Dj83";*/
+  /*font-family: "Creepster";*/
+  /*font-family: 'Hyper Viper', sans-serif;*/
+  /*font-family: 'lazer84', sans-serif;*/
+  /*font-family: 'Shlop', sans-serif;*/
+  font-family: 'Da Mad Rave', sans-serif;
+  /*font-family: 'Ash', sans-serif;*/
+
+  /*font-family: 'MarvelRegul ar-Dj83', sans-serif;*/
+  /*line-height:1;*/
+  /*font-family: 'Da Mad Rave', sans-serif;*/
+  /*padding-top: 5px;*/
+}
+/*.text_font_marvel{*/
+/*  position: relative;*/
+/*  font-family: 'MarvelRegular-Dj83', sans-serif;*/
+/*}*/
