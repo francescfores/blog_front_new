@@ -1,0 +1,177 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+/*html{*/
+/*display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+/*body{*/
+/*    display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+      </style>
+        <!--add css cdn-->
+      </head>
+      <body>
+        <main>
+         <style type="text/css">/*style for btn*/
+.btn{
+  --font-body-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  --height: 50px;
+  --raise: 10px;
+  --rounded: 10px;
+  --rotate: 1;
+  --rotate_invers: 1 * - 1;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg-front-color: #AAD3EA;
+  --bg-shadow-color: #4B4B4B84;
+  --bg-back-color: #004c65;
+  --font-color: white;
+  --font-body-weight:800;
+  --width:180px;
+  color:var(--font-color);
+  font-family:var(--font-body-family);
+  height: calc(var(--height) + var(--raise)); 
+  width:var(--width);
+  font-weight:var(--font-body-weight);
+}
+
+.btn_primary{
+  --bg-shadow-color: #4B4B4B20;
+  --bg-front-color: #338a9d;
+  --bg-back-color: #9a453f;
+  --border_style:solid #b84a41 var(--border);
+  --font-color: #ea893e;
+}
+
+.btn_shadow {
+  border: var(--border) solid transparent;
+}
+.btn_shadow:before {
+  content:" ";
+  position:absolute;
+  height: var(--height);
+  margin-top: calc((var(--raise)/0.5)); 
+  width:var(--width);
+  background: var(--bg-shadow-color);
+  border-radius: var(--rounded);
+  transition:transform 0.2s ease-out; 
+  border: var(--border) solid transparent;
+}
+.btn_back:before{
+  content:" ";
+  position: absolute;
+  height: var(--height);
+  margin-top: var(--raise);
+  width:var(--width);
+  border: var(--border) solid transparent;
+  background: var(--bg-back-color);
+  border-radius:var(--rounded);
+  transition:transform 0.1s ease-out;
+} 
+.btn_front{
+  position: absolute;
+  height: var(--height);
+  width:var(--width);
+  background: var(--bg-front-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  transition:transform 0.1s ease-out;
+}
+
+
+
+/*on mouse move in button zone add classes*/
+.btn_shadow_default:before{
+  transform:skew(0) translateZ(0);
+}
+.btn_shadow_default:hover:before{
+  transform: translateY(calc((var(--raise)/2) * -1 )); 
+}      
+.btn_shadow_default:active:before{  
+  transform: translateY(calc((var(--raise)) * -1 ));
+}
+
+.btn_front_default{
+  transform:skew(0) translateZ(0);
+  transition:transform 0.2s ease-out;
+}
+.btn_front_default:hover{
+  transform: translateY(calc(var(--raise) * 0.5));
+
+}
+.btn_front_default:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+
+
+#valor_actual{ 
+  font-family:'Ubuntu';
+  font-weight:700;
+}
+
+/* It is not necessary only for the body*/
+.h-screen{
+    height:90vh; 
+}
+.mt-auto{
+  margin-top:136px; 
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex{
+ display : flex;
+}</style>
+         <div class="flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen">
+<div class="btn btn_primary btn_shadow btn_shadow_default btn_loading">
+  <div class="btn_back">
+    <div class="btn_front btn_front_default">
+    
+      <p>Hover</p> 
+    </div> 
+  </div>
+</div>
+  <input class="mt-auto" type="range" id="button_range" min="0" max="100" value="10" oninput="obtenerValor()">
+<p id="valor_actual">Valor actual: 100</p> 
+</div>
+         <script>var raise=10;
+
+function obtenerValor() {
+  // Obtén el elemento input por su ID
+  var rangeInput = document.getElementById("button_range");
+
+  // Obtén el valor actual del input de rango
+  var valor = rangeInput.value;
+  var btn = document.querySelector(".btn");
+    var style = btn.style;
+  style.setProperty('--raise', valor+'px');
+  raise=valor;
+  // Actualiza el texto para mostrar el valor actual
+  document.getElementById("valor_actual").textContent = "Valor actual: " + valor;
+}</script>
+        </main>
+        <!--add js cdn-->
+      
+
+    
+  </body></html>

@@ -1,0 +1,549 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+/*html{*/
+/*display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+/*body{*/
+/*    display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+      </style>
+        <!--add css cdn-->
+      </head>
+      <body>
+        <main>
+         <style type="text/css">.h-screen{
+    height:90vh; 
+}
+.mt-auto{
+  margin-top:auto;
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap; 
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex{
+ display : flex;
+}
+
+
+.btn{
+  --font-body-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  --height: 50px;
+  --raise: 100px;
+  --rounded: 10px;
+  --rotate: 1;
+  --rotate_invers: 1 * - 1;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg-front-color: #AAD3EA;
+  --bg-shadow-color: #4B4B4B84;
+  --bg-back-color: #004c65;
+  --font-color: white;
+  --font-body-weight:800;
+  --width:180px;
+/*     transform:   translate3d(-10px, 0px, 0px) rotateX(20deg) rotateY(-45deg); */
+
+}
+#valor_actual{
+  font-family:'Ubuntu';
+  font-weight:700;
+}
+.btn_primary{
+  --bg-shadow-color: #4B4B4B20;
+  --bg-front-color: #338a9d;
+  --bg-back-color: #9a453f;
+  --border_style:solid #b84a41 var(--border);
+  --font-color: #ea893e;
+}
+.btn_secondary{
+  --bg-shadow-color: #4B4B4B84;
+  --bg-front-color: #fffbb5;/*#fffbb5;*/
+  --bg-back-color: #4e6a6b;
+  --border_style:solid #5c8486 var(--border);
+  --font-color: #20201e;
+}
+.btn_anchor{
+  --bg-shadow-color: #4B4B4B84;
+  --bg-front-color: #ececec;
+  --bg-back-color: #313131;
+  --border_style:solid #404040 var(--border);
+  --font-color: #7f4997;
+}
+.btn_danger{
+  --bg-shadow-color: #4B4B4B84;
+  --bg-front-color: #8B3357;
+  --bg-back-color: #afca92;
+  --border_style:solid #d2f3af var(--border);
+  --font-color: #fff;
+}
+.btn_disabled{
+  --bg-shadow-color: #4B4B4B84;
+  --bg-front-color: #f16c5d;
+  --bg-back-color: #7da7ac;
+  --border_style:solid #9dd6dd var(--border);
+  --font-color: #ececec;
+}
+.btn p{
+  font-weight:var(--font-body-weight);
+}
+.btn_shadow {
+  height: calc(var(--height) + var(--raise));
+  font-family:var(--font-body-family);
+  width:var(--width);
+  color:var(--font-color);
+  border: var(--border) solid transparent;
+}
+.btn_shadow:before {
+  content:" ";
+  position:absolute;
+  height: var(--height);
+  margin-top: calc(var(--raise) + (var(--raise)/1.2)); 
+  width:var(--width);
+  background: var(--bg-shadow-color);
+  border-radius: var(--rounded);
+  transition:transform 0.2s ease-out;
+  border: var(--border) solid transparent;
+}
+.btn_shadow .btn_back:before{
+  content:" ";
+  position: absolute;
+  height: var(--height);
+  margin-top: var(--raise);
+  
+  width:var(--width);
+  border: var(--border) solid transparent;
+  background: var(--bg-back-color);
+  border-radius:var(--rounded);
+  transition:transform 0.1s ease-out;
+} 
+.btn_shadow .btn_front{
+  position: absolute;
+  height: var(--height);
+  width:var(--width);
+
+  background: var(--bg-front-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  transition:transform 0.1s ease-out;
+}
+
+.btn_shadow_left:before{
+  transition: transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_shadow_right:before{
+  transition:transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate)));
+}
+.btn_shadow_default:before{
+  transform:skew(0) translateZ(0);
+}
+
+.btn_shadow_default:hover:before{
+  transform: translateY(-5px);
+}
+.btn_shadow_default:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_left:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_right:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+/*btn_front events*/
+.btn_front_left{
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_front_right{
+  transform:skewY(calc(1deg * var(--rotate)));
+  transition:transform 0.2s ease-out;
+}
+.btn_front_default{
+  transform:skew(0) translateZ(0);
+  transition:transform 0.2s ease-out;
+}
+
+.btn_front_left:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_right:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_default:hover{
+  transform: translateY(calc(var(--raise) * 0.5));
+
+}
+.btn_front_default:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+
+/*loading*/
+.btn_loading_wrapp{
+  position: absolute;
+  height: var(--height);
+   width:var(--width);
+
+  margin-left:calc(var(--border)*-1);/* padding for borders of parent */
+  margin-right:calc(var(--border)*-1);/* padding for borders of parent */
+  background: var(--bg-back-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  overflow: hidden;
+  z-index:1;
+}
+
+.btn_loading_wrapp:before{
+  content:" ";
+  position: absolute;
+  height: var(--height);
+  width: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-front-color);
+  z-index:-1;
+}
+
+.btn_loading_2:before{
+  width:100%;
+  transition: width 1s ease-in;
+}
+.opacity-0{
+  opacity:0;
+}
+.hidden{
+  display:none;
+}
+/*.flex{
+  display:flex;
+}*/
+
+/*animation text*/
+.btn_loading_2 .txt_loading{
+  animation: slide-up 0.5s ease-in-out;
+}
+.btn_loading_2 .txt_loaded{
+  animation: slide-down 0.5s ease-in-out;
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  0% {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* bender eye*/
+
+
+.wrap {
+  position: relative;
+  width: 100px;
+  height: 40px;
+  margin: 0 2rem;
+  color: #dbc9aa;
+  line-height: 40px;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 400;
+  padding-top: 5.5rem;
+  margin-bottom: 0;
+}
+.wrap .eye {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+}
+.wrap .eye:before {
+  content: "";
+  position: absolute;
+  margin-left: auto;
+  width: 10px;
+  height: 10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #141414;
+  margin: auto;
+}
+.wrap .eye.grin:after, .wrap .eye.sad:after {
+  content: "";
+  position: absolute;
+  width: calc(100% + 20px);
+  height: 0;
+  background: #eae0ce;
+  left: -10px;
+}
+.wrap .eye.grin:after {
+  bottom: -20px;
+}
+.wrap .eye:first-child {
+  left: 0;
+}
+.wrap .eye:last-child {
+  right: 0;
+}
+.wrap .eye.grin:before {
+  -webkit-animation: grinb 4s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+          animation: grinb 4s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+.wrap .eye.grin:after {
+  -webkit-animation: grina 4s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+          animation: grina 4s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+
+@-webkit-keyframes grinb {
+  0%, 10% {
+    bottom: 0;
+  }
+  20%, 40% {
+    bottom: 50%;
+  }
+  50%, 100% {
+    bottom: 0;
+  }
+}
+
+@keyframes grinb {
+  0%, 10% {
+    bottom: 0;
+  }
+  20%, 40% {
+    bottom: 50%;
+  }
+  50%, 100% {
+    bottom: 0;
+  }
+}
+@-webkit-keyframes grina {
+  0%, 10% {
+    height: 0;
+  }
+  20%, 40% {
+    height: 100%;
+  }
+  50%, 100% {
+    height: 0;
+  }
+}
+@keyframes grina {
+  0%, 10% {
+    height: 0;
+  }
+  20%, 40% {
+    height: 100%;
+  }
+  50%, 100% {
+    height: 0;
+  }
+}
+
+
+/* water*/
+
+.bubble {
+  --bg_front_color:#42a5f5;
+  --bg_back_color:#c7eeff;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-front-color);
+  overflow: hidden;
+  transform: translate(0, 0);
+	border-radius:var(--rounded);
+}
+.bubble .water {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+}
+.bubble .water_wave_back {
+  width:200%;
+  left: 0;
+  top:0;
+  position:relative;
+  fill: var(--bg_back_color);
+
+  animation: wave-back 0.8s infinite linear;
+}
+.bubble .water_wave_front {
+    margin-top: 8px;
+  width:200%;
+  left: 0;
+  top:0;
+  position:absolute;
+  fill: var(--bg_front_color);
+  animation: wave-front 0.6s infinite linear;
+}
+
+.liquid{
+  background:var(--bg_front_color);
+  width: 100%;
+  height: 100%;
+  margin-top:-6px;
+}
+
+
+@keyframes wave-front {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes wave-back {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}</style>
+         <div class="flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen">
+
+  <div class="mt-auto btn btn_primary btn_shadow btn_loading btn_shadow_right" style="--raise: 36px; --rotate: 1.5702378444914464; --rotate_invers: -1.5702378444914464;">
+  <div class="btn_back">
+    <div class="btn_front btn_front_left">
+      <div class="btn_loading_wrapp opacity-0">
+        <p class="txt_loading">Loading</p>
+        <p class="txt_loaded hidden">succes</p>
+      </div>
+      <p>Hover</p>
+    </div>
+  </div> 
+</div>
+<input class="mt-auto" type="range" id="button_range" min="0" max="100" value="36" oninput="obtenerValor()">
+<p id="valor_actual">Valor actual: 36</p>
+</div>
+         <script>var raise=10;
+btn = document.querySelector('.btn');
+
+  var loading=false;
+  var style = btn.style;
+  style.setProperty('--raise', raise+'px');
+  btn.addEventListener('mousemove', event => {
+    if(raise>0){
+       const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const rotationDegrees = Math.atan((height * (raise) + raise) / (width )) ;
+    const btnWidth = btn.offsetWidth;
+    const mouseX = event.clientX - btn.getBoundingClientRect().left;
+
+    style.setProperty('--rotate', (rotationDegrees));
+    style.setProperty('--rotate_invers', (rotationDegrees * -1));
+
+    this.rotate_Y = -10 * ((mouseX - btnWidth / 2) / (btnWidth / 2));
+    if(this.rotate_Y>2){
+      btn.classList.remove('btn_shadow_default', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_right');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_right');
+      btn.querySelector('.btn_front').classList.add('btn_front_left');
+    }
+    if(this.rotate_Y>-2 && this.rotate_Y<2){
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_default');
+      btn.querySelector('.btn_front').classList.remove('btn_front_right', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_default');
+    }
+    if(this.rotate_Y<-2){
+      console.log('right');
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_default');
+      btn.classList.add('btn_shadow_left');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_right');
+    }
+   
+    }
+  });
+  btn.addEventListener("click", function() {
+    if(!loading){
+      //loading=true;
+
+      console.log('eeeeee')
+      const childElement= btn.querySelector('.btn_loading_wrapp');
+      childElement.classList.remove('opacity-0');
+      childElement.classList.add('flex','btn_loading_2');
+      document.querySelector('.btn_loading').style.pointerEvents = "none";
+      document.querySelector('.btn_front').style.pointerEvents = "none";
+      //document.querySelector('.btn_front').style.opacity = "0.8";
+
+      document.querySelector('.txt_loaded').classList.add('hidden');
+      document.querySelector('.txt_loading').classList.remove('hidden');
+
+      setTimeout(function() {
+        document.querySelector('.txt_loaded').classList.remove('hidden');
+        document.querySelector('.txt_loading').classList.add('hidden');
+        setTimeout(function() {
+          childElement.classList.add('opacity-0');
+          childElement.classList.remove('flex','btn_loading_2');
+          document.querySelector('.btn_loading').style.pointerEvents = "auto";
+          document.querySelector('.btn_front').style.pointerEvents = "auto";
+          //document.querySelector('.btn_front').style.opacity = "1";
+        }, 1000);
+        //loading=false;
+      }, 3000);
+    }
+  });
+
+function obtenerValor() {
+  // Obtén el elemento input por su ID
+  var rangeInput = document.getElementById("button_range");
+
+  // Obtén el valor actual del input de rango
+  var valor = rangeInput.value;
+  var btn = document.querySelector(".btn");
+    var style = btn.style;
+  style.setProperty('--raise', valor+'px');
+  raise=valor;
+  // Actualiza el texto para mostrar el valor actual
+  document.getElementById("valor_actual").textContent = "Valor actual: " + valor;
+}</script>
+        </main>
+        <!--add js cdn-->
+      
+
+    
+  </body></html>

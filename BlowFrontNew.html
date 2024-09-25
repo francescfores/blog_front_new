@@ -1,0 +1,3413 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="module" src="BlowFrontNew_files/client.es"></script>
+
+  <meta charset="utf-8">
+  <title>BlowFrontNew</title>
+  <!-- base href="http://localhost:4200/" -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="http://localhost:4200/favicon.ico">
+<link rel="stylesheet" href="BlowFrontNew_files/styles.css"><script async="" src="BlowFrontNew_files/client"></script><style>
+
+.example-list[_ngcontent-ng-c2649385078] {
+  width: 100%;
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  display: block;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.example-box[_ngcontent-ng-c2649385078] {
+  padding: 10px 6px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+.cdk-drag-preview[_ngcontent-ng-c2649385078] {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow:
+    0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.cdk-drag-animating[_ngcontent-ng-c2649385078] {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.example-box[_ngcontent-ng-c2649385078]:last-child {
+  border: none;
+}
+.example-list.cdk-drop-list-dragging[_ngcontent-ng-c2649385078]   .example-box[_ngcontent-ng-c2649385078]:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.example-custom-placeholder[_ngcontent-ng-c2649385078] {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+/*# sourceMappingURL=update-content.component.css.map */</style><style>
+
+.card[_ngcontent-ng-c3359680295] {
+  --bg_color: hsl(var(--twc-bgPrim));
+  --bg_gradient_to: hsl(var(--twc-bgPrim));
+  --bg_gradient_from: hsl(var(--twc-bgSeco));
+}
+.card[_ngcontent-ng-c3359680295] {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-word;
+  border-radius: var(--rounded-md);
+  background: var(--bg_color);
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+.card.bg_gradient[_ngcontent-ng-c3359680295] {
+  background:
+    linear-gradient(
+      219deg,
+      var(--bg_gradient_to),
+      var(--bg_gradient_from));
+}
+.card.card_vertical[_ngcontent-ng-c3359680295] {
+  display: flex;
+  flex-direction: column;
+}
+.card.card_horizontal[_ngcontent-ng-c3359680295] {
+  display: flex;
+}
+.card.card_vertical[_ngcontent-ng-c3359680295]   .content[_ngcontent-ng-c3359680295] {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.card.card_horizontal[_ngcontent-ng-c3359680295]   .content[_ngcontent-ng-c3359680295] {
+  display: flex;
+  flex: 1;
+}
+.card.booking_card[_ngcontent-ng-c3359680295] {
+}
+/*# sourceMappingURL=card.component.css.map */</style><style>
+
+button[_ngcontent-ng-c3940394643] {
+  all: unset;
+}
+.gap-10[_ngcontent-ng-c3940394643] {
+  gap: 35px;
+}
+.btn[_ngcontent-ng-c3940394643] {
+  --height: 100px;
+  --width:100px;
+  --raise: 0px;
+  --rounded: var(--rounded-sm);
+  --rotate: 0;
+  --rotate_invers: 0;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg_front_color: #AAD3EA;
+  --bg_front_color_hover: rgba(170, 211, 234, 0.08);
+  --bg_shadow_color: #4B4B4B84;
+  --bg_back_color: #004c65;
+  --font_color: white;
+  --font_body_weight:800;
+  --font_size:14px;
+}
+.btn[_ngcontent-ng-c3940394643] {
+  font-weight: var(--font_body_weight);
+  font-size: var(--font_size);
+}
+.btn_shadow[_ngcontent-ng-c3940394643] {
+  position: relative;
+  height: calc(var(--height) + var(--raise));
+  width: var(--width);
+  color: var(--font_color);
+}
+.btn_shadow[_ngcontent-ng-c3940394643]:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  height: var(--height);
+  margin-top: calc(var(--raise) + (var(--raise)/1.2));
+  width: var(--width);
+  background: var(--bg_shadow_color);
+  border-radius: var(--rounded);
+  transition: transform 0.2s ease-out;
+}
+.btn_shadow[_ngcontent-ng-c3940394643]   .btn_back[_ngcontent-ng-c3940394643] {
+  width: var(--width);
+}
+.btn_shadow[_ngcontent-ng-c3940394643]   .btn_back[_ngcontent-ng-c3940394643]:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  height: var(--height);
+  margin-top: var(--raise);
+  width: var(--width);
+  background: var(--bg_back_color);
+  border-radius: var(--rounded);
+  transition: transform 0.1s ease-out;
+}
+.btn_shadow[_ngcontent-ng-c3940394643]   .btn_front[_ngcontent-ng-c3940394643] {
+  position: absolute;
+  height: calc(var(--height));
+  width: var(--width);
+  top: 0;
+  background: var(--bg_front_color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rounded);
+  border: var(--border_style);
+  transition: transform 0.1s ease-out;
+}
+.btn[_ngcontent-ng-c3940394643]:active {
+  opacity: 0.80;
+}
+.btn_shadow_left[_ngcontent-ng-c3940394643]:before {
+  transition: transform 0.2s ease-out;
+  transform: skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_shadow_right[_ngcontent-ng-c3940394643]:before {
+  transition: transform 0.2s ease-out;
+  transform: skewY(calc(1deg * var(--rotate)));
+}
+.btn_shadow_default[_ngcontent-ng-c3940394643]:before {
+  transform: skew(0) translateZ(0);
+}
+.btn_shadow_default[_ngcontent-ng-c3940394643]:hover:before {
+  transform: translateY(-5px);
+}
+.btn_shadow_default[_ngcontent-ng-c3940394643]:active:before {
+  transform: translateY(calc((var(--raise)/1.2) * -1));
+}
+.btn_shadow_left[_ngcontent-ng-c3940394643]:active:before {
+  transform: translateY(calc((var(--raise)/1.2) * -1));
+}
+.btn_shadow_right[_ngcontent-ng-c3940394643]:active:before {
+  transform: translateY(calc((var(--raise)/1.2) * -1));
+}
+.btn_front_left[_ngcontent-ng-c3940394643] {
+  transform: skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_front_right[_ngcontent-ng-c3940394643] {
+  transform: skewY(calc(1deg * var(--rotate)));
+  transition: transform 0.2s ease-out;
+}
+.btn_front_default[_ngcontent-ng-c3940394643] {
+  transform: skew(0) translateZ(0);
+  transition: transform 0.2s ease-out;
+}
+.btn_front_left[_ngcontent-ng-c3940394643]:active {
+  transform: skewY(0) translateY(var(--raise));
+}
+.btn_front_right[_ngcontent-ng-c3940394643]:active {
+  transform: skewY(0) translateY(var(--raise));
+}
+.btn_front_default[_ngcontent-ng-c3940394643]:hover {
+  transform: translateY(calc(var(--raise) * 0.5));
+}
+.btn_front_default[_ngcontent-ng-c3940394643]:active {
+  transform: skewY(0) translateY(var(--raise));
+}
+.btn_loading_wrapp[_ngcontent-ng-c3940394643] {
+  position: absolute;
+  height: var(--height);
+  width: var(--width);
+  margin-left: calc(var(--border)*-1);
+  margin-right: calc(var(--border)*-1);
+  background: var(--bg_back_color);
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rounded);
+  border: var(--border_style);
+  overflow: hidden;
+  z-index: 1;
+}
+.btn_loading_wrapp[_ngcontent-ng-c3940394643]:before {
+  content: " ";
+  position: absolute;
+  height: var(--height);
+  width: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg_front_color);
+  z-index: -1;
+}
+.btn_loading_slideInLeft[_ngcontent-ng-c3940394643]:before {
+  width: 100%;
+  transition: width 1s ease-in;
+}
+.btn_loading_wrapp[_ngcontent-ng-c3940394643]   .txt_loading[_ngcontent-ng-c3940394643] {
+  animation: _ngcontent-ng-c3940394643_slide-up 0.5s ease-in-out;
+  position: absolute;
+}
+.btn_loading_wrapp[_ngcontent-ng-c3940394643]   .txt_loaded[_ngcontent-ng-c3940394643] {
+  animation: _ngcontent-ng-c3940394643_slide-down 0.5s ease-in-out;
+  position: absolute;
+}
+@keyframes _ngcontent-ng-c3940394643_slide-down {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes _ngcontent-ng-c3940394643_slide-up {
+  0% {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.bubble[_ngcontent-ng-c3940394643] {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  overflow: hidden;
+  transform: translate(0, 0);
+  border-radius: calc(var(--rounded) - 10);
+}
+.bubble[_ngcontent-ng-c3940394643]   .water[_ngcontent-ng-c3940394643] {
+  position: absolute;
+  background-color: transparent;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+}
+.bubble[_ngcontent-ng-c3940394643]   .water_wave_back[_ngcontent-ng-c3940394643] {
+  width: 200%;
+  left: 0;
+  top: 0;
+  position: relative;
+  fill: var(--bg_front_color);
+  opacity: 0.7;
+  animation: _ngcontent-ng-c3940394643_wave-back 0.8s infinite linear;
+}
+.bubble[_ngcontent-ng-c3940394643]   .water_wave_front[_ngcontent-ng-c3940394643] {
+  margin-top: 8px;
+  width: 200%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  fill: var(--bg_front_color);
+  animation: _ngcontent-ng-c3940394643_wave-front 0.6s infinite linear;
+}
+.liquid[_ngcontent-ng-c3940394643] {
+  background: var(--bg_front_color);
+  width: 100%;
+  height: 150%;
+  margin-top: -6px;
+}
+@keyframes _ngcontent-ng-c3940394643_wave-front {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes _ngcontent-ng-c3940394643_wave-back {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+/*# sourceMappingURL=button3d.component.css.map */</style><style>
+
+.btn_primary[_ngcontent-ng-c3940394643] {
+  --border_style:solid hsl(var(--twc-btn_primary_border_style)) var(--border);
+  --bg_front_color:hsl(var(--twc-btn_primary_bg_front_color));
+  --bg_shadow_color: rgba(217, 217, 217, 0.35);
+  --bg_back_color: hsl(var(--twc-btn_primary_bg_back_color));
+  --font_color: hsl(var(--twc-btn_primary_font_color));
+}
+.btn_secondary[_ngcontent-ng-c3940394643] {
+  --border_style:solid hsl(var(--twc-btn_secondary_border_style)) var(--border);
+  --bg_front_color:hsl(var(--twc-btn_secondary_bg_front_color));
+  --bg_shadow_color: rgba(217, 217, 217, 0.35);
+  --bg_back_color: hsl(var(--twc-btn_secondary_bg_back_color));
+  --font_color: hsl(var(--twc-btn_secondary_font_color));
+}
+.btn_ternary[_ngcontent-ng-c3940394643] {
+  --border_style:solid hsl(var(--twc-btn_ternary_border_style)) var(--border);
+  --bg_front_color:hsl(var(--twc-btn_ternary_bg_front_color));
+  --bg_shadow_color: rgba(217, 217, 217, 0.35);
+  --bg_back_color: hsl(var(--twc-btn_ternary_bg_back_color));
+  --font_color: hsl(var(--twc-btn_ternary_font_color));
+}
+.btn_anchor[_ngcontent-ng-c3940394643] {
+  --border_style:solid transparent var(--border);
+  --bg_front_color:transparent;
+  --bg_shadow_color: transparent;
+  --bg_back_color: transparent;
+  --font_color: hsl(var(--twc-btn_anchor_font_color));
+}
+.btn_danger[_ngcontent-ng-c3940394643] {
+  --border_style:solid hsl(var(--twc-btn_danger_border_style)) var(--border);
+  --bg_front_color:hsl(var(--twc-btn_danger_bg_front_color));
+  --bg_shadow_color: rgba(217, 217, 217, 0.35);
+  --bg_back_color: hsl(var(--twc-btn_danger_bg_back_color));
+  --font_color: hsl(var(--twc-btn_danger_font_color));
+}
+.btn_disabled[_ngcontent-ng-c3940394643] {
+  --border_style:solid hsl(var(--twc-btn_disabled_border_style)) var(--border);
+  --bg_front_color:hsl(var(--twc-btn_disabled_bg_front_color));
+  --bg_shadow_color: rgba(217, 217, 217, 0.35);
+  --bg_back_color: hsl(var(--twc-btn_disabled_bg_back_color));
+  --font_color: hsl(var(--twc-btn_disabled_font_color));
+}
+.btn_black[_ngcontent-ng-c3940394643] {
+  --border_style:solid #383838 var(--border);
+  --bg_front_color: #c7c7c7;
+  --bg_shadow_color: rgba(217, 217, 217, 0.35);
+  --bg_back_color: hsl(var(--twc-btn_disabled_bg_back_color));
+  --font_color: hsl(var(--twc-btn_disabled_font_color));
+}
+/*# sourceMappingURL=button3d_theme_default.component.css.map */</style><style id="googleidentityservice_button_styles">.qJTHM{-moz-user-select:none;color:#202124;direction:ltr;font-family:"Roboto-Regular",arial,sans-serif;font-weight:400;margin:0;overflow:hidden}.ynRLnc{left:-9999px;position:absolute;top:-9999px}.L6cTce{display:none}.bltWBb{word-break:break-all}.hSRGPd{color:#1a73e8;cursor:pointer;font-weight:500;text-decoration:none}.Bz112c-W3lGp{height:16px;width:16px}.Bz112c-E3DyYd{height:20px;width:20px}.Bz112c-r9oPif{height:24px;width:24px}.Bz112c-uaxL4e{-moz-border-radius:10px;border-radius:10px}.LgbsSe-Bz112c{display:block}.S9gUrf-YoZ4jf,.S9gUrf-YoZ4jf *{border:none;margin:0;padding:0}.fFW7wc-ibnC6b>.aZ2wEe>div{border-color:#4285f4}.P1ekSe-ZMv3u>div:nth-child(1){background-color:#1a73e8!important}.P1ekSe-ZMv3u>div:nth-child(2),.P1ekSe-ZMv3u>div:nth-child(3){background-image:linear-gradient(to right,rgba(255,255,255,.7),rgba(255,255,255,.7)),linear-gradient(to right,#1a73e8,#1a73e8)!important}.haAclf{display:inline-block}.nsm7Bb-HzV7m-LgbsSe{border-radius:4px;box-sizing:border-box;transition:background-color .218s,border-color .218s;-moz-user-select:none;background-color:#fff;background-image:none;border:1px solid #dadce0;color:#3c4043;cursor:pointer;font-family:"Google Sans",arial,sans-serif;font-size:14px;height:40px;letter-spacing:0.25px;outline:none;overflow:hidden;padding:0 12px;position:relative;text-align:center;vertical-align:middle;white-space:nowrap;width:auto}@media screen and (-ms-high-contrast:active){.nsm7Bb-HzV7m-LgbsSe{border:2px solid windowText;color:windowText}}.nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe{font-size:14px;height:32px;letter-spacing:0.25px;padding:0 10px}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe{font-size:11px;height:20px;letter-spacing:0.3px;padding:0 8px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe{padding:0;width:40px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe{width:32px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe{width:20px}.nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK{border-radius:20px}.nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.pSzOP-SxQuSe{border-radius:16px}.nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.purZT-SxQuSe{border-radius:10px}.nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc{border:none;color:#fff}.nsm7Bb-HzV7m-LgbsSe.MFS4be-v3pZbf-Ia7Qfc{background-color:#1a73e8}.nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc{background-color:#202124;color:#e8eaed}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{height:18px;margin-right:8px;min-width:18px;width:18px}.nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{height:14px;min-width:14px;width:14px}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{height:10px;min-width:10px;width:10px}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c{margin-left:8px;margin-right:-4px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{margin:0;padding:10px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{padding:8px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{padding:4px}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-top-left-radius:3px;border-bottom-left-radius:3px;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;justify-content:center;align-items:center;background-color:#fff;height:36px;margin-left:-10px;margin-right:12px;min-width:36px;width:36px}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c,.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c{margin:0;padding:0}.nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{height:28px;margin-left:-8px;margin-right:10px;min-width:28px;width:28px}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{height:16px;margin-left:-6px;margin-right:8px;min-width:16px;width:16px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:3px;margin-left:2px;margin-right:0;padding:0}.nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:18px}.nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:14px}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:8px}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-bN97Pc-sM5MNb{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;align-items:center;flex-direction:row;justify-content:space-between;flex-wrap:nowrap;height:100%;position:relative;width:100%}.nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX{justify-content:center}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-BPrWId{flex-grow:1;font-family:"Google Sans",arial,sans-serif;font-weight:500;overflow:hidden;text-overflow:ellipsis;vertical-align:top}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-BPrWId{font-weight:300}.nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX .nsm7Bb-HzV7m-LgbsSe-BPrWId{flex-grow:0}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-MJoBVe{transition:background-color .218s;bottom:0;left:0;position:absolute;right:0;top:0}.nsm7Bb-HzV7m-LgbsSe:hover,.nsm7Bb-HzV7m-LgbsSe:focus{box-shadow:none;border-color:#d2e3fc;outline:none}.nsm7Bb-HzV7m-LgbsSe:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe,.nsm7Bb-HzV7m-LgbsSe:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe{background:rgba(66,133,244,.04)}.nsm7Bb-HzV7m-LgbsSe:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe{background:rgba(66,133,244,.1)}.nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe,.nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe{background:rgba(255,255,255,.24)}.nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe{background:rgba(255,255,255,.32)}.nsm7Bb-HzV7m-LgbsSe .n1UuX-DkfjY{border-radius:50%;display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;height:20px;margin-left:-4px;margin-right:8px;min-width:20px;width:20px}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId{font-family:"Roboto";font-size:12px;text-align:left}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .ssJRIf,.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .fmcmS{overflow:hidden;text-overflow:ellipsis}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff{display:-webkit-box;display:-moz-box;display:-ms-flexbox;display:-webkit-flex;display:flex;align-items:center;color:#5f6368;fill:#5f6368;font-size:11px;font-weight:400}.nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff{color:#e8eaed;fill:#e8eaed}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .Bz112c{height:18px;margin:-3px -3px -3px 2px;min-width:18px;width:18px}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-top-left-radius:0;border-bottom-left-radius:0;border-top-right-radius:3px;border-bottom-right-radius:3px;margin-left:12px;margin-right:-10px}.nsm7Bb-HzV7m-LgbsSe.jVeSEe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:18px}.L5Fo6c-sM5MNb{border:0;display:block;left:0;position:relative;top:0}.L5Fo6c-bF1uUb{-moz-border-radius:4px;border-radius:4px;bottom:0;cursor:pointer;left:0;position:absolute;right:0;top:0}.L5Fo6c-bF1uUb:focus{border:none;outline:none}sentinel{}</style><link id="googleidentityservice" type="text/css" media="all" rel="stylesheet" href="BlowFrontNew_files/style.css"><style>
+
+button[_ngcontent-ng-c2526117302] {
+  margin-right: 4px;
+}
+.figure[_ngcontent-ng-c2526117302] {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  margin-top: 0px;
+  aspect-ratio: 1;
+  padding: 5px 20px 0;
+  box-sizing: border-box;
+  display: grid;
+  cursor: pointer;
+  position: relative;
+  border-radius: 0px;
+  background: var(--color);
+}
+.figure1[_ngcontent-ng-c2526117302] {
+  filter: drop-shadow(0 0 20px rgba(255, 254, 254, 0));
+}
+.figure2[_ngcontent-ng-c2526117302] {
+  filter: drop-shadow(0 0 20px rgba(255, 254, 254, 0));
+}
+.figure3[_ngcontent-ng-c2526117302] {
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0));
+}
+.figure4[_ngcontent-ng-c2526117302] {
+  filter: drop-shadow(0 0 20px rgba(255, 254, 254, 0));
+}
+.figure5[_ngcontent-ng-c2526117302] {
+  filter: drop-shadow(0 0 20px rgba(255, 254, 254, 0));
+}
+.figure6[_ngcontent-ng-c2526117302] {
+  filter: drop-shadow(0 0 20px rgba(255, 254, 254, 0));
+}
+.figure7[_ngcontent-ng-c2526117302] {
+  filter: drop-shadow(0 0 20px rgba(255, 254, 254, 0));
+}
+.figure8[_ngcontent-ng-c2526117302] {
+  filter: drop-shadow(0 0 20px rgba(255, 254, 254, 0));
+}
+[_ngcontent-ng-c2526117302]:root {
+  --background_url: #000;
+  --color: #111;
+}
+.figure[_ngcontent-ng-c2526117302]:before {
+}
+.figure1[_ngcontent-ng-c2526117302]:before {
+  border: solid #131313 5px;
+  background: url(https://64.media.tumblr.com/47c08a8cea06364a20db6d3137d221eb/7cbec6d1017fc497-c6/s1280x1920/a4959ce4bff4ed4bfe22b899dc21a22cf8a55a6e.png) top/cover;
+}
+.figure2[_ngcontent-ng-c2526117302]:before {
+  border: solid #131313 5px;
+  background: url(https://i.redd.it/xg14j8iflnx71.jpg) top/cover;
+}
+.figure3[_ngcontent-ng-c2526117302]:before {
+  border: solid #131313 5px;
+}
+.figure4[_ngcontent-ng-c2526117302]:before {
+  border: solid #131313 5px;
+  background: url(https://comicvine.gamespot.com/a/uploads/original/12/124259/8014844-rco026_1619001753.jpg) top/cover;
+}
+.figure5[_ngcontent-ng-c2526117302]:before {
+  border: solid #131313 5px;
+  background: url(https://i.ebayimg.com/images/g/1oIAAOSwCp9iS0ia/s-l400.jpg) top/cover;
+}
+.figure6[_ngcontent-ng-c2526117302]:before {
+  border: solid #131313 5px;
+  background: url(https://i.ebayimg.com/images/g/1oIAAOSwCp9iS0ia/s-l400.jpg) top/cover;
+}
+.figure7[_ngcontent-ng-c2526117302]:before {
+  border: solid #131313 5px;
+  background: url(https://i.ebayimg.com/images/g/1oIAAOSwCp9iS0ia/s-l400.jpg) top/cover;
+}
+.figure8[_ngcontent-ng-c2526117302]:before {
+  border: solid #131313 5px;
+  background: url(https://i.ebayimg.com/images/g/1oIAAOSwCp9iS0ia/s-l400.jpg) top/cover;
+}
+.amt_2[_ngcontent-ng-c2526117302] {
+  grid-area: 1/1;
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  filter: contrast(.8) brightness(.6);
+  place-self: end center;
+  transition: .5s;
+  max-width: none !important;
+  overflow: visible;
+}
+@import url(https://fonts.googleapis.com/css2?family=Creepster&display=swap);
+figcaption[_ngcontent-ng-c2526117302] {
+  padding-top: 0px;
+  grid-area: 1/1;
+  width: calc(100% + 40px);
+  font-family: "Creepster", cursive;
+  font-size: min(32px, 5vmin);
+  text-align: center;
+  place-self: end center;
+  transform: perspective(500px) translateY(100%) rotateX(-90deg);
+  backface-visibility: hidden;
+  transform-origin: top;
+  transition: .5s;
+  color: hsl(var(--twc-primary));
+}
+.figure[_ngcontent-ng-c2526117302]:hover   img[_ngcontent-ng-c2526117302] {
+  width: 130%;
+  height: 130%;
+  margin-bottom: 50px;
+  filter: contrast(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+  z-index: 10000;
+  max-width: none !important;
+}
+.figure[_ngcontent-ng-c2526117302]:hover::before {
+  filter: brightness(.3);
+  transform: perspective(500px) rotateX(60deg);
+}
+.figure[_ngcontent-ng-c2526117302]:hover   figcaption[_ngcontent-ng-c2526117302] {
+  transform: perspective(800px)translateY(100%) rotateX(0);
+}
+.svg_back[_ngcontent-ng-c2526117302] {
+  margin: auto;
+  width: 100%;
+  height: 130%;
+  aspect-ratio: 1;
+  padding: 5px 20px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  filter: drop-shadow(0 0 20px rgb(0 0 0/50%));
+  position: absolute;
+  transition: .5s;
+  z-index: 2;
+  object-fit: cover;
+  animation: _ngcontent-ng-c2526117302_slide_right_left2 0.5s forwards;
+}
+.svg_back_clip1[_ngcontent-ng-c2526117302] {
+  clip-path: polygon(64% 20%, 86% 0, 100% 0, 100% 70%, 100% 100%, 50% 100%, 26% 100%, 0 100%, 0 14%, 23% 20%);
+}
+.svg_back_clip2[_ngcontent-ng-c2526117302] {
+  clip-path: polygon(0 0, 42% 0, 41% 34%, 74% 27%, 75% 16%, 100% 0, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
+}
+.svg_back_clip3[_ngcontent-ng-c2526117302] {
+  clip-path: polygon(0 0, 8% 29%, 17% 40%, 75% 36%, 75% 81%, 100% 68%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
+}
+.svg_back_clip4[_ngcontent-ng-c2526117302] {
+  transform: rotateY(30deg) rotateX(30deg) rotateZ(10deg);
+  clip-path: polygon(0% 15%, 23% 15%, 34% 36%, 60% 36%, 69% 14%, 100% 15%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
+}
+@keyframes _ngcontent-ng-c2526117302_slide_left_right {
+  30% {
+    clip-path: none;
+  }
+  100% {
+    clip-path: none;
+  }
+}
+@keyframes _ngcontent-ng-c2526117302_slide_right_left2 {
+  0% {
+    clip-path: none;
+  }
+}
+.section_1_left[_ngcontent-ng-c2526117302]:before {
+  border-bottom: 560px solid #1f2937;
+  border-right: 160px solid transparent;
+  content: "";
+  right: -158px;
+  position: absolute;
+  transition: .5s ease;
+  width: 0;
+  z-index: 1;
+  display: block;
+}
+/*# sourceMappingURL=paint-contents.component.css.map */</style><style>
+
+.split__left[_ngcontent-ng-c457883197] {
+  width: 50%;
+}
+.split__center[_ngcontent-ng-c457883197] {
+  width: 50%;
+}
+.iframe-container[_ngcontent-ng-c457883197] {
+  height: 100%;
+  width: 100%;
+  z-index: 50;
+}
+iframe[_ngcontent-ng-c457883197] {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+}
+.split__bar[_ngcontent-ng-c457883197] {
+  position: relative;
+  width: 15px;
+  pointer-events: auto;
+  cursor: col-resize;
+}
+.split__bar[_ngcontent-ng-c457883197]:after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  inset: 0px;
+  margin: auto;
+  background-color: #756B94BB;
+  width: 2px;
+  pointer-events: auto;
+}
+.split__bar[_ngcontent-ng-c457883197]:before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  inset: 0px;
+  margin: auto;
+  background-color: #756B94BB;
+  opacity: 0;
+  transition: opacity .5s;
+}
+.split__bar[_ngcontent-ng-c457883197]:hover:before {
+  content: "";
+  height: 100%;
+  position: absolute;
+  inset: 0px;
+  margin: auto;
+  background-color: #756B94BB;
+  opacity: 0.5;
+  transition: opacity .5s;
+}
+/*# sourceMappingURL=codeplayground_V2.component.css.map */</style></head>
+<body>
+  <app-root _nghost-ng-c1933515739="" ng-version="18.2.5"><router-outlet _ngcontent-ng-c1933515739=""></router-outlet><app-index><div class="transition-colors duration-500 theme-dark" ng-reflect-ng-class="[object Object]"><app-navbar ng-reflect-transparent="false"><nav id="navbar" class="text-textPrimary bg-bgPrim transition-colors duration-500 top-0 fixed z-50 w-full"><div class="w-screen"><div class="py-4 pr-6 flex w-full justify-start items-center"><button class="z-50 px-8 flex-grow-0 flex-shrink-0 items-start flex flex-col rounded justify-start group pr-2 transition-all duration-500" ng-reflect-ng-class="[object Object]"><div ng-reflect-ng-class="[object Object]" class="h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300 opacity-50 group-hover:opacity-100"></div><div ng-reflect-ng-class="[object Object]" class="h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300 opacity-50 group-hover:opacity-100"></div><div ng-reflect-ng-class="[object Object]" class="h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300 opacity-50 group-hover:opacity-100"></div></button><div class="flex px-8 justify-center items-center transition-all duration-500 ease-in-out" ng-reflect-ng-class="[object Object]"><div><img src="BlowFrontNew_files/thunder_logo_dark.png" class="w-6"><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div class="text-xl text-textPrimary tracking-wide ml-2 font-semibold">Thunder</div></div><div class="flex-grow space-x-5 flex justify-end"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><a mode-button="" class="flex items-center hover:text-gray-200" style="font-size: 16px;"><i class="fa-solid fa-sun"></i></a><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><a class="flex items-center hover:text-gray-200"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 hover:text-gray-200"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></a></div></div></div><div class="top-0 right-0 w-auto divide-neutral-700 text-neutral-700 px-5 mt-16 fixed z-0 bg-white ease-in-out duration-300 translate-x-full opacity-0" ng-reflect-ng-class="[object Object]"><div class="divide-y divide-solid divide-neutral-700 w-1/4"><!--bindings={
+  "ng-reflect-ng-if": null
+}--><div><div><a class="text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap" ng-reflect-router-link="/auth/login" href="http://localhost:4200/auth/login"> Login </a></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div></div></nav></app-navbar><div class="relative theme-dark" ng-reflect-ng-class="[object Object]"><div class="flex flex-col"><app-sidebar class="bg-bgPrim"><div class="flex-grow-0 flex-shrink-0 left-0 bg-bgPrim px-0 sm:px-4 z-50 duration-500 transition-all h-full gap-12 fixed overflow-y-auto scrollbar-corner-bgPrim overflow-hidden sm:overflow-x-hidden pb-2 w-0 sm:w-20" ng-reflect-ng-class="[object Object]"><div class="flex"><button class="h-16 py-4 px-4 flex-grow-0 flex-shrink-0 items-start flex flex-col rounded justify-center group pr-2 transition-all duration-500"><div ng-reflect-ng-class="[object Object]" class="h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300 opacity-50 group-hover:opacity-100"></div><div ng-reflect-ng-class="[object Object]" class="h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300 opacity-50 group-hover:opacity-100"></div><div ng-reflect-ng-class="[object Object]" class="h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300 opacity-50 group-hover:opacity-100"></div></button><div class="flex py-4 px-8 justify-center items-center flex-grow-0 flex-shrink-0"><div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><img src="BlowFrontNew_files/thunder_logo.png" class="w-6"><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><div class="text-xl text-textSecondary tracking-wide ml-2 font-semibold">Thunder</div></div></div><app-menu _nghost-ng-c1268560745=""><ul _ngcontent-ng-c1268560745="" class="border-bgTern border-dashed border-t pt-2"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out opacity-0 overflow-hidden" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary"> Admin Layouts </small></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-submenu _ngcontent-ng-c1268560745="" _nghost-ng-c3055892140="" ng-reflect-menu-item="[object Object]"><a _ngcontent-ng-c3055892140="" class="text-xs font-bold inline-block flex items-center py-2 px-4 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center duration-500 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><i _ngcontent-ng-c3055892140="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-chart-pie text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-chart-pie"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-submenu><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="border-bgTern border-dashed border-t pt-2"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out opacity-0 overflow-hidden" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary"> Admin Layouts </small></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-submenu _ngcontent-ng-c1268560745="" _nghost-ng-c3055892140="" ng-reflect-menu-item="[object Object]"><a _ngcontent-ng-c3055892140="" class="text-xs font-bold inline-block flex items-center py-2 px-4 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center duration-500 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><i _ngcontent-ng-c3055892140="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-chart-pie text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-chart-pie"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-submenu><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary">  </small></div><a _ngcontent-ng-c1268560745="" routerlinkactive="" class="text-xs font-bold inline-block flex items-center px-4 py-2 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center" ng-reflect-router-link-active="" ng-reflect-router-link="/admin/editor" ng-reflect-ng-class="[object Object]" href="http://localhost:4200/admin/editor"><i _ngcontent-ng-c1268560745="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-gear text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-gear"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out opacity-0 overflow-hidden" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary"> widgets </small></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-submenu _ngcontent-ng-c1268560745="" _nghost-ng-c3055892140="" ng-reflect-menu-item="[object Object]"><a _ngcontent-ng-c3055892140="" class="text-xs font-bold inline-block flex items-center py-2 px-4 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center duration-500 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><i _ngcontent-ng-c3055892140="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-code text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-code"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-submenu><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary">  </small></div><a _ngcontent-ng-c1268560745="" routerlinkactive="" class="text-xs font-bold inline-block flex items-center px-4 py-2 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center" ng-reflect-router-link-active="" ng-reflect-router-link="/admin/settings" ng-reflect-ng-class="[object Object]" href="http://localhost:4200/admin/settings"><i _ngcontent-ng-c1268560745="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-gear text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-gear"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary">  </small></div><a _ngcontent-ng-c1268560745="" routerlinkactive="" class="text-xs font-bold inline-block flex items-center px-4 py-2 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center" ng-reflect-router-link-active="" ng-reflect-router-link="/admin/tutorials" ng-reflect-ng-class="[object Object]" href="http://localhost:4200/admin/tutorials"><i _ngcontent-ng-c1268560745="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-gear text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-gear"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary">  </small></div><a _ngcontent-ng-c1268560745="" routerlinkactive="" class="text-xs font-bold inline-block flex items-center px-4 py-2 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center" ng-reflect-router-link-active="" ng-reflect-router-link="/admin/users" ng-reflect-ng-class="[object Object]" href="http://localhost:4200/admin/users"><i _ngcontent-ng-c1268560745="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-users text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-users"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="border-bgTern pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary">  </small></div><a _ngcontent-ng-c1268560745="" routerlinkactive="" class="text-xs font-bold inline-block flex items-center px-4 py-2 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center" ng-reflect-router-link-active="" ng-reflect-router-link="/admin/notification" ng-reflect-ng-class="[object Object]" href="http://localhost:4200/admin/notification"><i _ngcontent-ng-c1268560745="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-bell text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-bell"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out opacity-0 overflow-hidden" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary"> widgets </small></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-submenu _ngcontent-ng-c1268560745="" _nghost-ng-c3055892140="" ng-reflect-menu-item="[object Object]"><a _ngcontent-ng-c3055892140="" class="text-xs font-bold inline-block flex items-center py-2 px-4 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center duration-500 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><i _ngcontent-ng-c3055892140="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-code text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-code"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-submenu><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out opacity-0 overflow-hidden" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary"> Layouts </small></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-submenu _ngcontent-ng-c1268560745="" _nghost-ng-c3055892140="" ng-reflect-menu-item="[object Object]"><a _ngcontent-ng-c3055892140="" class="text-xs font-bold inline-block flex items-center py-2 px-4 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center duration-500 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><i _ngcontent-ng-c3055892140="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-file text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-file"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-submenu><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></li></ul><ul _ngcontent-ng-c1268560745="" class="pt-1"><li _ngcontent-ng-c1268560745=""><div _ngcontent-ng-c1268560745="" class="mx-1 mb-1 whitespace-nowrap flex items-center justify-between duration-1000 transition-all ease-in-out opacity-0 overflow-hidden" ng-reflect-ng-class="[object Object]"><small _ngcontent-ng-c1268560745="" class="text-xs font-semibold text-textPrimary"> Auth Layouts </small></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-submenu _ngcontent-ng-c1268560745="" _nghost-ng-c3055892140="" ng-reflect-menu-item="[object Object]"><a _ngcontent-ng-c3055892140="" class="text-xs font-bold inline-block flex items-center py-2 px-4 whitespace-nowrap uppercase rounded hover:bg-bgSeco justify-center duration-500 transition-all ease-in-out" ng-reflect-ng-class="[object Object]"><i _ngcontent-ng-c3055892140="" ng-reflect-ng-class="[object Object]" class="fas fa-light fa-lock text-sm text-textTertiary"></i><!--bindings={
+  "ng-reflect-ng-if": "fas fa-light fa-lock"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-submenu><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></li></ul><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--></app-menu></div></app-sidebar><div class="flex-grow z-30 bg-bgSeco pt-16 pb-[40px] duration-500 transition-all ease-in-out pl-0 sm:pl-20" ng-reflect-ng-class="[object Object]"><router-outlet></router-outlet><app-index-admin><div class="bg-bgSeco min-h-screen duration-500 transition-all ease-in-out"><router-outlet></router-outlet><app-editor-post _nghost-ng-c961501968=""><div _ngcontent-ng-c961501968="" class="w-full"><div _ngcontent-ng-c961501968="" class="grid grid-cols-12 gap-2"><div _ngcontent-ng-c961501968="" class="w-full col-span-12 h-screen overflow-y-scroll"><app-paint-contents _ngcontent-ng-c961501968="" _nghost-ng-c2526117302="" ng-reflect-show-editor="true" ng-reflect-content="[object Object]"><div _ngcontent-ng-c2526117302="" class="w-full top"><div _ngcontent-ng-c2526117302="" class="flex w-full items-center bg-bgPrim content text-textPrimary"><p _ngcontent-ng-c2526117302="">sas</p><i _ngcontent-ng-c2526117302="" aria-hidden="true" class="ml-auto fa fa-book p-2"></i></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textPrimary bg-bgPrim hov" class="text-textPrimary bg-bgPrim hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full  mx-auto  bg-bgSeco pt-" class="w-full mx-auto bg-bgSeco pt-[162px] hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full max-w-screen-md mx-auto" class="w-full max-w-screen-md mx-auto p-5 hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="font-semibold text-3xl md:text" class="font-semibold text-3xl md:text-4xl xl:text-5xl text-textPrimary hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Building a Magical 3D Button</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mt-2 leadin" class="text-textSecondary mt-2 leading-relaxed whitespace-pre-line hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Bet you can't click just once!</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="flex flex-col items-start w-fu" class="flex flex-col items-start w-full max-w-screen-md mx-auto p-5 gap-10 hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mt-2 leadin" class="text-textSecondary mt-2 leading-relaxed whitespace-pre-line hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">I had a neat realization recently: Buttons are the “killer feature” of the web.  Every significant thing we do online, from ordering food to scheduling an appointment to playing a video, involves pressing a button. Buttons (and the forms they submit) make the web dynamic and interactive and powerful.  But so many of those buttons are lackluster. They can trigger enormous changes in the real world, but they don't feel tangible at all. The feel like dull everyday pixels.  In this tutorial, we'll build a whimsical 3D button:</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-[300px] p-4 relative m-0  ro" class="w-[300px] p-4 relative m-0 rounded-none bg-transparent shadow-none mx-auto hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><a _ngcontent-ng-c2526117302="" target="_blank" href="http://localhost:4200/www.google.com"><app-button3d _ngcontent-ng-c2526117302="" _nghost-ng-c3940394643="" ng-reflect-ng-class="relative m-0  rounded-none bg-" ng-reflect-title="button" ng-reflect-type="btn_primary" ng-reflect-width="100%" ng-reflect-loading_type="waves" ng-reflect-loading="false" class="relative m-0 rounded-none bg-transparent shadow-none hover:border-2 border-red-400/50"><button _ngcontent-ng-c3940394643="" class="btn btn_loading btn_primary btn_shadow flex flex-nowrap justify-center overflow-x-hidden btn_shadow_left" style="--height: 30px; --width: 100%; --rounded: 4px; --raise: 5px; --rotate: 0.9227394408643822; --rotate_invers: -0.9227394408643822;"><div _ngcontent-ng-c3940394643="" class="btn_back"><div _ngcontent-ng-c3940394643="" class="btn_front ripple-button btn_front_right" ng-reflect-ng-class="[object Object]"><div _ngcontent-ng-c3940394643="" class="btn_loading_wrapp opacity-0"><div _ngcontent-ng-c3940394643="" class="bubble"><div _ngcontent-ng-c3940394643="" id="water" class="water"><svg _ngcontent-ng-c3940394643="" viewBox="0 0 560 40" class="water_wave water_wave_back"><path _ngcontent-ng-c3940394643="" d="M140 20C70 20 70 0 0 0V40H560V0C490 0 490 20 420 20C350 20 350 0 280 0C210 0 210 20 140 20Z"></path></svg><svg _ngcontent-ng-c3940394643="" viewBox="0 0 560 40" class="water_wave water_wave_front"><path _ngcontent-ng-c3940394643="" d="M140 20C70 20 70 0 0 0V40H560V0C490 0 490 20 420 20C350 20 350 0 280 0C210 0 210 20 140 20Z"></path></svg><div _ngcontent-ng-c3940394643="" class="liquid"></div></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><p _ngcontent-ng-c3940394643="" class="txt_loading">Loading..</p><p _ngcontent-ng-c3940394643="" class="txt_loaded hidden">Succes</p></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><p _ngcontent-ng-c3940394643="">button </p><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><span _ngcontent-ng-c3940394643="" style="width: 258px; height: 258px; left: 51.4667px; top: -111.833px;" class="ripple"></span></div></div></button></app-button3d></a><!--container--><!--container--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full p-4 rounded-md bg-bgSec" class="w-full p-4 rounded-md bg-bgSeco border-l-4 border-primary hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mb-2 leadin" class="text-textSecondary mb-2 leading-relaxed font-semibold hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Intended audience</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mt-2 leadin" class="text-textSecondary mt-2 leading-relaxed whitespace-pre-line hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">This is an intermediate-level tutorial for front-end developers. It's focused on HTML/CSS, no JavaScript knowledge required.  If you're relatively new to CSS transitions, I'd recommend reading “An Interactive Guide to CSS Transitions” first.  Link to this heading</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="font-semibold text-xl md:text-" class="font-semibold text-xl md:text-2xl xl:text-3xl text-textPrimary hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Our strategy</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mt-2 leadin" class="text-textSecondary mt-2 leading-relaxed whitespace-pre-line hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">There's one main trick we'll use a couple times in this tutorial to create the illusion of a 3D button.</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full hover:border-2 border-r" class="w-full hover:border-2 border-red-400/50"><app-codeplayground_v2 _ngcontent-ng-c2526117302="" class="flex w-full my-5" _nghost-ng-c457883197="" ng-reflect-id="592" ng-reflect-height="h-[500px]" ng-reflect-bg_color_1="bg-[#151528]" ng-reflect-bg_color_2="bg-[#2A2A50]" ng-reflect-text_color_1="text-[#d8d6ff]" ng-reflect-text_color_2="text-[#7e73a2]" ng-reflect-rounded="rounded-lg" ng-reflect-html-codes="&lt;div class=&quot;flex flex-col flex" ng-reflect-css-codes=".h-screen{
+    height:90vh; " ng-reflect-js-codes="var raise=10;
+btn = document."><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c457883197="" class="flex flex-col w-full overflow-hidden"><div _ngcontent-ng-c457883197="" class="flex flex-wrap rounded-lg w-full"><div _ngcontent-ng-c457883197="" class="bg-[#2A2A50] flex font-semibold justify-between px-4 py-1 rounded-t-lg text-xs w-full"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Code Playground</p><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">run</p><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Reset</p></div></div></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] flex flex-wrap h-[500px] rounded-b-lg w-full"><div _ngcontent-ng-c457883197="" class="flex h-full w-full"><div _ngcontent-ng-c457883197="" class="split__left w-full p-2 pr-0"><div _ngcontent-ng-c457883197="" class="flex flex-wrap w-full"><div _ngcontent-ng-c457883197="" class="w-full flex items-start pb-2"><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Html</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Css</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Js</p></div></div></div><ngx-codemirror _ngcontent-ng-c457883197="" class="w-full ng-valid ng-dirty ng-touched" ng-reflect-model="&lt;div class=&quot;flex flex-col flex" ng-reflect-options="[object Object]"><textarea autocomplete="off" class="ngx-codemirror" name="codemirror" style="display: none;">    </textarea><div class="CodeMirror cm-s-material" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 274px; left: 47.4px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" wrap="off" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; visibility: hidden;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; display: block; right: 0px; left: 0px; visibility: hidden;"><div style="height: 100%; min-height: 1px; width: 787px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 50px; min-height: 296px; min-width: 786.4px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 47.4px; top: 270px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;div class="mt-auto btn btn_primary btn_shadow btn_loading" &gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;div class="btn_back"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;div class="btn_front"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;div class="btn_loading_wrapp opacity-0"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;p class="txt_loading"&gt;Loading&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;p class="txt_loaded hidden"&gt;succes&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;p&gt;Hover&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;/div&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;input class="mt-auto" type="range" id="button_range" min="0" max="100" value="10" oninput="obtenerValor()"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;p id="valor_actual"&gt;Valor actual: 100&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 296px;"></div><div class="CodeMirror-gutters" style="display: none; height: 346px;"></div></div></div></ngx-codemirror><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-ng-c457883197="" class="split__bar h-full"></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] p-2 pl-0 rounded-b-lg split__center w-full"><iframe _ngcontent-ng-c457883197="" class="bg-white rounded-lg w-full" id="iframe-592" srcdoc="
+    &lt;html&gt;
+      &lt;head&gt;
+      &lt;style&gt;
+/*html{*/
+/*display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+/*body{*/
+/*    display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+      &lt;/style&gt;
+        &lt;!--add css cdn--&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;main&gt;
+         &lt;style type='text/css'&gt;.h-screen{
+    height:90vh; 
+}
+.mt-auto{
+  margin-top:auto;
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap; 
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex{
+ display : flex;
+}
+
+
+.btn{
+  --font-body-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  --height: 50px;
+  --raise: 100px;
+  --rounded: 10px;
+  --rotate: 1;
+  --rotate_invers: 1 * - 1;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg-front-color: #AAD3EA;
+  --bg-shadow-color: #4B4B4B84;
+  --bg-back-color: #004c65;
+  --font-color: white;
+  --font-body-weight:800;
+  --width:180px;
+/*     transform:   translate3d(-10px, 0px, 0px) rotateX(20deg) rotateY(-45deg); */
+
+}
+#valor_actual{
+  font-family:'Ubuntu';
+  font-weight:700;
+}
+.btn_primary{
+  --bg-shadow-color: #4B4B4B20;
+  --bg-front-color: #338a9d;
+  --bg-back-color: #9a453f;
+  --border_style:solid #b84a41 var(--border);
+  --font-color: #ea893e;
+}
+.btn_secondary{
+  --bg-shadow-color: #4B4B4B84;
+  --bg-front-color: #fffbb5;/*#fffbb5;*/
+  --bg-back-color: #4e6a6b;
+  --border_style:solid #5c8486 var(--border);
+  --font-color: #20201e;
+}
+.btn_anchor{
+  --bg-shadow-color: #4B4B4B84;
+  --bg-front-color: #ececec;
+  --bg-back-color: #313131;
+  --border_style:solid #404040 var(--border);
+  --font-color: #7f4997;
+}
+.btn_danger{
+  --bg-shadow-color: #4B4B4B84;
+  --bg-front-color: #8B3357;
+  --bg-back-color: #afca92;
+  --border_style:solid #d2f3af var(--border);
+  --font-color: #fff;
+}
+.btn_disabled{
+  --bg-shadow-color: #4B4B4B84;
+  --bg-front-color: #f16c5d;
+  --bg-back-color: #7da7ac;
+  --border_style:solid #9dd6dd var(--border);
+  --font-color: #ececec;
+}
+.btn p{
+  font-weight:var(--font-body-weight);
+}
+.btn_shadow {
+  height: calc(var(--height) + var(--raise));
+  font-family:var(--font-body-family);
+  width:var(--width);
+  color:var(--font-color);
+  border: var(--border) solid transparent;
+}
+.btn_shadow:before {
+  content:&quot; &quot;;
+  position:absolute;
+  height: var(--height);
+  margin-top: calc(var(--raise) + (var(--raise)/1.2)); 
+  width:var(--width);
+  background: var(--bg-shadow-color);
+  border-radius: var(--rounded);
+  transition:transform 0.2s ease-out;
+  border: var(--border) solid transparent;
+}
+.btn_shadow .btn_back:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  margin-top: var(--raise);
+  
+  width:var(--width);
+  border: var(--border) solid transparent;
+  background: var(--bg-back-color);
+  border-radius:var(--rounded);
+  transition:transform 0.1s ease-out;
+} 
+.btn_shadow .btn_front{
+  position: absolute;
+  height: var(--height);
+  width:var(--width);
+
+  background: var(--bg-front-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  transition:transform 0.1s ease-out;
+}
+
+.btn_shadow_left:before{
+  transition: transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_shadow_right:before{
+  transition:transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate)));
+}
+.btn_shadow_default:before{
+  transform:skew(0) translateZ(0);
+}
+
+.btn_shadow_default:hover:before{
+  transform: translateY(-5px);
+}
+.btn_shadow_default:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_left:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_right:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+/*btn_front events*/
+.btn_front_left{
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_front_right{
+  transform:skewY(calc(1deg * var(--rotate)));
+  transition:transform 0.2s ease-out;
+}
+.btn_front_default{
+  transform:skew(0) translateZ(0);
+  transition:transform 0.2s ease-out;
+}
+
+.btn_front_left:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_right:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_default:hover{
+  transform: translateY(calc(var(--raise) * 0.5));
+
+}
+.btn_front_default:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+
+/*loading*/
+.btn_loading_wrapp{
+  position: absolute;
+  height: var(--height);
+   width:var(--width);
+
+  margin-left:calc(var(--border)*-1);/* padding for borders of parent */
+  margin-right:calc(var(--border)*-1);/* padding for borders of parent */
+  background: var(--bg-back-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  overflow: hidden;
+  z-index:1;
+}
+
+.btn_loading_wrapp:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  width: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-front-color);
+  z-index:-1;
+}
+
+.btn_loading_2:before{
+  width:100%;
+  transition: width 1s ease-in;
+}
+.opacity-0{
+  opacity:0;
+}
+.hidden{
+  display:none;
+}
+/*.flex{
+  display:flex;
+}*/
+
+/*animation text*/
+.btn_loading_2 .txt_loading{
+  animation: slide-up 0.5s ease-in-out;
+}
+.btn_loading_2 .txt_loaded{
+  animation: slide-down 0.5s ease-in-out;
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  0% {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* bender eye*/
+
+
+.wrap {
+  position: relative;
+  width: 100px;
+  height: 40px;
+  margin: 0 2rem;
+  color: #dbc9aa;
+  line-height: 40px;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 400;
+  padding-top: 5.5rem;
+  margin-bottom: 0;
+}
+.wrap .eye {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+}
+.wrap .eye:before {
+  content: &quot;&quot;;
+  position: absolute;
+  margin-left: auto;
+  width: 10px;
+  height: 10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #141414;
+  margin: auto;
+}
+.wrap .eye.grin:after, .wrap .eye.sad:after {
+  content: &quot;&quot;;
+  position: absolute;
+  width: calc(100% + 20px);
+  height: 0;
+  background: #eae0ce;
+  left: -10px;
+}
+.wrap .eye.grin:after {
+  bottom: -20px;
+}
+.wrap .eye:first-child {
+  left: 0;
+}
+.wrap .eye:last-child {
+  right: 0;
+}
+.wrap .eye.grin:before {
+  -webkit-animation: grinb 4s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+          animation: grinb 4s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+.wrap .eye.grin:after {
+  -webkit-animation: grina 4s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+          animation: grina 4s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+
+@-webkit-keyframes grinb {
+  0%, 10% {
+    bottom: 0;
+  }
+  20%, 40% {
+    bottom: 50%;
+  }
+  50%, 100% {
+    bottom: 0;
+  }
+}
+
+@keyframes grinb {
+  0%, 10% {
+    bottom: 0;
+  }
+  20%, 40% {
+    bottom: 50%;
+  }
+  50%, 100% {
+    bottom: 0;
+  }
+}
+@-webkit-keyframes grina {
+  0%, 10% {
+    height: 0;
+  }
+  20%, 40% {
+    height: 100%;
+  }
+  50%, 100% {
+    height: 0;
+  }
+}
+@keyframes grina {
+  0%, 10% {
+    height: 0;
+  }
+  20%, 40% {
+    height: 100%;
+  }
+  50%, 100% {
+    height: 0;
+  }
+}
+
+
+/* water*/
+
+.bubble {
+  --bg_front_color:#42a5f5;
+  --bg_back_color:#c7eeff;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-front-color);
+  overflow: hidden;
+  transform: translate(0, 0);
+	border-radius:var(--rounded);
+}
+.bubble .water {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+}
+.bubble .water_wave_back {
+  width:200%;
+  left: 0;
+  top:0;
+  position:relative;
+  fill: var(--bg_back_color);
+
+  animation: wave-back 0.8s infinite linear;
+}
+.bubble .water_wave_front {
+    margin-top: 8px;
+  width:200%;
+  left: 0;
+  top:0;
+  position:absolute;
+  fill: var(--bg_front_color);
+  animation: wave-front 0.6s infinite linear;
+}
+
+.liquid{
+  background:var(--bg_front_color);
+  width: 100%;
+  height: 100%;
+  margin-top:-6px;
+}
+
+
+@keyframes wave-front {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes wave-back {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}&lt;/style&gt;
+         &lt;div class=&quot;flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen&quot;&gt;
+
+  &lt;div class=&quot;mt-auto btn btn_primary btn_shadow btn_loading&quot; &gt;
+  &lt;div class=&quot;btn_back&quot;&gt;
+    &lt;div class=&quot;btn_front&quot;&gt;
+      &lt;div class=&quot;btn_loading_wrapp opacity-0&quot;&gt;
+        &lt;p class=&quot;txt_loading&quot;&gt;Loading&lt;/p&gt;
+        &lt;p class=&quot;txt_loaded hidden&quot;&gt;succes&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;p&gt;Hover&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt; 
+&lt;/div&gt;
+&lt;input class=&quot;mt-auto&quot; type=&quot;range&quot; id=&quot;button_range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;10&quot; oninput=&quot;obtenerValor()&quot;&gt;
+&lt;p id=&quot;valor_actual&quot;&gt;Valor actual: 100&lt;/p&gt;
+&lt;/div&gt;
+         &lt;script &gt;var raise=10;
+btn = document.querySelector('.btn');
+
+  var loading=false;
+  var style = btn.style;
+  style.setProperty('--raise', raise+'px');
+  btn.addEventListener('mousemove', event =&gt; {
+    if(raise&gt;0){
+       const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const rotationDegrees = Math.atan((height * (raise) + raise) / (width )) ;
+    const btnWidth = btn.offsetWidth;
+    const mouseX = event.clientX - btn.getBoundingClientRect().left;
+
+    style.setProperty('--rotate', (rotationDegrees));
+    style.setProperty('--rotate_invers', (rotationDegrees * -1));
+
+    this.rotate_Y = -10 * ((mouseX - btnWidth / 2) / (btnWidth / 2));
+    if(this.rotate_Y&gt;2){
+      btn.classList.remove('btn_shadow_default', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_right');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_right');
+      btn.querySelector('.btn_front').classList.add('btn_front_left');
+    }
+    if(this.rotate_Y&gt;-2 &amp;&amp; this.rotate_Y&lt;2){
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_default');
+      btn.querySelector('.btn_front').classList.remove('btn_front_right', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_default');
+    }
+    if(this.rotate_Y&lt;-2){
+      console.log('right');
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_default');
+      btn.classList.add('btn_shadow_left');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_right');
+    }
+   
+    }
+  });
+  btn.addEventListener(&quot;click&quot;, function() {
+    if(!loading){
+      //loading=true;
+
+      console.log('eeeeee')
+      const childElement= btn.querySelector('.btn_loading_wrapp');
+      childElement.classList.remove('opacity-0');
+      childElement.classList.add('flex','btn_loading_2');
+      document.querySelector('.btn_loading').style.pointerEvents = &quot;none&quot;;
+      document.querySelector('.btn_front').style.pointerEvents = &quot;none&quot;;
+      //document.querySelector('.btn_front').style.opacity = &quot;0.8&quot;;
+
+      document.querySelector('.txt_loaded').classList.add('hidden');
+      document.querySelector('.txt_loading').classList.remove('hidden');
+
+      setTimeout(function() {
+        document.querySelector('.txt_loaded').classList.remove('hidden');
+        document.querySelector('.txt_loading').classList.add('hidden');
+        setTimeout(function() {
+          childElement.classList.add('opacity-0');
+          childElement.classList.remove('flex','btn_loading_2');
+          document.querySelector('.btn_loading').style.pointerEvents = &quot;auto&quot;;
+          document.querySelector('.btn_front').style.pointerEvents = &quot;auto&quot;;
+          //document.querySelector('.btn_front').style.opacity = &quot;1&quot;;
+        }, 1000);
+        //loading=false;
+      }, 3000);
+    }
+  });
+
+function obtenerValor() {
+  // Obtén el elemento input por su ID
+  var rangeInput = document.getElementById(&quot;button_range&quot;);
+
+  // Obtén el valor actual del input de rango
+  var valor = rangeInput.value;
+  var btn = document.querySelector(&quot;.btn&quot;);
+    var style = btn.style;
+  style.setProperty('--raise', valor+'px');
+  raise=valor;
+  // Actualiza el texto para mostrar el valor actual
+  document.getElementById(&quot;valor_actual&quot;).textContent = &quot;Valor actual: &quot; + valor;
+}&lt;/script&gt;
+        &lt;/main&gt;
+        &lt;!--add js cdn--&gt;
+      &lt;/body&gt;
+
+    &lt;/html&gt;
+  "></iframe></div></div></div></div><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "var raise=10;\r\nbtn = document."
+}--></app-codeplayground_v2><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="font-semibold text-3xl md:text" class="font-semibold text-3xl md:text-4xl xl:text-5xl text-textPrimary hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Paso a paso</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mt-2 leadin" class="text-textSecondary mt-2 leading-relaxed whitespace-pre-line hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Estructura del componente
+
+.btn =&gt; Este es el componente base que define y encapsula las variables y estilos generales como la estructura principal del botón.
+
+.btn_primary: Esta clase agrega estilos específicos para definir el tema principal del botón. Simplemente agregando otra clase, como .btn_secondary, puedes cambiar fácilmente el estilo del botón a un tema secundario.
+
+.btn_shadow: Representa la última capa del botón, la sombra. Utilizamos el pseudo-elemento :before o :after para lograr un posicionamiento que no afecte a los elementos hijos, permitiéndonos mover la sombra fuera de la caja principal sin afectar a los elementos front y back.
+
+.btn_back: Capa intermedia situada entre la sombra y la parte frontal del botón. Proporciona la estructura y los estilos de fondo del botón.
+
+.btn_front: La capa frontal del botón, que contiene el contenido visible del botón. Aquí es donde se define el estilo visual y el contenido del botón.</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mt-2 leadin" class="text-textSecondary mt-2 leading-relaxed whitespace-pre-line hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Utilizando una de las variables principales raise la qual maneja la elevacion en contexto 3D del botón, tecnicamente se le aplica a la base donde el alto (2d) total es la altura definida mas la elevacion 3d que queremos</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full hover:border-2 border-r" class="w-full hover:border-2 border-red-400/50"><app-codeplayground_v2 _ngcontent-ng-c2526117302="" class="flex w-full my-5" _nghost-ng-c457883197="" ng-reflect-id="607" ng-reflect-height="h-min" ng-reflect-bg_color_1="bg-[#151528]" ng-reflect-bg_color_2="bg-[#2A2A50]" ng-reflect-text_color_1="text-[#d8d6ff]" ng-reflect-text_color_2="text-[#7e73a2]" ng-reflect-rounded="rounded-lg" ng-reflect-css-codes=".btn{
+  --height: 50px;
+  he"><!--bindings={
+  "ng-reflect-ng-if": null
+}--><div _ngcontent-ng-c457883197="" class="flex flex-col w-full overflow-hidden"><div _ngcontent-ng-c457883197="" class="-mb-2 bg-[#151528] ml-10 rounded-lg w-min"><div _ngcontent-ng-c457883197="" class="flex items-start p-2 px-6"><div _ngcontent-ng-c457883197="" class="flex justify-between mb-2"><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Css</p></div></div></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] flex flex-wrap h-min rounded-lg w-full"><div _ngcontent-ng-c457883197="" class="flex h-full w-full"><div _ngcontent-ng-c457883197="" class="w-full p-2 pr-0"><ngx-codemirror _ngcontent-ng-c457883197="" ng-reflect-model=".btn{
+  --height: 50px;
+  heig" ng-reflect-options="[object Object]" class="ng-valid ng-dirty ng-touched"><textarea autocomplete="off" class="ngx-codemirror" name="codemirror" style="display: none;">    </textarea><div class="CodeMirror cm-s-material" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 112px; left: 126.967px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" wrap="off" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; visibility: hidden; bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; visibility: hidden;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 50px; min-height: 278px; min-width: 338.967px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 126.967px; top: 108px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">.btn{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  --height: 50px;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  height: calc(var(--height) + var(--raise)); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  --raise: 100px;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">.btn_shadow:before {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  height: var(--height); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  margin-top: calc((var(--raise)/0.5)); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">.btn_back:before{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  height: var(--height); </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  margin-top: var(--raise);   </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 278px;"></div><div class="CodeMirror-gutters" style="display: none; height: 328px;"></div></div></div></ngx-codemirror></div></div></div></div><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": null
+}--><!--bindings={
+  "ng-reflect-ng-if": null
+}--></app-codeplayground_v2><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mt-2 leadin" class="text-textSecondary mt-2 leading-relaxed whitespace-pre-line hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">En términos sencillos, las tres capas del botón (shadow, back y front) son clave para lograr el efecto 3D. Al utilizar pseudo-elementos y técnicas de posicionamiento, podemos separar la sombra del botón principal sin afectar la disposición de los elementos visibles. Experimentar con estas clases te permitirá entender mejor cómo cada capa contribuye al diseño general del botón y cómo puedes personalizarlo según tus necesidades. ¡Diviértete explorando las posibilidades!</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="mt-24 hover:border-2 border-re" class="mt-24 hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Aquí tienes una vista explosionada del componente,</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full hover:border-2 border-r" class="w-full hover:border-2 border-red-400/50"><app-codeplayground_v2 _ngcontent-ng-c2526117302="" class="flex w-full my-5" _nghost-ng-c457883197="" ng-reflect-id="595" ng-reflect-height="h-[500px]" ng-reflect-bg_color_1="bg-[#151528]" ng-reflect-bg_color_2="bg-[#2A2A50]" ng-reflect-text_color_1="text-[#d8d6ff]" ng-reflect-text_color_2="text-[#7e73a2]" ng-reflect-rounded="rounded-lg" ng-reflect-html-codes="&lt;div class=&quot;flex flex-col flex" ng-reflect-css-codes="/*style for btn*/
+.btn{
+  --"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c457883197="" class="flex flex-col w-full overflow-hidden"><div _ngcontent-ng-c457883197="" class="flex flex-wrap rounded-lg w-full"><div _ngcontent-ng-c457883197="" class="bg-[#2A2A50] flex font-semibold justify-between px-4 py-1 rounded-t-lg text-xs w-full"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Code Playground</p><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">run</p><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Reset</p></div></div></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] flex flex-wrap h-[500px] rounded-b-lg w-full"><div _ngcontent-ng-c457883197="" class="flex h-full w-full"><div _ngcontent-ng-c457883197="" class="split__left w-full p-2 pr-0"><div _ngcontent-ng-c457883197="" class="flex flex-wrap w-full"><div _ngcontent-ng-c457883197="" class="w-full flex items-start pb-2"><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Html</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Css</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Js</p></div></div></div><ngx-codemirror _ngcontent-ng-c457883197="" class="w-full ng-untouched ng-valid ng-dirty" ng-reflect-model="&lt;div class=&quot;flex flex-col flex" ng-reflect-options="[object Object]"><textarea autocomplete="off" class="ngx-codemirror" name="codemirror" style="display: none;">    </textarea><div class="CodeMirror cm-s-material" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" wrap="off" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; visibility: hidden;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; display: block; right: 0px; left: 0px; visibility: hidden;"><div style="height: 100%; min-height: 1px; width: 678px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 50px; min-height: 170px; min-width: 678.15px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="btn btn_primary btn_shadow " &gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;div class="btn_back"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;div class="btn_front"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;p&gt;Hover&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 170px;"></div><div class="CodeMirror-gutters" style="display: none; height: 220px;"></div></div></div></ngx-codemirror><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-ng-c457883197="" class="split__bar h-full"></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] p-2 pl-0 rounded-b-lg split__center w-full"><iframe _ngcontent-ng-c457883197="" class="bg-white rounded-lg w-full" id="iframe-595" srcdoc="
+    &lt;html&gt;
+      &lt;head&gt;
+      &lt;style&gt;
+/*html{*/
+/*display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+/*body{*/
+/*    display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+      &lt;/style&gt;
+        &lt;!--add css cdn--&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;main&gt;
+         &lt;style type='text/css'&gt;/*style for btn*/
+.btn{
+  --font-body-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  --height: 50px;
+  --raise: 100px;
+  --rounded: 10px;
+  --rotate: 1;
+  --rotate_invers: 1 * - 1;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg-front-color: #AAD3EA;
+  --bg-shadow-color: #4B4B4B84;
+  --bg-back-color: #004c65;
+  --font-color: white;
+  --font-body-weight:800;
+  --width:180px;
+  color:var(--font-color);
+  font-family:var(--font-body-family);
+  height: calc(var(--height) + var(--raise)); 
+  width:var(--width);
+  font-weight:var(--font-body-weight);
+}
+
+.btn_primary{
+  --bg-shadow-color: #4B4B4B20;
+  --bg-front-color: #338a9d;
+  --bg-back-color: #9a453f;
+  --border_style:solid #b84a41 var(--border);
+  --font-color: #ea893e;
+}
+
+.btn_shadow {
+  border: var(--border) solid transparent;
+}
+
+.btn_shadow:before {
+  content:&quot; &quot;;
+  position:absolute;
+  height: var(--height); 
+  margin-top: calc((var(--raise)/0.5)); 
+  width:var(--width);
+  background: var(--bg-shadow-color);
+  border-radius: var(--rounded);
+  transition:transform 0.2s ease-out;
+  border: var(--border) solid transparent;
+}
+.btn_back:before{
+  content:&quot; &quot;;
+  position: absolute; 
+  height: var(--height); 
+  margin-top: var(--raise); 
+  width:var(--width);
+  border: var(--border) solid transparent;
+  background: var(--bg-back-color);
+  border-radius:var(--rounded); 
+  transition:transform 0.1s ease-out;
+} 
+
+.btn_front{
+  position: absolute;
+  height: var(--height);
+  width:var(--width);
+  background: var(--bg-front-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  transition:transform 0.1s ease-out;
+}
+
+
+
+/* It is not necessary only for the body*/
+.h-screen{
+    height:90vh; 
+}
+.mt-36{
+  margin-top:136px;
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex{
+ display : flex;
+}&lt;/style&gt;
+         &lt;div class=&quot;flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen&quot;&gt;
+&lt;div class=&quot;btn btn_primary btn_shadow &quot; &gt;
+  &lt;div class=&quot;btn_back&quot;&gt;
+    &lt;div class=&quot;btn_front&quot;&gt;
+      &lt;p&gt;Hover&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+         &lt;script &gt;null&lt;/script&gt;
+        &lt;/main&gt;
+        &lt;!--add js cdn--&gt;
+      &lt;/body&gt;
+
+    &lt;/html&gt;
+  "></iframe></div></div></div></div><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": null
+}--></app-codeplayground_v2><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="text-textSecondary mt-2 leadin" class="text-textSecondary mt-2 leading-relaxed whitespace-pre-line hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">Vamos animar la capa shadow y la capa front agregando un par de clases
+btn_front_default y btn_shadow_default
+
+Que queremos conseguir?¿
+
+El objectivo es simular un boton real que al pasar el cursor se unda un poco y al estar activo se unda del todo, agregamos ha esas clases los eventos hover y active y el comportamiento que hemos especificado usando transform para mover las capas y agregamos el tipo de animacion</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full hover:border-2 border-r" class="w-full hover:border-2 border-red-400/50"><app-codeplayground_v2 _ngcontent-ng-c2526117302="" class="flex w-full my-5" _nghost-ng-c457883197="" ng-reflect-id="596" ng-reflect-height="h-[500px]" ng-reflect-bg_color_1="bg-[#151528]" ng-reflect-bg_color_2="bg-[#2A2A50]" ng-reflect-text_color_1="text-[#d8d6ff]" ng-reflect-text_color_2="text-[#7e73a2]" ng-reflect-rounded="rounded-lg" ng-reflect-html-codes="&lt;div class=&quot;flex flex-col flex" ng-reflect-css-codes="/*style for btn*/
+.btn{
+  --" ng-reflect-js-codes="var raise=10;
+
+function obte"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c457883197="" class="flex flex-col w-full overflow-hidden"><div _ngcontent-ng-c457883197="" class="flex flex-wrap rounded-lg w-full"><div _ngcontent-ng-c457883197="" class="bg-[#2A2A50] flex font-semibold justify-between px-4 py-1 rounded-t-lg text-xs w-full"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Code Playground</p><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">run</p><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Reset</p></div></div></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] flex flex-wrap h-[500px] rounded-b-lg w-full"><div _ngcontent-ng-c457883197="" class="flex h-full w-full"><div _ngcontent-ng-c457883197="" class="split__left w-full p-2 pr-0"><div _ngcontent-ng-c457883197="" class="flex flex-wrap w-full"><div _ngcontent-ng-c457883197="" class="w-full flex items-start pb-2"><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Html</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Css</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Js</p></div></div></div><ngx-codemirror _ngcontent-ng-c457883197="" class="w-full ng-untouched ng-valid ng-dirty" ng-reflect-model="&lt;div class=&quot;flex flex-col flex" ng-reflect-options="[object Object]"><textarea autocomplete="off" class="ngx-codemirror" name="codemirror" style="display: none;">    </textarea><div class="CodeMirror cm-s-material" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" wrap="off" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; visibility: hidden;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; display: block; right: 0px; left: 0px; visibility: hidden;"><div style="height: 100%; min-height: 1px; width: 801px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 50px; min-height: 224px; min-width: 800.833px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="btn btn_primary btn_shadow btn_shadow_default btn_loading" &gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;div class="btn_back"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;div class="btn_front btn_front_default"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;p&gt;Hover&lt;/p&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;/div&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;input class="mt-auto" type="range" id="button_range" min="0" max="100" value="10" oninput="obtenerValor()"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;p id="valor_actual"&gt;Valor actual: 100&lt;/p&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 224px;"></div><div class="CodeMirror-gutters" style="display: none; height: 274px;"></div></div></div></ngx-codemirror><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-ng-c457883197="" class="split__bar h-full"></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] p-2 pl-0 rounded-b-lg split__center w-full"><iframe _ngcontent-ng-c457883197="" class="bg-white rounded-lg w-full" id="iframe-596" srcdoc="
+    &lt;html&gt;
+      &lt;head&gt;
+      &lt;style&gt;
+/*html{*/
+/*display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+/*body{*/
+/*    display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+      &lt;/style&gt;
+        &lt;!--add css cdn--&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;main&gt;
+         &lt;style type='text/css'&gt;/*style for btn*/
+.btn{
+  --font-body-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  --height: 50px;
+  --raise: 10px;
+  --rounded: 10px;
+  --rotate: 1;
+  --rotate_invers: 1 * - 1;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg-front-color: #AAD3EA;
+  --bg-shadow-color: #4B4B4B84;
+  --bg-back-color: #004c65;
+  --font-color: white;
+  --font-body-weight:800;
+  --width:180px;
+  color:var(--font-color);
+  font-family:var(--font-body-family);
+  height: calc(var(--height) + var(--raise)); 
+  width:var(--width);
+  font-weight:var(--font-body-weight);
+}
+
+.btn_primary{
+  --bg-shadow-color: #4B4B4B20;
+  --bg-front-color: #338a9d;
+  --bg-back-color: #9a453f;
+  --border_style:solid #b84a41 var(--border);
+  --font-color: #ea893e;
+}
+
+.btn_shadow {
+  border: var(--border) solid transparent;
+}
+.btn_shadow:before {
+  content:&quot; &quot;;
+  position:absolute;
+  height: var(--height);
+  margin-top: calc((var(--raise)/0.5)); 
+  width:var(--width);
+  background: var(--bg-shadow-color);
+  border-radius: var(--rounded);
+  transition:transform 0.2s ease-out; 
+  border: var(--border) solid transparent;
+}
+.btn_back:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  margin-top: var(--raise);
+  width:var(--width);
+  border: var(--border) solid transparent;
+  background: var(--bg-back-color);
+  border-radius:var(--rounded);
+  transition:transform 0.1s ease-out;
+} 
+.btn_front{
+  position: absolute;
+  height: var(--height);
+  width:var(--width);
+  background: var(--bg-front-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  transition:transform 0.1s ease-out;
+}
+
+
+
+/*on mouse move in button zone add classes*/
+.btn_shadow_default:before{
+  transform:skew(0) translateZ(0);
+}
+.btn_shadow_default:hover:before{
+  transform: translateY(calc((var(--raise)/2) * -1 )); 
+}      
+.btn_shadow_default:active:before{  
+  transform: translateY(calc((var(--raise)) * -1 ));
+}
+
+.btn_front_default{
+  transform:skew(0) translateZ(0);
+  transition:transform 0.2s ease-out;
+}
+.btn_front_default:hover{
+  transform: translateY(calc(var(--raise) * 0.5));
+
+}
+.btn_front_default:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+
+
+#valor_actual{ 
+  font-family:'Ubuntu';
+  font-weight:700;
+}
+
+/* It is not necessary only for the body*/
+.h-screen{
+    height:90vh; 
+}
+.mt-auto{
+  margin-top:136px; 
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex{
+ display : flex;
+}&lt;/style&gt;
+         &lt;div class=&quot;flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen&quot;&gt;
+&lt;div class=&quot;btn btn_primary btn_shadow btn_shadow_default btn_loading&quot; &gt;
+  &lt;div class=&quot;btn_back&quot;&gt;
+    &lt;div class=&quot;btn_front btn_front_default&quot;&gt;
+    
+      &lt;p&gt;Hover&lt;/p&gt; 
+    &lt;/div&gt; 
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;input class=&quot;mt-auto&quot; type=&quot;range&quot; id=&quot;button_range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;10&quot; oninput=&quot;obtenerValor()&quot;&gt;
+&lt;p id=&quot;valor_actual&quot;&gt;Valor actual: 100&lt;/p&gt; 
+&lt;/div&gt;
+         &lt;script &gt;var raise=10;
+
+function obtenerValor() {
+  // Obtén el elemento input por su ID
+  var rangeInput = document.getElementById(&quot;button_range&quot;);
+
+  // Obtén el valor actual del input de rango
+  var valor = rangeInput.value;
+  var btn = document.querySelector(&quot;.btn&quot;);
+    var style = btn.style;
+  style.setProperty('--raise', valor+'px');
+  raise=valor;
+  // Actualiza el texto para mostrar el valor actual
+  document.getElementById(&quot;valor_actual&quot;).textContent = &quot;Valor actual: &quot; + valor;
+}&lt;/script&gt;
+        &lt;/main&gt;
+        &lt;!--add js cdn--&gt;
+      &lt;/body&gt;
+
+    &lt;/html&gt;
+  "></iframe></div></div></div></div><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "var raise=10;\r\n\r\nfunction obte"
+}--></app-codeplayground_v2><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="font-semibold text-3xl md:text" class="font-semibold text-3xl md:text-4xl xl:text-5xl text-textPrimary hover:border-2 border-red-400/50"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><p _ngcontent-ng-c2526117302="">El secreto de la masa</p><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full hover:border-2 border-r" class="w-full hover:border-2 border-red-400/50"><app-codeplayground_v2 _ngcontent-ng-c2526117302="" class="flex w-full my-5" _nghost-ng-c457883197="" ng-reflect-id="597" ng-reflect-height="h-[500px]" ng-reflect-bg_color_1="bg-[#151528]" ng-reflect-bg_color_2="bg-[#2A2A50]" ng-reflect-text_color_1="text-[#d8d6ff]" ng-reflect-text_color_2="text-[#7e73a2]" ng-reflect-rounded="rounded-lg" ng-reflect-html-codes="&lt;div class=&quot;flex flex-col flex" ng-reflect-css-codes="/*style for btn*/
+.btn{
+  --" ng-reflect-js-codes="var raise=10;
+btn = document."><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c457883197="" class="flex flex-col w-full overflow-hidden"><div _ngcontent-ng-c457883197="" class="flex flex-wrap rounded-lg w-full"><div _ngcontent-ng-c457883197="" class="bg-[#2A2A50] flex font-semibold justify-between px-4 py-1 rounded-t-lg text-xs w-full"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Code Playground</p><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">run</p><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Reset</p></div></div></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] flex flex-wrap h-[500px] rounded-b-lg w-full"><div _ngcontent-ng-c457883197="" class="flex h-full w-full"><div _ngcontent-ng-c457883197="" class="split__left w-full p-2 pr-0"><div _ngcontent-ng-c457883197="" class="flex flex-wrap w-full"><div _ngcontent-ng-c457883197="" class="w-full flex items-start pb-2"><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Html</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Css</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Js</p></div></div></div><ngx-codemirror _ngcontent-ng-c457883197="" class="w-full ng-untouched ng-valid ng-dirty" ng-reflect-model="&lt;div class=&quot;flex flex-col flex" ng-reflect-options="[object Object]"><textarea autocomplete="off" class="ngx-codemirror" name="codemirror" style="display: none;">    </textarea><div class="CodeMirror cm-s-material" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" wrap="off" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; visibility: hidden;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; display: block; right: 0px; left: 0px; visibility: hidden;"><div style="height: 100%; min-height: 1px; width: 801px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 50px; min-height: 278px; min-width: 800.833px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="btn btn_primary btn_shadow btn_loading" &gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;div class="btn_back"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">       &lt;div class="btn_front"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;div class="btn_loading_wrapp opacity-0"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;p class="txt_loading"&gt;Loading&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;p class="txt_loaded hidden"&gt;succes&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;p&gt;Hover&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;/div&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;input class="mt-auto" type="range" id="button_range" min="0" max="100" value="10" oninput="obtenerValor()"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;p id="valor_actual"&gt;Valor actual: 100&lt;/p&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 278px;"></div><div class="CodeMirror-gutters" style="display: none; height: 328px;"></div></div></div></ngx-codemirror><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-ng-c457883197="" class="split__bar h-full"></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] p-2 pl-0 rounded-b-lg split__center w-full"><iframe _ngcontent-ng-c457883197="" class="bg-white rounded-lg w-full" id="iframe-597" srcdoc="
+    &lt;html&gt;
+      &lt;head&gt;
+      &lt;style&gt;
+/*html{*/
+/*display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+/*body{*/
+/*    display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+      &lt;/style&gt;
+        &lt;!--add css cdn--&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;main&gt;
+         &lt;style type='text/css'&gt;/*style for btn*/
+.btn{
+  --font-body-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  --height: 50px;  
+  --raise: 100px;
+  --rounded: 10px;
+  --rotate: 1;
+  --rotate_invers: 1 * - 1;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg-front-color: #AAD3EA;
+  --bg-shadow-color: #4B4B4B84;
+  --bg-back-color: #004c65;
+  --font-color: white;
+  --font-body-weight:800;
+  --width:180px;
+  color:var(--font-color);
+  font-family:var(--font-body-family);
+  height: calc(var(--height) + var(--raise)); 
+  width:var(--width);
+  font-weight:var(--font-body-weight);
+}
+
+.btn_primary{
+  --bg-shadow-color: #4B4B4B20;
+  --bg-front-color: #338a9d;
+  --bg-back-color: #9a453f;
+  --border_style:solid #b84a41 var(--border);
+  --font-color: #ea893e;
+}
+
+.btn_shadow {
+  border: var(--border) solid transparent;
+}
+.btn_shadow:before {
+  content:&quot; &quot;;
+  position:absolute;
+  height: var(--height);
+  margin-top: calc(var(--raise) + (var(--raise)/1.2)); 
+  width:var(--width);
+  background: var(--bg-shadow-color);
+  border-radius: var(--rounded);
+  transition:transform 0.2s ease-out;
+  border: var(--border) solid transparent;
+}
+.btn_back:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  margin-top: var(--raise);
+  width:var(--width);
+  border: var(--border) solid transparent;
+  background: var(--bg-back-color);
+  border-radius:var(--rounded);
+  transition:transform 0.1s ease-out;
+} 
+.btn_front{
+  position: absolute;
+  height: var(--height);
+  width:var(--width);
+  background: var(--bg-front-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  transition:transform 0.1s ease-out;
+}
+
+/*on mouse move in button zone add classes*/
+.btn_shadow_left:before{
+  transition: transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_shadow_right:before{
+  transition:transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate)));
+}
+.btn_shadow_default:before{
+  transform:skew(0) translateZ(0);
+}
+.btn_shadow_default:hover:before{
+  transform: translateY(calc((var(--raise)/4) * -1 )); 
+}      
+.btn_shadow_default:active:before{ 
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+} 
+.btn_shadow_default:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_left:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_right:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+/*btn_front events*/
+.btn_front_left{
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_front_right{
+  transform:skewY(calc(1deg * var(--rotate)));
+  transition:transform 0.2s ease-out;
+}
+.btn_front_default{
+  transform:skew(0) translateZ(0);
+  transition:transform 0.2s ease-out;
+}
+
+.btn_front_left:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_right:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_default:hover{
+  transform: translateY(calc(var(--raise) * 0.5));
+
+}
+.btn_front_default:active{
+  transform:skewY(0) translateY(var(--raise));
+} 
+
+
+/*loading*/
+.btn_loading_wrapp{
+  position: absolute;
+  height: var(--height);
+   width:var(--width);
+
+  margin-left:calc(var(--border)*-1);/* padding for borders of parent */
+  margin-right:calc(var(--border)*-1);/* padding for borders of parent */
+  background: var(--bg-back-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  overflow: hidden;
+  z-index:1;
+}
+
+.btn_loading_wrapp:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  width: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-front-color);
+  z-index:-1;
+}
+
+.btn_loading_2:before{
+  width:100%;
+  transition: width 1s ease-in;
+}
+.opacity-0{
+  opacity:0;
+}
+.hidden{
+  display:none;
+}
+
+
+
+
+#valor_actual{ 
+  font-family:'Ubuntu';
+  font-weight:700;
+}
+
+/* It is not necessary only for the body*/
+.h-screen{
+    height:90vh; 
+}
+.mt-auto{
+  margin-top:136px; 
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex{
+ display : flex;
+}&lt;/style&gt;
+         &lt;div class=&quot;flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen&quot;&gt;
+&lt;div class=&quot;btn btn_primary btn_shadow btn_loading&quot; &gt;
+  &lt;div class=&quot;btn_back&quot;&gt;
+       &lt;div class=&quot;btn_front&quot;&gt;
+      &lt;div class=&quot;btn_loading_wrapp opacity-0&quot;&gt;
+        &lt;p class=&quot;txt_loading&quot;&gt;Loading&lt;/p&gt;
+        &lt;p class=&quot;txt_loaded hidden&quot;&gt;succes&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;p&gt;Hover&lt;/p&gt;
+    &lt;/div&gt; 
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;input class=&quot;mt-auto&quot; type=&quot;range&quot; id=&quot;button_range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;10&quot; oninput=&quot;obtenerValor()&quot;&gt;
+&lt;p id=&quot;valor_actual&quot;&gt;Valor actual: 100&lt;/p&gt; 
+&lt;/div&gt;
+         &lt;script &gt;var raise=10;
+btn = document.querySelector('.btn');
+
+  var loading=false;
+  var style = btn.style;
+  style.setProperty('--raise', raise+'px');
+  btn.addEventListener('mousemove', event =&gt; {
+    if(raise&gt;0){
+    const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const rotationDegrees = Math.atan((height * (raise) + raise) / (width )) ;
+    const btnWidth = btn.offsetWidth;
+    const mouseX = event.clientX - btn.getBoundingClientRect().left;
+    style.setProperty('--rotate', (rotationDegrees));
+    style.setProperty('--rotate_invers', (rotationDegrees * -1));
+
+    this.rotate_Y = -10 * ((mouseX - btnWidth / 2) / (btnWidth / 2));
+    if(this.rotate_Y&gt;2){
+      btn.classList.remove('btn_shadow_default', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_right');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_right');
+      btn.querySelector('.btn_front').classList.add('btn_front_left');
+    }
+    if(this.rotate_Y&gt;-2 &amp;&amp; this.rotate_Y&lt;2){
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_default');
+      btn.querySelector('.btn_front').classList.remove('btn_front_right', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_default');
+    }
+    if(this.rotate_Y&lt;-2){
+      console.log('right');
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_default');
+      btn.classList.add('btn_shadow_left');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_right');
+    }
+    }
+  });
+
+
+
+function obtenerValor() {
+  // Obtén el elemento input por su ID
+  var rangeInput = document.getElementById(&quot;button_range&quot;);
+
+  // Obtén el valor actual del input de rango
+  var valor = rangeInput.value;
+  var btn = document.querySelector(&quot;.btn&quot;);
+    var style = btn.style;
+  style.setProperty('--raise', valor+'px');
+  raise=valor;
+  // Actualiza el texto para mostrar el valor actual
+  document.getElementById(&quot;valor_actual&quot;).textContent = &quot;Valor actual: &quot; + valor;
+}&lt;/script&gt;
+        &lt;/main&gt;
+        &lt;!--add js cdn--&gt;
+      &lt;/body&gt;
+
+    &lt;/html&gt;
+  "></iframe></div></div></div></div><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "var raise=10;\r\nbtn = document."
+}--></app-codeplayground_v2><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full hover:border-2 border-r" class="w-full hover:border-2 border-red-400/50"><app-codeplayground_v2 _ngcontent-ng-c2526117302="" class="flex w-full my-5" _nghost-ng-c457883197="" ng-reflect-id="599" ng-reflect-height="h-[500px]" ng-reflect-bg_color_1="bg-[#151528]" ng-reflect-bg_color_2="bg-[#2A2A50]" ng-reflect-text_color_1="text-[#d8d6ff]" ng-reflect-text_color_2="text-[#7e73a2]" ng-reflect-rounded="rounded-lg" ng-reflect-html-codes="&lt;div class=&quot;flex flex-col flex" ng-reflect-css-codes="/*style for btn*/
+.btn{
+  --" ng-reflect-js-codes="var raise=10;
+btn = document."><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c457883197="" class="flex flex-col w-full overflow-hidden"><div _ngcontent-ng-c457883197="" class="flex flex-wrap rounded-lg w-full"><div _ngcontent-ng-c457883197="" class="bg-[#2A2A50] flex font-semibold justify-between px-4 py-1 rounded-t-lg text-xs w-full"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Code Playground</p><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">run</p><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Reset</p></div></div></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] flex flex-wrap h-[500px] rounded-b-lg w-full"><div _ngcontent-ng-c457883197="" class="flex h-full w-full"><div _ngcontent-ng-c457883197="" class="split__left w-full p-2 pr-0"><div _ngcontent-ng-c457883197="" class="flex flex-wrap w-full"><div _ngcontent-ng-c457883197="" class="w-full flex items-start pb-2"><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Html</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Css</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Js</p></div></div></div><ngx-codemirror _ngcontent-ng-c457883197="" class="w-full ng-untouched ng-valid ng-dirty" ng-reflect-model="&lt;div class=&quot;flex flex-col flex" ng-reflect-options="[object Object]"><textarea autocomplete="off" class="ngx-codemirror" name="codemirror" style="display: none;">    </textarea><div class="CodeMirror cm-s-material" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" wrap="off" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; visibility: hidden;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; display: block; right: 0px; left: 0px; visibility: hidden;"><div style="height: 100%; min-height: 1px; width: 801px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 50px; min-height: 296px; min-width: 800.833px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="btn btn_primary btn_shadow btn_loading" &gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;div class="btn_back"&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">       &lt;div class="btn_front"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;div class="btn_loading_wrapp opacity-0"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">         </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;p class="txt_loading"&gt;Loading&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;p class="txt_loaded hidden"&gt;succes&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;p&gt;Hover&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;/div&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;input class="mt-auto" type="range" id="button_range" min="0" max="100" value="10" oninput="obtenerValor()"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;p id="valor_actual"&gt;Valor actual: 100&lt;/p&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 296px;"></div><div class="CodeMirror-gutters" style="display: none; height: 346px;"></div></div></div></ngx-codemirror><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-ng-c457883197="" class="split__bar h-full"></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] p-2 pl-0 rounded-b-lg split__center w-full"><iframe _ngcontent-ng-c457883197="" class="bg-white rounded-lg w-full" id="iframe-599" srcdoc="
+    &lt;html&gt;
+      &lt;head&gt;
+      &lt;style&gt;
+/*html{*/
+/*display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+/*body{*/
+/*    display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+      &lt;/style&gt;
+        &lt;!--add css cdn--&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;main&gt;
+         &lt;style type='text/css'&gt;/*style for btn*/
+.btn{
+  --font-body-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  --height: 50px;  
+  --raise: 100px;
+  --rounded: 10px;
+  --rotate: 1;
+  --rotate_invers: 1 * - 1;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg-front-color: #AAD3EA;
+  --bg-shadow-color: #4B4B4B84;
+  --bg-back-color: #004c65;
+  --font-color: white;
+  --font-body-weight:800;
+  --width:180px;
+  color:var(--font-color);
+  font-family:var(--font-body-family);
+  height: calc(var(--height) + var(--raise)); 
+  width:var(--width);
+  font-weight:var(--font-body-weight);
+}
+
+.btn_primary{
+  --bg-shadow-color: #4B4B4B20;
+  --bg-front-color: #338a9d;
+  --bg-back-color: #9a453f;
+  --border_style:solid #b84a41 var(--border);
+  --font-color: #ea893e;
+}
+
+.btn_shadow {
+  border: var(--border) solid transparent;
+}
+.btn_shadow:before {
+  content:&quot; &quot;;
+  position:absolute;
+  height: var(--height);
+  margin-top: calc(var(--raise) + (var(--raise)/1.2)); 
+  width:var(--width);
+  background: var(--bg-shadow-color);
+  border-radius: var(--rounded);
+  transition:transform 0.2s ease-out;
+  border: var(--border) solid transparent;
+}
+.btn_back:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  margin-top: var(--raise);
+  width:var(--width);
+  border: var(--border) solid transparent;
+  background: var(--bg-back-color);
+  border-radius:var(--rounded);
+  transition:transform 0.1s ease-out;
+} 
+.btn_front{
+  position: absolute;
+  height: var(--height);
+  width:var(--width);
+  background: var(--bg-front-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  transition:transform 0.1s ease-out;
+}
+
+/*on mouse move in button zone add classes*/
+.btn_shadow_left:before{
+  transition: transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_shadow_right:before{
+  transition:transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate)));
+}
+.btn_shadow_default:before{
+  transform:skew(0) translateZ(0);
+}
+.btn_shadow_default:hover:before{
+  transform: translateY(calc((var(--raise)/4) * -1 )); 
+}      
+.btn_shadow_default:active:before{ 
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+} 
+.btn_shadow_default:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_left:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_right:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+/*btn_front events*/
+.btn_front_left{
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_front_right{
+  transform:skewY(calc(1deg * var(--rotate)));
+  transition:transform 0.2s ease-out;
+}
+.btn_front_default{
+  transform:skew(0) translateZ(0);
+  transition:transform 0.2s ease-out;
+}
+
+.btn_front_left:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_right:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_default:hover{
+  transform: translateY(calc(var(--raise) * 0.5));
+
+}
+.btn_front_default:active{
+  transform:skewY(0) translateY(var(--raise));
+} 
+
+
+/*loading*/
+.btn_loading_wrapp{
+  position: absolute;
+  height: var(--height);
+   width:var(--width);
+
+  margin-left:calc(var(--border)*-1);/* padding for borders of parent */
+  margin-right:calc(var(--border)*-1);/* padding for borders of parent */
+  background: var(--bg-back-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  overflow: hidden;
+  z-index:1;
+}
+
+.btn_loading_wrapp:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  width: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-front-color);
+  z-index:-1;
+}
+
+.btn_loading_2:before{
+  width:100%;
+  transition: width 1s ease-in;
+}
+.opacity-0{
+  opacity:0;
+}
+.hidden{
+  display:none;
+}
+
+
+
+
+/*waves animation*/
+.btn_loading_2 .txt_loading{
+  animation: slide-up 0.5s ease-in-out;
+    position:absolute
+
+}
+.btn_loading_2 .txt_loaded{
+  animation: slide-down 0.5s ease-in-out;
+    position:absolute
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  0% {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* water*/
+
+.bubble { 
+/*     --bg-front-color: #95D44A; */
+/*   --bg-back-color: #52A934; */
+  --bg_front_color:#462255;
+  --bg_back_color:#602F75;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-front-color);
+  overflow: hidden;
+  transform: translate(0, 0);
+	border-radius:var(--rounded);
+}
+.bubble .water {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%); 
+} 
+.bubble .water_wave_back {
+  width:200%;
+  left: 0;
+  top:0;
+  position:relative;
+  fill: var(--bg_back_color);
+  
+  animation: wave-back 0.8s infinite linear;
+}
+.bubble .water_wave_front {
+    margin-top: 8px;
+  width:200%;
+  left: 0;
+  top:0;
+  position:absolute;
+  fill: var(--bg_front_color);
+  animation: wave-front 0.6s infinite linear;
+}
+
+.liquid{
+  background:var(--bg_front_color);
+  width: 100%;
+  height: 120%;
+  margin-top:-6px;
+  
+}
+
+
+@keyframes wave-front {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes wave-back {
+  100% {
+    transform: translate(-50%, 0);
+  }
+} 
+
+
+
+#valor_actual{ 
+  font-family:'Ubuntu';
+  font-weight:700;
+}
+
+/* It is not necessary only for the body*/
+.h-screen{
+    height:90vh; 
+}
+.mt-auto{
+  margin-top:136px; 
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex{
+ display : flex;
+}&lt;/style&gt;
+         &lt;div class=&quot;flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen&quot;&gt;
+&lt;div class=&quot;btn btn_primary btn_shadow btn_loading&quot; &gt;
+  &lt;div class=&quot;btn_back&quot;&gt; 
+       &lt;div class=&quot;btn_front&quot;&gt;
+      &lt;div class=&quot;btn_loading_wrapp opacity-0&quot;&gt;
+         
+        &lt;p class=&quot;txt_loading&quot;&gt;Loading&lt;/p&gt;
+        &lt;p class=&quot;txt_loaded hidden&quot;&gt;succes&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;p&gt;Hover&lt;/p&gt;
+    &lt;/div&gt; 
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;input class=&quot;mt-auto&quot; type=&quot;range&quot; id=&quot;button_range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;10&quot; oninput=&quot;obtenerValor()&quot;&gt;
+&lt;p id=&quot;valor_actual&quot;&gt;Valor actual: 100&lt;/p&gt; 
+&lt;/div&gt;
+         &lt;script &gt;var raise=10;
+btn = document.querySelector('.btn');
+
+  var loading=false;
+  var style = btn.style;
+  style.setProperty('--raise', raise+'px');
+  btn.addEventListener('mousemove', event =&gt; {
+    if(raise&gt;0){
+    const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const rotationDegrees = Math.atan((height * (raise) + raise) / (width )) ;
+    const btnWidth = btn.offsetWidth;
+    const mouseX = event.clientX - btn.getBoundingClientRect().left;
+    style.setProperty('--rotate', (rotationDegrees));
+    style.setProperty('--rotate_invers', (rotationDegrees * -1));
+
+    this.rotate_Y = -10 * ((mouseX - btnWidth / 2) / (btnWidth / 2));
+    if(this.rotate_Y&gt;2){
+      btn.classList.remove('btn_shadow_default', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_right');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_right');
+      btn.querySelector('.btn_front').classList.add('btn_front_left');
+    }
+    if(this.rotate_Y&gt;-2 &amp;&amp; this.rotate_Y&lt;2){
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_default');
+      btn.querySelector('.btn_front').classList.remove('btn_front_right', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_default');
+    }
+    if(this.rotate_Y&lt;-2){
+      console.log('right');
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_default');
+      btn.classList.add('btn_shadow_left');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_right');
+    }
+   
+    }
+  });
+  
+
+    btn.addEventListener(&quot;click&quot;, function() {
+    if(!loading){
+    const childElement= btn.querySelector('.btn_loading_wrapp');
+    childElement.classList.remove('opacity-0');
+    childElement.classList.add('flex','btn_loading_2');
+    document.querySelector('.btn_loading').style.pointerEvents = &quot;none&quot;;
+    document.querySelector('.btn_front').style.pointerEvents = &quot;none&quot;;
+    document.querySelector('.txt_loaded').classList.add('hidden');
+    document.querySelector('.txt_loading').classList.remove('hidden');
+    
+    setTimeout(function() {
+        document.querySelector('.txt_loaded').classList.remove('hidden');
+    	document.querySelector('.txt_loading').classList.add('hidden');
+          setTimeout(function() {
+     childElement.classList.add('opacity-0');
+    childElement.classList.remove('flex','btn_loading_2');
+    document.querySelector('.btn_loading').style.pointerEvents = &quot;auto&quot;;
+    document.querySelector('.btn_front').style.pointerEvents = &quot;auto&quot;;
+    //document.querySelector('.btn_front').style.opacity = &quot;1&quot;;
+    }, 1000);
+    }, 3000);
+    }
+  });
+
+
+
+function obtenerValor() {
+  // Obtén el elemento input por su ID
+  var rangeInput = document.getElementById(&quot;button_range&quot;);
+
+  // Obtén el valor actual del input de rango
+  var valor = rangeInput.value;
+  var btn = document.querySelector(&quot;.btn&quot;);
+    var style = btn.style;
+  style.setProperty('--raise', valor+'px');
+  raise=valor;
+  // Actualiza el texto para mostrar el valor actual
+  document.getElementById(&quot;valor_actual&quot;).textContent = &quot;Valor actual: &quot; + valor;
+}&lt;/script&gt;
+        &lt;/main&gt;
+        &lt;!--add js cdn--&gt;
+      &lt;/body&gt;
+
+    &lt;/html&gt;
+  "></iframe></div></div></div></div><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "var raise=10;\r\nbtn = document."
+}--></app-codeplayground_v2><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><div _ngcontent-ng-c2526117302="" ng-reflect-ng-class="w-full hover:border-2 border-r" class="w-full hover:border-2 border-red-400/50"><app-codeplayground_v2 _ngcontent-ng-c2526117302="" class="flex w-full my-5" _nghost-ng-c457883197="" ng-reflect-id="598" ng-reflect-height="h-[500px]" ng-reflect-bg_color_1="bg-[#151528]" ng-reflect-bg_color_2="bg-[#2A2A50]" ng-reflect-text_color_1="text-[#d8d6ff]" ng-reflect-text_color_2="text-[#7e73a2]" ng-reflect-rounded="rounded-lg" ng-reflect-html-codes="&lt;div class=&quot;flex flex-col flex" ng-reflect-css-codes="/*style for btn*/
+.btn{
+  --" ng-reflect-js-codes="var raise=10;
+btn = document."><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c457883197="" class="flex flex-col w-full overflow-hidden"><div _ngcontent-ng-c457883197="" class="flex flex-wrap rounded-lg w-full"><div _ngcontent-ng-c457883197="" class="bg-[#2A2A50] flex font-semibold justify-between px-4 py-1 rounded-t-lg text-xs w-full"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Code Playground</p><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">run</p><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Reset</p></div></div></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] flex flex-wrap h-[500px] rounded-b-lg w-full"><div _ngcontent-ng-c457883197="" class="flex h-full w-full"><div _ngcontent-ng-c457883197="" class="split__left w-full p-2 pr-0"><div _ngcontent-ng-c457883197="" class="flex flex-wrap w-full"><div _ngcontent-ng-c457883197="" class="w-full flex items-start pb-2"><div _ngcontent-ng-c457883197="" class="flex justify-between gap-4"><p _ngcontent-ng-c457883197="" class="text-[#d8d6ff]">Html</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Css</p><p _ngcontent-ng-c457883197="" class="text-[#7e73a2]">Js</p></div></div></div><ngx-codemirror _ngcontent-ng-c457883197="" class="w-full ng-untouched ng-valid ng-dirty" ng-reflect-model="&lt;div class=&quot;flex flex-col flex" ng-reflect-options="[object Object]"><textarea autocomplete="off" class="ngx-codemirror" name="codemirror" style="display: none;">    </textarea><div class="CodeMirror cm-s-material" translate="no"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; min-height: 1em; outline: none;" wrap="off" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" tabindex="-1" cm-not-content="true" style="width: 18px; display: block; bottom: 0px; visibility: hidden;"><div style="min-width: 1px; height: 530px;"></div></div><div class="CodeMirror-hscrollbar" tabindex="-1" cm-not-content="true" style="height: 18px; display: block; right: 0px; left: 0px; visibility: hidden;"><div style="height: 100%; min-height: 1px; width: 859px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 50px; min-height: 530px; min-width: 858.567px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: none;" role="presentation"><div class="CodeMirror-measure"><pre class="CodeMirror-line-like"><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;div class="btn btn_primary btn_shadow btn_loading" &gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;div class="btn_back"&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">       &lt;div class="btn_front"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;div class="btn_loading_wrapp opacity-0"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;div class="bubble"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">          &lt;div id="water" class="water"&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">            &lt;svg viewBox="0 0 560 40" class="water_wave water_wave_back"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">              &lt;path d="M140 20C70 20 70 0 0 0V40H560V0C490 0 490 20 420 20C350 20 350 0 280 0C210 0 210 20 140 20Z" /&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">            &lt;/svg&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">            &lt;svg viewBox="0 0 560 40" class="water_wave water_wave_front"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">              &lt;path d="M140 20C70 20 70 0 0 0V40H560V0C490 0 490 20 420 20C350 20 350 0 280 0C210 0 210 20 140 20Z" /&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">            &lt;/svg&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">            &lt;div class="liquid"&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">            &lt;/div&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">          &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;p class="txt_loading"&gt;Loading&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        &lt;p class="txt_loaded hidden"&gt;succes&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      &lt;p&gt;Hover&lt;/p&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    &lt;/div&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  &lt;input class="mt-auto" type="range" id="button_range" min="0" max="100" value="10" oninput="obtenerValor()"&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;p id="valor_actual"&gt;Valor actual: 100&lt;/p&gt; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">&lt;/div&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 50px; width: 1px; border-bottom: 0px solid transparent; top: 530px;"></div><div class="CodeMirror-gutters" style="display: none; height: 580px;"></div></div></div></ngx-codemirror><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><div _ngcontent-ng-c457883197="" class="split__bar h-full"></div><div _ngcontent-ng-c457883197="" class="bg-[#151528] p-2 pl-0 rounded-b-lg split__center w-full"><iframe _ngcontent-ng-c457883197="" class="bg-white rounded-lg w-full" id="iframe-598" srcdoc="
+    &lt;html&gt;
+      &lt;head&gt;
+      &lt;style&gt;
+/*html{*/
+/*display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+/*body{*/
+/*    display: flex;*/
+/*  justify-content: center; !* Centrar horizontalmente *!*/
+/*  align-items: center; !* Centrar verticalmente *!*/
+/*  width: 100%;*/
+/*  height: 100%!important;*/
+/*}*/
+      &lt;/style&gt;
+        &lt;!--add css cdn--&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;main&gt;
+         &lt;style type='text/css'&gt;/*style for btn*/
+.btn{
+  --font-body-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  --height: 50px;  
+  --raise: 100px;
+  --rounded: 10px;
+  --rotate: 1;
+  --rotate_invers: 1 * - 1;
+  --border:4px;
+  --border_style:solid #004c65 var(--border);
+  --bg-front-color: #AAD3EA;
+  --bg-shadow-color: #4B4B4B84;
+  --bg-back-color: #004c65;
+  --font-color: white;
+  --font-body-weight:800;
+  --width:180px;
+  color:var(--font-color);
+  font-family:var(--font-body-family);
+  height: calc(var(--height) + var(--raise)); 
+  width:var(--width);
+  font-weight:var(--font-body-weight);
+}
+
+.btn_primary{
+  --bg-shadow-color: #4B4B4B20;
+  --bg-front-color: #338a9d;
+  --bg-back-color: #9a453f;
+  --border_style:solid #b84a41 var(--border);
+  --font-color: #ea893e;
+}
+
+.btn_shadow {
+  border: var(--border) solid transparent;
+}
+.btn_shadow:before {
+  content:&quot; &quot;;
+  position:absolute;
+  height: var(--height);
+  margin-top: calc(var(--raise) + (var(--raise)/1.2)); 
+  width:var(--width);
+  background: var(--bg-shadow-color);
+  border-radius: var(--rounded);
+  transition:transform 0.2s ease-out;
+  border: var(--border) solid transparent;
+}
+.btn_back:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  margin-top: var(--raise);
+  width:var(--width);
+  border: var(--border) solid transparent;
+  background: var(--bg-back-color);
+  border-radius:var(--rounded);
+  transition:transform 0.1s ease-out;
+} 
+.btn_front{
+  position: absolute;
+  height: var(--height);
+  width:var(--width);
+  background: var(--bg-front-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  transition:transform 0.1s ease-out;
+}
+
+/*on mouse move in button zone add classes*/
+.btn_shadow_left:before{
+  transition: transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_shadow_right:before{
+  transition:transform 0.2s ease-out;
+  transform:skewY(calc(1deg * var(--rotate)));
+}
+.btn_shadow_default:before{
+  transform:skew(0) translateZ(0);
+}
+.btn_shadow_default:hover:before{
+  transform: translateY(calc((var(--raise)/4) * -1 )); 
+}      
+.btn_shadow_default:active:before{ 
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+} 
+.btn_shadow_default:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_left:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+.btn_shadow_right:active:before{
+  transform: translateY(calc((var(--raise)/1.2) * -1 ));
+}
+/*btn_front events*/
+.btn_front_left{
+  transform:skewY(calc(1deg * var(--rotate_invers)));
+}
+.btn_front_right{
+  transform:skewY(calc(1deg * var(--rotate)));
+  transition:transform 0.2s ease-out;
+}
+.btn_front_default{
+  transform:skew(0) translateZ(0);
+  transition:transform 0.2s ease-out;
+}
+
+.btn_front_left:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_right:active{
+  transform:skewY(0) translateY(var(--raise));
+}
+.btn_front_default:hover{
+  transform: translateY(calc(var(--raise) * 0.5));
+
+}
+.btn_front_default:active{
+  transform:skewY(0) translateY(var(--raise));
+} 
+
+
+/*loading*/
+.btn_loading_wrapp{
+  position: absolute;
+  height: var(--height);
+   width:var(--width);
+
+  margin-left:calc(var(--border)*-1);/* padding for borders of parent */
+  margin-right:calc(var(--border)*-1);/* padding for borders of parent */
+  background: var(--bg-back-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:var(--rounded);
+  border: var(--border_style);
+  overflow: hidden;
+  z-index:1;
+}
+
+.btn_loading_wrapp:before{
+  content:&quot; &quot;;
+  position: absolute;
+  height: var(--height);
+  width: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-front-color);
+  z-index:-1;
+}
+
+.btn_loading_2:before{
+  width:100%;
+  transition: width 1s ease-in;
+}
+.opacity-0{
+  opacity:0;
+}
+.hidden{
+  display:none;
+}
+
+
+
+
+/*waves animation*/
+.btn_loading_2 .txt_loading{
+  animation: slide-up 0.5s ease-in-out;
+    position:absolute
+
+}
+.btn_loading_2 .txt_loaded{
+  animation: slide-down 0.5s ease-in-out;
+    position:absolute
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  0% {
+    transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* water*/
+
+.bubble { 
+/*     --bg-front-color: #95D44A; */
+/*   --bg-back-color: #52A934; */
+  --bg_front_color:#462255;
+  --bg_back_color:#602F75;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-front-color);
+  overflow: hidden;
+  transform: translate(0, 0);
+	border-radius:var(--rounded);
+}
+.bubble .water {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%); 
+} 
+.bubble .water_wave_back {
+  width:200%;
+  left: 0;
+  top:0;
+  position:relative;
+  fill: var(--bg_back_color);
+  
+  animation: wave-back 0.8s infinite linear;
+}
+.bubble .water_wave_front {
+    margin-top: 8px;
+  width:200%;
+  left: 0;
+  top:0;
+  position:absolute;
+  fill: var(--bg_front_color);
+  animation: wave-front 0.6s infinite linear;
+}
+
+.liquid{
+  background:var(--bg_front_color);
+  width: 100%;
+  height: 120%;
+  margin-top:-6px;
+  
+}
+
+
+@keyframes wave-front {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes wave-back {
+  100% {
+    transform: translate(-50%, 0);
+  }
+} 
+
+
+
+#valor_actual{ 
+  font-family:'Ubuntu';
+  font-weight:700;
+}
+
+/* It is not necessary only for the body*/
+.h-screen{
+    height:90vh; 
+}
+.mt-auto{
+  margin-top:136px; 
+}
+.justify-center {
+    justify-content: center;
+}
+.items-center {
+    align-items: center;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex{
+ display : flex;
+}&lt;/style&gt;
+         &lt;div class=&quot;flex flex-col flex-wrap overflow-x-hidden  justify-center items-center h-screen&quot;&gt;
+&lt;div class=&quot;btn btn_primary btn_shadow btn_loading&quot; &gt;
+  &lt;div class=&quot;btn_back&quot;&gt; 
+       &lt;div class=&quot;btn_front&quot;&gt;
+      &lt;div class=&quot;btn_loading_wrapp opacity-0&quot;&gt;
+        &lt;div class=&quot;bubble&quot;&gt;
+          &lt;div id=&quot;water&quot; class=&quot;water&quot;&gt; 
+            &lt;svg viewBox=&quot;0 0 560 40&quot; class=&quot;water_wave water_wave_back&quot;&gt;
+              &lt;path d=&quot;M140 20C70 20 70 0 0 0V40H560V0C490 0 490 20 420 20C350 20 350 0 280 0C210 0 210 20 140 20Z&quot; /&gt;
+            &lt;/svg&gt;
+
+            &lt;svg viewBox=&quot;0 0 560 40&quot; class=&quot;water_wave water_wave_front&quot;&gt;
+              &lt;path d=&quot;M140 20C70 20 70 0 0 0V40H560V0C490 0 490 20 420 20C350 20 350 0 280 0C210 0 210 20 140 20Z&quot; /&gt;
+            &lt;/svg&gt;
+
+            &lt;div class=&quot;liquid&quot;&gt; 
+            &lt;/div&gt; 
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;txt_loading&quot;&gt;Loading&lt;/p&gt;
+        &lt;p class=&quot;txt_loaded hidden&quot;&gt;succes&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;p&gt;Hover&lt;/p&gt;
+    &lt;/div&gt; 
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;input class=&quot;mt-auto&quot; type=&quot;range&quot; id=&quot;button_range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;10&quot; oninput=&quot;obtenerValor()&quot;&gt;
+&lt;p id=&quot;valor_actual&quot;&gt;Valor actual: 100&lt;/p&gt; 
+&lt;/div&gt;
+         &lt;script &gt;var raise=10;
+btn = document.querySelector('.btn');
+
+  var loading=false;
+  var style = btn.style;
+  style.setProperty('--raise', raise+'px');
+  btn.addEventListener('mousemove', event =&gt; {
+    if(raise&gt;0){
+    const width = btn.offsetWidth;
+    const height = btn.offsetHeight;
+    const rotationDegrees = Math.atan((height * (raise) + raise) / (width )) ;
+    const btnWidth = btn.offsetWidth;
+    const mouseX = event.clientX - btn.getBoundingClientRect().left;
+    style.setProperty('--rotate', (rotationDegrees));
+    style.setProperty('--rotate_invers', (rotationDegrees * -1));
+
+    this.rotate_Y = -10 * ((mouseX - btnWidth / 2) / (btnWidth / 2));
+    if(this.rotate_Y&gt;2){
+      btn.classList.remove('btn_shadow_default', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_right');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_right');
+      btn.querySelector('.btn_front').classList.add('btn_front_left');
+    }
+    if(this.rotate_Y&gt;-2 &amp;&amp; this.rotate_Y&lt;2){
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_left');
+      btn.classList.add('btn_shadow_default');
+      btn.querySelector('.btn_front').classList.remove('btn_front_right', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_default');
+    }
+    if(this.rotate_Y&lt;-2){
+      console.log('right');
+      btn.classList.remove('btn_shadow_right', 'btn_shadow_default');
+      btn.classList.add('btn_shadow_left');
+      btn.querySelector('.btn_front').classList.remove('btn_front_default', 'btn_front_left');
+      btn.querySelector('.btn_front').classList.add('btn_front_right');
+    }
+   
+    }
+  });
+  
+
+    btn.addEventListener(&quot;click&quot;, function() {
+    if(!loading){
+      //loading=true;
+    console.log('eeeeee')
+    const childElement= btn.querySelector('.btn_loading_wrapp');
+    childElement.classList.remove('opacity-0');
+    childElement.classList.add('flex','btn_loading_2');
+    document.querySelector('.btn_loading').style.pointerEvents = &quot;none&quot;;
+    document.querySelector('.btn_front').style.pointerEvents = &quot;none&quot;;
+    //document.querySelector('.btn_front').style.opacity = &quot;0.8&quot;;
+    document.querySelector('.txt_loaded').classList.add('hidden');
+    document.querySelector('.txt_loading').classList.remove('hidden');
+                /* water effect loading */
+    const water = document.querySelector(&quot;.water&quot;);
+
+let percent = 0;
+let x = 150;
+
+const interval = setInterval(() =&gt; { 
+  percent++;
+  water.style.transform = `translate(0, ${100 - percent}%)`;
+  if (percent === x) {
+    clearInterval(interval);
+  }
+}, 10);
+      
+    setTimeout(function() {
+        document.querySelector('.txt_loaded').classList.remove('hidden');
+    	document.querySelector('.txt_loading').classList.add('hidden');
+          setTimeout(function() {
+     childElement.classList.add('opacity-0');
+    childElement.classList.remove('flex','btn_loading_2');
+    document.querySelector('.btn_loading').style.pointerEvents = &quot;auto&quot;;
+    document.querySelector('.btn_front').style.pointerEvents = &quot;auto&quot;;
+    //document.querySelector('.btn_front').style.opacity = &quot;1&quot;;
+    }, 1000);
+    }, 3000);
+    }
+  });
+
+
+
+function obtenerValor() {
+  // Obtén el elemento input por su ID
+  var rangeInput = document.getElementById(&quot;button_range&quot;);
+
+  // Obtén el valor actual del input de rango
+  var valor = rangeInput.value;
+  var btn = document.querySelector(&quot;.btn&quot;);
+    var style = btn.style;
+  style.setProperty('--raise', valor+'px');
+  raise=valor;
+  // Actualiza el texto para mostrar el valor actual
+  document.getElementById(&quot;valor_actual&quot;).textContent = &quot;Valor actual: &quot; + valor;
+}&lt;/script&gt;
+        &lt;/main&gt;
+        &lt;!--add js cdn--&gt;
+      &lt;/body&gt;
+
+    &lt;/html&gt;
+  "></iframe></div></div></div></div><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "var raise=10;\r\nbtn = document."
+}--></app-codeplayground_v2><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div><!--bindings={
+  "ng-reflect-ng-template-outlet-context": "[object Object]"
+}--><!--ng-container--><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object],[object Object"
+}--><!--container--></div><!--bindings={
+  "ng-reflect-ng-if": "[object Object]"
+}--></app-paint-contents><!--ng-container--><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><app-card _ngcontent-ng-c961501968="" class="col-span-12" _nghost-ng-c3359680295=""><div _ngcontent-ng-c3359680295="" class="card flex h-full card_vertical" ng-reflect-ng-class="[object Object]"><!--bindings={}--><div _ngcontent-ng-c3359680295="" class="content"><div _ngcontent-ng-c961501968=""><h5 _ngcontent-ng-c961501968="" class="text-xl font-semibold leading-snug tracking-normal text-textPrimary antialiased"> Update post </h5></div><!--bindings={
+  "ng-reflect-ng-template-outlet": "[object Object]"
+}--><!--container--><div _ngcontent-ng-c961501968="" class="py-6 flex flex-wrap"><form _ngcontent-ng-c961501968="" novalidate="" class="flex flex-col gap-4 flex-wrap w-full ng-untouched ng-pristine ng-valid" ng-reflect-form="[object Object]"><app-input-outsite _ngcontent-ng-c961501968="" _nghost-ng-c3487878418="" ng-reflect-label="Name" ng-reflect-form-group-parent="[object Object]" ng-reflect-form-group-control-name="name" ng-reflect-value="Building a Magical 3D Button"><div _ngcontent-ng-c3487878418="" class="flex items-center mt-4 relative z-0"><textarea _ngcontent-ng-c3487878418="" type="text" placeholder=" " class="appearance-none bg-transparent block border-0 border-2 border-b-2 border-textSecondary focus:border-textPrimary focus:outline-none focus:ring-0 focus:text-textPrimary peer px-2 py-1 rounded-lg text-sm text-textPrimary w-full ng-untouched ng-pristine ng-valid" ng-reflect-name="name">Building a Magical 3D Button</textarea><label _ngcontent-ng-c3487878418="" class="-translate-y-8 -z-10 absolute duration-150 ease-in-out origin-[0] peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:scale-75 peer-focus:text-textSecondary peer-placeholder-shown:left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-textPrimary peer-placeholder-shown:translate-y-0 scale-75 text-sm text-textSecondary top-2 transform transition-all">Name </label></div><!--ng-container--></app-input-outsite><app-input-outsite _ngcontent-ng-c961501968="" _nghost-ng-c3487878418="" ng-reflect-label="SubName" ng-reflect-form-group-parent="[object Object]" ng-reflect-form-group-control-name="subname" ng-reflect-value="subname"><div _ngcontent-ng-c3487878418="" class="flex items-center mt-4 relative z-0"><textarea _ngcontent-ng-c3487878418="" type="text" placeholder=" " class="appearance-none bg-transparent block border-0 border-2 border-b-2 border-textSecondary focus:border-textPrimary focus:outline-none focus:ring-0 focus:text-textPrimary peer px-2 py-1 rounded-lg text-sm text-textPrimary w-full ng-untouched ng-pristine ng-valid" ng-reflect-name="subname">subname</textarea><label _ngcontent-ng-c3487878418="" class="-translate-y-8 -z-10 absolute duration-150 ease-in-out origin-[0] peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:scale-75 peer-focus:text-textSecondary peer-placeholder-shown:left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-textPrimary peer-placeholder-shown:translate-y-0 scale-75 text-sm text-textSecondary top-2 transform transition-all">SubName </label></div><!--ng-container--></app-input-outsite><app-input-outsite _ngcontent-ng-c961501968="" _nghost-ng-c3487878418="" ng-reflect-label="Desc" ng-reflect-form-group-parent="[object Object]" ng-reflect-form-group-control-name="desc" ng-reflect-value="Bet you can't click just once!"><div _ngcontent-ng-c3487878418="" class="flex items-center mt-4 relative z-0"><textarea _ngcontent-ng-c3487878418="" type="text" placeholder=" " class="appearance-none bg-transparent block border-0 border-2 border-b-2 border-textSecondary focus:border-textPrimary focus:outline-none focus:ring-0 focus:text-textPrimary peer px-2 py-1 rounded-lg text-sm text-textPrimary w-full ng-untouched ng-pristine ng-valid" ng-reflect-name="desc">Bet you can't click just once!</textarea><label _ngcontent-ng-c3487878418="" class="-translate-y-8 -z-10 absolute duration-150 ease-in-out origin-[0] peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:scale-75 peer-focus:text-textSecondary peer-placeholder-shown:left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-textPrimary peer-placeholder-shown:translate-y-0 scale-75 text-sm text-textSecondary top-2 transform transition-all">Desc </label></div><!--ng-container--></app-input-outsite><app-select-outside _ngcontent-ng-c961501968="" _nghost-ng-c2771419502="" ng-reflect-label="Categories" ng-reflect-form-group-parent="[object Object]" ng-reflect-form-group-control-name="category" ng-reflect-items="[object Object]"><div _ngcontent-ng-c2771419502="" class="flex items-center mt-4 relative z-0 w-full bg-bgPrim"><select _ngcontent-ng-c2771419502="" class="bg-bgPrim appearance-none block border-0 border-2 border-b-2 border-textSecondary focus:border-textPrimary focus:outline-none focus:ring-0 focus:text-textPrimary peer px-2 py-0.5 rounded-lg text-sm text-textPrimary w-full ng-untouched ng-pristine ng-valid" ng-reflect-name="category"><option _ngcontent-ng-c2771419502="" value="null" selected="selected"></option><option _ngcontent-ng-c2771419502="" value="1" ng-reflect-value="1"> cat1 </option><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}--></select><label _ngcontent-ng-c2771419502="" class="z-10 absolute duration-150 ease-in-out origin-[0] peer-focus:-translate-y-8 peer-focus:left-0 peer-focus:scale-75 peer-focus:text-textSecondary scale-75 text-sm text-textSecondary top-2 transform transition-all translate-y-0 left-2 scale-100 text-textPrimary" ng-reflect-ng-class="[object Object]">Categories </label></div><!--ng-container--></app-select-outside><input _ngcontent-ng-c961501968="" type="file" multiple="" class="text-textPrimary flex flex-wrap" style="width: inherit;"></form><!--bindings={
+  "ng-reflect-ng-if": "[object Object]"
+}--></div><!--container--><div _ngcontent-ng-c961501968="" class="flex justify-end items-center gap-2 flex-wrap"><app-button3d _ngcontent-ng-c961501968="" title="Update" _nghost-ng-c3940394643="" ng-reflect-title="Update" ng-reflect-type="btn_primary" ng-reflect-loading_type="waves" ng-reflect-loading="false"><button _ngcontent-ng-c3940394643="" class="btn btn_loading btn_primary btn_shadow flex flex-nowrap justify-center overflow-x-hidden" style="--height: 30px; --rounded: 4px; --raise: 5px;"><div _ngcontent-ng-c3940394643="" class="btn_back"><div _ngcontent-ng-c3940394643="" class="btn_front ripple-button" ng-reflect-ng-class="[object Object]"><div _ngcontent-ng-c3940394643="" class="btn_loading_wrapp opacity-0"><div _ngcontent-ng-c3940394643="" class="bubble"><div _ngcontent-ng-c3940394643="" id="water" class="water"><svg _ngcontent-ng-c3940394643="" viewBox="0 0 560 40" class="water_wave water_wave_back"><path _ngcontent-ng-c3940394643="" d="M140 20C70 20 70 0 0 0V40H560V0C490 0 490 20 420 20C350 20 350 0 280 0C210 0 210 20 140 20Z"></path></svg><svg _ngcontent-ng-c3940394643="" viewBox="0 0 560 40" class="water_wave water_wave_front"><path _ngcontent-ng-c3940394643="" d="M140 20C70 20 70 0 0 0V40H560V0C490 0 490 20 420 20C350 20 350 0 280 0C210 0 210 20 140 20Z"></path></svg><div _ngcontent-ng-c3940394643="" class="liquid"></div></div></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><p _ngcontent-ng-c3940394643="" class="txt_loading">Loading..</p><p _ngcontent-ng-c3940394643="" class="txt_loaded hidden">Succes</p></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><p _ngcontent-ng-c3940394643="">Update </p><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div></div></button></app-button3d></div><!--bindings={
+  "ng-reflect-ng-template-outlet": "[object Object]"
+}--></div></div></app-card><app-show-content _ngcontent-ng-c961501968="" class="col-span-12" _nghost-ng-c3231180796="" ng-reflect-post_id="1"><div _ngcontent-ng-c3231180796="" class="flex flex-col w-full"><div _ngcontent-ng-c3231180796="" class="p-4 sm:px-0 flex flex-row justify-between items-center space-x-2"><h3 _ngcontent-ng-c3231180796="" class="text-lg font-medium leading-6 text-gray-900">Lista de componentes</h3></div><div _ngcontent-ng-c3231180796=""><div _ngcontent-ng-c3231180796="" class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-bgPrim overflow-hidden text-textPrimary"><div _ngcontent-ng-c3231180796="" class="block w-full overflow-x-auto"><table _ngcontent-ng-c3231180796="" class="items-center w-full bg-transparent border-collapse"><thead _ngcontent-ng-c3231180796=""><tr _ngcontent-ng-c3231180796=""><th _ngcontent-ng-c3231180796="" class="px-6 align-middle border-b border-solid py-3 text-xs uppercase whitespace-nowrap font-semibold text-left"><p _ngcontent-ng-c3231180796="" class="flex">name <!--container--><!--container--><i _ngcontent-ng-c3231180796="" aria-hidden="true" class="fa fa-sort ml-auto"></i><!--container--><!--container--></p></th><th _ngcontent-ng-c3231180796="" class="px-6 align-middle border-b border-solid py-3 text-xs uppercase whitespace-nowrap font-semibold text-left"><p _ngcontent-ng-c3231180796="" class="flex">desc <!--container--><!--container--><i _ngcontent-ng-c3231180796="" aria-hidden="true" class="fa fa-sort ml-auto"></i><!--container--><!--container--></p></th><th _ngcontent-ng-c3231180796="" class="px-6 align-middle border-b border-solid py-3 text-xs uppercase whitespace-nowrap font-semibold text-left"><p _ngcontent-ng-c3231180796="" class="flex">type <!--container--><!--container--><i _ngcontent-ng-c3231180796="" aria-hidden="true" class="fa fa-sort ml-auto"></i><!--container--><!--container--></p></th><th _ngcontent-ng-c3231180796="" class="px-6 align-middle border-b border-solid py-3 text-xs uppercase whitespace-nowrap font-semibold text-left"><p _ngcontent-ng-c3231180796="" class="flex">actions <!--container--></p></th><!--container--><!--container--></tr><th _ngcontent-ng-c3231180796="" class="px-6 align-middle py-3 text-xs uppercase whitespace-nowrap font-light text-left"><app-input-default _ngcontent-ng-c3231180796="" class="w-64" _nghost-ng-c3702048911="" ng-reflect-variant="filled" ng-reflect-size="sm" ng-reflect-rounded="sm" ng-reflect-stat-style="relative z-0" ng-reflect-stat-input-style="bg-transparent pl-0" ng-reflect-stat-icon-style=" fas fa-regular fa-search z-10"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c3702048911=""><div _ngcontent-ng-c3702048911="" class="relative z-0"><input _ngcontent-ng-c3702048911="" type="text" id="dynamicInput" placeholder=" " ng-reflect-ng-class="[object Object]" class="bg-transparent pl-0 rounded-sm z-30 block px-1.5 pb-1 w-full text-textPrimary bg-bgSeco border-0 border-b-2 border-textSecondary appearance-none focus:outline-none focus:ring-0 focus:border-textPrimary peer"><label _ngcontent-ng-c3702048911="" ng-reflect-ng-class="[object Object]" class="absolute text-textSecondary duration-300 transform -translate-y-4 scale-75 top-3 z-0 origin-[0] left-1.5 peer-focus:text-textSecondary peer-placeholder-shown:scale-100 peer-placeholder-shown:text-textPrimary peer-focus:scale-75 peer-focus:-translate-y-4"> </label><a _ngcontent-ng-c3702048911="" href=""><i _ngcontent-ng-c3702048911="" class="absolute bg-bgPrim fa-regular fa-search fas peer-focus:text-textPrimary right-0 text-textSecondary text-xs top-0 transform z-10"></i><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": ""
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-input-default><!--container--></th><th _ngcontent-ng-c3231180796="" class="px-6 align-middle py-3 text-xs uppercase whitespace-nowrap font-light text-left"><app-input-default _ngcontent-ng-c3231180796="" class="w-64" _nghost-ng-c3702048911="" ng-reflect-variant="filled" ng-reflect-size="sm" ng-reflect-rounded="sm" ng-reflect-stat-style="relative z-0" ng-reflect-stat-input-style="bg-transparent pl-0" ng-reflect-stat-icon-style=" fas fa-regular fa-search z-10"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c3702048911=""><div _ngcontent-ng-c3702048911="" class="relative z-0"><input _ngcontent-ng-c3702048911="" type="text" id="dynamicInput" placeholder=" " ng-reflect-ng-class="[object Object]" class="bg-transparent pl-0 rounded-sm z-30 block px-1.5 pb-1 w-full text-textPrimary bg-bgSeco border-0 border-b-2 border-textSecondary appearance-none focus:outline-none focus:ring-0 focus:border-textPrimary peer"><label _ngcontent-ng-c3702048911="" ng-reflect-ng-class="[object Object]" class="absolute text-textSecondary duration-300 transform -translate-y-4 scale-75 top-3 z-0 origin-[0] left-1.5 peer-focus:text-textSecondary peer-placeholder-shown:scale-100 peer-placeholder-shown:text-textPrimary peer-focus:scale-75 peer-focus:-translate-y-4"> </label><a _ngcontent-ng-c3702048911="" href=""><i _ngcontent-ng-c3702048911="" class="absolute bg-bgPrim fa-regular fa-search fas peer-focus:text-textPrimary right-0 text-textSecondary text-xs top-0 transform z-10"></i><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": ""
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-input-default><!--container--></th><th _ngcontent-ng-c3231180796="" class="px-6 align-middle py-3 text-xs uppercase whitespace-nowrap font-light text-left"><app-input-default _ngcontent-ng-c3231180796="" class="w-64" _nghost-ng-c3702048911="" ng-reflect-variant="filled" ng-reflect-size="sm" ng-reflect-rounded="sm" ng-reflect-stat-style="relative z-0" ng-reflect-stat-input-style="bg-transparent pl-0" ng-reflect-stat-icon-style=" fas fa-regular fa-search z-10"><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--><div _ngcontent-ng-c3702048911=""><div _ngcontent-ng-c3702048911="" class="relative z-0"><input _ngcontent-ng-c3702048911="" type="text" id="dynamicInput" placeholder=" " ng-reflect-ng-class="[object Object]" class="bg-transparent pl-0 rounded-sm z-30 block px-1.5 pb-1 w-full text-textPrimary bg-bgSeco border-0 border-b-2 border-textSecondary appearance-none focus:outline-none focus:ring-0 focus:border-textPrimary peer"><label _ngcontent-ng-c3702048911="" ng-reflect-ng-class="[object Object]" class="absolute text-textSecondary duration-300 transform -translate-y-4 scale-75 top-3 z-0 origin-[0] left-1.5 peer-focus:text-textSecondary peer-placeholder-shown:scale-100 peer-placeholder-shown:text-textPrimary peer-focus:scale-75 peer-focus:-translate-y-4"> </label><a _ngcontent-ng-c3702048911="" href=""><i _ngcontent-ng-c3702048911="" class="absolute bg-bgPrim fa-regular fa-search fas peer-focus:text-textPrimary right-0 text-textSecondary text-xs top-0 transform z-10"></i><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></a><!--bindings={
+  "ng-reflect-ng-if": ""
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><!--bindings={
+  "ng-reflect-ng-if": "false"
+}--></app-input-default><!--container--></th><th _ngcontent-ng-c3231180796="" class="px-6 align-middle py-3 text-xs uppercase whitespace-nowrap font-light text-left"><!--container--></th><!--container--></thead><tbody _ngcontent-ng-c3231180796=""><tr _ngcontent-ng-c3231180796=""><td _ngcontent-ng-c3231180796="" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"> Page 2 </td><td _ngcontent-ng-c3231180796="" class="overflow-hidden max-w-xs border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"> Page </td><td _ngcontent-ng-c3231180796="" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"> page </td><td _ngcontent-ng-c3231180796="" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-2 text-right"><div _ngcontent-ng-c3231180796="" class="flex justify-between items-center"><div _ngcontent-ng-c3231180796="" class="group relative flex items-center justify-center"><svg _ngcontent-ng-c3231180796="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-textPrimary"><path _ngcontent-ng-c3231180796="" d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line _ngcontent-ng-c3231180796="" x1="7" y1="7" x2="7.01" y2="7"></line></svg><div _ngcontent-ng-c3231180796="" class="mb-2 opacity-0 w-32 bg-black text-white text-center text-xs rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full px-3 pointer-events-none"> Ver subcategorias <svg _ngcontent-ng-c3231180796="" x="0px" y="0px" viewBox="0 0 255 255" xml:space="preserve" class="absolute text-black h-2 w-full left-0 top-full"><polygon _ngcontent-ng-c3231180796="" points="0,0 127.5,127.5 255,0" class="fill-current"></polygon></svg></div></div><svg _ngcontent-ng-c3231180796="" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-textPrimary"><path _ngcontent-ng-c3231180796="" stroke="none" d="M0 0h24v24H0z"></path><path _ngcontent-ng-c3231180796="" d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"></path><path _ngcontent-ng-c3231180796="" d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"></path><line _ngcontent-ng-c3231180796="" x1="16" y1="5" x2="19" y2="8"></line></svg><svg _ngcontent-ng-c3231180796="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-red-400"><polyline _ngcontent-ng-c3231180796="" points="3 6 5 6 21 6"></polyline><path _ngcontent-ng-c3231180796="" d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></div></td></tr><!--bindings={
+  "ng-reflect-ng-for-of": "[object Object]"
+}--></tbody></table></div><!--bindings={
+  "ng-reflect-ng-if": "[object Object]"
+}--></div><div _ngcontent-ng-c3231180796="" class="flex justify-center"><nav _ngcontent-ng-c3231180796="" aria-label="Page navigation example"><ul _ngcontent-ng-c3231180796="" class="flex list-style-none"><!--bindings={}--></ul></nav></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--></div></div></app-show-content></div></div></app-editor-post><!--container--></div></app-index-admin><!--container--></div></div></div></div></app-index><!--container--></app-root>
+<script src="BlowFrontNew_files/polyfills.js" type="module"></script><script src="BlowFrontNew_files/scripts.js" defer="defer"></script><script src="BlowFrontNew_files/main.js" type="module"></script>
+
+</body></html>
