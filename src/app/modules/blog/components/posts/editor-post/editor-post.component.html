@@ -1,13 +1,59 @@
-<div class="w-full">
-  <div class="grid grid-cols-12 gap-2">
+<div class="w-full flex flex-wrap ">
+  <app-card  class=" w-full p-2 " >
+    <ng-template #headerTemplate >
+      <div class="flex justify-between items-center ">
+        <h5  class=" text-xl font-semibold leading-snug tracking-normal text-textPrimary antialiased">
+          Update post
+        </h5>
+      <svg (click)="hidden_update = !hidden_update" class="h-5 w-5 text-textPrimary fill-textPrimary"  xmlns="http://www.w3.org/2000/svg" 
+       viewBox="0 0 24 24" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z" />
+        </svg>
+      </div>
+    </ng-template>
+    <div [ngClass]="{'hidden': hidden_update}" class="py-6 flex flex-wrap gap-4">
+      <form *ngIf="form" [formGroup]="form" class="flex flex-col gap-4 flex-wrap w-full">
+        <app-input-outsite [label]="'Name'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'" [value]="form.get(['post'])?.value?.name"></app-input-outsite>
+        <app-input-outsite [label]="'SubName'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'subname'" [value]="form.get(['post'])?.value?.subname"></app-input-outsite>
+        <app-input-outsite [label]="'Desc'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'desc'" [value]="form.get(['post'])?.value?.desc"></app-input-outsite>
+        <!--              <app-input-outsite [formGroupParent]="form.get(['post'])" [formGroupControlName]="'img'" ></app-input-outsite>-->
+        <!--              <app-input-outsite [formGroupParent]="form.get(['post'])" [formGroupControlName]="'category'"></app-input-outsite>-->
+        <app-select-outside [label]="'Categories'" [items]="categories" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'category'" [value]="form.get(['post'])?.value?.category"></app-select-outside>
 
-    <div *ngIf="post.components.length>0" class="col-span-8 h-screen  overflow-y-scroll " >
+        <!--              <div class="col-span-2 sm:col-span-2" >-->
+        <!--                <label class="block text-sm font-medium text-gray-700">Categoria</label>-->
+        <!--                <select  formControlName="category"  (change)="selectCategory($event)"-->
+        <!--                        autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">-->
+        <!--                  <option [value]="null">Selecciona una categoria</option>-->
+        <!--                  <option *ngFor="let value of this.categories"-->
+        <!--                          [value]="value.id">-->
+        <!--                    {{value.name}}-->
+        <!--                  </option>-->
+        <!--                </select>-->
+        <!--              </div>-->
+        <input class="text-textPrimary flex flex-wrap" style="width: inherit;" type="file" multiple (change)="onFileChange($event)">
+      </form>
+      <div class="flex justify-end items-center gap-2 flex-wrap">
+        <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
+      </div>
+  <app-show-content class="w-full p-2  rounded bg-bgSeco" [post_id]="this.id"></app-show-content>
+
+    </div>
+    <ng-template #footerTemplate >
+     <!--  <div class="flex justify-end items-center gap-2 flex-wrap">
+        <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
+      </div> -->
+    </ng-template>
+  </app-card>
+  <div class="w-4/6 top-0 flex  z-0 p-2">
+
+    <div *ngIf="post.components.length>0" class="w-full h-screen  overflow-y-scroll " >
       <ng-container *ngFor="let content of post.components" class="">
         <app-paint-contents [showEditor]="true"  [content]="content"
                             (selectContent)="selectContent($event)"></app-paint-contents>
       </ng-container>
     </div>
-    <div class="col-span-8 flex justify-center items-center h-screen  overflow-y-scroll "
+    <div class="w-full flex justify-center items-center h-screen  overflow-y-scroll "
          *ngIf="post.components.length===0">
       <app-card class="w-1/2 flex h-auto justify-center items-center p-4">
         <ng-template #headerImgTemplate class="flex  justify-center ">
@@ -34,77 +80,40 @@
         </ng-template>
       </app-card>
     </div>
-    <div class="flex flex-col col-span-4 gap-2">
-      <ul class="w-full justify-center flex flex-wrap  text-sm font-medium overflow-hidden" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-        <li class="flex-grow">
-          <button (click)="createComponent()"
-                  class="w-full p-2  text-textPrimary " >New Component</button>
-          <div [ngClass]="{ 'translate-y-full': !creating, }"
-               class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
-        </li>
-        <li class="flex-grow">
-          <button (click)="addComponent()"
-                  class="w-full p-2  text-textPrimary " >Add Component</button>
-          <div [ngClass]="{ 'translate-y-full': !adding, }"
-               class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
-        </li>
-        <li class="flex-grow">
-          <button (click)="updateComponent()"
-                  class="w-full p-2 border-textPrimary text-textPrimary">Update Component</button>
-          <div [ngClass]="{ 'translate-y-full': !updating, }"
-               class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
-        </li>
-      </ul>
-      <div id="default-tab-content flex">
-        <app-add-content *ngIf="adding"
-          (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-add-content>
-        <app-create-content *ngIf="creating"
-          (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-create-content>
-        <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="col-span-4 flex lg:sticky"
-                            [postContent]="selectetContent"
-                            (updatedContent)="getProduct($event)"></app-update-content>
-      </div>
-    </div>
 
-    <app-card class=" col-span-12">
-      <ng-template #headerTemplate >
-        <div class="">
-          <h5 class="text-xl font-semibold leading-snug tracking-normal text-textPrimary antialiased">
-            Update post
-          </h5>
-        </div>
-      </ng-template>
-      <div class="py-6 flex flex-wrap">
-        <form *ngIf="form" [formGroup]="form" class="flex flex-col gap-4 flex-wrap w-full">
-          <app-input-outsite [label]="'Name'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'" [value]="form.get(['post'])?.value?.name"></app-input-outsite>
-          <app-input-outsite [label]="'SubName'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'subname'" [value]="form.get(['post'])?.value?.subname"></app-input-outsite>
-          <app-input-outsite [label]="'Desc'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'desc'" [value]="form.get(['post'])?.value?.desc"></app-input-outsite>
-          <!--              <app-input-outsite [formGroupParent]="form.get(['post'])" [formGroupControlName]="'img'" ></app-input-outsite>-->
-          <!--              <app-input-outsite [formGroupParent]="form.get(['post'])" [formGroupControlName]="'category'"></app-input-outsite>-->
-          <app-select-outside [label]="'Categories'" [items]="categories" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'category'" [value]="form.get(['post'])?.value?.category"></app-select-outside>
-
-          <!--              <div class="col-span-2 sm:col-span-2" >-->
-          <!--                <label class="block text-sm font-medium text-gray-700">Categoria</label>-->
-          <!--                <select  formControlName="category"  (change)="selectCategory($event)"-->
-          <!--                        autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">-->
-          <!--                  <option [value]="null">Selecciona una categoria</option>-->
-          <!--                  <option *ngFor="let value of this.categories"-->
-          <!--                          [value]="value.id">-->
-          <!--                    {{value.name}}-->
-          <!--                  </option>-->
-          <!--                </select>-->
-          <!--              </div>-->
-          <input class="text-textPrimary flex flex-wrap" style="width: inherit;" type="file" multiple (change)="onFileChange($event)">
-        </form>
-      </div>
-      <ng-template #footerTemplate >
-        <div class="flex justify-end items-center gap-2 flex-wrap">
-          <!--              <app-button3d title="Read More" [height]="'30px'" [type]="'btn_disabled'"  ></app-button3d>-->
-          <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
-
-        </div>
-      </ng-template>
-    </app-card>
-    <app-show-content class="col-span-12 " [post_id]="this.id"></app-show-content>
+    
   </div>
+  <div class="w-2/6 flex flex-col  gap-2  top-16 z-10 overflow-hidden overflow-y-scroll h-[90vh] ">
+    <ul class="w-full justify-center flex flex-wrap  text-sm font-medium overflow-hidden" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+      <li class="flex-grow">
+        <button (click)="createComponent()"
+                class="w-full p-2  text-textPrimary " >New Component</button>
+        <div [ngClass]="{ 'translate-y-full': !creating, }"
+             class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
+      </li>
+      <li class="flex-grow">
+        <button (click)="addComponent()"
+                class="w-full p-2  text-textPrimary " >Add Component</button>
+        <div [ngClass]="{ 'translate-y-full': !adding, }"
+             class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
+      </li>
+      <li class="flex-grow">
+        <button (click)="updateComponent()"
+                class="w-full p-2 border-textPrimary text-textPrimary">Update Component</button>
+        <div [ngClass]="{ 'translate-y-full': !updating, }"
+             class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
+      </li>
+    </ul>
+    <div id=" default-tab-content flex overflow-hidden  ">
+      <app-add-content *ngIf="adding"
+        (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-add-content>
+      <app-create-content *ngIf="creating"
+        (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-create-content>
+      <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="col-span-4 flex lg:sticky"
+                          [postContent]="selectetContent"
+                          (updatedContent)="getProduct($event)"></app-update-content>
+    </div>
+  </div>
+
+ 
 </div>

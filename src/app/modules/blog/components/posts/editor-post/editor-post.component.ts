@@ -32,7 +32,7 @@ export class EditorPostComponent implements OnInit{
   adding: boolean=false;
   creating: boolean=true;
   updating: boolean=false;
-
+  hidden_update: boolean=true;
 
   constructor(
     private router: Router,
