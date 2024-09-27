@@ -19,12 +19,12 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   }, 
-  {
+/*   {
     canActivate: [NonAuthGuard],
     canActivateChild: [NonAuthGuard],
-    path: 'front',
+    path: 'blog/front',
     loadChildren: () => import('./modules/front-layout/front-layout.module').then(m => m.FrontLayoutModule)
-  }, 
+  },  */
   {
     canActivate: [NonAuthGuard],
     canActivateChild: [NonAuthGuard],
