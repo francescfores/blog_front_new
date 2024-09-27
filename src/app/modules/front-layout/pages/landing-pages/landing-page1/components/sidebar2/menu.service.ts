@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
 import {first, map} from 'rxjs/operators';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable, pipe} from 'rxjs';
@@ -11,7 +10,7 @@ import {MenuItem} from "../modules/blog/components/sidebar/models/menu-item";
 
 export class MenuService {
   public menuItems() {
-    return [ 
+    return [
       new MenuItem('Dashboard', 'fas fa-light fa-chart-pie','/admin/dashboard','Admin Layouts','pt-2 border-t border-dashed border-bgTern',false,[
         new MenuItem('Dashboard', null,'/admin/dashboard','Base','pt-0',false,null),
         new MenuItem('Analytics', null,'/admin/charts','Base','pt-0',false,null),
@@ -22,7 +21,7 @@ export class MenuService {
         new MenuItem('Landing3', null,'/landings/landing3',null,'pt-0',false,null),
       ]),
       new MenuItem('Users', 'fas fa-light fa-users','/admin/users','', 'pt-1',false, null),
-      new MenuItem('Notifi cation', 'fas fa-light fa-bell','/admin/notification','','pt-1 border-bgTern', true, null),
+      new MenuItem('Notification', 'fas fa-light fa-bell','/admin/notification','','pt-1 border-bgTern', true, null),
 
       new MenuItem('Components', 'fas fa-light fa-code','/admin/components/','widgets','pt-1',null,[
         new MenuItem('Alerts', null,'/admin/components/alerts',null,'pt-0',false,null),

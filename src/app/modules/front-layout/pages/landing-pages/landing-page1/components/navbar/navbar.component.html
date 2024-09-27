@@ -1,72 +1,127 @@
-<nav id="navbar"
-     class="text-textPrimary transition-colors duration-500 top-0 fixed z-20 w-full">
-<!--  <nav id="navbar"-->
-<!--       class="  text-textPrimary transition-colors duration-1000 top-0 fixed z-20 w-full flex flex-wrap items-center-->
-<!--    justify-between navbar-expand-lg">-->
-  <div class="w-screen ">
-    <div class="py-4 pr-6 flex w-full justify-start items-center">
-      <button [ngClass]="{'opacity-0':sidebarOpen}"
-               class='z-50 px-8 flex-grow-0 flex-shrink-0  items-start flex flex-col rounded justify-start group pr-2 transition-all duration-500' (click)="toggleSidebar()">
-        <div [ngClass]="{
-        'h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300':true,
-        'rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100' : sidebarOpen,
-        'opacity-50 group-hover:opacity-100': !sidebarOpen}"> </div>
-        <div [ngClass]="{
-        'h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300':true,
-        'opacity-0' : sidebarOpen,
-        'opacity-50 group-hover:opacity-100': !sidebarOpen}">        </div>
-        <div [ngClass]="{
-        'h-0.5 w-4  mb-1 bg-primary transition ease transform duration-300':true,
-        '-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100' : sidebarOpen,
-        'opacity-50 group-hover:opacity-100': !sidebarOpen}">
-        </div>
-      </button>
-      <div [ngClass]="{'opacity-0':sidebarOpen}" class="flex px-8 justify-center items-center transition-all duration-500 ease-in-out">
-        <div>
-          <img *ngIf="isDarkEnable" class="w-6" src="./assets/img/logo/thunder_logo_dark.png" >
-          <img *ngIf="!isDarkEnable" class="w-6" src="./assets/img/logo/thunder_logo.png" >
-        </div>
-        <div class="text-xl text-textPrimary tracking-wide ml-2 font-semibold">Thunder1</div>
+<style>
+
+.nav {
+  padding: 0;
+  height: 80px;
+  background-color: #541554;
+  border-bottom: none;
+  z-index: 1000;
+  top: 0;
+  /*position: absolute;*/
+  width: 100%;
+  justify-content: center;
+  display:flex;
+}
+
+.nav .nav_content{
+
+  height: 100%;
+  /* max-width: 76.875rem; */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.nav *{
+  color:white;
+  text-decoration: none; /* no underline */
+}
+.nav .nav_content,
+.nav .nav_left,
+.nav .nav_right,
+.nav .nav_list{
+  flex-direction: row;
+  /*   justify-items: center; */
+  align-items: center;
+  flex: 1;
+}
+.nav .nav_logo{
+  margin-right:30px;
+}
+.nav .nav_right{
+  justify-content: flex-end;
+}
+
+.nav .nav_left{
+  /*   background:green; */
+}
+.nav .nav_right{
+  gap:20px;
+  /*   background:blue; */
+}
+.nav .nav_logo{
+  /*   background:yellow; */
+}
+.nav .nav_list{
+  gap:20px;
+  text-decoration:none;
+  list-style-type: none;/*   background:orange; */
+  text-decoration: none; /* no underline */
+}
+.nav .nav_list a{
+  gap:20px;
+}
+
+.button_outlined{
+  border-radius: 4px;
+  padding: .75rem 1rem;
+  color: #fff;
+  background-color: transparent!important;
+}
+.nav .button{
+  border-radius: 4px;
+  padding: .75rem 1rem;
+  color: #611f69;
+  background-color: #fff;
+}
+/*.button {*/
+/*  all: unset;*/
+/*}*/
+
+
+
+
+
+</style>
+
+<nav class="nav ">
+  <div class="nav_content flex ">
+    <div class="nav_left flex ">
+      <div class="md:hidden flex py-4 pr-6 flex w-auto justify-center items-center">
+        <button 
+                 class='z-50 px-8 flex-grow-0 flex-shrink-0  items-start flex flex-col rounded justify-start group pr-2 transition-all duration-500' (click)="toggleSidebar()">
+          <div [ngClass]="{
+          'h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300':true,
+          'rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100' : sidebarOpen,
+          'opacity-50 group-hover:opacity-100': !sidebarOpen}"> </div>
+          <div [ngClass]="{
+          'h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300':true,
+          'opacity-0' : sidebarOpen,
+          'opacity-50 group-hover:opacity-100': !sidebarOpen}">        </div>
+          <div [ngClass]="{
+          'h-0.5 w-4  mb-1 bg-primary transition ease transform duration-300':true,
+          '-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100' : sidebarOpen,
+          'opacity-50 group-hover:opacity-100': !sidebarOpen}">
+          </div>
+        </button>
+       
       </div>
-      <!-- Nav Links -->
-      <div class="flex-grow  space-x-5 flex justify-end">
-        <a class="flex items-center hover:text-gray-200" *ngIf="!isDarkEnable" (click)="changeTheme()" mode-button style="font-size:18px"><i class="fa-solid fa-moon"></i></a>
-        <a class="flex items-center hover:text-gray-200" *ngIf="isDarkEnable" (click)="changeTheme()" mode-button style="font-size:16px"><i class="fa-solid fa-sun"></i></a>
-        <a class="flex items-center hover:text-gray-200" (click)="setLoginOpen()">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+      <div class="nav_logo ">
+        <a href="">
+          <svg height="25" width="100" class="c-slacklogo--white" viewBox="0 0 240 60" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"><title>Slack</title><g fill="none"><path d="m75.663 47.477 2.929-6.846c3.207 2.375 7.39 3.632 11.574 3.632 3.068 0 5.02-1.187 5.02-3.003-.07-5.03-18.477-1.118-18.617-13.764-.07-6.427 5.648-11.387 13.737-11.387 4.81 0 9.622 1.188 13.038 3.913l-2.737 6.992c-3.143-2.021-7.025-3.43-10.72-3.43-2.51 0-4.184 1.187-4.184 2.725.07 4.96 18.618 2.235 18.827 14.322 0 6.567-5.579 11.178-13.528 11.178-5.856 0-11.225-1.397-15.34-4.332m116.629-9.325a8.498 8.498 0 0 1 -7.405 4.33c-4.698 0-8.506-3.816-8.506-8.523s3.808-8.523 8.506-8.523a8.498 8.498 0 0 1 7.405 4.33l8.143-4.52c-3.05-5.451-8.868-9.137-15.548-9.137-9.839 0-17.815 7.991-17.815 17.85 0 9.858 7.976 17.85 17.815 17.85 6.68 0 12.498-3.686 15.548-9.137zm-82.477 12.958h10.18v-49.86h-10.179zm95.761-49.86v49.86h10.18v-14.938l12.063 14.938h13.012l-15.34-17.746 14.224-16.559h-12.454l-11.505 13.767v-29.322zm-54.218 15.557v4.053c-1.673-2.795-5.787-4.751-10.11-4.751-8.925 0-15.967 7.895-15.967 17.815s7.042 17.885 15.967 17.885c4.323 0 8.437-1.956 10.11-4.751v4.052h10.18v-34.303zm0 21.414c-1.464 2.445-4.532 4.26-7.948 4.26-4.699 0-8.507-3.815-8.507-8.522s3.808-8.523 8.507-8.523c3.416 0 6.484 1.886 7.948 4.4z" fill="#ffffff"></path><path d="m21.902.148c-3.299 0-5.973 2.68-5.973 5.985a5.979 5.979 0 0 0 5.973 5.985h5.974v-5.985a5.98 5.98 0 0 0 -5.974-5.985m0 15.96h-15.929c-3.299 0-5.973 2.68-5.973 5.986 0 3.305 2.674 5.985 5.973 5.985h15.93c3.298 0 5.973-2.68 5.973-5.985 0-3.306-2.675-5.986-5.974-5.986" fill="#097eff"></path><path d="m59.734 22.094c0-3.306-2.675-5.986-5.974-5.986s-5.973 2.68-5.973 5.986v5.985h5.973a5.98 5.98 0 0 0 5.974-5.985m-15.929 0v-15.961a5.98 5.98 0 0 0 -5.974-5.985c-3.299 0-5.973 2.68-5.973 5.985v15.96c0 3.307 2.674 5.987 5.973 5.987a5.98 5.98 0 0 0 5.974-5.985" fill="#097eff"></path><path d="m37.831 60a5.98 5.98 0 0 0 5.974-5.985 5.98 5.98 0 0 0 -5.974-5.985h-5.973v5.985c0 3.305 2.674 5.985 5.973 5.985m0-15.96h15.93c3.298 0 5.973-2.68 5.973-5.986a5.98 5.98 0 0 0 -5.974-5.985h-15.929c-3.299 0-5.973 2.68-5.973 5.985a5.979 5.979 0 0 0 5.973 5.985" fill="#ecb12f"></path><path d="m0 38.054a5.979 5.979 0 0 0 5.973 5.985 5.98 5.98 0 0 0 5.974-5.985v-5.985h-5.974c-3.299 0-5.973 2.68-5.973 5.985m15.929 0v15.96c0 3.306 2.674 5.986 5.973 5.986a5.98 5.98 0 0 0 5.974-5.985v-15.961a5.979 5.979 0 0 0 -5.974-5.985c-3.299 0-5.973 2.68-5.973 5.985" fill="#ecb12f"></path></g></svg>
         </a>
       </div>
+      <ul class="nav_list hidden md:flex">
+        <li><a href="">Producto</a></li>
+        <li><a href="">Producto</a></li>
+        <li><a href="">Producto</a></li>
+        <li><a href="">Producto</a></li>
+      </ul>
     </div>
-    <!-- Responsive navbar -->
-  </div>
-  <div
-    [ngClass]="{ 'translate-x-0 ': loginOpen, 'translate-x-full': !loginOpen, 'opacity-100': loginOpen, 'opacity-0': !loginOpen}"
-    class="top-0 right-0 w-auto divide-neutral-700 text-neutral-700
-       px-5 mt-16 fixed z-0 bg-white
-       ease-in-out duration-300
-      ">
-    <div class="divide-y divide-solid divide-neutral-700 w-1/4 ">
-<!--      <div *ngIf="client">-->
-<!--        <a  (click)="logOut()"-->
-<!--            class=" w-full text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"-->
-<!--        > Logout </a>-->
-<!--        <a [routerLink]="['/shop/profile']"-->
-<!--          class=" w-full text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"-->
-<!--        > Account </a>-->
-
-<!--      </div>-->
-<!--      <div *ngIf="!client">-->
-      <div >
-        <a
-          [routerLink]="['/auth/login']"
-          class=" text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"
-        >
-          Login
-        </a>
-      </div>
-
+    <div class="nav_center hidden md:flex"></div>
+    <div class="nav_right hidden md:flex">
+      <a  class="" href="">Conectar</a>
+      <button class="button_outlined" >Test</button>
+      <button class="button  " >hablar</button>
     </div>
   </div>
+
 </nav>

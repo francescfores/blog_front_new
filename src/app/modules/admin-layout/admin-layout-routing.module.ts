@@ -20,7 +20,7 @@ import {NonAuthGuard} from "../../services/guards/non-auth.guard";
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    component: IndexComponent, 
     // canActivate: [AuthGuard],
     // canActivateChild: [AuthGuard],
     children: [
@@ -28,7 +28,7 @@ const routes: Routes = [
         data: { breadcrumb: 'dashboard' },
       },
       // { path: "landings", component: LandingPagesComponent,
-      //   children: [
+      //   children: [ 
       //     {path: "landing1", component: LandingPagesComponent},
       //     {path: "landing1", component: LandingPage1Component},
       //     {path: "landing2", component: LandingPage2Component},

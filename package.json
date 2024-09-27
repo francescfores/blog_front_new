@@ -1,5 +1,5 @@
 {
-  "name": "blow_front_new", 
+  "name": "blow_front_new",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -27,6 +27,7 @@
     "@ngstack/code-editor": "^5.0.0",
     "@popperjs/core": "^2.11.7",
     "@types/gsap": "^3.0.0",
+    "@types/three": "^0.169.0",
     "animate.css": "^4.1.1",
     "chart.js": "^4.3.0",
     "codemirror": "^5.65.16",
@@ -37,6 +38,7 @@
     "moment": "^2.29.4",
     "ngx-toastr": "^16.2.0",
     "rxjs": "~7.8.0",
+    "three": "^0.169.0",
     "tslib": "^2.3.0",
     "tw-colors": "^1.2.6",
     "zone.js": "~0.14.10"

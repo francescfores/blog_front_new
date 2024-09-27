@@ -13,7 +13,6 @@ import {SubmenuComponent} from "./sidebar/submenu/submenu.component";
   declarations: [
     FooterAdminComponent,
     SidebarComponent,
-    NavbarComponent,
     SidebarComponent,
     MenuComponent,
     SubmenuComponent,
@@ -29,6 +28,8 @@ import {SubmenuComponent} from "./sidebar/submenu/submenu.component";
         FooterAdminComponent,
         SidebarComponent,
         NavbarComponent,
+        MenuComponent,
+        SubmenuComponent,
     ]
 })
 export class ComponentsModuleLanding1 { }

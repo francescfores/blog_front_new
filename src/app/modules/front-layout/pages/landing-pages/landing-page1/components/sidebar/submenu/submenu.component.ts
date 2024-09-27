@@ -4,7 +4,7 @@ import {MenuItem} from "../models/menu-item";
 import {SidebarService} from "../services/sidebar.service";
 
 @Component({
-  selector: 'app-submenu_landing_1',
+  selector: 'app-submenu-blog',
   templateUrl: './submenu.component.html',
   styleUrls: ['./submenu.component.css']
 })

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ThemeService} from "../../../../../services/theme/theme.service";
-import {SidebarService} from "./components/sidebar/services/sidebar.service";
+import {SidebarService} from"./components/sidebar/services/sidebar.service";
 
 @Component({
   selector: 'app-landing-page1',

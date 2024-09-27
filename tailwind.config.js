@@ -292,25 +292,30 @@ module.exports = {
   //   // require('tw-elements/dist/plugin'),
   //   // require('@tailwindcss/aspect-ratio'),
   ],
-  // safelist: [
-  //   'text-2xl',
-  //   'text-3xl',
-  //   'text-4xl',
-  //   'text-5xl',
-  //   'text-6xl',
-  //   'text-7xl',
-  //   'text-8xl',
-  //   'text-9xl',
-  //   {
-  //     pattern: /bg-(red|green|blue)-(100|200|300|600)/,
-  //     //pattern: /bg-+/
-  //     variants: ['dark','sm','md','lg','xl', 'hover', 'focus', 'lg:hover'],
-  //   },
-  //   {
-  //     pattern: /text-(xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)/,
-  //     //pattern: /bg-+/
-  //     variants: ['sm','md','lg','xl'],
-  //   },
-  // ],
+   safelist: [
+     'text-2xl',
+     'text-3xl',
+     'text-4xl',
+     'text-5xl',
+     'text-6xl',
+     'text-7xl',
+     'text-8xl',
+     'text-9xl',
+     {
+       pattern: /bg-(red|green|blue|violet|neutral)-(100|200|300|400|500|600|700|800)/,
+       //pattern: /bg-+/
+       variants: ['dark','sm','md','lg','xl', 'hover', 'focus', 'lg:hover'],
+     },
+     {
+       pattern: /text-(xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)/,
+       //pattern: /bg-+/
+       variants: ['sm','md','lg','xl'],
+     },
+     {
+      pattern: /text-(red|green|blue|neutral)-(100|200|300|400|500|600|700|800)/,
+      //pattern: /bg-+/
+      variants: ['dark','sm','md','lg','xl', 'hover', 'focus', 'lg:hover'],
+    },
+   ],
 };
 

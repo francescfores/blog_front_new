@@ -71,9 +71,9 @@ const routes: Routes = [
     // },
     children: [
       { path: "", component: HomeComponent,
-        // data: {
-        //   breadcrumb: 'home'  
-        // },
+         data: {
+           breadcrumb: 'home'  
+         },
       },
       { path: "editor/result", component: LatestComponent,
         data: {
@@ -112,8 +112,12 @@ const routes: Routes = [
       },
     ]
   },
-  // { path: '',redirectTo: "blog",  pathMatch: "full" },
-
+  {
+    path: '',
+    loadChildren: () => import('./../../modules/front-layout/front-layout.module').then(m => m.FrontLayoutModule)
+  }, 
+  { path: '',redirectTo: "blog",  pathMatch: "full" },
+  { path: "**", redirectTo: "blog", pathMatch: "full" }, 
   // ],
 ];
 

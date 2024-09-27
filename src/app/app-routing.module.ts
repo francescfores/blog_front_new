@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     canActivate: [NonAuthGuard],
     canActivateChild: [NonAuthGuard],
-    path: '',
+    path: 'front',
     loadChildren: () => import('./modules/front-layout/front-layout.module').then(m => m.FrontLayoutModule)
   }, 
   {
@@ -31,6 +31,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./modules/blog/blog.module').then(m => m.BlogModule)
   },
+  
   // {
   //   canActivate: [NonAuthGuard],
   //   canActivateChild: [NonAuthGuard],
@@ -38,7 +39,7 @@ const routes: Routes = [
   //   loadChildren: () => import('./modules/blog2/blog.module').then(m => m.BlogModule2)
   // },
   // admin views
-  // { path: "**", redirectTo: "", pathMatch: "full" }, 
+  
 ];
 
 @NgModule({

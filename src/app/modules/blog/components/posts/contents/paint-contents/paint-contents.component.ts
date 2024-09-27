@@ -62,14 +62,14 @@ import {ViewportRuler} from "@angular/cdk/overlay";
           <img  src="./assets/img/logo/thunder_logo_dark.png" >
         </ng-container>
         <ng-container *ngIf="getAtt(content, 'url')!=null">
-          <img [src]="environment.apiUrl+'storage/blog/components/'+getAtt(content, 'url')"
+          <img [src]="getAtt(content, 'url')"
                alt="image"/>
         </ng-container>
       </ng-container>
       <ng-container *ngIf="content?.type?.name==='image3d';">
         <!--TODO change style.background-image-->
         <figure class="figure " [ngClass]="content?.type?.name + '-'+ content.id +' '+ setDynamicBackground(content)">
-          <img [src]="environment.apiUrl+'storage/blog/components/'+getAtt(content, 'img_url')"
+          <img [src]="getAtt(content, 'img_url')"
                alt="image" class="amt_2"/>
           <!--<figcaption class="p-4">Rhino</figcaption>-->
         </figure>
@@ -80,7 +80,7 @@ import {ViewportRuler} from "@angular/cdk/overlay";
             <app-button3d
               [ngClass]="getAtt(content, 'styles_button') + '  '+ editing()"
               [title]="getAtt(content, 'label')"
-              [type]="'btn_primary'"
+              [type]="getAtt(content, 'styles_button') + '  '+ editing()"
               [width]="'100%'"
               [loading_type]="'waves'" [loading]="false" >
             </app-button3d>
@@ -89,7 +89,7 @@ import {ViewportRuler} from "@angular/cdk/overlay";
           <app-button3d
             [ngClass]="getAtt(content, 'styles_button') + '  '+ editing()"
             [title]="getAtt(content, 'label')"
-            [type]="'btn_primary'"
+            [type]="getAtt(content, 'styles_button') + '  '+ editing()"
             [width]="'100%'"
             [loading_type]="'waves'" [loading]="false" >
           </app-button3d>
@@ -122,14 +122,14 @@ import {ViewportRuler} from "@angular/cdk/overlay";
           </ng-container>
           <ng-container *ngIf="subcomponent?.type?.name==='img';">
             <ng-container>
-              <img [src]="environment.apiUrl+'storage/blog/components/'+getAtt(subcomponent, 'url')"
+              <img [src]="getAtt(subcomponent, 'url')"
                    alt="image" />
             </ng-container>
           </ng-container>
           <ng-container *ngIf="subcomponent?.type?.name==='image3d';">
             <!--TODO change style.background-image-->
             <figure class="figure " [ngClass]="subcomponent?.type?.name + '-'+ subcomponent.id +' '+ setDynamicBackground(subcomponent)">
-            <img [src]="environment.apiUrl+'storage/blog/components/'+getAtt(subcomponent, 'img_url')"
+            <img [src]="getAtt(subcomponent, 'img_url')"
                    alt="image" class="amt_2"/>
               <!--<figcaption class="p-4">Rhino</figcaption>-->
             </figure>
@@ -140,7 +140,7 @@ import {ViewportRuler} from "@angular/cdk/overlay";
                 <app-button3d
                   [ngClass]="getAtt(subcomponent, 'styles_button') + '  '+ editing()"
                   [title]="getAtt(subcomponent, 'label')"
-                  [type]="'btn_primary'"
+                  [type]="getAtt(content, 'styles_button') + '  '+ editing()"
                   [width]="'100%'"
                   [loading_type]="'waves'" [loading]="false" >
                 </app-button3d>
@@ -149,7 +149,7 @@ import {ViewportRuler} from "@angular/cdk/overlay";
               <app-button3d
                 [ngClass]="getAtt(subcomponent, 'styles_button') + '  '+ editing()"
                 [title]="getAtt(subcomponent, 'label')"
-                [type]="'btn_primary'"
+                [type]="getAtt(content, 'styles_button') + '  '+ editing()"
                 [width]="'100%'"
                 [loading_type]="'waves'" [loading]="false" >
               </app-button3d>
@@ -171,7 +171,7 @@ export class PaintContentsComponent {
   setDynamicBackground(component:any) {
     const figureElement = document.querySelector('.'+component.name+'-'+component.id) as HTMLElement;
     if (figureElement) {
-      figureElement?.style.setProperty('--color', 'url('+ environment.apiUrl+'storage/blog/components/'+this.getAtt(component, 'img_bg_url') +') top/cover')
+      figureElement?.style.setProperty('--color', 'url('+ this.getAtt(component, 'img_bg_url') +') top/cover')
     }
     return '';
   }

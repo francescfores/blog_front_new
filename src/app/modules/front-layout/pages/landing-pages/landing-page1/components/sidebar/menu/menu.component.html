@@ -20,8 +20,8 @@
          [ngClass]="{ 'text-primary hover:text-primary-200': routeActive.isActive, 'text-textSecondary': !routeActive.isActive }"
          class="">{{menuItem.label}}</p>
     </a>
-      <app-submenu_landing_1 *ngIf="menuItem?.children?.length!==undefined && menuItem.children!==null "
+      <app-submenu-blog *ngIf="menuItem?.children?.length!==undefined && menuItem.children!==null "
         [menuItem]="menuItem"
-      ></app-submenu_landing_1>
+      ></app-submenu-blog>
   </li>
 </ul>

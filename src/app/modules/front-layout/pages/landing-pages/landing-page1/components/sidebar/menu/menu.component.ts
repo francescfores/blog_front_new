@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuItem} from "../models/menu-item";
 import {SidebarService} from "../services/sidebar.service";
-import {MenuService} from "../../../../../../../../services/menu.service";
+import {MenuService} from "../services/menu.service";
 
 @Component({
-  selector: 'app-menu_landing_1',
+  selector: 'app-menu-landing1',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
