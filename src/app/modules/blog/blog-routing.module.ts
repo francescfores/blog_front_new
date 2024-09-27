@@ -113,7 +113,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: '',
+    path: 'blog/tutorials',
     loadChildren: () => import('./../../modules/front-layout/front-layout.module').then(m => m.FrontLayoutModule)
   }, 
   { path: '',redirectTo: "blog",  pathMatch: "full" },
