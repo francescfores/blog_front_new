@@ -9,10 +9,10 @@
     <section class="grid grid-cols-1 lg:grid-cols-6 gap-20 justify-start items-start "  *ngIf="posts!=null">
       <section class="flex flex-col col-span-4 flex-wrap">
         <p class="text_font_marvel text-lg  font-normal text-primary uppercase">Recentlys Published</p>
-        <ng-container *ngFor="let post of posts.data" >
-          <app-card [type]="'horizontal'" class="w-full py-5 md:py-10 " >
-            <div class="flex flex-col flex-col-reverse md:flex-row md:flex-row-reverse">
-              <div class="  md:pt-0 pr-0 "
+        <ng-container *ngFor="let post of posts.data" class="" >
+          <app-card [type]="'horizontal'" class="w-full rounded py-5 md:py-10" [bg_color]="'hsl(var(--twc-bgTern))'" >
+            <div class="flex flex-col flex-col-reverse md:flex-row md:flex-row-reverse p-5 md:p-5">
+              <div class="  md:pt-0 pr-0 w-full md:w-2/3"
                    [ngClass]="{'w-2/3  md:pl-10 pt-10':post?.images.length>0,'w-full ':post?.images.length===0}">
                 <h6 class="text_font_marvel text-lg font-semibold  text-textPrimary">
                   {{post.name}}
@@ -33,7 +33,7 @@
                       <i class="fas fa-light fa-arrow-right  text-xs"></i>
                     </div>
                   </app-button3d>
-                  <app-button3d [title]="''" (click)="goToPost(post.id, post)"
+                  <!-- <app-button3d [title]="''" (click)="goToPost(post.id, post)"
                                 [width]="'130px'" [height]="'30px'" [type]="'btn_primary'"  [raise]="5">
                     <div class="flex justify-center items-center uppercase">
                       <p>Read More </p>
@@ -42,7 +42,7 @@
                   <app-button3d [font_color]="'hsl(var(--twc-primary))'" [title]="'ee'"
                                 [width]="'130px'" [height]="'30px'" [type]="'btn_priamry'"  [raise]="5">
 
-                  </app-button3d>
+                  </app-button3d> -->
                   <p class="text-sm font-medium leading-snug tracking-normal antialiased text-textSecondary">
                     {{post.created_at| date:'dd/MM/yyyy' }}
                   </p>

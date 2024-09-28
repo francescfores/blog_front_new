@@ -1,12 +1,12 @@
 <!--<div class="relative flex w-96 h-min flex-col rounded-sm bg-bgPrim bg-clip-border  shadow-md ">-->
-<div #card class="card flex h-full " [ngClass]="{
+<div #card class="card flex h-full w-full " [ngClass]="{
 'card_vertical':type==='vertical',
 'card_horizontal':type==='horizontal',
 'bg_gradient':bg_gradient
 }">
   <ng-container *ngTemplateOutlet="headerImgTemplate"></ng-container>
 
-  <div class="content">
+  <div class="content w-full">
     <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
 <!--  </div>-->
 <!--  <div class="content">-->
