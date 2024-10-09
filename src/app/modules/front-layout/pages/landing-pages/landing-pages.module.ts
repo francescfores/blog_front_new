@@ -23,6 +23,7 @@ import {ComponentsModule} from "../../../../components/components.module";
 import {ComponentsModuleLanding3} from "./landing-page3/components/components.module";
 import {LandingPage3Component} from "./landing-page3/landing-page3.component";
 // import { BreadcrumbsComponent } from './landing-pages3/components/breadcrumbs/breadcrumbs.component';
+import {Home5Component} from "./home5/home5.component";
 
 
 
@@ -38,6 +39,7 @@ import {LandingPage3Component} from "./landing-page3/landing-page3.component";
     LandingPage1Component,
     LandingPage2Component,
     LandingPage3Component,
+    Home5Component,
     // BreadcrumbsComponent
   ],
     imports: [

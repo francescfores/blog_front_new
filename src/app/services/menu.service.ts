@@ -20,6 +20,7 @@ export class MenuService {
         new MenuItem('Landing1', null,'tutorials/landing1',null,'pt-0',false,null),
         new MenuItem('Landing2', null,'tutorials/landing2',null,'pt-0',false,null),
         new MenuItem('Landing3', null,'tutorials/landing3',null,'pt-0',false,null),
+        new MenuItem('Landing3', null,'tutorials/landing4',null,'pt-0',false,null),
       ]),
       new MenuItem('Users', 'fas fa-light fa-users','/admin/users','', 'pt-1',false, null),
       new MenuItem('Notifi cation', 'fas fa-light fa-bell','/admin/notification','','pt-1 border-bgTern', true, null),

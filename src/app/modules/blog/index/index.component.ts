@@ -18,11 +18,11 @@ export class IndexComponent implements OnInit {
 ) {}
 
   ngOnInit(): void {
-    this.themeService.getCurrentTheme().subscribe(theme => {
+     this.themeService.getCurrentTheme().subscribe(theme => {
       this.isDarkEnable = theme === 'theme-dark';
     });
     this.sidebarService.getSidebarState().subscribe(sidebarOpen => {
       this.sidebarOpen = sidebarOpen;
-    });
+    }); 
   }
 }

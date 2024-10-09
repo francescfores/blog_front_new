@@ -16,7 +16,7 @@ import {IndexAdminComponent} from "./index-admin/index-admin.component";
 import {ContactComponent} from "./pages/contact/contact.component";
 import {BonusComponent} from "./pages/bonus/bonus.component";
 import {LatestComponent} from "./pages/latest/latest.component";
-import {CategoryComponent} from "./pages/posts/category/category.component";
+import {CategoryComponent} from "./pages/category/category.component";
 import {PostComponent} from "./pages/posts/post/post.component";
 import {EditorPostComponent} from "./components/posts/editor-post/editor-post.component";
 import {EditorComponent} from "../admin-layout/pages/editor/editor.component";

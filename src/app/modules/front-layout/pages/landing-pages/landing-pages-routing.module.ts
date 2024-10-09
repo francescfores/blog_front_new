@@ -5,6 +5,7 @@ import {LandingPage1Component} from "./landing-page1/landing-page1.component";
 import {LandingPage2Component} from "./landing-page2/landing-page2.component";
 import {IndexComponent} from "./index/index.component";
 import {LandingPage3Component} from "./landing-page3/landing-page3.component";
+import {Home5Component} from "./home5/home5.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: "landing3", component: LandingPage3Component,
         data: { breadcrumb: 'landing3' },
+      },
+      {
+        path: "landing4", component: Home5Component,
+        data: { breadcrumb: 'landing4' },
       },
       // { path: "**", redirectTo: "dashboard", pathMatch: "full" },
     ],
