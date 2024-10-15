@@ -4,10 +4,9 @@
 <main class="relative bg-bgSeco  z-40">
   <div class="max-w-[70rem] mx-auto px-4 md:px-10 py-10   ">
       <section class="flex flex-col gap-10 col-span-4 flex-wrap">
-        <p class="px-5 font-semibold text_font_marvel text-md  font-normal
-         text-primary uppercase">Recentlys Published</p>
+        <p class="px-5  text-4xl font-extrabold  text-textPrimary">{{category.name}}</p>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <ng-container *ngFor="let post of posts.data" class="" >
+            <ng-container *ngFor="let post of posts" class="" >
               <div class="p-5 md:p-5 bg-bgPrim rounded-md ">
                 <h6 class="text_font_marvel text-2xl font-extrabold  text-textPrimary">
                   {{post.name}}

@@ -63,7 +63,7 @@
                 
                 <p class="font-semibold text_font_marvel text-md  font-normal
                 text-primary uppercase">Categories</p>
-                <div class="flex flex py-5 gap-5" >
+                <div class="flex flex-wrap flex py-5 gap-5" >
                   <button (click)="goToCat(category.id, category.name)" *ngFor="let category of categories" class=" py-2 px-4 rounded-md
                   bg-bgTern/60 hover:opacity-75 group flex items-center gap-5 text-lg font-normal leading-snug tracking-normal antialiased ">
                     <p class="text-textSecondary">

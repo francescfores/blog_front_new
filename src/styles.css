@@ -188,3 +188,26 @@
 /*  position: relative;*/
 /*  font-family: 'MarvelRegular-Dj83', sans-serif;*/
 /*}*/
+
+
+@font-face {
+  font-family: 'Banco Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Banco Regular'), url('./assets/fonts/Banco Regular.woff') 
+  format('woff');
+}
+
+@font-face {
+  font-family: 'earwig-factory';
+  font-style: normal;
+  font-weight: normal;
+  src: local('earwig-factory'), url('./assets/fonts/earwig-factory.regular.otf');
+}
+
+@font-face {
+  font-family: 'alba.super';
+  font-style: normal;
+  font-weight: normal;
+  src: local('alba.super'), url('./assets/fonts/alba.super.ttf') format('truetype');
+}

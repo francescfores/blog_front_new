@@ -24,6 +24,11 @@ import {EditorPostComponent} from "./components/posts/editor-post/editor-post.co
 import {EditorContentComponent} from "./components/posts/contents/editor-content/editor-content.component";
 import {AddContentComponent} from "./components/posts/contents/add-content/add-content.component";
 import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
+import {LandingPage1Component} from "./pages/landings/landing-page1/landing-page1.component";
+import {LandingPage2Component} from "./pages/landings/landing-page2/landing-page2.component";
+import {LandingPage3Component} from "./pages/landings/landing-page3/landing-page3.component";
+import {LandingsIndexComponent} from "./pages/landings/index.component";
+import {Home5Component} from "./pages/landings/home5/home5.component";
 
 @NgModule({
   declarations: [
@@ -45,6 +50,11 @@ import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
     PostComponent,
     EditorContentComponent,
     AddContentComponent,
+    LandingPage1Component,
+    LandingPage2Component,
+    LandingPage3Component,
+    LandingsIndexComponent,
+    Home5Component
   ],
   exports: [
     IndexComponent,

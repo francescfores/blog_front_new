@@ -84,7 +84,7 @@ export class HomeComponent {
   goToCat(id: number, catname: string) {
     const state = { id };
     console.log(state)
-    const route = ['/blog/posts', catname];
+    const route = ['/blog/categories', catname];
     this.router.navigate(route, { state });
   }
   goToPost(id: number, post: any) {

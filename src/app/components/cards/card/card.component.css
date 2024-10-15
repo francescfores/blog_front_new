@@ -9,8 +9,8 @@
   flex-wrap:wrap;
   /*overflow: hidden;*/
   word-break: break-word;
-  border-radius: var(--rounded-md);
-  background: var(--bg_color);
+/*   border-radius: var(--rounded-md);
+  background: var(--bg_color); */
   /*background: linear-gradient(219deg, var(--bg_gradient_to), var(--bg_gradient_from) );*/
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }

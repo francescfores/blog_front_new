@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SidebarService {
   private sidebarOpen = new BehaviorSubject<boolean>(false);
+  private show = new BehaviorSubject<boolean>(true);
 
   constructor() {
     const savedState = localStorage.getItem('sidebarState');
@@ -21,5 +22,14 @@ export class SidebarService {
 
   getSidebarState() {
     return this.sidebarOpen.asObservable();
+  }
+
+  showSidebar(show:boolean) {
+    console.log(show)
+    this.show.next(show);
+  }
+
+  getShow() {
+    return this.show.asObservable();
   }
 }

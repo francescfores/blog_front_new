@@ -10,6 +10,7 @@ import {ToastrService} from "ngx-toastr";
 import {ThemeService} from "../../../../services/theme/theme.service";
 import {first} from "rxjs/operators";
 import {environment} from '../../../../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -19,6 +20,7 @@ import {environment} from '../../../../../environments/environment';
 export class CategoryComponent {
   posts:any;
   private category_id: any;
+  public category: any;
   private subcategory_id: any;
   create_category = false;
   submitted = false;
@@ -44,65 +46,48 @@ export class CategoryComponent {
     private sharedService: SharedService,
     private toastr: ToastrService,
     public themeService: ThemeService,
-
+    private route: ActivatedRoute
   ) {
   }
 
   ngOnInit() {
+    console.log('epa');
+    this.route.paramMap.subscribe(params => {
+      this.category_id = params.get('id');
+    this.getParams();
+    });
+    this.getParams();
 
-    this.getCategorysPaginated(1);
-
-    this.postCategoryService.getAll()
-      .pipe(first())
-      .subscribe(
-        res => {
-          console.log(res)
-          this.categories = res.data.category;
-        },
-        error => {
-        });
   }
-
+  getParams(){
+    this.category_id = history.state.id;
+    console.log(this.category_id);
+    this.getPostsByCategory(this.category_id);
+  }
   goToPost(id: number, post: any) {
     const state = { id };
     console.log(state)
-    const route = ['/blog/posts/'+post.category.name, post.name];
+    const route = ['/blog/posts/'+this.category.name, post.name];
     this.router.navigate(route, { state });
   }
-  delete(id:number) {
-    this.postService.delete(id)
-      .subscribe({
-        next: (res:any) => {
-          this.toastr.info(res.message);
-          this.submitted = false;
-          this.paginated(this.posts.current_page)
-        },
-        error: (err: any) => { },
-        complete: () => { }
-      });
-  }
-
-  getCategorysPaginated(page:any){
+  
+  getPostsByCategory(id:any){
     console.log('getCategorysPaginated')
-    console.log(page)
+    console.log(id)
 
-    this.postService.paginated(page)
+    this.postCategoryService.get(id)
       .subscribe({
-        next: res => {
+        next: res => { 
           console.log(res)
-          this.posts= res.data;
-          this.posts.current_page =res.data.current_page+'';
-
+          this.category= res.data;
+          this.posts= res.data.posts;
         },
         error: (err: any) => { },
         complete: () => { }
       });
   }
 
-  paginated(pr:any) {
-    this.posts.current_page=this.sharedService.paginated(pr, this.posts);
-    this.getCategorysPaginated(this.posts.current_page)
-  }
+
 }
 
 

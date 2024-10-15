@@ -2,6 +2,10 @@ import {Component, Input, OnInit, HostListener} from "@angular/core";
 import {SidebarService} from"./services/sidebar.service";
 import {MenuItem} from "./models/menu-item";
 import {ThemeService} from "../../../../services/theme/theme.service";
+import {PostCategory} from "../../models/post-category";
+import {CategoryService} from "../../services/api/post-category.service";
+import {first} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: "app-sidebar-blog",
@@ -13,41 +17,72 @@ export class SidebarComponent implements OnInit {
   isDarkEnable=false;
   loginOpen = false;
   @Input() transparent = false;
-
+  show=true;
   
   lastScrollPosition = 0;
+  categories: PostCategory[]=[];
+  audio = new Audio('assets/sounds/mixkit-mouse-click-close-1113.wav');
+  audio2 = new Audio('assets/sounds/mixkit-hard-pop-click-2364.wav');
 
   constructor(
     public sidebarService: SidebarService,
     public themeService: ThemeService,
+    private postCategoryService: CategoryService,
+    private router: Router,
 
   ) {
     this.sidebarOpen= false;
   }
-
+  show_nav!:boolean;
+  
   ngOnInit() {
     this.transparent=true;
+    this.sidebarService.getShow().subscribe(show_nav => {
+      this.show_nav = show_nav;
+    });
     this.sidebarService.getSidebarState().subscribe(sidebarOpen => {
       this.sidebarOpen = sidebarOpen;
     });
     this.themeService.getCurrentTheme().subscribe(theme => {
       this.isDarkEnable = theme === 'theme-dark';
     });
-    if(this.transparent && !this.sidebarOpen){
+    /* if(this.transparent ){
       $('#navbar').addClass('bg-transparent');
-      $('#navbar').removeClass('bg-bgPrim');
       window.addEventListener('scroll', this.scroll, true)
     }else {
       $('#navbar').removeClass('bg-transparent');
       $('#navbar').addClass('bg-bgPrim');
-    }
+    } */
+    window.addEventListener('scroll', this.scroll, true)
+
+    this.postCategoryService.getAll()
+    .pipe(first())
+    .subscribe(
+      res => {
+        console.log(res)
+        this.categories = res.data.category;
+      },
+      error => {
+      });
   }
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
+      $('#navbar').removeClass('bg-transparent');
+        $('#navbar').removeClass('bg-bgSeco/90');
+        $('#navbar').addClass('bg-bgSeco'); 
+        $('#navbar').addClass('z-50'); 
   }
-  
+
+  show_cat=false;
+  showCategories(){
+    this.audio2.load();
+    this.audio2.play();
+    this.show_cat=!this.show_cat;
+  }
   changeTheme() {
+    this.audio.load();
+    this.audio.play();
     this.isDarkEnable = !this.isDarkEnable;
     this.themeService.changeTheme(this.isDarkEnable);
     this.animationSunMoon();
@@ -100,8 +135,11 @@ export class SidebarComponent implements OnInit {
         $('#navbar').removeClass('z-30');
         $('#navbar').addClass('z-50');
       } */
-  
-      this.detectScrollDirection()
+      if(!this.sidebarOpen){
+        this.detectScrollDirection()
+      }else{
+        
+      }
   }
 
   scroll = (): void => {
@@ -109,8 +147,6 @@ export class SidebarComponent implements OnInit {
   }
   detectScrollDirection() {
     var currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-    console.log(currentScrollPosition > this.lastScrollPosition)
-    console.log(currentScrollPosition < this.lastScrollPosition)
 
     /* if(window.scrollY <= 480){
       $('#navbar').addClass('bg-transparent');
@@ -123,12 +159,12 @@ export class SidebarComponent implements OnInit {
 
       $('#navbar').removeClass('z-30');
       $('#navbar').addClass('z-50');
-    }  */
+    }   */
 
     var scrollDistance = document.documentElement.scrollTop;
     /* if(!this.sidebarOpen){ */
 
-    if(scrollDistance < 0){
+    if(scrollDistance <= 480){
        $('#navbar').addClass('bg-transparent');
        $('#navbar').removeClass('bg-bgSeco/90');
 
@@ -136,14 +172,14 @@ export class SidebarComponent implements OnInit {
         $('#navbar').addClass('z-30');
         $('#navbar').removeClass('z-50');
     }
-      if (currentScrollPosition > this.lastScrollPosition && scrollDistance > 0) {
+      if (currentScrollPosition > this.lastScrollPosition && scrollDistance > 480) {
         // Scroll hacia abajo
         $('#navbar').addClass('-translate-y-16');
           $('#navbar').addClass('z-30');
          $('#navbar').removeClass('z-50');
       } 
       
-      if (currentScrollPosition < this.lastScrollPosition && scrollDistance > 0) {
+      if (currentScrollPosition < this.lastScrollPosition && scrollDistance > 480) {
         // Scroll hacia arriba
         $('#navbar').removeClass('-translate-y-16');
         $('#navbar').removeClass('z-30');
@@ -155,4 +191,16 @@ export class SidebarComponent implements OnInit {
      this.lastScrollPosition = currentScrollPosition;
    }
 
+   goToCat(id: number, catname: string) {
+    const state = { id };
+    console.log(state)
+    const route = ['/blog/categories', catname];
+    this.router.navigate(route, { state });
+  }
+
+  goToLandings() {
+    const route = ['/blog/bonus/landings'];
+    this.router.navigate(route);
+
+  }
 }
