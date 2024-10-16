@@ -59,6 +59,14 @@ export class CategoryComponent {
     this.getParams();
 
   }
+
+  goToCat(id: number, catname: string) {
+    const state = { id };
+    console.log(state)
+    const route = ['/blog/categories', catname];
+    this.router.navigate(route, { state });
+  }
+  
   getParams(){
     this.category_id = history.state.id;
     console.log(this.category_id);

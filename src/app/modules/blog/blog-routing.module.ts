@@ -26,6 +26,9 @@ import {LandingPage2Component} from "./pages/landings/landing-page2/landing-page
 import {LandingPage3Component} from "./pages/landings/landing-page3/landing-page3.component";
 import {Home5Component} from "./pages/landings/home5/home5.component";
 import {LandingsIndexComponent} from "./pages/landings/index.component";
+import {ShowCategoriesComponent} from "./pages/admin-categories/show-categories/show-categories.component";
+import {UpdateCategoriesComponent} from "./pages/admin-categories/update-categories/update-categories.component";
+import {CreateCategoriesComponent} from "./pages/admin-categories/create-categories/create-categories.component";
 
 // import {InputsComponent} from "../admin-layout/pages/components/inputs/inputs.component";
 
@@ -36,7 +39,7 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
     // canActivateChild: [AuthGuard],
     data: {
-      breadcrumb: 'blog'
+      breadcrumb: 'blog-admin'
     },
     children: [
       { path: "posts", component: ShowPostComponent,
@@ -64,8 +67,24 @@ const routes: Routes = [
           breadcrumb: 'editor'
         },
       },
+
+      { path: "categories", component: ShowCategoriesComponent,
+        data: {
+          breadcrumb: 'posts'
+        },
+      },
+      { path: "categories/create", component: CreateCategoriesComponent,
+        data: {
+          breadcrumb: 'create'
+        },
+      },
+      { path: 'categories/update/:name', component: UpdateCategoriesComponent, pathMatch: 'prefix',
+        data: {
+          breadcrumb: 'update'
+        },
+      },
     ]
-  },
+  }, 
   {
     path: 'blog',
     component: IndexComponent,

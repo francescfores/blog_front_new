@@ -17,7 +17,6 @@ export class SidebarComponent implements OnInit {
   isDarkEnable=false;
   loginOpen = false;
   @Input() transparent = false;
-  show=true;
   
   lastScrollPosition = 0;
   categories: PostCategory[]=[];

@@ -24,7 +24,7 @@ const routes: Routes = [
     // canActivate: [AuthGuard],
     // canActivateChild: [AuthGuard],
     children: [
-      { path: "dashboard", component: DashboardComponent,
+      { path: "", component: DashboardComponent,
         data: { breadcrumb: 'dashboard' },
       },
       // { path: "landings", component: LandingPagesComponent,

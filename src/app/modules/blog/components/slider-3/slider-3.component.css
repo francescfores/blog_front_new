@@ -43,7 +43,6 @@ input{
 /* -------------------------------------------------------- slider */
 .slider{
   height: 520px;
-  margin-bottom: 40px;
   overflow: hidden;
 }
 /* -------------------------------------------------------- slide */
@@ -108,12 +107,10 @@ input{
   /*align-items: center;*/
   z-index: 40;
   /*font-size: 0;  */
-  height: 40px;
-  @apply absolute top-[520px] bg-bgSeco;
+  @apply absolute bg-bgSeco;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 40px;
 }
 
 /* claw start */
@@ -447,7 +444,7 @@ input{
 
 /*claw end*/
 .slider_waves {
-  @apply absolute text-center top-[448px] min-w-[600px] z-30;
+  @apply absolute text-center bottom-0 z-50;
   /*position: relative;*/
   /*text-align: center;*/
   /*margin-top: -104px;*/

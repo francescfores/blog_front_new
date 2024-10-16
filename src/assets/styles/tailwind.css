@@ -17902,6 +17902,10 @@ html {
   opacity: 0.75;
 }
 
+.hover\:opacity-80:hover {
+  opacity: 0.8;
+}
+
 .hover\:opacity-90:hover {
   opacity: 0.9;
 }
@@ -38365,6 +38369,10 @@ html {
 
   .md\:items-start {
     align-items: flex-start;
+  }
+
+  .md\:items-center {
+    align-items: center;
   }
 
   .md\:justify-start {
