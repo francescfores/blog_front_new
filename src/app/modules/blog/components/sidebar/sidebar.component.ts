@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   isDarkEnable=false;
   loginOpen = false;
   @Input() transparent = false;
-  
+
   lastScrollPosition = 0;
   categories: PostCategory[]=[];
   audio = new Audio('assets/sounds/mixkit-mouse-click-close-1113.wav');
@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit {
     this.sidebarOpen= false;
   }
   show_nav!:boolean;
-  
+
   ngOnInit() {
     this.transparent=true;
     this.sidebarService.getShow().subscribe(show_nav => {
@@ -69,8 +69,8 @@ export class SidebarComponent implements OnInit {
     this.sidebarService.toggleSidebar();
       $('#navbar').removeClass('bg-transparent');
         $('#navbar').removeClass('bg-bgSeco/90');
-        $('#navbar').addClass('bg-bgSeco'); 
-        $('#navbar').addClass('z-50'); 
+        $('#navbar').addClass('bg-bgSeco');
+        $('#navbar').addClass('z-50');
   }
 
   show_cat=false;
@@ -126,7 +126,7 @@ export class SidebarComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: Event): void {
       // Código para manejar el scroll
-     
+
     /*   if(window.scrollY >= 400 && window.scrollY <= 500 ){
         $('#navbar').addClass('z-30');
         $('#navbar').removeClass('z-50');
@@ -137,12 +137,12 @@ export class SidebarComponent implements OnInit {
       if(!this.sidebarOpen){
         this.detectScrollDirection()
       }else{
-        
+
       }
   }
 
   scroll = (): void => {
-    
+
   }
   detectScrollDirection() {
     var currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
@@ -151,7 +151,7 @@ export class SidebarComponent implements OnInit {
       $('#navbar').addClass('bg-transparent');
       $('#navbar').removeClass('bg-bgPrim');
       $('#navbar').addClass('z-30');
-      $('#navbar').removeClass('z-50');     
+      $('#navbar').removeClass('z-50');
     }else {
       $('#navbar').removeClass('bg-transparent');
       $('#navbar').addClass('bg-bgPrim');
@@ -163,29 +163,29 @@ export class SidebarComponent implements OnInit {
     var scrollDistance = document.documentElement.scrollTop;
     /* if(!this.sidebarOpen){ */
 
-    if(scrollDistance <= 480){
-       $('#navbar').addClass('bg-transparent');
-       $('#navbar').removeClass('bg-bgSeco/90');
+    if(scrollDistance <= 0){
+      // $('#navbar').addClass('bg-transparent');
+      // $('#navbar').removeClass('bg-bgSeco/90');
 
       $('#navbar').removeClass('-translate-y-[60px]');
         $('#navbar').addClass('z-30');
         $('#navbar').removeClass('z-50');
     }
-      if (currentScrollPosition > this.lastScrollPosition && scrollDistance > 480) {
+      if (currentScrollPosition > this.lastScrollPosition && scrollDistance > 0) {
         // Scroll hacia abajo
         $('#navbar').addClass('-translate-y-16');
           $('#navbar').addClass('z-30');
          $('#navbar').removeClass('z-50');
-      } 
-      
-      if (currentScrollPosition < this.lastScrollPosition && scrollDistance > 480) {
+      }
+
+      if (currentScrollPosition < this.lastScrollPosition && scrollDistance > 0) {
         // Scroll hacia arriba
         $('#navbar').removeClass('-translate-y-16');
         $('#navbar').removeClass('z-30');
         $('#navbar').addClass('z-50');
 
-         $('#navbar').removeClass('bg-transparent');
-        $('#navbar').addClass('bg-bgSeco/90');
+       //  $('#navbar').removeClass('bg-transparent');
+       // $('#navbar').addClass('bg-bgSeco/90');
       }
      this.lastScrollPosition = currentScrollPosition;
    }

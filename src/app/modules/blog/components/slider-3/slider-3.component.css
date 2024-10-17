@@ -42,19 +42,18 @@ input{
 /* -------------------------------------------------------- codepen */
 /* -------------------------------------------------------- slider */
 .slider{
-  height: 520px;
   overflow: hidden;
 }
 /* -------------------------------------------------------- slide */
 .slider > ul {
-  height: 520px;
   z-index: 12;
+  height: 650px;
 }
 
 .slider > ul > li{
-  height: 520px;
+  height: 650px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   opacity: 0;
   z-index: 1;
   -webkit-transition: all 2000ms ease;
@@ -103,14 +102,14 @@ input{
   /*text-align: center;*/
   /*position: relative;*/
   /*display: flex;*/
-  /*justify-content: center;*/
+  justify-content: center;
   /*align-items: center;*/
   z-index: 40;
   /*font-size: 0;  */
   @apply absolute bg-bgSeco;
   width: 100%;
   display: flex;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 /* claw start */

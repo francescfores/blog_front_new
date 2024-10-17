@@ -9,7 +9,7 @@ import {ViewportRuler} from "@angular/cdk/overlay";
   template: `
     <div *ngIf="showEditor" class="w-full top">
       <div class="flex w-full items-center bg-bgPrim content text-textPrimary">
-        <p (click)="showTree=!showTree ">sas</p>
+        <p (click)="showTree=!showTree ">Three</p>
         <i (click)="showTree=!showTree "  class="ml-auto fa fa-book p-2" aria-hidden="true"></i>
       </div>
       <div class="p-1 text-xs" *ngIf="showTree">
