@@ -18,7 +18,7 @@ import {PostContent} from "../../../models/post-content";
   styleUrls: ['./post.component.css']
 })
 export class PostComponent {
-  loading=false;
+  loading=true;
 
   private id: any;
   public post!: Post;
@@ -64,5 +64,5 @@ export class PostComponent {
     this.getParams();
   }
 
- 
+
 }

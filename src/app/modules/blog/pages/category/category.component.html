@@ -3,7 +3,24 @@
 </section>
 <main class="relative bg-bgSeco  z-40">
   <div class="max-w-[70rem] mx-auto px-4 md:px-10 py-10   ">
-      <section class="flex flex-col gap-10 col-span-4 flex-wrap">
+    <div *ngIf="!loading" class ="h-[50vh] flex justify-center items-center ">
+      <svg class="fill-primary animate-spin" style=" width: 200px;
+  height: 200px;" version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+            <path  d="M73,50c0-12.7-10.3-23-23-23S27,37.3,27,50 M30.9,50c0-10.5,8.5-19.1,19.1-19.1S69.1,39.5,69.1,50">
+              <animateTransform
+                attributeName="transform"
+                attributeType="XML"
+                type="rotate"
+                dur="1s"
+                from="0 50 50"
+                to="360 50 50"
+                repeatCount="indefinite" />
+          </path>
+        </svg>
+    </div>
+
+    <section *ngIf="loading" class="flex flex-col gap-10 col-span-4 flex-wrap">
         <p class="px-5  text-4xl font-extrabold  text-textPrimary">{{category.name}}</p>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <ng-container *ngFor="let post of posts" class="" >
@@ -11,7 +28,7 @@
                 <h6 class="text_font_marvel text-2xl font-extrabold  text-textPrimary">
                   {{post.name}}
                 </h6>
-                <h4 class="text-lg font-medium leading-snug tracking-normal 
+                <h4 class="text-lg font-medium leading-snug tracking-normal
                 antialiased text-textTertiary">
                   {{post.subname}}
                 </h4>
@@ -22,7 +39,7 @@
                 </div>
                 <div class="flex flex-wrap gap-2 justify-between pt-0 items-center">
                   <button (click)="goToPost(post.id, post)">
-                    <div class="text-sm font-semibold text-primary flex gap-3 
+                    <div class="text-sm font-semibold text-primary flex gap-3
                     justify-between items-center">
                       <p>Read More </p>
                       <i class="fas fa-light fa-arrow-right  text-xs"></i>
@@ -38,18 +55,17 @@
                                 [width]="'130px'" [height]="'30px'" [type]="'btn_priamry'"  [raise]="5">
 
                   </app-button3d> -->
-                  <p class="text-sm font-medium leading-snug tracking-normal 
+                  <p class="text-sm font-medium leading-snug tracking-normal
                   antialiased text-textTertiary">
                     {{post.created_at| date:'dd/MM/yyyy' }}
                   </p>
                 </div>
               </div>
           </ng-container>
-           
+
         </div>
-        
+
       </section>
-      
-    
+
   </div>
 </main>

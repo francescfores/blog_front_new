@@ -66,7 +66,7 @@ export class CategoryComponent {
     const route = ['/blog/categories', catname];
     this.router.navigate(route, { state });
   }
-  
+
   getParams(){
     this.category_id = history.state.id;
     console.log(this.category_id);
@@ -78,17 +78,18 @@ export class CategoryComponent {
     const route = ['/blog/posts/'+this.category.name, post.name];
     this.router.navigate(route, { state });
   }
-  
+
   getPostsByCategory(id:any){
     console.log('getCategorysPaginated')
     console.log(id)
 
     this.postCategoryService.get(id)
       .subscribe({
-        next: res => { 
+        next: res => {
           console.log(res)
           this.category= res.data;
           this.posts= res.data.posts;
+          this.loading=true;
         },
         error: (err: any) => { },
         complete: () => { }
