@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MenuItem} from "../models/menu-item";
 import {SidebarService} from "../../../services/sidebar.service";
-import {MenuService} from "../../../../../services/menu.service";
+import {MenuService} from "../menu.service";
 
 @Component({
   selector: 'app-menu',

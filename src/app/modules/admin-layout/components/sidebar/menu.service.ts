@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../../../environments/environment';
 import {first, map} from 'rxjs/operators';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable, pipe} from 'rxjs';
-import {MenuItem} from "../modules/admin-layout/components/sidebar/models/menu-item";
+import {MenuItem} from "./models/menu-item";
 
 @Injectable({
   providedIn: 'root'
@@ -52,14 +52,14 @@ export class MenuService {
   }
   public menuItemsAdmin() {
     return [
-      new MenuItem('Dashboard', 'fas fa-light fa-chart-pie','/admin/dashboard','Admin', 'pt-1',false, null),
-      new MenuItem('Blog', 'fas fa-light fa-chart-pie','','','',false,[
+      new MenuItem('Dashboard', 'fas fa-light fa-chart-pie','/admin/dashboard','Admin', 'pt-4',false, null),
+      new MenuItem('Blog', 'fas fa-light fa-book','','','',false,[
         new MenuItem('Posts', null,'/admin/blog-admin/posts','Base','pt-0',false,null),
         new MenuItem('Create post', null,'/admin/blog-admin/create','Base','pt-0',false,null),
         new MenuItem('Components', null,'/admin/blog-admin/editor-components','Base','pt-0',false,null),
         // new MenuItem('Update post', null,'/admin/blog/update','Base','pt-0',false,null),
       ]),
-      new MenuItem('Editor', 'fas fa-light fa-gear','/admin/editor','', 'pt-1',false, null),
+     // new MenuItem('Editor', 'fas fa-light fa-gear','/admin/editor','', 'pt-1',false, null),
       new MenuItem('Settings', 'fas fa-light fa-gear','/admin/settings','', 'pt-1',false, null),
       new MenuItem('Users', 'fas fa-light fa-users','/admin/users','', 'pt-1',false, null),
       new MenuItem('Components', 'fas fa-light fa-code','/admin/components/','widgets','pt-1',null,[
