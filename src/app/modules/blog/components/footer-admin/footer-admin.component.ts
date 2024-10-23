@@ -16,7 +16,7 @@ export class FooterAdminComponent implements OnInit {
     private postCategoryService: CategoryService,
     private router: Router,
     ) {}
-  
+
     show_footer!:boolean;
     categories!: PostCategory[];
 

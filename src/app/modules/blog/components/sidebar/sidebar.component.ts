@@ -1,6 +1,5 @@
 import {Component, Input, OnInit, HostListener} from "@angular/core";
 import {SidebarService} from"./services/sidebar.service";
-import {MenuItem} from "./models/menu-item";
 import {ThemeService} from "../../../../services/theme/theme.service";
 import {PostCategory} from "../../models/post-category";
 import {CategoryService} from "../../services/api/post-category.service";

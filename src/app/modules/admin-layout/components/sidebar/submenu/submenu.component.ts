@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
-import {MenuItem} from "../../../models/menu-item";
+import {MenuItem} from "../models/menu-item";
 import {SidebarService} from "../../../services/sidebar.service";
 
 @Component({

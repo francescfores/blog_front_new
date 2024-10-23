@@ -3,7 +3,7 @@ import {environment} from '../../environments/environment';
 import {first, map} from 'rxjs/operators';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, Observable, pipe} from 'rxjs';
-import {MenuItem} from "../modules/blog/components/sidebar/models/menu-item";
+import {MenuItem} from "../modules/admin-layout/components/sidebar/models/menu-item";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ import {MenuItem} from "../modules/blog/components/sidebar/models/menu-item";
 
 export class MenuService {
   public menuItems() {
-    return [ 
+    return [
       new MenuItem('Dashboard', 'fas fa-light fa-chart-pie','/admin/dashboard','Admin Layouts','pt-2 border-t border-dashed border-bgTern',false,[
         new MenuItem('Dashboard', null,'/admin/dashboard','Base','pt-0',false,null),
         new MenuItem('Analytics', null,'/admin/charts','Base','pt-0',false,null),

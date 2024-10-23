@@ -1,6 +1,6 @@
 <nav id="navbar" *ngIf="show_nav"
 
-     class="bg-bgSeco/90 text-textPrimary transition-all duration-500 ease-in-out top-0 fixed z-30 w-full justify-center items-center">
+     class="bg-bgSeco/90 text-textPrimary transition-all duration-500 ease-in-out top-0 fixed z-50 w-full justify-center items-center">
 
      <div class="flex flex-col">
     <div class="px-10 flex-grow  flex h-16">
@@ -120,21 +120,30 @@
 
 <div
   [ngClass]="{ 'w-64 px-5': sidebarOpen, 'w-0': !sidebarOpen  }"
-  class=" md:hidden flex-grow-0 flex-shrink-0 left-0  bg-bgPrim
+  class=" md:hidden flex-grow-0 flex-shrink-0 left-0  bg-bgPrim text-textPrimary
        px-0 z-50 mt-16
         duration-500 transition-all
        h-full gap-12  fixed overflow-y-auto scrollbar-corner-bgPrim overflow-hidden sm:overflow-x-hidden pb-2
       ">
-  <div class="flex  items-center">
-    <div class="flex  px-8 justify-center items-center flex-grow-0 flex-shrink-0 ">
-      <div>
-
-        <!--        <img *ngIf="!isDarkEnable" class="w-6" src="./assets/img/logo/thunder_logo_dark.png" >-->
-        <!--        <img *ngIf="isDarkEnable" class="w-6" src="./assets/img/logo/thunder_logo.png" >-->
+  <div class="relative text-xl flex flex-col font-bold flex flex-grow
+         justify-center items-center gap-8 text-left pt-4">
+    <!--           <a [routerLink]="['/blog']"><p>Latest</p></a> -->
+    <div class="group mr-auto" (click)="showCategories()">
+      <p class="" >Categories</p>
+      <div
+           class=" pl-0 text-textPrimary transition-all duration-500 ease-in-out "
+           [ngClass]="show_cat ? 'max-h-screen opacity-100 pt-1' : 'max-h-0 overflow-hidden opacity-0 pt-0'">
+            <div
+             >
+              <div (click)="goToCat(category.id, category.name)" *ngFor="let category of categories"
+                   class="text-lg py-2 px-2 font-normal block w-full rounded hover:opacity-70" >
+                <button href=""> {{category.name}}</button>
+              </div>
+            </div>
       </div>
-      <!--      <div class="text-xl text-textSecondary tracking-wide ml-2 font-semibold">Thunder2</div>-->
     </div>
+    <a class="mr-auto"  [routerLink]="['/blog/extra/landings']"><p>Extra</p></a>
+    <a  class="mr-auto"  [routerLink]="['/blog/contact']"><p>About</p></a>
   </div>
-  <app-menu-blog ></app-menu-blog>
 
 </div>
