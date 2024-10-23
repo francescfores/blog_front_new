@@ -9,7 +9,6 @@ import {ButtonsComponent} from "./pages/components/buttons/buttons.component";
 import {CardsComponent} from "./pages/components/cards/cards.component";
 import {InputsComponent} from "./pages/components/inputs/inputs.component";
 import {Buttons3dComponent} from "./pages/components/buttons3d/buttons3d.component";
-import {TutorialComponent} from "./pages/tutorial/tutorial.component";
 import {EditorComponent} from "./pages/editor/editor.component";
 import {AuthGuard} from "../../services/guards/auth.guard";
 import {NonAuthGuard} from "../../services/guards/non-auth.guard";
@@ -20,15 +19,15 @@ import {NonAuthGuard} from "../../services/guards/non-auth.guard";
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent, 
+    component: IndexComponent,
     // canActivate: [AuthGuard],
     // canActivateChild: [AuthGuard],
     children: [
-      { path: "", component: DashboardComponent,
+      { path: "dashboard", component: DashboardComponent,
         data: { breadcrumb: 'dashboard' },
       },
       // { path: "landings", component: LandingPagesComponent,
-      //   children: [ 
+      //   children: [
       //     {path: "landing1", component: LandingPagesComponent},
       //     {path: "landing1", component: LandingPage1Component},
       //     {path: "landing2", component: LandingPage2Component},
@@ -36,7 +35,6 @@ const routes: Routes = [
       // },
       { path: "users", component: UsersComponent },
       { path: "settings", component: SettingsComponent },
-      { path: "tutorials", component: TutorialComponent },
       { path: "editor", component: EditorComponent },
       { path: "components", component: ComponentsComponent,
       children:[

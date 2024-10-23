@@ -19,7 +19,6 @@ import { InputsComponent } from './pages/components/inputs/inputs.component';
 import { Btn3dComponent } from './components/btn3d/btn3d.component';
 import { Buttons3dComponent } from './pages/components/buttons3d/buttons3d.component';
 import {CodemirrorModule} from "@ctrl/ngx-codemirror";
-import { TutorialComponent } from './pages/tutorial/tutorial.component';
 import { EditorComponent } from './pages/editor/editor.component';
 import {BlogModule} from "../blog/blog.module";
 import {CodeEditorModule} from "@ngstack/code-editor";
@@ -46,7 +45,6 @@ import {CodeEditorModule} from "@ngstack/code-editor";
     InputsComponent,
     Btn3dComponent,
     Buttons3dComponent,
-    TutorialComponent,
     EditorComponent,
   ],
     imports: [

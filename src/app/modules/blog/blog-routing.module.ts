@@ -4,7 +4,6 @@ import {IndexComponent} from './index/index.component';
 import {BlogModule} from './blog.module';
 import {UsersComponent} from "../admin-layout/pages/users/users.component";
 import {SettingsComponent} from "../admin-layout/pages/settings/settings.component";
-import {TutorialComponent} from "../admin-layout/pages/tutorial/tutorial.component";
 import {CreatePostComponent} from "./components/posts/create-post/create-post.component";
 import {UpdatePostComponent} from "./components/posts/update-post/update-post.component";
 import {AuthGuard} from "../../services/guards/auth.guard";

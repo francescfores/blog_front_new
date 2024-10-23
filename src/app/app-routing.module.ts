@@ -18,7 +18,7 @@ const routes: Routes = [
     canActivateChild: [NonAuthGuard],
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
-  }, 
+  },
 /*   {
     canActivate: [NonAuthGuard],
     canActivateChild: [NonAuthGuard],
@@ -31,7 +31,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./modules/blog/blog.module').then(m => m.BlogModule)
   },
-  
+
   // {
   //   canActivate: [NonAuthGuard],
   //   canActivateChild: [NonAuthGuard],
@@ -39,11 +39,13 @@ const routes: Routes = [
   //   loadChildren: () => import('./modules/blog2/blog.module').then(m => m.BlogModule2)
   // },
   // admin views
-  
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }) // Aquí habilitas la restauración del scroll
+  ],
   exports: [RouterModule],
 
 })
