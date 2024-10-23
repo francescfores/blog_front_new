@@ -11,15 +11,12 @@ import {ComponentsModule} from "../../components/components.module";
 import { CreateContentComponent } from './components/posts/contents/create-content/create-content.component';
 import { ShowContentComponent } from './components/posts/contents/show-content/show-content.component';
 import { UpdateContentComponent } from './components/posts/contents/update-content/update-content.component';
-import { LatestComponent } from './pages/latest/latest.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { BonusComponent } from './pages/bonus/bonus.component';
-import { PostsComponent } from './pages/posts/posts.component';
 import { HomeComponent } from './pages/home/home.component';
 import {ComponentsModuleBlog} from "./components/components.module";
 import {IndexAdminComponent} from "./index-admin/index-admin.component";
 import { CategoryComponent } from './pages/category/category.component';
-import { PostComponent } from './pages/posts/post/post.component';
+import { PostComponent } from './pages/post/post.component';
 import {EditorPostComponent} from "./components/posts/editor-post/editor-post.component";
 import {EditorContentComponent} from "./components/posts/contents/editor-content/editor-content.component";
 import {AddContentComponent} from "./components/posts/contents/add-content/add-content.component";
@@ -41,10 +38,7 @@ import {Home5Component} from "./pages/landings/home5/home5.component";
     CreateContentComponent,
     ShowContentComponent,
     UpdateContentComponent,
-    LatestComponent,
     ContactComponent,
-    BonusComponent,
-    PostsComponent,
     HomeComponent,
     CategoryComponent,
     PostComponent,

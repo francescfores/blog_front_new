@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {Post} from "../../../models/post";
-import {PostCategory} from "../../../models/post-category";
+import {Post} from "../../models/post";
+import {PostCategory} from "../../models/post-category";
 import {Router} from "@angular/router";
-import {PostService} from "../../../services/api/post.service";
-import {CategoryService} from "../../../services/api/post-category.service";
-import {SharedService} from "../../../../../services/shared.service";
+import {PostService} from "../../services/api/post.service";
+import {CategoryService} from "../../services/api/post-category.service";
+import {SharedService} from "../../../../services/shared.service";
 import {ToastrService} from "ngx-toastr";
-import {ThemeService} from "../../../../../services/theme/theme.service";
+import {ThemeService} from "../../../../services/theme/theme.service";
 import {first} from "rxjs/operators";
-import {environment} from '../../../../../../environments/environment';
-import {PostContent} from "../../../models/post-content";
+import {environment} from '../../../../../environments/environment';
+import {PostContent} from "../../models/post-content";
 
 @Component({
   selector: 'app-post',
