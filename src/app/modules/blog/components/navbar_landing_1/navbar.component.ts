@@ -43,7 +43,7 @@ export class NavbarLanding1Component implements OnInit {
   changeTheme() {
     this.isDarkEnable = !this.isDarkEnable;
   }
- 
+
   scroll = (): void => {
     if(window.scrollY <= 50){
       $('#navbar').addClass('bg-transparent');
@@ -63,4 +63,3 @@ export class NavbarLanding1Component implements OnInit {
     // this.authenticationService.logout();
   }
 }
-

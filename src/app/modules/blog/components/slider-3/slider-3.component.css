@@ -91,12 +91,7 @@ input{
   /*background: linear-gradient(207deg, rgba(195,34,67,0.5) 21%, rgba(255,255,255,0.08) 66%),*/
   /*url(https://rare-gallery.com/uploads/posts/576321-marvel-wallpaper.jpg) top/cover;*/
 }
-/* -------------------------------------------------------- arrow */
 
-/* -------------------------------------------------------- dot */
-.text_font_marvel{
-  /*font-family: 'Da Mad Rave', sans-serif;*/
-}
 .slider > div > .slider-dot {
   /*margin-top: -4vw;*/
   /*text-align: center;*/
@@ -111,6 +106,25 @@ input{
   display: flex;
   margin-bottom: 20px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* claw start */
 .claw_main {
@@ -470,83 +484,7 @@ input{
 .slider > div  > .slider-dot > label:hover{
   background-color: grey !important;
 }
-/* -------------------------------------------------------- description */
-/*.slider > .slide-description{*/
-/*  position: absolute;*/
-/*  width: 50%;*/
-/*  top: calc(50% - 3vw);*/
-/*  left: 25%;*/
-/*  z-index: 200;*/
-/*}*/
-/*.slider > .slide-description > label{*/
-/*  position: absolute;*/
-/*  width: 100%;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  cursor: default;*/
 
-/*  z-index: 0;*/
-/*  opacity: 0;*/
-/*  visibility: hidden;*/
-/*  -webkit-transition: all 0.75s ease;*/
-/*  -moz-transition: all 0.75s ease;*/
-/*  -ms-transition: all 0.75s ease;*/
-/*  -o-transition: all 0.75s ease;*/
-/*  transition: all 0.75s ease;*/
-/*}*/
-/*.slider > #input-slide-0:checked ~ .slide-description > .slide-0,*/
-/*.slider > #input-slide-1:checked ~ .slide-description > .slide-1,*/
-/*.slider > #input-slide-2:checked ~ .slide-description > .slide-2,*/
-/*.slider > #input-slide-3:checked ~ .slide-description > .slide-3{*/
-/*  z-index: 2;*/
-/*  opacity: 1;*/
-/*  visibility: visible;*/
-/*}*/
-/*.slider > .slide-description > label > .text-slide{*/
-/*  margin: 0 auto;*/
-/*  line-height: 6vw;*/
-/*  text-align: center;*/
-/*}*/
-/*.slider > .slide-description > .slide-0{*/
-/*  font-family: 'Raleway', sans-serif;*/
-/*}*/
-/*.slider > .slide-description > .slide-1{*/
-/*  font-family: 'Poiret One', cursive;*/
-/*}*/
-/*.slider > .slide-description > .slide-2{*/
-/*  font-family: 'Monoton', cursive;*/
-/*}*/
-/*.slider > .slide-description > .slide-3{*/
-/*  font-family: 'Audiowide', cursive;*/
-/*}*/
-/* -------------------------------------------------------- autoplay */
-/*
-	if you don't want to autoplay
-  just check input "slide-0"
-  instead of input "play" in html code
-  and remove the code below
-*/
-/* -------------------------------------------------------- autoplay slide */
-/*@-webkit-keyframes slide{*/
-/*  0%, 100% { opacity: 0; }*/
-/*  6%, 25% { opacity: 1; z-index: 2; }*/
-/*  30%, 50% { opacity: 0; z-index: 2; }*/
-/*}*/
-/*@-moz-keyframes slide{*/
-/*  0%, 100% { opacity: 0; }*/
-/*  6%, 24% { opacity: 1; z-index: 2; }*/
-/*  30%, 50% { opacity: 0; z-index: 2; }*/
-/*}*/
-/*@-ms-keyframes slide{*/
-/*  0%, 100% { opacity: 0; }*/
-/*  6%, 25% { opacity: 1; z-index: 2; }*/
-/*  30%, 50% { opacity: 0; z-index: 2; }*/
-/*}*/
-/*@-o-keyframes slide{*/
-/*  0%, 100% { opacity: 0; }*/
-/*  6%, 25% { opacity: 1; z-index: 2; }*/
-/*  30%, 50% { opacity: 0; z-index: 2; }*/
-/*}*/
 @keyframes slide{
   0%, 100% { opacity: 0; }
   6%, 25% { opacity: 1; z-index: 2; }

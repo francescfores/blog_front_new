@@ -1,80 +1,80 @@
 <style>
 
-.nav {
-  padding: 0;
-  height: 80px;
-  background-color: #541554;
-  border-bottom: none;
-  z-index: 1000;
-  top: 0;
-  /*position: absolute;*/
-  width: 100%;
-  justify-content: center;
-  display:flex;
-}
+  .nav {
+    padding: 0;
+    height: 80px;
+    background-color: #541554;
+    border-bottom: none;
+    z-index: 1000;
+    top: 0;
+    /*position: absolute;*/
+    width: 100%;
+    justify-content: center;
+    display:flex;
+  }
 
-.nav .nav_content{
+  .nav .nav_content{
 
-  height: 100%;
-  /* max-width: 76.875rem; */
-  padding-left: 20px;
-  padding-right: 20px;
-}
-.nav *{
-  color:white;
-  text-decoration: none; /* no underline */
-}
-.nav .nav_content,
-.nav .nav_left,
-.nav .nav_right,
-.nav .nav_list{
-  flex-direction: row;
-  /*   justify-items: center; */
-  align-items: center;
-  flex: 1;
-}
-.nav .nav_logo{
-  margin-right:30px;
-}
-.nav .nav_right{
-  justify-content: flex-end;
-}
+    height: 100%;
+    /* max-width: 76.875rem; */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .nav *{
+    color:white;
+    text-decoration: none; /* no underline */
+  }
+  .nav .nav_content,
+  .nav .nav_left,
+  .nav .nav_right,
+  .nav .nav_list{
+    flex-direction: row;
+    /*   justify-items: center; */
+    align-items: center;
+    flex: 1;
+  }
+  .nav .nav_logo{
+    margin-right:30px;
+  }
+  .nav .nav_right{
+    justify-content: flex-end;
+  }
 
-.nav .nav_left{
-  /*   background:green; */
-}
-.nav .nav_right{
-  gap:20px;
-  /*   background:blue; */
-}
-.nav .nav_logo{
-  /*   background:yellow; */
-}
-.nav .nav_list{
-  gap:20px;
-  text-decoration:none;
-  list-style-type: none;/*   background:orange; */
-  text-decoration: none; /* no underline */
-}
-.nav .nav_list a{
-  gap:20px;
-}
+  .nav .nav_left{
+    /*   background:green; */
+  }
+  .nav .nav_right{
+    gap:20px;
+    /*   background:blue; */
+  }
+  .nav .nav_logo{
+    /*   background:yellow; */
+  }
+  .nav .nav_list{
+    gap:20px;
+    text-decoration:none;
+    list-style-type: none;/*   background:orange; */
+    text-decoration: none; /* no underline */
+  }
+  .nav .nav_list a{
+    gap:20px;
+  }
 
-.button_outlined{
-  border-radius: 4px;
-  padding: .75rem 1rem;
-  color: #fff;
-  background-color: transparent!important;
-}
-.nav .button{
-  border-radius: 4px;
-  padding: .75rem 1rem;
-  color: #611f69;
-  background-color: #fff;
-}
-/*.button {*/
-/*  all: unset;*/
-/*}*/
+  .button_outlined{
+    border-radius: 4px;
+    padding: .75rem 1rem;
+    color: #fff;
+    background-color: transparent!important;
+  }
+  .nav .button{
+    border-radius: 4px;
+    padding: .75rem 1rem;
+    color: #611f69;
+    background-color: #fff;
+  }
+  /*.button {*/
+  /*  all: unset;*/
+  /*}*/
 
 
 
@@ -86,8 +86,8 @@
   <div class="nav_content flex ">
     <div class="nav_left flex ">
       <div class="md:hidden flex py-4 pr-6 flex w-auto justify-center items-center">
-        <button 
-                 class='z-50 px-8 flex-grow-0 flex-shrink-0  items-start flex flex-col rounded justify-start group pr-2 transition-all duration-500' >
+        <button
+          class='z-50 px-8 flex-grow-0 flex-shrink-0  items-start flex flex-col rounded justify-start group pr-2 transition-all duration-500' >
           <!-- <div [ngClass]="{
           'h-0.5 w-4 mb-1 bg-primary transition ease transform duration-300':true,
           'rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100' : sidebarOpen,
@@ -102,7 +102,7 @@
           'opacity-50 group-hover:opacity-100': !sidebarOpen}">
           </div> -->
         </button>
-       
+
       </div>
       <div class="nav_logo ">
         <a href="">

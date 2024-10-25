@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
   isDarkEnable=false;
   loginOpen = false;
   @Input() transparent = false;
-
+  dark!:boolean;
   lastScrollPosition = 0;
   categories: PostCategory[]=[];
   audio = new Audio('assets/sounds/mixkit-mouse-click-close-1113.wav');
@@ -44,32 +44,30 @@ export class SidebarComponent implements OnInit {
     this.themeService.getCurrentTheme().subscribe(theme => {
       this.isDarkEnable = theme === 'theme-dark';
     });
-    /* if(this.transparent ){
-      $('#navbar').addClass('bg-transparent');
-      window.addEventListener('scroll', this.scroll, true)
-    }else {
-      $('#navbar').removeClass('bg-transparent');
-      $('#navbar').addClass('bg-bgPrim');
-    } */
-    window.addEventListener('scroll', this.scroll, true)
+    this.dark=this.isDarkEnable
 
     this.postCategoryService.getAll()
-    .pipe(first())
-    .subscribe(
-      res => {
-        console.log(res)
-        this.categories = res.data.category;
-      },
-      error => {
-      });
+      .pipe(first())
+      .subscribe(
+        res => {
+          console.log(res)
+          this.categories = res.data.category;
+        },
+        error => {
+        });
+    console.log(this.isDarkEnable)
   }
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
-      $('#navbar').removeClass('bg-transparent');
-        $('#navbar').removeClass('bg-bgSeco/90');
-        $('#navbar').addClass('bg-bgSeco');
-        $('#navbar').addClass('z-50');
+    if(this.sidebarOpen){
+      $('#navbar').removeClass('bg-bgSeco/90');
+      $('#navbar').addClass('bg-bgSeco');
+    }else{
+      $('#navbar').addClass('bg-bgSeco/90');
+      $('#navbar').removeClass('bg-bgSeco');
+    }
+
   }
 
   show_cat=false;
@@ -82,8 +80,8 @@ export class SidebarComponent implements OnInit {
     this.audio.load();
     this.audio.play();
     this.isDarkEnable = !this.isDarkEnable;
-    this.themeService.changeTheme(this.isDarkEnable);
     this.animationSunMoon();
+    this.themeService.changeTheme(this.isDarkEnable);
   }
   animationSunMoon(){
     if(!this.isDarkEnable){
@@ -124,20 +122,9 @@ export class SidebarComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: Event): void {
-      // Código para manejar el scroll
-
-    /*   if(window.scrollY >= 400 && window.scrollY <= 500 ){
-        $('#navbar').addClass('z-30');
-        $('#navbar').removeClass('z-50');
-      }else{
-        $('#navbar').removeClass('z-30');
-        $('#navbar').addClass('z-50');
-      } */
-      if(!this.sidebarOpen){
-        this.detectScrollDirection()
-      }else{
-
-      }
+    if(!this.sidebarOpen){
+      this.detectScrollDirection()
+    }
   }
 
   scroll = (): void => {
@@ -145,51 +132,19 @@ export class SidebarComponent implements OnInit {
   }
   detectScrollDirection() {
     var currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-    /* if(window.scrollY <= 480){
-      $('#navbar').addClass('bg-transparent');
-      $('#navbar').removeClass('bg-bgPrim');
-      $('#navbar').addClass('z-30');
-      $('#navbar').removeClass('z-50');
-    }else {
-      $('#navbar').removeClass('bg-transparent');
-      $('#navbar').addClass('bg-bgPrim');
-
-      $('#navbar').removeClass('z-30');
-      $('#navbar').addClass('z-50');
-    }   */
-
     var scrollDistance = document.documentElement.scrollTop;
-    /* if(!this.sidebarOpen){ */
 
-    if(scrollDistance <= 0){
-      // $('#navbar').addClass('bg-transparent');
-      // $('#navbar').removeClass('bg-bgSeco/90');
-
-      $('#navbar').removeClass('-translate-y-[60px]');
-        $('#navbar').addClass('z-30');
-        $('#navbar').removeClass('z-50');
+    if (currentScrollPosition > this.lastScrollPosition && scrollDistance > 0) {
+      $('#navbar').addClass('-translate-y-16');
     }
-      if (currentScrollPosition > this.lastScrollPosition && scrollDistance > 0) {
-        // Scroll hacia abajo
-        $('#navbar').addClass('-translate-y-16');
-          $('#navbar').addClass('z-30');
-         $('#navbar').removeClass('z-50');
-      }
+    if (currentScrollPosition < this.lastScrollPosition && scrollDistance > 0) {
+      // Scroll hacia arriba
+      $('#navbar').removeClass('-translate-y-16');
+    }
+    this.lastScrollPosition = currentScrollPosition;
+  }
 
-      if (currentScrollPosition < this.lastScrollPosition && scrollDistance > 0) {
-        // Scroll hacia arriba
-        $('#navbar').removeClass('-translate-y-16');
-        $('#navbar').removeClass('z-30');
-        $('#navbar').addClass('z-50');
-
-       //  $('#navbar').removeClass('bg-transparent');
-       // $('#navbar').addClass('bg-bgSeco/90');
-      }
-     this.lastScrollPosition = currentScrollPosition;
-   }
-
-   goToCat(id: number, catname: string) {
+  goToCat(id: number, catname: string) {
     const state = { id };
     console.log(state)
     const route = ['/blog/categories', catname];

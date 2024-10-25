@@ -72,4 +72,3 @@ export class NavbarLanding2Component implements OnInit {
   }
 
 }
-

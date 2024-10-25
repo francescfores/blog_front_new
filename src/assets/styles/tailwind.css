@@ -733,8 +733,8 @@ html {
   top: 50%;
 }
 
-.top-12 {
-  top: 3rem;
+.top-14 {
+  top: 3.5rem;
 }
 
 .top-16 {
@@ -964,6 +964,10 @@ html {
 
 .-ml-\[1\.5rem\] {
   margin-left: -1.5rem;
+}
+
+.-ml-\[40px\] {
+  margin-left: -40px;
 }
 
 .-ml-\[8px\] {
@@ -1865,6 +1869,11 @@ html {
 
 .-translate-y-\[60px\] {
   --tw-translate-y: -60px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.-translate-y-full {
+  --tw-translate-y: -100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 

@@ -1,0 +1,30 @@
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 700px;
+  @apply bg-gradient-to-b from-bgTern via-bgSeco to-bgPrim;
+}
+
+.slides {
+  display: flex;
+  position: fixed;
+
+  transition: transform 0.5s ease-in-out;
+  height: 700px;
+  width: 100%;
+}
+.slide {
+  min-width: 100%;
+  height: 700px;
+  box-sizing: border-box;
+  opacity: 0; /* Por defecto, todos los slides son invisibles */
+  transition: opacity 0.5s ease-in-out; /* Transición suave para la opacidad */
+}
+.slide.active {
+  opacity: 1; /* Solo el slide activo es visible */
+}
+.slider_waves {
+
+  @apply absolute text-center bottom-0 z-30 -mb-4;
+}

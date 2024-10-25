@@ -16,6 +16,7 @@ import { EditorContentComponent } from './posts/contents/editor-content/editor-c
 // import {ComponentsModule} from "../../../../../../components/components.module";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {SliderMarvelComponent} from "./slider-marvel/slider-marvel.component";
+import {Slider1Component} from "./sliders/slider-1/slider-1.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {SliderMarvelComponent} from "./slider-marvel/slider-marvel.component";
     PaintContentsComponent,
     NavbarLanding1Component,
     NavbarLanding2Component,
-    SliderMarvelComponent
+    SliderMarvelComponent,
+    Slider1Component
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ import {SliderMarvelComponent} from "./slider-marvel/slider-marvel.component";
         PaintContentsComponent,
         NavbarLanding1Component,
         NavbarLanding2Component,
-        SliderMarvelComponent
+        SliderMarvelComponent,
+      Slider1Component
     ]
 })
 export class ComponentsModuleBlog { }
