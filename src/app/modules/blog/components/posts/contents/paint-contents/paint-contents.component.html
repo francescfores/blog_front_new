@@ -104,7 +104,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     <ng-container *ngTemplateOutlet="recursiveContent; context: { $implicit: normalizarSubcomponente(subcomponent) }"></ng-container>
   </ng-container>
   <ng-template #recursiveContent let-subcomponent>
-    <div *ngIf="
+    <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" *ngIf="
     subcomponent?.type?.name==='grid' ||
     subcomponent?.type?.name==='card' ||
     subcomponent?.type?.name==='card'
@@ -117,7 +117,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     </div>
     <ng-container *ngIf="content" (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"  >
       <ng-container *ngIf="subcomponent?.type?.name==='codeplayground_v2'; ">
-        <app-codeplayground_V2 [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" class="flex w-full my-5"
+        <app-codeplayground_V2 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" class="flex w-full my-5"
                                [id]="subcomponent.subcomponent_id"
                                [height]="getAtt(subcomponent, 'height')"
                                [bg_color_1]="getAtt(subcomponent, 'bg_color_1')"
@@ -131,20 +131,20 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
         ></app-codeplayground_V2>
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='text';">
-        <h1 [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">{{getAtt(subcomponent, 'text_label')}}</h1>
+        <h1 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">{{getAtt(subcomponent, 'text_label')}}</h1>
       </ng-container>
       <ng-container *ngIf="content?.type?.name==='icon';">
-        <i [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"></i>
+        <i (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"></i>
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='img';">
         <ng-container>
-          <img [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" [src]="getAtt(subcomponent, 'url')"
+          <img (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" [src]="getAtt(subcomponent, 'url')"
                alt="image" />
         </ng-container>
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='image3d';">
         <!--TODO change style.background-image-->
-        <figure [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" class="figure " [ngClass]="subcomponent?.type?.name + '-'+ subcomponent.id +' '+ setDynamicBackground(subcomponent)">
+        <figure (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" class="figure " [ngClass]="subcomponent?.type?.name + '-'+ subcomponent.id +' '+ setDynamicBackground(subcomponent)">
           <img [src]="getAtt(subcomponent, 'img_url')"
                alt="image" class="amt_2"/>
           <!--<figcaption class="p-4">Rhino</figcaption>-->
@@ -152,7 +152,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='button';">
         @if (getAtt(subcomponent, 'url')!==null){
-        <a [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" href="{{getAtt(subcomponent, 'url')}}" target="_blank">
+        <a (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" href="{{getAtt(subcomponent, 'url')}}" target="_blank">
                 <app-button3d
                   [ngClass]="getAtt(subcomponent, 'styles_button') + '  '+ editing()"
                   [title]="getAtt(subcomponent, 'label')"
@@ -162,7 +162,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                 </app-button3d>
               </a>
         } @else {
-        <app-button3d
+        <app-button3d (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
           [ngClass]="getAtt(subcomponent, 'styles_button') + '  '+ editing()"
           [title]="getAtt(subcomponent, 'label')"
           [type]="getAtt(content, 'styles_button') + '  '+ editing()"

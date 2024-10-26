@@ -104,13 +104,13 @@
       </li>
     </ul>
     <div id=" default-tab-content flex overflow-hidden  ">
-      <!--<app-add-content *ngIf="adding"
+      <app-add-content *ngIf="adding"
         (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-add-content>
       <app-create-content *ngIf="creating"
         (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-create-content>
       <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="col-span-4 flex lg:sticky"
                           [postContent]="selectetContent"
-                          (updatedContent)="getProduct($event)"></app-update-content>-->
+                          (updatedContent)="getProduct($event)"></app-update-content>
     </div>
   </div>
 

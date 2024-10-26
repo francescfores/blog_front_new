@@ -1,0 +1,9 @@
+.slider_waves {
+    @apply absolute text-center bottom-0 z-30 h-[200px];
+    /*position: relative;*/
+    /*text-align: center;*/
+    /*margin-top: -104px;*/
+    /*font-size: 0;*/
+    /*min-width: 600px;*/
+    /*max-width: unset;*/
+  }

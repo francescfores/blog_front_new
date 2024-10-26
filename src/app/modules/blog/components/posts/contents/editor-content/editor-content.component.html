@@ -38,7 +38,7 @@ Open large modal
 </div>
 <div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
 -->
-<div class="flex flex-col gap-2 w-full mx-auto px-2 pb-20">
+<div class="flex flex-col max-w-6xl  w-full mx-auto px-2 pb-20">
   <div class="w-full">
     <div class="flex flex-wrap rounded-lg  justify-start">
         <app-show-content class="w-full p-2 " [post_id]="this.id" (showContentEv)="showContentEv($event)"></app-show-content>

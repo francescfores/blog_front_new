@@ -26,6 +26,7 @@ import {LandingPage2Component} from "./pages/landings/landing-page2/landing-page
 import {LandingPage3Component} from "./pages/landings/landing-page3/landing-page3.component";
 import {LandingsIndexComponent} from "./pages/landings/index.component";
 import {Home5Component} from "./pages/landings/home5/home5.component";
+import {SwiperSliderComponent} from "./components/sliders/swiper-slider/swiper-slider.component";
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import {Home5Component} from "./pages/landings/home5/home5.component";
     ComponentsModuleBlog,
     CdkDrag,
     CdkDropList,
+    SwiperSliderComponent
     //MatInputModule,
     //MatFormFieldModule,
     //MatAutocompleteModule
