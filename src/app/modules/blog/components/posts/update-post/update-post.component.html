@@ -50,7 +50,7 @@
         <app-show-content class="w-full " [post_id]="this.id"></app-show-content>
         <div class="w-3/4">
             <ng-container *ngFor="let content of post.contents" class="">
-              <app-paint-contents class="w-full col-span-12" [content]="content" (selectContent)="selectContent($event)"></app-paint-contents>
+              <app-paint-contents [showEditor]="true"  class="w-full col-span-12" [content]="content" (selectContent)="selectContent($event)"></app-paint-contents>
             </ng-container>
         </div>
         <app-update-content class="w-1/4 flex lg:sticky lg:top-[62px]" [postContent]="selectetContent" (updatedContent)="getProduct($event)"></app-update-content>

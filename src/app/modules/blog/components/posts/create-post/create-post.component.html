@@ -7,8 +7,8 @@
   </div>
   <div class="w-full bg-bgPrim rounded-lg">
         <app-card class=" ">
-          <div class="py-6 flex flex-wrap">
-            <form  [formGroup]="form" class="flex flex-col gap-4 flex-wrap w-full">
+          <div class="pb-6 flex flex-wrap">
+            <form  [formGroup]="form" class="flex flex-col gap-8 flex-wrap w-full">
               <app-input-outsite [label]="'Name'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'"></app-input-outsite>
               <app-input-outsite [label]="'SubName'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'subname'" [value]="form.get(['post'])?.value?.subname"></app-input-outsite>
               <app-input-outsite [label]="'Desc'" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'desc'"></app-input-outsite>

@@ -62,12 +62,12 @@ export class MenuService {
      // new MenuItem('Editor', 'fas fa-light fa-gear','/admin/editor','', 'pt-1',false, null),
       new MenuItem('Settings', 'fas fa-light fa-gear','/admin/settings','', 'pt-1',false, null),
       new MenuItem('Users', 'fas fa-light fa-users','/admin/users','', 'pt-1',false, null),
-      /* new MenuItem('Components', 'fas fa-light fa-code','/admin/components/','widgets','pt-1',null,[
+       new MenuItem('Components', 'fas fa-light fa-code','/admin/components/','widgets','pt-1',null,[
         new MenuItem('Buttons', null,'/admin/components/buttons',null,'pt-0',false,null),
         new MenuItem('Buttons3d', null,'/admin/components/buttons3d',null,'pt-0',false,null),
         new MenuItem('Cards', null,'/admin/components/cards',null,'pt-0',false,null),
         new MenuItem('Inputs', null,'/admin/components/inputs',null,'pt-0',false,null),
-      ]), */
+      ]),
     ]
   }
 }

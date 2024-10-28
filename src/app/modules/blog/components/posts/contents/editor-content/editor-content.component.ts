@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import {environment} from "../../../../../../../environments/environment";
 import {FormGroup, UntypedFormBuilder, Validators} from "@angular/forms";
 import {Post} from "../../../../models/post";
@@ -16,7 +16,8 @@ import {PostContent} from "../../../../models/post-content";
 @Component({
   selector: 'app-editor-content',
   templateUrl: './editor-content.component.html',
-  styleUrls: ['./editor-content.component.css']
+  styleUrls: ['./editor-content.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EditorContentComponent {
 

@@ -4,7 +4,8 @@ import {ThemeService} from "../../../../services/theme/theme.service";
 import {PostCategory} from "../../models/post-category";
 import {CategoryService} from "../../services/api/post-category.service";
 import {first} from "rxjs/operators";
-import {Router} from "@angular/router";
+import { filter } from 'rxjs/operators';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: "app-sidebar-blog",
@@ -56,6 +57,15 @@ export class SidebarComponent implements OnInit {
         error => {
         });
     console.log(this.isDarkEnable)
+
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        // Aquí puedes manejar el evento de navegación
+        console.log('Navegación a:', event.url);
+        $('#navbar').removeClass('-translate-y-16');
+
+      });
   }
 
   toggleSidebar() {

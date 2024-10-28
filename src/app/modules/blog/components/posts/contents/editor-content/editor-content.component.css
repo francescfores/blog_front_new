@@ -9,3 +9,15 @@
   border: 2px dashed #ccc;
   margin-top: 20px;
 }
+
+
+.grid-background {
+  background-image:
+    linear-gradient(to right, hsl(var(--twc-bgTern)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--twc-bgTern)) 1px, transparent 1px);
+  background-size: 50px 50px; /* Tamaño de los cuadros */
+  height: 100%;/* Asegura que ocupe toda la altura del contenedor */
+  width: 100%;  /* Asegura que ocupe toda la anchura del contenedor */
+  /*height: inherit*/
+  background-position: center; /* Centrar el fondo */
+}

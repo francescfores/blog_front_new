@@ -9,12 +9,12 @@ text-slate-500 mt-2 leading-relaxed  break-words ml-2 p-24 px-10 max-w-screen-md
 grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 border-red-200 w-32 gap-24 space-y-10 w-[50vh] w-[20vh] gap-4 bg-textPrimary text-bgPrim"></div>
 
 
-<div *ngIf="showEditor" class="w-full top">
-  <div class="flex w-full items-center bg-bgPrim content text-textPrimary">
-    <p (click)="showTree=!showTree ">Three</p>
-    <i (click)="showTree=!showTree "  class="ml-auto fa fa-book p-2" aria-hidden="true"></i>
+<div *ngIf="content && showEditor" [ngClass]="'w-full  '">
+  <div class="flex justify-between py-6 text-textPrimary">
+      <h3 class="font-semibold  text-2xl">Layout </h3>
+      <i (click)="showTree=!showTree "  class="ml-auto fa fa-book p-2" aria-hidden="true"></i>
   </div>
-  <div class="p-1 text-xs" *ngIf="showTree">
+  <div class="p-1 text-xs bg-bgPrim mb-2 rounded" *ngIf="showTree">
     <div class="m-2" (click)="onClick(content)">
       name:{{content?.name}} - id:{{content?.id}}
       <div class="border-dashed border-l-2 border-red-400 m-2">
@@ -39,7 +39,154 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
   </div>
 </div>
 
-<div *ngIf="content" (click)="onClick(content)"  [ngClass]="getAtt(content, 'styles') + ' '+ editing()">
+<div *ngIf="showEditor" [ngClass]="' grid-background flex justify-center items-center bg-bgPrim rounded'">
+
+
+  <ng-container *ngIf="content" (click)="onClick(content)"  >
+    <!--
+      si agregamos un componente principal al post se ejecuta esto
+      tambien si estamos creando un componente
+    -->
+    <div (click)="onClick(content)" (click)="$event.stopPropagation()" *ngIf="
+    content?.type?.name==='grid' ||
+    content?.type?.name==='card' ||
+    content?.type?.name==='page'
+    ;" [ngClass]=" editing()+ ' '+ getAtt(content, 'styles')">
+      <ng-container *ngFor="let subcomponent of content.subcomponents">
+        <ng-container *ngTemplateOutlet="recursiveContent; context: { $implicit: normalizarSubcomponente(subcomponent) }"></ng-container>
+      </ng-container>
+      <ng-template #recursiveContent let-subcomponent>
+        <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" *ngIf="
+    subcomponent?.type?.name==='grid' ||
+    subcomponent?.type?.name==='card' ||
+    subcomponent?.type?.name==='card'
+    ;" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">
+          <ng-container *ngIf="subcomponent.subcomponents && subcomponent.subcomponents.length > 0">
+            <ng-container *ngFor="let subSubcomponent of subcomponent.subcomponents">
+              <ng-container *ngTemplateOutlet="recursiveContent; context: { $implicit: normalizarSubcomponente(subSubcomponent) }" ></ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+        <ng-container *ngIf="content" (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"  >
+          <ng-container *ngIf="subcomponent?.type?.name==='codeplayground_v2'; ">
+            <app-codeplayground_V2 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" class="flex w-full my-5"
+                                   [id]="subcomponent.subcomponent_id"
+                                   [height]="getAtt(subcomponent, 'height')"
+                                   [bg_color_1]="getAtt(subcomponent, 'bg_color_1')"
+                                   [bg_color_2]="getAtt(subcomponent, 'bg_color_2')"
+                                   [text_color_1]="getAtt(subcomponent, 'text_color_1')"
+                                   [text_color_2]="getAtt(subcomponent, 'text_color_2')"
+                                   [rounded]="getAtt(subcomponent, 'rounded')"
+                                   [htmlCodes]="getAtt(subcomponent, 'html')"
+                                   [cssCodes]="getAtt(subcomponent, 'css')"
+                                   [jsCodes]="getAtt(subcomponent, 'js')"
+            ></app-codeplayground_V2>
+          </ng-container>
+          <ng-container *ngIf="subcomponent?.type?.name==='text';">
+            <h1 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">{{getAtt(subcomponent, 'text_label')}}</h1>
+          </ng-container>
+          <ng-container *ngIf="content?.type?.name==='icon';">
+            <i (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"></i>
+          </ng-container>
+          <ng-container *ngIf="subcomponent?.type?.name==='img';">
+            <ng-container>
+              <img (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" [src]="getAtt(subcomponent, 'url')"
+                   alt="image" />
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="subcomponent?.type?.name==='image3d';">
+            <!--TODO change style.background-image-->
+            <figure (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" class="figure " [ngClass]="subcomponent?.type?.name + '-'+ subcomponent.id +' '+ setDynamicBackground(subcomponent)">
+              <img [src]="getAtt(subcomponent, 'img_url')"
+                   alt="image" class="amt_2"/>
+              <!--<figcaption class="p-4">Rhino</figcaption>-->
+            </figure>
+          </ng-container>
+          <ng-container *ngIf="subcomponent?.type?.name==='button';">
+            @if (getAtt(subcomponent, 'url')!==null){
+            <a (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" href="{{getAtt(subcomponent, 'url')}}" target="_blank">
+                <app-button3d
+                  [ngClass]="getAtt(subcomponent, 'styles_button') + '  '+ editing()"
+                  [title]="getAtt(subcomponent, 'label')"
+                  [type]="getAtt(content, 'styles_button') + '  '+ editing()"
+                  [width]="'100%'"
+                  [loading_type]="'waves'" [loading]="false" >
+                </app-button3d>
+              </a>
+            } @else {
+            <app-button3d (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
+              [ngClass]="getAtt(subcomponent, 'styles_button') + '  '+ editing()"
+              [title]="getAtt(subcomponent, 'label')"
+              [type]="getAtt(content, 'styles_button') + '  '+ editing()"
+              [width]="'100%'"
+              [loading_type]="'waves'" [loading]="false" >
+            </app-button3d>
+            }
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </div>
+    <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
+      <app-codeplayground_V2 class="flex w-full my-5"
+                             [id]="content.id"
+                             [height]="getAtt(content, 'height')"
+                             [bg_color_1]="getAtt(content, 'bg_color_1')"
+                             [bg_color_2]="getAtt(content, 'bg_color_2')"
+                             [text_color_1]="getAtt(content, 'text_color_1')"
+                             [text_color_2]="getAtt(content, 'text_color_2')"
+                             [rounded]="getAtt(content, 'rounded')"
+                             [htmlCodes]="getAtt(content, 'html')"
+                             [cssCodes]="getAtt(content, 'css')"
+                             [jsCodes]="getAtt(content, 'js')" [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+      ></app-codeplayground_V2>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='text';">
+      <h1 [ngClass]="getAtt(content, 'styles') + ' '+ editing()">{{getAtt(content, 'text_label')}}</h1>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='icon';">
+      <i [class]="getAtt(content, 'icon')+' '+ getAtt(content, 'style')"></i>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='img';">
+      <ng-container *ngIf="getAtt(content, 'url')!=null">
+        <img [src]="getAtt(content, 'url')" [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+             alt="image"/>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='image3d';">
+      <!--TODO change style.background-image-->
+      <figure [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+              class="figure " [ngClass]="content?.type?.name + '-'+ content.id +' '+ setDynamicBackground(content)">
+        <img [src]="getAtt(content, 'img_url')"
+             alt="image" class="amt_2"/>
+        <!--<figcaption class="p-4">Rhino</figcaption>-->
+      </figure>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='button';">
+      @if (getAtt(content, 'url')!==null){
+      <a [ngClass]="getAtt(content, 'styles') + ' '+ editing()" href="{{getAtt(content, 'url')}}" target="_blank">
+            <app-button3d
+              [ngClass]="getAtt(content, 'styles_button') + '  '+ editing()"
+              [title]="getAtt(content, 'label')"
+              [type]="getAtt(content, 'styles_button') + '  '+ editing()"
+              [width]="'100%'"
+              [loading_type]="'waves'" [loading]="false" >
+            </app-button3d>
+          </a>
+      } @else {
+      <app-button3d
+        [ngClass]="getAtt(content, 'styles_button') + '  '+ editing()"
+        [title]="getAtt(content, 'label')"
+        [type]="getAtt(content, 'styles_button') + '  '+ editing()"
+        [width]="'100%'"
+        [loading_type]="'waves'" [loading]="false" >
+      </app-button3d>
+      }
+    </ng-container>
+
+  </ng-container>
+</div>
+
+<div *ngIf="content && !showEditor" (click)="onClick(content)"  [ngClass]="getAtt(content, 'styles')">
   <!--
     si agregamos un componente principal al post se ejecuta esto
     tambien si estamos creando un componente
@@ -55,24 +202,24 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                            [rounded]="getAtt(content, 'rounded')"
                            [htmlCodes]="getAtt(content, 'html')"
                            [cssCodes]="getAtt(content, 'css')"
-                           [jsCodes]="getAtt(content, 'js')" [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+                           [jsCodes]="getAtt(content, 'js')" [ngClass]="getAtt(content, 'styles')"
     ></app-codeplayground_V2>
   </ng-container>
-    <ng-container *ngIf="content?.type?.name==='text';">
-      <h1 [ngClass]="getAtt(content, 'styles') + ' '+ editing()">{{getAtt(content, 'text_label')}}</h1>
-    </ng-container>
+  <ng-container *ngIf="content?.type?.name==='text';">
+    <h1 [ngClass]="getAtt(content, 'styles')">{{getAtt(content, 'text_label')}}</h1>
+  </ng-container>
   <ng-container *ngIf="content?.type?.name==='icon';">
     <i [class]="getAtt(content, 'icon')+' '+ getAtt(content, 'style')"></i>
   </ng-container>
   <ng-container *ngIf="content?.type?.name==='img';">
     <ng-container *ngIf="getAtt(content, 'url')!=null">
-      <img [src]="getAtt(content, 'url')" [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+      <img [src]="getAtt(content, 'url')" [ngClass]="getAtt(content, 'styles')"
            alt="image"/>
     </ng-container>
   </ng-container>
   <ng-container *ngIf="content?.type?.name==='image3d';">
     <!--TODO change style.background-image-->
-    <figure [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+    <figure [ngClass]="getAtt(content, 'styles')"
             class="figure " [ngClass]="content?.type?.name + '-'+ content.id +' '+ setDynamicBackground(content)">
       <img [src]="getAtt(content, 'img_url')"
            alt="image" class="amt_2"/>
@@ -81,7 +228,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
   </ng-container>
   <ng-container *ngIf="content?.type?.name==='button';">
     @if (getAtt(content, 'url')!==null){
-    <a [ngClass]="getAtt(content, 'styles') + ' '+ editing()" href="{{getAtt(content, 'url')}}" target="_blank">
+    <a [ngClass]="getAtt(content, 'styles')" href="{{getAtt(content, 'url')}}" target="_blank">
             <app-button3d
               [ngClass]="getAtt(content, 'styles_button') + '  '+ editing()"
               [title]="getAtt(content, 'label')"
@@ -107,8 +254,8 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" *ngIf="
     subcomponent?.type?.name==='grid' ||
     subcomponent?.type?.name==='card' ||
-    subcomponent?.type?.name==='card'
-    ;" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">
+    subcomponent?.type?.name==='page'
+    ;" [ngClass]="getAtt(subcomponent, 'styles')">
       <ng-container *ngIf="subcomponent.subcomponents && subcomponent.subcomponents.length > 0">
         <ng-container *ngFor="let subSubcomponent of subcomponent.subcomponents">
           <ng-container *ngTemplateOutlet="recursiveContent; context: { $implicit: normalizarSubcomponente(subSubcomponent) }" ></ng-container>
@@ -117,7 +264,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     </div>
     <ng-container *ngIf="content" (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"  >
       <ng-container *ngIf="subcomponent?.type?.name==='codeplayground_v2'; ">
-        <app-codeplayground_V2 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" class="flex w-full my-5"
+        <app-codeplayground_V2 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles')" class="flex w-full my-5"
                                [id]="subcomponent.subcomponent_id"
                                [height]="getAtt(subcomponent, 'height')"
                                [bg_color_1]="getAtt(subcomponent, 'bg_color_1')"
@@ -131,20 +278,20 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
         ></app-codeplayground_V2>
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='text';">
-        <h1 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">{{getAtt(subcomponent, 'text_label')}}</h1>
+        <h1 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles')">{{getAtt(subcomponent, 'text_label')}}</h1>
       </ng-container>
       <ng-container *ngIf="content?.type?.name==='icon';">
-        <i (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"></i>
+        <i (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles')"></i>
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='img';">
         <ng-container>
-          <img (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" [src]="getAtt(subcomponent, 'url')"
+          <img (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles')" [src]="getAtt(subcomponent, 'url')"
                alt="image" />
         </ng-container>
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='image3d';">
         <!--TODO change style.background-image-->
-        <figure (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" class="figure " [ngClass]="subcomponent?.type?.name + '-'+ subcomponent.id +' '+ setDynamicBackground(subcomponent)">
+        <figure (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles')" class="figure " [ngClass]="subcomponent?.type?.name + '-'+ subcomponent.id +' '+ setDynamicBackground(subcomponent)">
           <img [src]="getAtt(subcomponent, 'img_url')"
                alt="image" class="amt_2"/>
           <!--<figcaption class="p-4">Rhino</figcaption>-->
@@ -152,7 +299,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='button';">
         @if (getAtt(subcomponent, 'url')!==null){
-        <a (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" href="{{getAtt(subcomponent, 'url')}}" target="_blank">
+        <a (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles')" href="{{getAtt(subcomponent, 'url')}}" target="_blank">
                 <app-button3d
                   [ngClass]="getAtt(subcomponent, 'styles_button') + '  '+ editing()"
                   [title]="getAtt(subcomponent, 'label')"

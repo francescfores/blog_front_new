@@ -58,6 +58,7 @@ export class ShowContentComponent {
     links: undefined,
     data: undefined
   };
+  id: any;
 
   constructor(
     private router: Router,
@@ -98,6 +99,7 @@ export class ShowContentComponent {
     this.table.columns.forEach((column:any)=>{
       console.log(column.column_name)
     })
+    this.getParams();
 
   }
 
@@ -236,5 +238,14 @@ export class ShowContentComponent {
         error: (err: any) => { },
         complete: () => { }
       });
+  }
+
+  showModal = false;
+  toggleModal(){
+    this.showModal = !this.showModal;
+  }
+
+  getParams(){
+    this.id = history.state.id;
   }
 }
