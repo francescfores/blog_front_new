@@ -2121,6 +2121,10 @@ html {
   flex-wrap: nowrap;
 }
 
+.place-content-center {
+  place-content: center;
+}
+
 .place-content-end {
   place-content: end;
 }
@@ -2303,6 +2307,10 @@ html {
 .divide-neutral-700 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(64 64 64 / var(--tw-divide-opacity));
+}
+
+.place-self-center {
+  place-self: center;
 }
 
 .self-end {

@@ -40,50 +40,79 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
   </div>
 </div>
 
-<div *ngIf="content && showEditor" (click)="onClick(content)"  [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
-     cdkDropListGroup>
-  <!--
-    si agregamos un componente principal al post se ejecuta esto
-    tambien si estamos creando un componente
-  -->
-  <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
-    <app-codeplayground_V2 class="flex w-full my-5"
-                           [id]="content.id"
-                           [height]="getAtt(content, 'height')"
-                           [bg_color_1]="getAtt(content, 'bg_color_1')"
-                           [bg_color_2]="getAtt(content, 'bg_color_2')"
-                           [text_color_1]="getAtt(content, 'text_color_1')"
-                           [text_color_2]="getAtt(content, 'text_color_2')"
-                           [rounded]="getAtt(content, 'rounded')"
-                           [htmlCodes]="getAtt(content, 'html')"
-                           [cssCodes]="getAtt(content, 'css')"
-                           [jsCodes]="getAtt(content, 'js')" [ngClass]="getAtt(content, 'styles')"
-    ></app-codeplayground_V2>
-  </ng-container>
-  <ng-container *ngIf="content?.type?.name==='text';">
-    <h1 [ngClass]="getAtt(content, 'styles')">{{getAtt(content, 'text_label')}}</h1>
-  </ng-container>
-  <ng-container *ngIf="content?.type?.name==='icon';">
-    <i [class]="getAtt(content, 'icon')+' '+ getAtt(content, 'style')"></i>
-  </ng-container>
-  <ng-container *ngIf="content?.type?.name==='img';">
-    <ng-container *ngIf="getAtt(content, 'url')!=null">
-      <img [src]="getAtt(content, 'url')" [ngClass]="getAtt(content, 'styles')"
-           alt="image"/>
+<div *ngIf="content && showEditor" [ngClass]="'w-full'" >
+  <div
+    [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+    class="m-2" (click)="onClick(content)"
+    cdkDropListOrientation="mixed" cdkDropList (cdkDropListDropped)="drop($event, content)">
+    name: {{content?.name}} - id: {{content?.id}}
+    <div *ngFor="let subcomponent of content?.subcomponents" cdkDrag>
+      <ng-container *ngTemplateOutlet="recursiveContent2; context: { $implicit: normalizarSubcomponente(subcomponent) }"></ng-container>
+    </div>
+  </div>
+
+  <ng-template #recursiveContent2 let-subcomponent>
+    <div
+      (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
+         class="m-2"
+         [ngClass]="editing()"
+         cdkDropListOrientation="mixed" cdkDropList (cdkDropListDropped)="drop($event, subcomponent)">
+      {{subcomponent?.name}} - id: {{subcomponent.id}} - order: {{subcomponent.order}}
+
+      <div cdkDropList cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event, subcomponent)">
+        <div *ngFor="let subSubcomponent of subcomponent.subcomponents" cdkDrag>
+          <ng-container *ngTemplateOutlet="recursiveContent2; context: { $implicit: normalizarSubcomponente(subSubcomponent) }"></ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+
+<div *ngIf="showEditor" cdkDropListGroup [ngClass]="'grid-background'">
+
+<div *ngIf="content && showEditor" (click)="onClick(content)" [ngClass]="getAtt(content, 'styles') + ' '+ editing()" >
+  <p>Component</p>
+  <ng-container>
+    <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
+      <app-codeplayground_V2 class="flex w-full my-5"
+                             [id]="content.id"
+                             [height]="getAtt(content, 'height')"
+                             [bg_color_1]="getAtt(content, 'bg_color_1')"
+                             [bg_color_2]="getAtt(content, 'bg_color_2')"
+                             [text_color_1]="getAtt(content, 'text_color_1')"
+                             [text_color_2]="getAtt(content, 'text_color_2')"
+                             [rounded]="getAtt(content, 'rounded')"
+                             [htmlCodes]="getAtt(content, 'html')"
+                             [cssCodes]="getAtt(content, 'css')"
+                             [jsCodes]="getAtt(content, 'js')" [ngClass]="getAtt(content, 'styles')"
+      ></app-codeplayground_V2>
     </ng-container>
-  </ng-container>
-  <ng-container *ngIf="content?.type?.name==='image3d';">
-    <!--TODO change style.background-image-->
-    <figure [ngClass]="getAtt(content, 'styles')"
-            class="figure " [ngClass]="content?.type?.name + '-'+ content.id +' '+ setDynamicBackground(content)">
-      <img [src]="getAtt(content, 'img_url')"
-           alt="image" class="amt_2"/>
-      <!--<figcaption class="p-4">Rhino</figcaption>-->
-    </figure>
-  </ng-container>
-  <ng-container *ngIf="content?.type?.name==='button';">
-    @if (getAtt(content, 'url')!==null){
-    <a [ngClass]="getAtt(content, 'styles')" href="{{getAtt(content, 'url')}}" target="_blank">
+    <ng-container *ngIf="content?.type?.name==='text';">
+      <h1 [ngClass]="getAtt(content, 'styles')">{{getAtt(content, 'text_label')}}</h1>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='icon';">
+      <i [class]="getAtt(content, 'icon')+' '+ getAtt(content, 'style')"></i>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='img';">
+      <ng-container *ngIf="getAtt(content, 'url')!=null">
+        <img [src]="getAtt(content, 'url')" [ngClass]="getAtt(content, 'styles')"
+             alt="image"/>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='image3d';">
+      <!--TODO change style.background-image-->
+      <figure [ngClass]="getAtt(content, 'styles')"
+              class="figure " [ngClass]="content?.type?.name + '-'+ content.id +' '+ setDynamicBackground(content)">
+        <img [src]="getAtt(content, 'img_url')"
+             alt="image" class="amt_2"/>
+        <!--<figcaption class="p-4">Rhino</figcaption>-->
+      </figure>
+    </ng-container>
+    <ng-container *ngIf="content?.type?.name==='button';">
+      @if (getAtt(content, 'url')!==null){
+      <a [ngClass]="getAtt(content, 'styles')" href="{{getAtt(content, 'url')}}" target="_blank">
             <app-button3d
               [ngClass]="getAtt(content, 'styles_button') + '  '+ editing()"
               [title]="getAtt(content, 'label')"
@@ -92,25 +121,26 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               [loading_type]="'waves'" [loading]="false" >
             </app-button3d>
           </a>
-    } @else {
-    <app-button3d
-      [ngClass]="getAtt(content, 'styles_button') + '  '+ editing()"
-      [title]="getAtt(content, 'label')"
-      [type]="getAtt(content, 'styles_button') + '  '+ editing()"
-      [width]="'100%'"
-      [loading_type]="'waves'" [loading]="false" >
-    </app-button3d>
-    }
+      } @else {
+      <app-button3d
+        [ngClass]="getAtt(content, 'styles_button') + '  '+ editing()"
+        [title]="getAtt(content, 'label')"
+        [type]="getAtt(content, 'styles_button') + '  '+ editing()"
+        [width]="'100%'"
+        [loading_type]="'waves'" [loading]="false" >
+      </app-button3d>
+      }
+    </ng-container>
   </ng-container>
-  <ng-container *ngFor="let subcomponent of content.subcomponents">
+  <div *ngFor="let subcomponent of content.subcomponents" [ngClass]="getAtt(normalizarSubcomponente(subcomponent), 'styles') + ' '+ editing()">
     <ng-container *ngTemplateOutlet="recursiveContent; context: { $implicit: normalizarSubcomponente(subcomponent) }"></ng-container>
-  </ng-container>
+  </div>
   <ng-template #recursiveContent let-subcomponent>
     <div  (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" *ngIf="
     subcomponent?.type?.name==='grid' ||
     subcomponent?.type?.name==='card' ||
     subcomponent?.type?.name==='page'
-    ;" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
+    ;"
     cdkDropListOrientation="mixed" cdkDropList class="categories-item" (cdkDropListDropped)="drop($event, content)">
       <ng-container *ngIf="subcomponent.subcomponents && subcomponent.subcomponents.length > 0">
         <ng-container *ngFor="let subSubcomponent of subcomponent.subcomponents">
@@ -178,7 +208,8 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     </ng-container>
   </ng-template>
 </div>
-<div *ngIf="showEditor" cdkDropListGroup [ngClass]="'categories grid-background flex justify-center items-center bg-bgPrim rounded'">
+</div>
+<div *ngIf="!showEditor" cdkDropListGroup [ngClass]="'categories grid-background flex justify-center items-center bg-bgPrim rounded'">
 
 
   <ng-container *ngIf="content" (click)="onClick(content)"  >
