@@ -1,9 +1,17 @@
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {environment} from '../../../../../../../environments/environment';
 import {PostContent} from "../../../../models/post-content";
-import {CdkDrag, CdkDragMove, CdkDropList, CdkDropListGroup, moveItemInArray} from "@angular/cdk/drag-drop";
 import {ViewportRuler} from "@angular/cdk/overlay";
+import {PostContentService} from "../../../../services/api/post-content.service";
+import {first} from "rxjs/operators";
 
+import {
+  CdkDrag,
+  CdkDragDrop,
+  CdkDragPlaceholder,
+  CdkDropList,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-paint-contents',
   templateUrl: './paint-contents.component.html',
@@ -11,6 +19,12 @@ import {ViewportRuler} from "@angular/cdk/overlay";
 })
 export class PaintContentsComponent {
   environment =environment;
+
+  constructor(
+    private postContentService: PostContentService,
+  ){
+  }
+
   setDynamicBackground(component:any) {
     const figureElement = document.querySelector('.'+component.name+'-'+component.id) as HTMLElement;
     if (figureElement) {
@@ -71,6 +85,33 @@ export class PaintContentsComponent {
 
   editing() {
     return this.showEditor?'hover:border-2 border-red-400/50 ':'';
+  }
+
+  drop(event: CdkDragDrop<string[]>,content:any) {
+    moveItemInArray(content.subcomponents, event.previousIndex, event.currentIndex);
+    this.content.subcomponents.forEach((sub: any) => {
+      console.log(sub.component.name)
+    });
+    this.postContentService.orderSubcomponents(content.id, content.subcomponents)
+      .pipe(first())
+      .subscribe(
+        data => {
+          //this.postContent=data.data;
+          console.log('getContent',content);
+          //this.updatedContent.emit(this.postContent);
+        });
+  }
+
+  removeContent(subcontent: PostContent) {
+    this.postContentService.deleteSubComponent(subcontent.id)
+      .subscribe({
+        next: (res:any) => {
+          this.content =res.data;
+          //this.updatedContent.emit(this.content);
+        },
+        error: (err: any) => { },
+        complete: () => { }
+      });
   }
 }
 

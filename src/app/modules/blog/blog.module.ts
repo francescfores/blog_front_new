@@ -49,7 +49,7 @@ import {SwiperSliderComponent} from "./components/sliders/swiper-slider/swiper-s
     LandingPage2Component,
     LandingPage3Component,
     LandingsIndexComponent,
-    Home5Component
+    Home5Component,
   ],
   exports: [
     IndexComponent,

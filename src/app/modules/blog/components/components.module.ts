@@ -28,7 +28,7 @@ import {Slider1Component} from "./sliders/slider-1/slider-1.component";
     NavbarLanding1Component,
     NavbarLanding2Component,
     SliderMarvelComponent,
-    Slider1Component
+    Slider1Component,
   ],
   imports: [
     CommonModule,
@@ -46,7 +46,7 @@ import {Slider1Component} from "./sliders/slider-1/slider-1.component";
         NavbarLanding1Component,
         NavbarLanding2Component,
         SliderMarvelComponent,
-      Slider1Component
+      Slider1Component,
     ]
 })
 export class ComponentsModuleBlog { }

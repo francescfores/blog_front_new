@@ -102,7 +102,7 @@ button {
 }
 
 .btn_shadow_default:hover:before{
-  transform: translateY(-5px);
+  transform: translateY(calc((var(--raise)/2) * -1 ));
 }
 .btn_shadow_default:active:before{
   transform: translateY(calc((var(--raise)/1.2) * -1 ));

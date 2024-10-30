@@ -28,7 +28,7 @@ export class Button3dComponent implements OnInit{
   @Input() height ='30px';
   @Input() width ='';
   @Input() raise =5;
-  @Input() rounded ='4px';
+  @Input() rounded ='';
   // @Input() rotate ='';
   // @Input() rotate_invers ='';
   @Input() border ='';
