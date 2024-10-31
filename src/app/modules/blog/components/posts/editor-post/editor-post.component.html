@@ -46,7 +46,7 @@
   </div>
   <div class="w-full top-0 flex  z-0 p-2 ">
 
-    <div *ngIf="post.components.length>0" class="w-full h-screen  overflow-y-scroll " >
+    <div *ngIf="post.components.length>0" class="w-full overflow-y-scroll " >
       <ng-container *ngFor="let content of post.components" class="">
         <app-paint-contents [showEditor]="true" [content]="content"
                             (selectContent)="selectContent($event)"></app-paint-contents>
