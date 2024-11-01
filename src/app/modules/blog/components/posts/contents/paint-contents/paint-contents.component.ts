@@ -113,5 +113,71 @@ export class PaintContentsComponent {
         complete: () => { }
       });
   }
+items: any[] = [
+    { id: 1, content: 'Item 1.1' },
+    { id: 2, content: 'Item 1.2' },
+    { id: 3, content: 'Item 1.3' },
+    { 
+        id: 4, content: 'Item 1.4', items: [
+            { id: 1, content: 'Item 2.1' },
+            { id: 2, content: 'Item 2.2' },
+            { id: 3, content: 'Item 2.3' },
+            { id: 4, content: 'Item 2.4' }
+        ]
+    }
+];
+
+draggingIndex: number | null = null;
+draggedElement: any | null = null;
+
+dragStart(event: DragEvent, index: number, subIndex: number | null = null) {
+    event.stopPropagation();
+    this.draggingIndex = index;
+    if (subIndex === null) {
+        this.draggedElement = this.items[index];
+    } else {
+        this.draggedElement = this.items[index].items![subIndex];
+    }
+    const target = event.target as HTMLElement;
+    event.dataTransfer?.setData('text/plain', JSON.stringify({ index, subIndex }));
+    setTimeout(() => target.classList.add('dragging'), 0);
 }
 
+dragOver(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    const target = event.target as HTMLElement;
+    target.classList.add('over');
+}
+
+dragLeave(event: DragEvent) {
+    event.stopPropagation();
+    const target = event.target as HTMLElement;
+    target.classList.remove('over');
+}
+
+drop2(event: DragEvent, index: number, subIndex: number | null = null) {
+    event.preventDefault();
+    event.stopPropagation();
+    const draggedData = JSON.parse(event.dataTransfer?.getData('text')!);
+    if (this.draggedElement) {
+        if (draggedData.subIndex === null) {
+            this.items.splice(draggedData.index, 1);
+            this.items.splice(index, 0, this.draggedElement);
+        } else {
+            this.items[draggedData.index].items?.splice(draggedData.subIndex, 1);
+            if (subIndex === null) {
+                this.items[index].items?.push(this.draggedElement);
+            } else {
+                this.items[index].items?.splice(subIndex, 0, this.draggedElement);
+            }
+        }
+        this.draggingIndex = null;
+        this.draggedElement = null;
+        const overElements = document.querySelectorAll('.over');
+        overElements.forEach(el => el.classList.remove('over'));
+    }
+}
+
+
+}

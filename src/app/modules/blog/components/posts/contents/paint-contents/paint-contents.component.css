@@ -5,3 +5,24 @@
     repeating-linear-gradient(90deg, hsl(var(--twc-bgTern)) 0, rgba(0, 0, 0, 0.1) 2px, transparent 1px, transparent 50px);
   background-position: center;
 }
+
+
+.container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  cursor: move;
+  background-color: #f9f9f9;
+}
+.sub-container {
+  margin-left: 20px;
+}
+.over {
+  border: 2px dashed #000;
+}
+.placeholder {
+  border: 2px dashed red;
+  background-color: #fff0f0;
+  height: 40px;
+  margin: 10px;
+}

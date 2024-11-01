@@ -1,12 +1,36 @@
 <div class="hidden md:hidden lg:hidden xl:hidden bg-[#3197d6] text-2xl md:text-5xl xl:text-7xl active:border-gray-400/50
-focus:border-gray-400/50 text-textTertiary m-8
+focus:border-gray-400/50 text-textTertiary
 grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16
 text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter
-text-4xl lg:text-5xl font-bold lg:tracking-tight w-[100px]  pt-[162px] inline-grid place-self-center place-items-center place-content-center
+text-4xl lg:text-5xl font-bold lg:tracking-tight w-[100px]  pt-[162px] inline-grid place-self-center place-items-center	place-content-center
 max-w-screen-xl mx-auto px-5 pt-[62px] pt-10 w-1/6 w-[300px] mb-2 h-[500px] whitespace-pre-line
 py-6 md:order-1 hidden md:block order-1 order-2 items-start justify-start py-24
 text-slate-500 mt-2 leading-relaxed  break-words ml-2 p-24 px-10 max-w-screen-md -ml-6
 grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 border-red-200 w-32 gap-24 space-y-10 w-[50vh] w-[20vh] gap-4 bg-textPrimary text-bgPrim"></div>
+
+
+<div *ngFor="let item of items; let i = index" class="container" 
+     [attr.data-id]="item.id" 
+     (dragstart)="dragStart($event, i, null)" 
+     (dragover)="dragOver($event)" 
+     (drop)="drop2($event, i, null)" 
+     draggable="true">
+  {{item.content}}
+    <div *ngFor="let subItem of item.items; let j = index" 
+         class="container" 
+         [attr.data-id]="subItem.id" 
+         (dragstart)="dragStart($event, i, j)" 
+         (dragover)="dragOver($event)" 
+         (drop)="drop2($event, i, j)" 
+         (dragleave)="dragLeave($event)" 
+         draggable="true">
+      {{subItem.content}}
+  </div>
+</div>
+
+
+
+
 
 
 
@@ -43,22 +67,21 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
 <div *ngIf="content && showEditor" [ngClass]="'grid-background flex'" >
   <div
     [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
-    class="m-2" (click)="onClick(content)" (click)="$event.stopPropagation()"
+   (click)="onClick(content)" (click)="$event.stopPropagation()"
     cdkDropListOrientation="mixed" cdkDropList (cdkDropListDropped)="drop($event, content)">
     <!--name: {{content?.name}} - id: {{content?.id}}-->
-    <div *ngFor="let subcomponent of content?.subcomponents" cdkDrag
-         [ngClass]="getAtt(normalizarSubcomponente(subcomponent), 'styles') + ' '+ editing()"
+    <ng-container *ngFor="let subcomponent of content?.subcomponents" cdkDrag
          (click)="onClick(normalizarSubcomponente(subcomponent))" (click)="$event.stopPropagation()">
       <ng-container *ngTemplateOutlet="recursiveContent2; context: { $implicit: normalizarSubcomponente(subcomponent) }"></ng-container>
-    </div>
+    </ng-container>
   </div>
 
   <ng-template #recursiveContent2 let-subcomponent>
     <ng-container>
       <!--{{subcomponent?.name}} - id: {{subcomponent.id}} - order: {{subcomponent.order}}-->
-      <div  cdkDropList cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event, subcomponent)"
-           *ngIf="!['grid', 'card', 'page'].includes(subcomponent?.type?.name)"
-            [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
+      <div cdkDropList cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event, subcomponent)"
+            *ngIf="['grid', 'card', 'page'].includes(subcomponent?.type?.name) && false"
+             [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
       >
         <div *ngFor="let subSubcomponent of subcomponent.subcomponents"
              cdkDrag
@@ -68,18 +91,15 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
         </div>
       </div>
 
-      <!--{{subcomponent?.name}} - id: {{subcomponent.id}} - order: {{subcomponent.order}}-->
-      <div  cdkDropList cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event, subcomponent)"
-            *ngIf="['grid', 'card', 'page'].includes(subcomponent?.type?.name)"
-      >
+
+      <ng-container *ngIf="false" >
         <div *ngFor="let subSubcomponent of subcomponent.subcomponents"
-             cdkDrag
-             [ngClass]="getAtt(normalizarSubcomponente(subSubcomponent), 'styles') + ' '+ editing()"
+             [ngClass]="getAtt(normalizarSubcomponente(subSubcomponent), 'styles') + ' ' + editing()"
              (click)="onClick(normalizarSubcomponente(subSubcomponent))"
              (click)="$event.stopPropagation()">
           <ng-container *ngTemplateOutlet="recursiveContent2; context: { $implicit: normalizarSubcomponente(subSubcomponent) }"></ng-container>
         </div>
-      </div>
+      </ng-container>
 
       <ng-container  >
         <ng-container *ngIf="subcomponent?.type?.name==='codeplayground_v2'; ">

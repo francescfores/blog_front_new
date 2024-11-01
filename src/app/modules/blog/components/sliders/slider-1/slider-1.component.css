@@ -3,7 +3,7 @@
   width: 100%;
   overflow: hidden;
   height: 700px;
-  @apply bg-gradient-to-b from-bgTern via-bgSeco to-bgPrim;
+  /*@apply bg-gradient-to-b from-bgTern via-bgSeco to-bgPrim;*/
 }
 
 .slides {
