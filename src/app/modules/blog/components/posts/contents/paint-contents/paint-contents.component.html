@@ -8,28 +8,39 @@ py-6 md:order-1 hidden md:block order-1 order-2 items-start justify-start py-24
 text-slate-500 mt-2 leading-relaxed  break-words ml-2 p-24 px-10 max-w-screen-md -ml-6
 grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 border-red-200 w-32 gap-24 space-y-10 w-[50vh] w-[20vh] gap-4 bg-textPrimary text-bgPrim"></div>
 
+{{content?.subcomponents[0].component.name}}
 
-<div *ngFor="let item of items; let i = index" class="container" 
+<div *ngFor="let item of content?.subcomponents[0].subcomponents; let i = index" class="container" 
      [attr.data-id]="item.id" 
-     (dragstart)="dragStart($event, i, null)" 
+     (dragstart)="dragStart($event, item.order, item)" 
      (dragover)="dragOver($event)" 
-     (drop)="drop2($event, i, null)" 
+     (drop)="drop2($event, item.order, item.component)" 
      draggable="true">
-  {{item.content}}
-    <div *ngFor="let subItem of item.items; let j = index" 
-         class="container" 
-         [attr.data-id]="subItem.id" 
-         (dragstart)="dragStart($event, i, j)" 
-         (dragover)="dragOver($event)" 
-         (drop)="drop2($event, i, j)" 
-         (dragleave)="dragLeave($event)" 
-         draggable="true">
-      {{subItem.content}}
-  </div>
+    {{item.id}}
+    {{item.component.id}}
+    {{item.order}}
 </div>
 
 
-
+<div *ngIf="content && showEditor" [ngClass]="'w-full  '">
+    <div class="m-2" (click)="onClick(content)">
+      name:{{content?.name}} - id:{{content?.id}}
+        <ng-container *ngFor="let subcomponent of content?.subcomponents" >
+          <ng-container *ngTemplateOutlet="recursiveContent3; context: { $implicit: normalizarSubcomponente(subcomponent) }"></ng-container>
+        </ng-container>
+        <ng-template #recursiveContent3 let-subcomponent>
+          <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" class="m-4 ">
+            {{subcomponent?.name}} - id:{{subcomponent.id}} - order:{{subcomponent.order}}
+            <!-- Puedes agregar aquí el contenido específico para los subcomponentes -->
+              @if (subcomponent.subcomponents && content.subcomponents.length > 0){
+              <ng-container *ngFor="let subSubcomponent of subcomponent.subcomponents">
+                <ng-container *ngTemplateOutlet="recursiveContent3; context: { $implicit: normalizarSubcomponente(subSubcomponent) }" ></ng-container>
+                    </ng-container>
+              }
+          </div>
+        </ng-template>
+    </div>
+</div>
 
 
 
@@ -85,6 +96,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
       >
         <div *ngFor="let subSubcomponent of subcomponent.subcomponents"
              cdkDrag
+             [ngClass]="getAtt(normalizarSubcomponente(subSubcomponent), 'styles') + ' '+ editing()"
              (click)="onClick(normalizarSubcomponente(subSubcomponent))"
              (click)="$event.stopPropagation()">
           <ng-container *ngTemplateOutlet="recursiveContent2; context: { $implicit: normalizarSubcomponente(subSubcomponent) }"></ng-container>

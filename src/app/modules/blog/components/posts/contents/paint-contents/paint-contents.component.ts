@@ -88,7 +88,7 @@ export class PaintContentsComponent {
   }
 
   drop(event: CdkDragDrop<string[]>,content:any) {
-    moveItemInArray(content.subcomponents, event.previousIndex, event.currentIndex);
+      moveItemInArray(content.subcomponents, event.previousIndex, event.currentIndex);
     this.content.subcomponents.forEach((sub: any) => {
       console.log(sub.component.name)
     });
@@ -113,71 +113,67 @@ export class PaintContentsComponent {
         complete: () => { }
       });
   }
+
+
 items: any[] = [
-    { id: 1, content: 'Item 1.1' },
-    { id: 2, content: 'Item 1.2' },
-    { id: 3, content: 'Item 1.3' },
-    { 
-        id: 4, content: 'Item 1.4', items: [
-            { id: 1, content: 'Item 2.1' },
-            { id: 2, content: 'Item 2.2' },
-            { id: 3, content: 'Item 2.3' },
-            { id: 4, content: 'Item 2.4' }
-        ]
-    }
+    { id: 222, content: 'Item 1.1' },
+    { id: 223, content: 'Item 1.2' },
+    { id: 224, content: 'Item 1.3' },
+    { id: 225, content: 'Item 1.4' },
 ];
 
 draggingIndex: number | null = null;
 draggedElement: any | null = null;
 
-dragStart(event: DragEvent, index: number, subIndex: number | null = null) {
+dragStart(event: DragEvent, index: number, content:any) {
+    // Detiene la propagación del evento para evitar que el evento de arrastre se propague a otros elementos.
     event.stopPropagation();
+    // Guarda el índice del elemento que se está arrastrando.
     this.draggingIndex = index;
-    if (subIndex === null) {
-        this.draggedElement = this.items[index];
-    } else {
-        this.draggedElement = this.items[index].items![subIndex];
-    }
+    // Guarda el elemento que se está arrastrando basado en su índice.
+    console.log(index )
+    console.log(this.content?.subcomponents[0].subcomponents.find((x: any) => x.order === index ) )
+    this.draggedElement = this.content?.subcomponents[0].subcomponents.find((x: any) => x.order === index )    // Obtiene el elemento HTML que está siendo arrastrado.
     const target = event.target as HTMLElement;
-    event.dataTransfer?.setData('text/plain', JSON.stringify({ index, subIndex }));
+    // Almacena los datos del índice del elemento arrastrado en el objeto dataTransfer para que pueda ser recuperado durante el "drop".
+    event.dataTransfer?.setData('text/plain', JSON.stringify({index}));
+    // Añade una clase 'dragging' al elemento arrastrado después de un pequeño retraso para aplicarle algún estilo específico si es necesario.
     setTimeout(() => target.classList.add('dragging'), 0);
 }
 
 dragOver(event: DragEvent) {
+    // Previene el comportamiento por defecto del navegador que puede interferir con el evento de arrastre.
     event.preventDefault();
+    // Detiene la propagación del evento para evitar que el evento se propague a otros elementos.
     event.stopPropagation();
+    // Obtiene el elemento HTML sobre el que se está arrastrando.
     const target = event.target as HTMLElement;
+    // Añade una clase 'over' al elemento objetivo para aplicar algún estilo específico cuando se esté arrastrando un elemento sobre él.
     target.classList.add('over');
 }
 
-dragLeave(event: DragEvent) {
-    event.stopPropagation();
-    const target = event.target as HTMLElement;
-    target.classList.remove('over');
-}
 
-drop2(event: DragEvent, index: number, subIndex: number | null = null) {
+drop2(event: DragEvent, index: number,content:any) {
+    // Previene el comportamiento por defecto del navegador.
     event.preventDefault();
+    // Detiene la propagación del evento para evitar que el evento se propague a otros elementos.
     event.stopPropagation();
+    // Recupera los datos del índice del elemento arrastrado desde el objeto dataTransfer.
     const draggedData = JSON.parse(event.dataTransfer?.getData('text')!);
-    if (this.draggedElement) {
-        if (draggedData.subIndex === null) {
-            this.items.splice(draggedData.index, 1);
-            this.items.splice(index, 0, this.draggedElement);
-        } else {
-            this.items[draggedData.index].items?.splice(draggedData.subIndex, 1);
-            if (subIndex === null) {
-                this.items[index].items?.push(this.draggedElement);
-            } else {
-                this.items[index].items?.splice(subIndex, 0, this.draggedElement);
-            }
-        }
+    // Verifica que hay un elemento arrastrado.
+        console.log(index)
+        console.log(draggedData.index)
+        // Remueve el elemento arrastrado de su posición original en el array.
+      moveItemInArray(this.content?.subcomponents[0].subcomponents, draggedData.index,index);
+
+        // Resetea los índices y el elemento arrastrado.
         this.draggingIndex = null;
         this.draggedElement = null;
+        // Remueve la clase 'over' de todos los elementos que puedan tenerla.
         const overElements = document.querySelectorAll('.over');
         overElements.forEach(el => el.classList.remove('over'));
-    }
 }
+
 
 
 }
