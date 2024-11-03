@@ -132,7 +132,7 @@ dragStart(event: DragEvent, index: number, content:any) {
     this.draggingIndex = index;
     // Guarda el elemento que se está arrastrando basado en su índice.
     console.log(index )
-    console.log(this.content?.subcomponents[0].subcomponents.find((x: any) => x.order === index ) )
+    console.log(this.content?.subcomponents[1].subcomponents.find((x: any) => x.order === index ) )
     this.draggedElement = this.content?.subcomponents[0].subcomponents.find((x: any) => x.order === index )    // Obtiene el elemento HTML que está siendo arrastrado.
     const target = event.target as HTMLElement;
     // Almacena los datos del índice del elemento arrastrado en el objeto dataTransfer para que pueda ser recuperado durante el "drop".
@@ -154,24 +154,31 @@ dragOver(event: DragEvent) {
 
 
 drop2(event: DragEvent, index: number,content:any) {
-    // Previene el comportamiento por defecto del navegador.
-    event.preventDefault();
-    // Detiene la propagación del evento para evitar que el evento se propague a otros elementos.
-    event.stopPropagation();
-    // Recupera los datos del índice del elemento arrastrado desde el objeto dataTransfer.
-    const draggedData = JSON.parse(event.dataTransfer?.getData('text')!);
-    // Verifica que hay un elemento arrastrado.
-        console.log(index)
-        console.log(draggedData.index)
-        // Remueve el elemento arrastrado de su posición original en el array.
-      moveItemInArray(this.content?.subcomponents[0].subcomponents, draggedData.index,index);
+  // Previene el comportamiento por defecto del navegador.
+  event.preventDefault();
+  // Detiene la propagación del evento para evitar que el evento se propague a otros elementos.
+  event.stopPropagation();
+  // Recupera los datos del índice del elemento arrastrado desde el objeto dataTransfer.
+  const draggedData = JSON.parse(event.dataTransfer?.getData('text')!);
+  // Verifica que hay un elemento arrastrado.
+  console.log(index)
+  console.log(draggedData.index)
+  // Remueve el elemento arrastrado de su posición original en el array.
+  moveItemInArray(this.content?.subcomponents[1].subcomponents, draggedData.index,index);
+  //this.content?.subcomponents[1].subcomponents.splice(draggedData.index, 1);
+  //this.content?.subcomponents[1].subcomponents.splice(index, 0, this.draggedElement);
+  // Resetea los índices y el elemento arrastrado.
+  this.draggingIndex = null;
+  this.draggedElement = null;
+  // Remueve la clase 'over' de todos los elementos que puedan tenerla.
+  const overElements = document.querySelectorAll('.over');
+  overElements.forEach(el => el.classList.remove('over'));
+  this.content?.subcomponents[1].subcomponents.forEach((component: any, index: number) =>
+  component.order=index
+);
 
-        // Resetea los índices y el elemento arrastrado.
-        this.draggingIndex = null;
-        this.draggedElement = null;
-        // Remueve la clase 'over' de todos los elementos que puedan tenerla.
-        const overElements = document.querySelectorAll('.over');
-        overElements.forEach(el => el.classList.remove('over'));
+
+  console.log(this.content?.subcomponents[1].subcomponents)
 }
 
 
