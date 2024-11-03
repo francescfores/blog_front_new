@@ -131,7 +131,7 @@ export class Codeplayground_V2Component implements OnInit {
         </main>
         <!--add js cdn-->
       </body>
-
+<script src="https://cdn.tailwindcss.com"></script>
     </html>
   `;
     this.safeCode = this.sanitizer.bypassSecurityTrustHtml(this.generatedHTML);
