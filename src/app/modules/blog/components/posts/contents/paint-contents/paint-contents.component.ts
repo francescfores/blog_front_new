@@ -132,8 +132,8 @@ dragStart(event: DragEvent, index: number, content:any) {
     this.draggingIndex = index;
     // Guarda el elemento que se está arrastrando basado en su índice.
     console.log(index )
-    console.log(this.content?.subcomponents[1].subcomponents.find((x: any) => x.order === index ) )
-    this.draggedElement = this.content?.subcomponents[0].subcomponents.find((x: any) => x.order === index )    // Obtiene el elemento HTML que está siendo arrastrado.
+    console.log(content.subcomponents.find((x: any) => x.order === index ) )
+    this.draggedElement = content.subcomponents.find((x: any) => x.order === index )    // Obtiene el elemento HTML que está siendo arrastrado.
     const target = event.target as HTMLElement;
     // Almacena los datos del índice del elemento arrastrado en el objeto dataTransfer para que pueda ser recuperado durante el "drop".
     event.dataTransfer?.setData('text/plain', JSON.stringify({index}));
@@ -164,7 +164,7 @@ drop2(event: DragEvent, index: number,content:any) {
   console.log(index)
   console.log(draggedData.index)
   // Remueve el elemento arrastrado de su posición original en el array.
-  moveItemInArray(this.content?.subcomponents[1].subcomponents, draggedData.index,index);
+  moveItemInArray(content.subcomponents, draggedData.index,index);
   //this.content?.subcomponents[1].subcomponents.splice(draggedData.index, 1);
   //this.content?.subcomponents[1].subcomponents.splice(index, 0, this.draggedElement);
   // Resetea los índices y el elemento arrastrado.
@@ -173,7 +173,7 @@ drop2(event: DragEvent, index: number,content:any) {
   // Remueve la clase 'over' de todos los elementos que puedan tenerla.
   const overElements = document.querySelectorAll('.over');
   overElements.forEach(el => el.classList.remove('over'));
-  this.content?.subcomponents[1].subcomponents.forEach((component: any, index: number) =>
+  content.subcomponents.forEach((component: any, index: number) =>
   component.order=index
 );
 
