@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 700px;
-  /*@apply bg-gradient-to-b from-bgTern via-bgSeco to-bgPrim;*/
+  height: 500px;
+  @apply bg-gradient-to-b from-bgTern via-bgSeco to-bgPrim;
 }
 
 .slides {
@@ -11,12 +11,12 @@
   position: fixed;
 
   transition: transform 0.5s ease-in-out;
-  height: 700px;
+  height: 500px;
   width: 100%;
 }
 .slide {
   min-width: 100%;
-  height: 700px;
+  height: 500px;
   box-sizing: border-box;
   opacity: 0; /* Por defecto, todos los slides son invisibles */
   transition: opacity 0.5s ease-in-out; /* Transición suave para la opacidad */

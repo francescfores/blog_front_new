@@ -26,7 +26,7 @@ export class Codeplayground_V2Component implements OnInit {
   @Input() bg_color_2:string='bg-[#2A2A50]';
   @Input() text_color_1:string='text-[#d8d6ff]';
   @Input() text_color_2:string='text-[#7e73a2]';
-  @Input() rounded:string='rounded-lg';
+  @Input() rounded:string='lg';
 
   safeCode: SafeHtml;
   //codereview

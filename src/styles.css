@@ -78,6 +78,9 @@
   height: 100%;
   overflow: hidden;
 }
+.ngx-codemirror{
+  display: none;
+}
 .CodeMirror textarea {
   height: 100%;
   /*width: 100%;*/

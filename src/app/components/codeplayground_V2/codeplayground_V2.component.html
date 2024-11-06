@@ -39,8 +39,8 @@
 <ng-container *ngIf="htmlCodes && cssCodes && !jsCodes">
   <!-- Mostrar algo si hay htmlCodes y cssCodes, pero no jsCodes -->
   <div class="flex flex-col w-full overflow-hidden">
-    <div class=" flex flex-wrap w-full {{rounded}} ">
-      <div class="rounded-t-lg w-full flex justify-between  {{bg_color_2}} px-4 py-1 text-xs font-semibold">
+    <div class=" flex flex-wrap w-full rounded-{{rounded}} ">
+      <div class="rounded-t-{{rounded}} w-full flex justify-between  {{bg_color_2}} px-4 py-1 text-xs font-semibold">
         <p class="{{text_color_1}}">Code Playground</p>
         <div class="flex justify-between gap-4">
           <p (click)="refreshHtml()" class="{{text_color_1}}">run</p>
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    <div #contentPanel class=" flex flex-wrap rounded-b-lg {{height}}  w-full {{bg_color_1}} ">
+    <div #contentPanel class=" flex flex-wrap rounded-b-{{rounded}}  {{height}}  w-full {{bg_color_1}} ">
       <div #upPanel class="flex  h-full w-full">
         <div #leftPanel class="split__left w-full p-2 pr-0 " >
           <div   class=" flex flex-wrap w-full  ">
@@ -85,8 +85,8 @@
                                             }"></ngx-codemirror>
         </div>
         <div #splitBarHorizontal1 class="split__bar h-full" ></div>
-        <div #centerPanel class="split__center rounded-b-lg {{bg_color_1}}  p-2 pl-0 w-full">
-          <iframe class="{{rounded}} bg-white w-full" #myIframe  [srcdoc]="safeCode" id="iframe-{{id}}"></iframe>
+        <div #centerPanel class="split__center rounded-{{rounded}} {{bg_color_1}}  p-2 pl-0 w-full">
+          <iframe class="rounded-{{rounded}} bg-white w-full" #myIframe  [srcdoc]="safeCode" id="iframe-{{id}}"></iframe>
         </div>
       </div>
 
@@ -99,8 +99,8 @@
 <ng-container *ngIf="htmlCodes && cssCodes && jsCodes">
   <!-- Mostrar algo si las tres están presentes -->
   <div class="flex flex-col w-full overflow-hidden">
-    <div class=" flex flex-wrap w-full {{rounded}} ">
-      <div class="rounded-t-lg w-full flex justify-between  {{bg_color_2}} px-4 py-1 text-xs font-semibold">
+    <div class=" flex flex-wrap w-full rounded-{{rounded}}  ">
+      <div class="rounded-t-{{rounded}} w-full flex justify-between  {{bg_color_2}} px-4 py-1 text-xs font-semibold">
         <p class="{{text_color_1}}">Code Playground</p>
         <div class="flex justify-between gap-4">
           <p (click)="refreshHtml()" class="{{text_color_1}}">run</p>
@@ -108,7 +108,7 @@
         </div>
       </div>
     </div>
-    <div #contentPanel class=" flex flex-wrap rounded-b-lg {{height}}  w-full {{bg_color_1}} ">
+    <div #contentPanel class=" flex flex-wrap rounded-b-{{rounded}} {{height}}  w-full {{bg_color_1}} ">
       <div #upPanel class="flex  h-full w-full">
         <div #leftPanel class="split__left w-full p-2 pr-0 " >
           <div   class=" flex flex-wrap w-full  ">
@@ -145,8 +145,8 @@
                                             }"></ngx-codemirror>
         </div>
         <div #splitBarHorizontal1 class="split__bar h-full" ></div>
-        <div #centerPanel class="split__center rounded-b-lg {{bg_color_1}}  p-2 pl-0 w-full">
-          <iframe class="{{rounded}} bg-white w-full" #myIframe  [srcdoc]="safeCode" id="iframe-{{id}}"></iframe>
+        <div #centerPanel class="split__center rounded-{{rounded}} {{bg_color_1}}  p-2 pl-0 w-full">
+          <iframe class="rounded-{{rounded}} bg-white w-full" #myIframe  [srcdoc]="safeCode" id="iframe-{{id}}"></iframe>
         </div>
       </div>
 

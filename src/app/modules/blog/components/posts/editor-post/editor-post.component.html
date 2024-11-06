@@ -44,7 +44,7 @@
       </div> -->
     </ng-template>
   </div>
-  <div class="w-full top-0 flex  z-0 p-2 ">
+  <div class="w-4/6  top-0 flex  z-0 p-2 ">
 
     <div *ngIf="post.components.length>0" class="w-full overflow-y-scroll " >
       <ng-container *ngFor="let content of post.components" class="">
@@ -82,7 +82,7 @@
 
 
   </div>
-  <div class="w-full flex flex-col  gap-2  top-16 z-10 overflow-hidden overflow-y-scroll h-[90vh]  bg-bgPrim  rounded ">
+  <div class="w-2/6 sticky flex flex-col  gap-2  top-16 z-10 overflow-hidden overflow-y-scroll h-[90vh]  bg-bgPrim  rounded ">
     <ul class="w-full justify-center flex flex-wrap  text-sm font-medium overflow-hidden" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
       <li class="flex-grow">
         <button (click)="createComponent()"
@@ -108,7 +108,7 @@
         (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-add-content>
       <app-create-content *ngIf="creating"
         (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-create-content>
-      <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="col-span-4 flex lg:sticky"
+      <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="col-span-4"
                           [postContent]="selectetContent"
                           (updatedContent)="getProduct($event)"></app-update-content>
     </div>

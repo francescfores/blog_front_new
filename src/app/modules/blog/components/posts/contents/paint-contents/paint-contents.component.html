@@ -6,7 +6,7 @@ text-4xl lg:text-5xl font-bold lg:tracking-tight w-[100px]  pt-[162px] inline-gr
 max-w-screen-xl mx-auto px-5 pt-[62px] pt-10 w-1/6 w-[300px] mb-2 h-[500px] whitespace-pre-line
 py-6 md:order-1 hidden md:block order-1 order-2 items-start justify-start py-24 w-1/3 borde-8
 text-slate-500 mt-2 leading-relaxed  break-words ml-2 p-24 px-10 max-w-screen-md -ml-6 
-grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 border-red-200 w-32 gap-24 space-y-10 w-[50vh] w-[20vh] gap-4 bg-textPrimary text-bgPrim border-8 border-10 border-l-8 -mx-2 md:w-1/2 lg:w-1/4 lg:w-1/2 hover:border-red-400  max-w-screen-2xl "></div>
+grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 border-red-200 w-32 gap-24 space-y-10 w-[50vh] w-[20vh] gap-4 bg-textPrimary text-bgPrim border-8 border-10 border-l-8 -mx-2 md:w-1/2 lg:w-1/4 lg:w-1/2 hover:border-red-400  max-w-screen-2xl min-h-10 max-w-6xl"></div>
 
 
 <div *ngIf="content && showEditor" [ngClass]="'w-full  '">
@@ -122,7 +122,6 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
           </figure>
         </ng-container>
         <ng-container *ngIf="subcomponent?.type?.name==='button';">
-          @if (getAtt(subcomponent, 'url')!==null){
           <a (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
           (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
            (dragover)="dragOver($event)"
@@ -131,32 +130,72 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
            draggable="true"
           href="{{getAtt(subcomponent, 'url')}}" target="_blank">
                 <app-button3d
-                  [ngClass]="getAtt(subcomponent, 'styles') + '  '"
                   [title]="getAtt(subcomponent, 'label')"
                   [type]="getAtt(subcomponent, 'styles_button') + '  '"
                   [width]="'100%'"
                   [loading_type]="'waves'" [loading]="false" >
                 </app-button3d>
               </a>
-          } @else {
-          <app-button3d
-           (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
-           (dragover)="dragOver($event)"
-           (drop)="drop2($event, subcomponent.order, component)"
-           [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
-           draggable="true"
-           (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
-
-            [title]="getAtt(subcomponent, 'label')"
-            [type]="getAtt(subcomponent, 'styles_button') + '  '+ editing()"
-            [width]="'100%'"
-            [loading_type]="'waves'" [loading]="false" >
-          </app-button3d>
-          }
         </ng-container>
       </ng-container>
-
     </ng-template>
+
+      <ng-container>
+        <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
+          <app-codeplayground_V2
+            (click)="onClick(content)" (click)="$event.stopPropagation()" class="flex w-full my-5"
+            [id]="content.subcomponent_id"
+            [height]="getAtt(content, 'height')"
+            [bg_color_1]="getAtt(content, 'bg_color_1')"
+            [bg_color_2]="getAtt(content, 'bg_color_2')"
+            [text_color_1]="getAtt(content, 'text_color_1')"
+            [text_color_2]="getAtt(content, 'text_color_2')"
+            [rounded]="getAtt(content, 'rounded')"
+            [htmlCodes]="getAtt(content, 'html')"
+            [cssCodes]="getAtt(content, 'css')"
+            [jsCodes]="getAtt(content, 'js')"
+          ></app-codeplayground_V2>
+        </ng-container>
+        <ng-container *ngIf="content?.type?.name==='text';">
+          <h1 (click)="onClick(content)" (click)="$event.stopPropagation()"
+          [ngClass]="getAtt(content, 'styles') + ' '+ editing()">{{getAtt(content, 'text_label')}}</h1>
+        </ng-container>
+        <ng-container *ngIf="content?.type?.name==='icon';">
+          <i (click)="onClick(content)" (click)="$event.stopPropagation()"
+             [ngClass]="getAtt(content, 'styles') + ' '+ editing()"></i>
+        </ng-container>
+        <ng-container *ngIf="content?.type?.name==='img';">
+          <ng-container>
+            <img (click)="onClick(content)" (click)="$event.stopPropagation()"
+                 [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+                 [src]="getAtt(content, 'url')"
+                 alt="image" />
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="content?.type?.name==='image3d';">
+          <!--TODO change style.background-image-->
+          <figure (click)="onClick(content)" (click)="$event.stopPropagation()"
+                  [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+                  class="figure " >
+            <img [src]="getAtt(content, 'img_url')"
+                 alt="image" class="amt_2"/>
+            <!--<figcaption class="p-4">Rhino</figcaption>-->
+          </figure>
+        </ng-container>
+        <ng-container *ngIf="content?.type?.name==='button';">
+          <a (click)="onClick(content)" (click)="$event.stopPropagation()"
+           [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
+          href="{{getAtt(content, 'url')}}" target="_blank">
+                <app-button3d
+                  [ngClass]="getAtt(content, 'styles') + '  '"
+                  [title]="getAtt(content, 'label')"
+                  [type]="getAtt(content, 'styles_button') + '  '"
+                  [width]="'100%'"
+                  [loading_type]="'waves'" [loading]="false" >
+                </app-button3d>
+              </a>
+        </ng-container>
+      </ng-container>
   </div>
 </div>
 
@@ -178,8 +217,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
       <!--{{subcomponent?.name}} - id: {{subcomponent.id}} - order: {{subcomponent.order}}-->
       <div  cdkDropList cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event, subcomponent)"
            *ngIf="!['grid', 'card', 'page'].includes(subcomponent?.type?.name)"
-            [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
-      >
+            [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">
         <div *ngFor="let subSubcomponent of subcomponent.subcomponents"
              cdkDrag
              (click)="onClick(normalizarSubcomponente(subSubcomponent))"
@@ -188,10 +226,8 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
         </div>
       </div>
 
-      <!--{{subcomponent?.name}} - id: {{subcomponent.id}} - order: {{subcomponent.order}}-->
       <div  cdkDropList cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event, subcomponent)"
-            *ngIf="['grid', 'card', 'page'].includes(subcomponent?.type?.name)"
-      >
+            *ngIf="['grid', 'card', 'page'].includes(subcomponent?.type?.name)">
         <div *ngFor="let subSubcomponent of subcomponent.subcomponents"
              cdkDrag
              [ngClass]="getAtt(normalizarSubcomponente(subSubcomponent), 'styles') + ' '+ editing()"
