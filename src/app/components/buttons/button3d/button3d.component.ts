@@ -41,12 +41,12 @@ export class Button3dComponent implements OnInit{
   @Input() font_body_weight ='';
   @Input() font_size ='';
   // @Input() loading: boolean;
-  @Input() loading_type:string ='';//slideInLeft
-  @Input() loading:boolean=false;//slideInLeft
-  @Input() loading_time:number=500;//slideInLeft
-  @Input() type:string='';//slideInLeft
+  @Input() loading_type:string ='';
+  @Input() loading:boolean=false;
+  @Input() loading_time:number=500;
+  @Input() type:string='';
   @Input() ripple = true;
-
+ 
   @ViewChild('btn') btn!: ElementRef<HTMLButtonElement>;
 
   constructor(

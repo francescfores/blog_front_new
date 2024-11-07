@@ -1,20 +1,42 @@
 
 <ng-container *ngIf="htmlCodes && !cssCodes && !jsCodes">
   <!-- Mostrar algo si solo hay htmlCodes -->
-  <p>Solo HTML presente</p>
+    <div class="flex flex-col w-full overflow-hidden">
+    <div class="ml-10 w-min rounded-{{rounded}} {{bg_color_1}} -mb-2">
+      <div class=" flex items-start p-2 px-6">
+        <div class="flex justify-between mb-2">
+          <p [class]="windowsCode === 'css' ? text_color_1 : text_color_2" (click)="windowsCode='css'">Html</p>
+        </div>
+      </div>
+    </div>
+    <div  class=" flex flex-wrap rounded-{{rounded}} {{height}}  w-full {{bg_color_1}} ">
+      <div  class="flex  h-full w-full">
+        <div  class=" w-full p-2 pr-0 " >
+          <ngx-codemirror   (keydown)="refreshHtml()" [(ngModel)]="htmlCodes" class=""
+                           [options]="{
+                                                htmlMode: true,
+                                                 lineNumbers:
+                                         false, theme: 'material',
+                                                  mode: 'htmlmixed',
+                                                  }"></ngx-codemirror>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </ng-container>
 
 <ng-container *ngIf="!htmlCodes && cssCodes && !jsCodes">
   <!-- Mostrar algo si solo hay cssCodes -->
   <div class="flex flex-col w-full overflow-hidden">
-    <div class="ml-10 w-min {{rounded}} {{bg_color_1}} -mb-2">
+    <div class="ml-10 w-min rounded-{{rounded}} {{bg_color_1}} -mb-2">
       <div class=" flex items-start p-2 px-6">
         <div class="flex justify-between mb-2">
           <p [class]="windowsCode === 'css' ? text_color_1 : text_color_2" (click)="windowsCode='css'">Css</p>
         </div>
       </div>
     </div>
-    <div  class=" flex flex-wrap {{rounded}} {{height}}  w-full {{bg_color_1}} ">
+    <div  class=" flex flex-wrap rounded-{{rounded}} {{height}}  w-full {{bg_color_1}} ">
       <div  class="flex  h-full w-full">
         <div  class=" w-full p-2 pr-0 " >
           <ngx-codemirror   (keydown)="refreshHtml()" [(ngModel)]="cssCodes" class=""
@@ -33,10 +55,32 @@
 
 <ng-container *ngIf="!htmlCodes && !cssCodes && jsCodes">
   <!-- Mostrar algo si solo hay jsCodes -->
-  <p>Solo JS presente</p>
+  <div class="flex flex-col w-full overflow-hidden">
+    <div class="ml-10 w-min rounded-{{rounded}} {{bg_color_1}} -mb-2">
+      <div class=" flex items-start p-2 px-6">
+        <div class="flex justify-between mb-2">
+          <p [class]="windowsCode === 'css' ? text_color_1 : text_color_2" (click)="windowsCode='css'">JS</p>
+        </div>
+      </div>
+    </div>
+    <div  class=" flex flex-wrap rounded-{{rounded}} {{height}}  w-full {{bg_color_1}} ">
+      <div  class="flex  h-full w-full">
+        <div  class=" w-full p-2 pr-0 " >
+          <ngx-codemirror   (keydown)="refreshHtml()" [(ngModel)]="jsCodes" class=""
+                           [options]="{
+                                                htmlMode: true,
+                                                 lineNumbers:
+                                         false, theme: 'material',
+                                                  mode: 'javascript',
+                                                  }"></ngx-codemirror>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </ng-container>
 
-<ng-container *ngIf="htmlCodes && cssCodes && !jsCodes">
+<ng-container *ngIf="(htmlCodes && cssCodes && !jsCodes) || (htmlCodes && !cssCodes && jsCodes) || (!htmlCodes && cssCodes && jsCodes)">
   <!-- Mostrar algo si hay htmlCodes y cssCodes, pero no jsCodes -->
   <div class="flex flex-col w-full overflow-hidden">
     <div class=" flex flex-wrap w-full rounded-{{rounded}} ">
