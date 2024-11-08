@@ -2,26 +2,13 @@
 button {
   all:unset;
 }
-
-/*
-.btn :
-
-.btn :
-
-Define variables esenciales como la altura, el ancho y la elevación 3D.
-Height: calcula la altura combinando la altura base y la elevación (raise) de las capas de sombra y fondo.
-Position: relative es esencial para el efecto de sombra y profundidad, ya que permite que los elementos hijos con posición absoluta tomen como referencia la capa principal.
-*/
-
-
 .btn {
-  /*--font_body_family:Ubuntu;
-  */
+  --font_body_family:Ubuntu;
   --height:50px; 
   --width:150px;
   --raise:10px;
   --rounded:5px;
-  --rotate:20;
+  --rotate:0;
   --rotate_invers:0;
   --border:4px;
   --border_style:solid #004c65 var(--border);
@@ -43,15 +30,6 @@ Position: relative es esencial para el efecto de sombra y profundidad, ya que pe
 .btn:active {
   opacity:0.80;
 }
-
-/* 
-
-.btn_primary : 
-
-Permite aplicar diferentes combinaciones de colores y efectos sin duplicar la estructura principal del botón,
-ejemplo: '.btn_primary', '.btn_secondary', etc.
-
-*/
 .btn_primary {
   --bg_shadow_color:rgba(217,217,217,0.7);
   --bg_front_color:#FF1F48;
@@ -59,15 +37,6 @@ ejemplo: '.btn_primary', '.btn_secondary', etc.
   --border_style:solid #FF4769 var(--border);
   --font_color:#fff;
 }
-
-/*
-.btn_shadow:before
-
-Capa de sombra, al crear la sombra con un pseudo-elemento (:before) y
-position: absolute, la sombra se puede diseñar, mover y estilizar independientemente del contenido del botón,
-usando un margin-top desplazamos hacia abajo dos veces la elevacion la de la sombra + la capa intermedia.
-
-*/
 .btn_shadow:before {
   content:" ";
   position:absolute; 
@@ -79,13 +48,6 @@ usando un margin-top desplazamos hacia abajo dos veces la elevacion la de la som
   border-radius:var(--rounded);
   border:var(--border) solid transparent;
 }
-/*
-.btn .btn_back:before
-
- Capa de intermedia, situada entre la sombra y la capa frontal del botón, 
- se comporta de manera similar a la sombra, pero desplazada solo una vez en lugar de dos, usando margin-top.
-
-*/
 .btn .btn_back:before {
   content:" ";
   position:absolute;
@@ -98,15 +60,6 @@ usando un margin-top desplazamos hacia abajo dos veces la elevacion la de la som
   transition:transform 0.2s ease-out;
   border:var(--border) solid transparent;
 }
-
-/*
-
-.btn_front:
-
-La capa visible del botón, que está posicionada sobre las demás capas, position: absolute la coloca en la parte superior.
-El contenido se centra vertical y horizontalmente con display: flex.
-
-*/
 .btn .btn_front {
   position:absolute;
   height:calc(var(--height));
@@ -120,13 +73,6 @@ El contenido se centra vertical y horizontalmente con display: flex.
   border:var(--border_style);
   transition:transform 0.2s ease-out;
 }
-/*
-¿Por qué se usa content: " ";?
-Sin content, los pseudo-elementos ::before o ::after no se renderizan en absoluto. Al establecer content: " ";, 
-aunque el contenido sea vacío, 
-permite que el pseudo-elemento se muestre y que los demás estilos (como background, position, y height) se apliquen.
-*/
-
 /*btn_shadow events*/
 .btn_shadow_left:before {
   transition:transform 0.2s ease-out;

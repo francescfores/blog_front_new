@@ -66,7 +66,24 @@ export class PaintContentsComponent {
     }
     return attribute ? attribute.value : null;
   }
+  getList(content: any, att: string): any {
+    let list = this.getAtt(content, 'list');
+    return list.split(",");
+  }  
 
+scroll(id: string) {
+    const elmnt = document.getElementById(id);
+    if (elmnt) {
+        // Si elmnt no es null, se hace scroll
+        const yOffset = -80; // Desplazamiento adicional de 40px hacia arriba
+        const y = elmnt.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        // Desplazar suavemente la ventana a la posición calculada
+        window.scrollTo({ top: y, behavior: "smooth" });    } else {
+        // Opcional: manejar el caso en que no se encuentra el elemento
+        console.warn(`Elemento con id "${id}" no encontrado`);
+    }
+}
   //refactor
   normalizarSubcomponente(subcomponente: any): any {
 
@@ -84,7 +101,7 @@ export class PaintContentsComponent {
   }
 
   editing() {
-    return this.showEditor?'hover:border-2 border-red-400/50 ':'';
+    return this.showEditor?'hover:border-2 hover:border-red-400/50 ':'';
   }
 
   drop(event: CdkDragDrop<string[]>,content:any) {

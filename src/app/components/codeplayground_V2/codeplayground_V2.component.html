@@ -80,7 +80,7 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="(htmlCodes && cssCodes && !jsCodes) || (htmlCodes && !cssCodes && jsCodes) || (!htmlCodes && cssCodes && jsCodes)">
+<ng-container *ngIf="(!htmlCodes && !cssCodes && !jsCodes) ||(htmlCodes && cssCodes && !jsCodes) || (htmlCodes && !cssCodes && jsCodes) || (!htmlCodes && cssCodes && jsCodes)">
   <!-- Mostrar algo si hay htmlCodes y cssCodes, pero no jsCodes -->
   <div class="flex flex-col w-full overflow-hidden">
     <div class=" flex flex-wrap w-full rounded-{{rounded}} ">
