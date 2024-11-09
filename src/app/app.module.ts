@@ -14,6 +14,7 @@ import {AuthenticationAdminService} from "./services/api/authentication-admin.se
 import {SharedService} from "./services/shared.service";
 import {BreadcrumbService} from "./components/breadcrumbs/breadcrumService";
 // import {ClientService} from "./services/api/client.service";
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 const googleLoginOptions: GoogleInitOptions = { oneTapEnabled: false}// default is true };
 
@@ -32,12 +33,14 @@ const googleLoginOptions: GoogleInitOptions = { oneTapEnabled: false}// default 
       closeButton: true,
       progressBar: true
     }),
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     AuthenticationService,
     SharedService,
     AuthenticationAdminService,
     BreadcrumbService,
+    SweetAlert2Module,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

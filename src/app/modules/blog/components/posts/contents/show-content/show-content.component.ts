@@ -6,6 +6,7 @@ import {SharedService} from "../../../../../../services/shared.service";
 import {ToastrService} from "ngx-toastr";
 import {PostContent} from "../../../../models/post-content";
 import {PostContentService} from "../../../../services/api/post-content.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-show-content',
@@ -105,7 +106,8 @@ export class ShowContentComponent {
 
   onClick(content: any) {
       this.showContentEv.emit(content);
-      console.log('Se hizo clic en el componente:', content);
+
+    console.log('Se hizo clic en el componente:', content);
   }
   create() {
     this.router.navigate(
@@ -119,7 +121,37 @@ export class ShowContentComponent {
     );
   }
   delete(component_id:number) {
-    if(this.post_id!=null){
+
+          Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showClass: {
+    popup: `
+      animate__animated
+      animate__fadeInUp
+      animate__faster
+    `
+  },
+    hideClass: {
+    popup: `
+      animate__animated
+      animate__fadeOutDown
+      animate__faster
+    `
+  },
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+        if(this.post_id!=null){
       this.postContentService.deleteRelation(this.post_id,component_id)
         .subscribe({
           next: (res:any) => {
@@ -142,6 +174,10 @@ export class ShowContentComponent {
           complete: () => { }
         });
     }
+  }
+});
+
+
 
   }
 

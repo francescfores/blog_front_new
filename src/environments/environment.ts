@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://ctrl-api.com/',
-  //apiUrl: 'https://blog-backend-lemon-tau.vercel.app/',
+  //apiUrl: 'http://ctrl-api.com/',
+  apiUrl: 'https://blog-backend-lemon-tau.vercel.app/',
   // apiUrl: 'https://laravelapi-production.up.railway.app/',
   // apiEndpoint: 'http://localhost:40151',
   // mapbox: {
