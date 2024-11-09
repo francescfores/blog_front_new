@@ -6,7 +6,7 @@ import {SharedService} from "../../../../../../services/shared.service";
 import {ToastrService} from "ngx-toastr";
 import {PostContent} from "../../../../models/post-content";
 import {PostContentService} from "../../../../services/api/post-content.service";
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-show-content',
@@ -122,7 +122,7 @@ export class ShowContentComponent {
   }
   delete(component_id:number) {
 
-          Swal.fire({
+          swal.fire({
   title: "Are you sure?",
   text: "You won't be able to revert this!",
   icon: "warning",
@@ -146,7 +146,7 @@ export class ShowContentComponent {
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-    Swal.fire({
+    swal.fire({
       title: "Deleted!",
       text: "Your file has been deleted.",
       icon: "success"
