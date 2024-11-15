@@ -82,12 +82,12 @@ export class AuthenticationAdminService {
     const httpOptions = {
       headers,
     };
-    return this.http.post<any>(`${environment.apiUrl}api/login_User_google`, { email, id_token }, httpOptions)
+    return this.http.post<any>(`${environment.apiUrl}api/auth/login_google`, { email, id_token }, httpOptions)
       // return this.http.post<any>(`$/users/authenticate`, { username, password })
       .pipe(map(data => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         console.log('login');
-        this.user = data.User;
+        this.user = data.user;
         this.user.token = data.token;
         localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.currentUserSubject.next(this.user);
@@ -106,7 +106,7 @@ export class AuthenticationAdminService {
     //
     // }
     this.currentUserSubject.next(null);
-    // this.socialAuthService.signOut();
+    this.socialAuthService.signOut();
     this.router.navigate(['/auth/login'], { queryParams: { returnUrl: '' }});
   }
 
@@ -136,6 +136,15 @@ export class AuthenticationAdminService {
     });
     console.log('params');
     console.log(params);
-    return this.http.post<any>(`${environment.apiUrl}api/register_User`,  params );
+    return this.http.post<any>(`${environment.apiUrl}api/auth/register`,  params )
+          .pipe(map(data => {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        console.log('reeeeeeeegis');
+        this.user = data.user;
+        this.user.token = data.token;
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
+        this.currentUserSubject.next(this.user);
+        return this.user;
+      }));
   }
 }

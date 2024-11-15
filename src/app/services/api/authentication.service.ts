@@ -27,21 +27,27 @@ export class AuthenticationService {
   }
 
   login(email:string, password:string) {
+        console.log(email);
+    console.log(password);
+    console.log('cors');
+    console.log(environment.apiUrl);
     const headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
     // headers.append('Access-Control-Allow-Headers','X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method');
+    headers.append('Access-Control-Allow-Methods','GET, POST, OPTIONS, PUT, DELETE');
+    headers.append('Allow','GET, POST, OPTIONS, PUT, DELETE');
     const httpOptions = {
       headers,
     };
-    return this.http.post<any>(`${environment.apiUrl}api/login_client`, { email, password }, httpOptions)
+    return this.http.post<any>(`${environment.apiUrl}api/auth/login`, { email, password }, httpOptions)
       // return this.http.post<any>(`$/users/authenticate`, { username, password })
       .pipe(map(data => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        this.user = data.client;
+        console.log('login');
+        this.user = data.user;
         this.user.token = data.token;
         localStorage.setItem('currentClient', JSON.stringify(this.user));
-        const cartJson = localStorage.getItem('cart');
-        console.log('cartJson',cartJson);
         this.currentClientSubject.next(this.user);
         return this.user;
       }));
@@ -136,6 +142,6 @@ export class AuthenticationService {
     });
     console.log('params');
     console.log(params);
-    return this.http.post<any>(`${environment.apiUrl}api/register_client`,  params );
+    return this.http.post<any>(`${environment.apiUrl}api/auth/register`,  params );
   }
 }

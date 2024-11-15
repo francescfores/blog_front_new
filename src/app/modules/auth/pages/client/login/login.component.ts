@@ -2,7 +2,8 @@ import {AfterViewInit, Component, EventEmitter, OnInit, Output, Renderer2} from 
 import {first} from "rxjs/operators";
 import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthenticationService} from "../../../../../services/api/authentication.service";
+import {AuthenticationAdminService} from "../../../../../services/api/authentication-admin.service";
+
 import {ToastrService} from "ngx-toastr";
 import {
   SocialAuthService,
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   constructor(
     public router: Router,
-    public authenticationService: AuthenticationService,
+    public authenticationService: AuthenticationAdminService,
     public socialAuthService: SocialAuthService,
     private toastr: ToastrService,
   public themeService: ThemeService,
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit():void{
-    if (this.authenticationService.currentClientValue) {
+    if (this.authenticationService.currentUserValue) {
       this.router.navigate(['/shop/products']);
     }
   }
@@ -92,7 +93,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.submited = true;
     if (this.loginForm.valid) {
       this.loading = true;
-      this.authenticationService.login(this.f['email'].value, this.f['password'].value)
+      this.authenticationService.loginUser(this.f['email'].value, this.f['password'].value)
         .pipe(first())
         .subscribe(
           data => {

@@ -40,7 +40,7 @@
         <div class="flex flex-wrap flex py-5 gap-5 items-center justify-center" >
           <button (click)="goToCat(category.id, category.name)" *ngFor="let category of categories" class=" py-2 px-4 rounded-md
           bg-bgTern/60 hover:opacity-75 group flex items-center gap-5 text-lg font-normal leading-snug tracking-normal antialiased ">
-            <p class="text-textSecondary">
+            <p class="text-textSecondary uppercase">
               {{category.name}}
             </p>
           </button>
@@ -59,12 +59,12 @@
   </div>
 
 
-    <div class="flex w-full justify-center border-t border-bgSeco/50 py-2">
+    <div class="flex w-full gap-4 text-xs justify-center border-t border-bgSeco/50 py-2">
 
-        Copyright © 2024
+        <p>Copyright © 2024</p>
         <a
           href=""
-          class="hover:opacity-80 text-xs font-semibold py-1"
+          class="hover:opacity-80  font-semibold "
         >
           Francescs Fores
         </a>

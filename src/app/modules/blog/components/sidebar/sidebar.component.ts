@@ -6,6 +6,9 @@ import {CategoryService} from "../../services/api/post-category.service";
 import {first} from "rxjs/operators";
 import { filter } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
+import {User} from "../../../../models/user";
+import {AuthenticationService} from "../../../../services/api/authentication.service";
+import {AuthenticationAdminService} from "../../../../services/api/authentication-admin.service";
 
 @Component({
   selector: "app-sidebar-blog",
@@ -22,12 +25,14 @@ export class SidebarComponent implements OnInit {
   categories: PostCategory[]=[];
   audio = new Audio('assets/sounds/mixkit-mouse-click-close-1113.wav');
   audio2 = new Audio('assets/sounds/mixkit-hard-pop-click-2364.wav');
+  client!:User;
 
   constructor(
     public sidebarService: SidebarService,
     public themeService: ThemeService,
     private postCategoryService: CategoryService,
     private router: Router,
+    public authenticationAdminService: AuthenticationAdminService
 
   ) {
     this.sidebarOpen= false;
@@ -35,6 +40,7 @@ export class SidebarComponent implements OnInit {
   show_nav!:boolean;
 
   ngOnInit() {
+        this.client = this.authenticationAdminService.currentUserValue
     this.transparent=true;
     this.sidebarService.getShow().subscribe(show_nav => {
       this.show_nav = show_nav;
@@ -127,7 +133,7 @@ export class SidebarComponent implements OnInit {
   }
 
   logOut(){
-    // this.authenticationService.logout();
+    this.authenticationAdminService.logout();
   }
 
   @HostListener('window:scroll', ['$event'])

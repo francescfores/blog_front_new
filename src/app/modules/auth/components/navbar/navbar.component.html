@@ -1,6 +1,6 @@
 <nav id="navbar"
      class="bg-transparent text-textPrimary transition-all duration-500 ease-in-out top-0 fixed z-50 w-full">
-  <div class="max-w-[70rem] mx-auto px-4 md:px-10 ">
+  <div class="max-w-[70rem] mx-auto ">
     <div class="px-5 flex-grow  flex h-16">
 
       <div class="flex ml-0 mr-auto my-auto justify-center items-center ">
@@ -43,44 +43,10 @@
             <circle cx="13" cy="2.071797" r="1.5" fill="var(--color-text)" style="transform-origin: center center 0px; transform: scale(0); background: green;"></circle>
           </g>
         </svg>
-        <a class="relative flex items-center " (click)="setLoginOpen()">
-          <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="hover:opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-
-        </a>
+        
       </div>
     </div>
   </div>
 
-  <div class=" relative flex max-w-[70rem] mx-auto w-full">
-    <div class="absolute px-4 md:px-10  right-0 h-auto w-auto ease-in-out duration-300"
-         [ngClass]="{ 'translate-y-0 ': loginOpen, '-translate-y-full': !loginOpen, 'opacity-100 visible': loginOpen, 'invisible opacity-0': !loginOpen}">
-      <div class="w-auto text-textPrimary px-5 z-0 bg-bgPrim mr-auto w-full">
-        <div class="divide-y divide-solid divide-neutral-700 w-1/4 ">
-      <div *ngIf="client">
-                  <a  (click)="logOut()"
-                      class=" w-full text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"
-                  > Logout </a>
-                  <a [routerLink]="['/shop/profile']"
-                    class=" w-full text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"
-                  > Account </a>
-
-                </div>
-      <div *ngIf="!client">
-          <div>
-            <a
-              [routerLink]="['/auth/login']"
-              class=" text-sm font-bold inline-block py-2"
-            >
-              Login
-            </a>
-          </div>
-
-        </div>
-      </div >
-    </div>
-  </div>
-  </div>
 
 </nav>

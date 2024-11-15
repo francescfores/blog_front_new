@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {AuthenticationService} from "../../../../../services/api/authentication.service";
 import {first} from "rxjs/operators";
 import {ToastrService} from "ngx-toastr";
 import {ThemeService} from "../../../../../services/theme/theme.service";
+import {AuthenticationAdminService} from "../../../../../services/api/authentication-admin.service";
 
 @Component({
   selector: "app-register",
@@ -20,13 +20,13 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService,
+    private authenticationService: AuthenticationAdminService,
     private toastr: ToastrService,
     private themeService: ThemeService
   ) {
   }
   ngAfterViewInit():void{
-    if (this.authenticationService.currentClientValue) {
+    if (this.authenticationService.currentUserValue) {
       //this.router.navigate(['/shop/products']);
     }
   }
@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       console.log('data');
       // this.appService.login();
       this.loading = true;
-      this.authenticationService.login('client_ecommerce@gmail.com', '123456')
+      this.authenticationService.login('1@gmail.com', '123456')
         //this.authenticationService.login(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe(
@@ -79,6 +79,8 @@ export class RegisterComponent implements OnInit, AfterViewInit {
         this.errorMessage = 'Passwords do not match!';
         this.toastr.error(this.errorMessage);
       }else{
+        console.log('data');
+        console.log('data');
         console.log('data');
         let data = {
           nick:this.f['nick'].value,

@@ -1,6 +1,6 @@
 <nav id="navbar" *ngIf="show_nav"
      class="bg-bgSeco/90 text-textPrimary transition-all duration-500 ease-in-out top-0 fixed z-50 w-full">
-  <div class="max-w-[70rem] mx-auto px-4 md:px-10 ">
+  <div class="max-w-[70rem] mx-auto ">
     <div class="px-5 flex-grow  flex h-16">
       <button
         class='flex md:hidden z-50 flex-grow-0 flex-shrink-0 my-auto
@@ -94,17 +94,16 @@
          [ngClass]="{ 'translate-y-0 ': loginOpen, '-translate-y-full': !loginOpen, 'opacity-100 visible': loginOpen, 'invisible opacity-0': !loginOpen}">
       <div class="w-auto text-textPrimary px-5 z-0 bg-bgPrim mr-auto w-full">
         <div class="divide-y divide-solid divide-neutral-700 w-1/4 ">
-          <!--      <div *ngIf="client">-->
-          <!--        <a  (click)="logOut()"-->
-          <!--            class=" w-full text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"-->
-          <!--        > Logout </a>-->
-          <!--        <a [routerLink]="['/shop/profile']"-->
-          <!--          class=" w-full text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap"-->
-          <!--        > Account </a>-->
+               <div *ngIf="client">
+                 <a  (click)="logOut()"
+                     class=" w-full text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap">
+                  Logout </a>
+                  <a [routerLink]="['/shop/profile']"
+                    class=" w-full text-sm leading-relaxed inline-block mr-4 py-2 whitespace-nowrap">
+                   Account </a>
 
-          <!--      </div>-->
-          <!--      <div *ngIf="!client">-->
-          <div >
+                </div>
+          <div *ngIf="!client">
             <a
               [routerLink]="['/auth/login']"
               class=" text-sm font-bold inline-block py-2"

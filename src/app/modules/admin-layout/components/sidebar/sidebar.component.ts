@@ -1,10 +1,13 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {SidebarService} from "../../services/sidebar.service";
 import {ThemeService} from "../../../../services/theme/theme.service";
+import {AuthenticationAdminService} from "../../../../services/api/authentication-admin.service";
+import {User} from "../../../../models/user";
 
 @Component({
   selector: "app-sidebar",
   templateUrl: "./sidebar.component.html",
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
   sidebarOpen= false;
@@ -12,22 +15,29 @@ export class SidebarComponent implements OnInit {
   loginOpen = false;
   audio = new Audio('assets/sounds/mixkit-mouse-click-close-1113.wav');
   audio2 = new Audio('assets/sounds/mixkit-hard-pop-click-2364.wav');
+  dark!:boolean;
+  client!:User;
 
   constructor(
     public sidebarService: SidebarService,
     public themeService: ThemeService,
+    public authenticationAdminService: AuthenticationAdminService
 
   ) {
     this.sidebarOpen= false;
   }
 
   ngOnInit() {
+        this.client = this.authenticationAdminService.currentUserValue
+    
     this.sidebarService.getSidebarState().subscribe(sidebarOpen => {
       this.sidebarOpen = sidebarOpen;
     });
     this.themeService.getCurrentTheme().subscribe(theme => {
       this.isDarkEnable = theme === 'theme-dark';
     });
+    this.dark=this.isDarkEnable
+
   }
 
   toggleSidebar() {
@@ -38,8 +48,8 @@ export class SidebarComponent implements OnInit {
     this.audio.load();
     this.audio.play();
     this.isDarkEnable = !this.isDarkEnable;
-    this.themeService.changeTheme(this.isDarkEnable);
     this.animationSunMoon();
+    this.themeService.changeTheme(this.isDarkEnable);
   }
   setLoginOpen() {
     this.loginOpen = !this.loginOpen;
@@ -72,6 +82,10 @@ export class SidebarComponent implements OnInit {
         $('.moon_sun').css("transform", "rotate(50deg)");
       }, 500);
     }
+  }
+
+  logOut(){
+    this.authenticationAdminService.logout();
   }
 
 }

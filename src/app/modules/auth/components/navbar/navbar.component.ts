@@ -3,7 +3,6 @@ import {BehaviorSubject} from "rxjs";
 import $ from 'jquery';
 import {Router} from "@angular/router";
 import {ThemeService} from "../../../../services/theme/theme.service";
-import {SidebarService} from "../services/sidebar.service";
 import {User} from "../../../../models/user";
 import {AuthenticationService} from "../../../../services/api/authentication.service";
 import {AuthenticationAdminService} from "../../../../services/api/authentication-admin.service";
@@ -30,7 +29,6 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     public themeService: ThemeService,
-    public sidebarService: SidebarService,
     public authenticationAdminService: AuthenticationAdminService
   ) {
   }
@@ -41,9 +39,6 @@ export class NavbarComponent implements OnInit {
     });
     this.dark=this.isDarkEnable
 
-    this.sidebarService.getSidebarState().subscribe(sidebarOpen => {
-      this.sidebarOpen = sidebarOpen;
-    });
     this.client = this.authenticationAdminService.currentUserValue
     if (!this.client) {
       //this.router.navigate(['/auth/login']);
@@ -88,7 +83,6 @@ export class NavbarComponent implements OnInit {
   }
   toggleSidebar() {
     console.log('eeee')
-    this.sidebarService.toggleSidebar();
   }
 
   setLoginOpen() {

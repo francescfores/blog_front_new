@@ -139,16 +139,15 @@ items: any[] = [
     { id: 225, content: 'Item 1.4' },
 ];
 
-draggingIndex: number | null = null;
+draggingIndex: any | null = null;
 draggedElement: any | null = null;
-
 dragStart(event: DragEvent, index: number, content:any) {
     // Detiene la propagación del evento para evitar que el evento de arrastre se propague a otros elementos.
     event.stopPropagation();
     // Guarda el índice del elemento que se está arrastrando.
     this.draggingIndex = index;
     // Guarda el elemento que se está arrastrando basado en su índice.
-    console.log(index )
+    console.log(this.draggingIndex)
     console.log(content.subcomponents.find((x: any) => x.order === index ) )
     this.draggedElement = content.subcomponents.find((x: any) => x.order === index )    // Obtiene el elemento HTML que está siendo arrastrado.
     const target = event.target as HTMLElement;
@@ -158,7 +157,7 @@ dragStart(event: DragEvent, index: number, content:any) {
     setTimeout(() => target.classList.add('dragging'), 0);
 }
 
-dragOver(event: DragEvent) {
+dragOver(event: DragEvent, index: number,content:any) {
     // Previene el comportamiento por defecto del navegador que puede interferir con el evento de arrastre.
     event.preventDefault();
     // Detiene la propagación del evento para evitar que el evento se propague a otros elementos.
@@ -167,6 +166,9 @@ dragOver(event: DragEvent) {
     const target = event.target as HTMLElement;
     // Añade una clase 'over' al elemento objetivo para aplicar algún estilo específico cuando se esté arrastrando un elemento sobre él.
     target.classList.add('over');
+    console.error(target)
+  //moveItemInArray(content.subcomponents, this.draggingIndex,index);
+
 }
 
 
@@ -192,8 +194,17 @@ drop2(event: DragEvent, index: number,content:any) {
   overElements.forEach(el => el.classList.remove('over'));
   content.subcomponents.forEach((component: any, index: number) =>
   component.order=index
-);
 
+  
+);
+    this.postContentService.orderSubcomponents(content.id, content.subcomponents)
+      .pipe(first())
+      .subscribe(
+        data => {
+          //this.postContent=data.data;
+          console.log('getContent',content);
+          //this.updatedContent.emit(this.postContent);
+        });
 
   console.log(this.content?.subcomponents[1].subcomponents)
 }

@@ -5,5 +5,6 @@ export class Post {
   desc!: string;
   img!: string;
   category!: any;
+  views!:number;
 }
 

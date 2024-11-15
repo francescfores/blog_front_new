@@ -18,7 +18,7 @@ import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 })
 export class Codeplayground_V2Component implements OnInit {
   @Input() id:number=0;
-  @Input() show_iframe=true;
+  @Input() show_iframe:boolean=false;
   @Input() htmlCodes:string='';
   @Input() cssCodes:string='';
   @Input() jsCodes:string='';
