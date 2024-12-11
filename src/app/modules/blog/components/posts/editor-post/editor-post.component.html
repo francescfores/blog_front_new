@@ -1,5 +1,5 @@
-<div class="w-full flex flex-wrap ">
-  <div  class=" w-full p-2 bg-bgPrim m-2 rounded" >
+<div class="w-full flex flex-wrap p-2">
+  <div  class=" w-full p-2 bg-bgPrim rounded" >
     <div #headerTemplate >
       <div class="flex justify-between items-center ">
         <h5  class=" text-xl font-semibold leading-snug tracking-normal text-textPrimary antialiased">
@@ -20,17 +20,6 @@
         <!--              <app-input-outsite [formGroupParent]="form.get(['post'])" [formGroupControlName]="'category'"></app-input-outsite>-->
         <app-select-outside [label]="'Categories'" [items]="categories" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'category'" [value]="form.get(['post'])?.value?.category"></app-select-outside>
 
-        <!--              <div class="col-span-2 sm:col-span-2" >-->
-        <!--                <label class="block text-sm font-medium text-gray-700">Categoria</label>-->
-        <!--                <select  formControlName="category"  (change)="selectCategory($event)"-->
-        <!--                        autocomplete="country-name" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">-->
-        <!--                  <option [value]="null">Selecciona una categoria</option>-->
-        <!--                  <option *ngFor="let value of this.categories"-->
-        <!--                          [value]="value.id">-->
-        <!--                    {{value.name}}-->
-        <!--                  </option>-->
-        <!--                </select>-->
-        <!--              </div>-->
         <input class="text-textPrimary flex flex-wrap" style="width: inherit;" type="file" multiple (change)="onFileChange($event)">
       </form>
       <div class="flex justify-end items-center gap-2 flex-wrap">
@@ -38,14 +27,8 @@
       </div>
       <app-show-content class="w-full p-2  rounded bg-bgSeco" [post_id]="this.id"></app-show-content>
     </div>
-    <ng-template #footerTemplate >
-     <!--  <div class="flex justify-end items-center gap-2 flex-wrap">
-        <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
-      </div> -->
-    </ng-template>
   </div>
   <div class="w-4/6  top-0 flex  z-0 p-2 ">
-
     <div *ngIf="post.components.length>0" class="w-full overflow-y-scroll " >
       <ng-container *ngFor="let content of post.components" class="">
         <app-paint-contents [showEditor]="true" [content]="content"
@@ -79,35 +62,27 @@
         </ng-template>
       </app-card>
     </div>
-
-
   </div>
-  <div class="w-2/6 sticky flex flex-col  gap-2  top-16 z-10 overflow-hidden overflow-y-scroll h-[90vh]  bg-bgPrim  rounded ">
-    <ul class="w-full justify-center flex flex-wrap  text-sm font-medium overflow-hidden" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-      <li class="flex-grow">
+  <div class="w-2/6 sticky flex flex-col  gap-2  top-16 z-10 overflow-hidden  p-2">
+    <ul class=" w-full grid grid-cols-3 justify-center   text-sm font-medium overflow-hidden gap-1" id="default-tab"  role="tablist">
+      <li class=" flex-grow rounded transition-all ease-in-out duration-500 " [ngClass]="{ 'bg-bgTern': !creating, 'bg-bgPrim': creating, }">
         <button (click)="createComponent()"
-                class="w-full p-2  text-textPrimary " >New Component</button>
-        <div [ngClass]="{ 'translate-y-full': !creating, }"
-             class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
+                class="w-full p-2  text-textPrimary " >New </button>
       </li>
-      <li class="flex-grow">
+      <li class=" flex-grow rounded transition-all ease-in-out duration-500 " [ngClass]="{ 'bg-bgTern': !adding, 'bg-bgPrim': adding, }">
         <button (click)="addComponent()"
-                class="w-full p-2  text-textPrimary " >Add Component</button>
-        <div [ngClass]="{ 'translate-y-full': !adding, }"
-             class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
+                class="w-full p-2  text-textPrimary " >Add </button>
       </li>
-      <li class="flex-grow">
+      <li class=" flex-grow rounded transition-all ease-in-out duration-500 " [ngClass]="{ 'bg-bgTern': !updating, 'bg-bgPrim': updating, }">
         <button (click)="updateComponent()"
-                class="w-full p-2 border-textPrimary text-textPrimary">Update Component</button>
-        <div [ngClass]="{ 'translate-y-full': !updating, }"
-             class="border-2 border-textSecondary w-full  transition-all ease-in-out duration-500"></div>
+                class="w-full p-2 border-textPrimary text-textPrimary">Update </button>
       </li>
     </ul>
-    <div id=" default-tab-content flex overflow-hidden  ">
+    <div class="flex w-full overflow-hidden " >
       <app-add-content *ngIf="adding"
-        (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-add-content>
+        (createContentEv)="getProduct($event)" class="w-full" [post_id]="this.id"></app-add-content>
       <app-create-content *ngIf="creating"
-        (createContentEv)="getProduct($event)" class="col-span-4" [post_id]="this.id"></app-create-content>
+        (createContentEv)="getProduct($event)" [post_id]="this.id"></app-create-content>
       <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="col-span-4"
                           [postContent]="selectetContent"
                           (updatedContent)="getProduct($event)"></app-update-content>

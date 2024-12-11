@@ -1,23 +1,16 @@
-<div class="flex flex-col w-full flex-wrap" *ngIf="postContent">
-  <div class="flex justify-between py-6">
-    <div class="inline-block" *ngIf="postContent" >
-      <h3 class="font-semibold text-textPrimary text-2xl">Update component {{postContent.name}}</h3>
-    </div>
-  </div>
-  <div class="w-full bg-bgPrim rounded-lg">
-    <div class="">
-      <div  *ngIf="postContent"  class="pb-6 flex flex-wrap" >
-        <form  *ngIf="form" [formGroup]="form" class="flex flex-wrap w-full ">
-          <app-input-outsite [label]="'name'" class="w-1/2 p-4" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'"
+  <div class="w-full  p-4 bg-bgPrim rounded  max-h-[90vh] overflow-y-scroll " *ngIf="postContent">
+      <div  *ngIf="postContent"  class="py-2 flex flex-wrap " >
+        <form  *ngIf="form" [formGroup]="form" class="grid grid-cols-12 w-full gap-4 ">
+          <app-input-outsite [label]="'name'" class="col-span-6" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'"
                              [value]="form.get(['post'])?.value?.name"></app-input-outsite>
-          <app-input-outsite [label]="'desc'" class="w-1/2 p-4"  [formGroupParent]="form.get(['post'])" [formGroupControlName]="'desc'"
+          <app-input-outsite [label]="'desc'" class="col-span-6"  [formGroupParent]="form.get(['post'])" [formGroupControlName]="'desc'"
                              [value]="form.get(['post'])?.value?.desc"></app-input-outsite>
-          <app-select-outside *ngIf="types" class="w-1/2 p-4"  [label]="'Type'" [items]="types" [formGroupParent]="form.get(['post'])"
+          <app-select-outside *ngIf="types" class="col-span-6"  [label]="'Type'" [items]="types" [formGroupParent]="form.get(['post'])"
                               [formGroupControlName]="'type'"  [value]="form.get(['post'])?.value?.type"></app-select-outside>
-          <div class="w-1/2 p-4 text-textPrimary flex flex-wrap items-center justify-between">
+          <div class="col-span-6 text-textPrimary flex flex-wrap items-center justify-between">
             <input class="flex-1 w-full p-2  rounded" type="file" multiple (change)="onFileChange($event)">
           </div>
-          <div class="w-1/2 p-4 flex flex-col gap-8">
+          <div class="col-span-6 flex flex-col gap-8">
             <p class="text-textPrimary">Default attrs</p>
             <form  *ngIf="formAttr" [formGroup]="formAttr" class="flex flex-col gap-8 flex-wrap w-full">
               <div *ngFor="let attribute of postContent?.attributes">
@@ -26,7 +19,7 @@
               </div>
             </form>
           </div>
-          <div class="w-1/2 p-4 flex flex-col gap-8">
+          <div class="col-span-6 flex flex-col gap-8">
             <p class="col-span-2 text-textPrimary">Override attrs</p>
             <form  *ngIf="formAttr2" [formGroup]="formAttr2" class="flex flex-col gap-8 flex-wrap w-full">
               <div *ngFor="let attribute of postContent?.attributes">
@@ -34,8 +27,8 @@
               </div>
             </form>
           </div>
-          <div class=" w-full p-4 flex flex-col gap-8">
-            <div class="flex justify-between">
+          <div class=" col-span-12 flex flex-col gap-4">
+            <div class="flex items-center justify-between">
               <p class=" text-textPrimary">Childs</p>
               <div class="flex justify-between">
                 <app-button3d class="" title="Add child" (click)="agregarSelect()" [type]="'btn_primary'"
@@ -78,105 +71,8 @@
         </form>
 
       </div>
-        <div class="flex justify-between items-center flex-wrap p-4">
+      <div class="flex justify-between items-center gap-4 flex-wrap">
           <app-button3d title="Delete" (click)="delete(postContent)" [type]="'btn_disabled'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
           <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
         </div>
-    </div>
   </div>
-</div>
-
-<!--
-<div class="flex flex-col gap-2 w-full" *ngIf="!loading">
-  <div class="w-full lg:sticky lg:top-[62px]">
-      <div class="flex flex-wrap rounded-lg  justify-start">
-        <app-card class="w-full">
-          <ng-template #headerTemplate >
-            <div class="flex flex-wrap">
-              <h5 *ngIf="postContent" class="mr-auto text-xl font-semibold leading-snug tracking-normal text-textPrimary antialiased">
-                Update component {{postContent.name}}
-              </h5>
-            </div>
-          </ng-template>
-          <div *ngIf="postContent " class="p-2 flex flex-wrap">
-            <form  *ngIf="form" [formGroup]="form" class="grid grid-cols-12 w-full gap-4">
-              <app-input-outsite [label]="'name'" class="col-span-6" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'"
-                                 [value]="form.get(['post'])?.value?.name"></app-input-outsite>
-              <app-input-outsite [label]="'desc'" class="col-span-6"  [formGroupParent]="form.get(['post'])" [formGroupControlName]="'desc'"
-                                 [value]="form.get(['post'])?.value?.desc"></app-input-outsite>
-              <app-select-outside *ngIf="types" class="col-span-6  "  [label]="'Type'" [items]="types" [formGroupParent]="form.get(['post'])"
-                                  [formGroupControlName]="'type'"  [value]="form.get(['post'])?.value?.type"></app-select-outside>
-              <div class="col-span-6 text-textPrimary flex flex-wrap items-center justify-between">
-                <input class="flex justify-between "  type="file" multiple (change)="onFileChange($event)">
-              </div>
-              <div class="col-span-12"></div>
-              <div class="col-span-6 flex flex-col gap-5">
-                <p class="text-textPrimary">Default attrs</p>
-                <form  *ngIf="formAttr" [formGroup]="formAttr" class="flex flex-col gap-5 flex-wrap w-full">
-                  <div *ngFor="let attribute of postContent?.attributes">
-                    <app-input-outsite class="col-span-6"  [label]="attribute.name" [formGroupParent]="formAttr.get(['attr'])" [formGroupControlName]="attribute.name"
-                                       [value]="formAttr.get(['attr'])?.value?.attribute?.name"></app-input-outsite>
-                  </div>
-                </form>
-              </div>
-              <div class="col-span-6 flex flex-col gap-5">
-                <p class="col-span-2 text-textPrimary">Override attrs</p>
-                <form  *ngIf="formAttr2" [formGroup]="formAttr2" class="flex flex-col gap-5 flex-wrap w-full">
-                  <div *ngFor="let attribute of postContent?.attributes">
-                    <app-input-outsite class="col-span-6"  [label]="attribute.name" [formGroupParent]="formAttr2.get(['attr'])" [formGroupControlName]="attribute.name" [value]="formAttr2.get(['attr'])?.value?.attribute?.name"></app-input-outsite>
-                  </div>
-                </form>
-              </div>
-              <div class=" col-span-12 flex flex-col gap-2">
-                <p class=" text-textPrimary">Childs</p>
-                <div class="flex justify-between">
-                  <app-button3d class="" title="Agregar" (click)="agregarSelect()" [type]="'btn_primary'"
-                                [loading_type]="'waves'" [loading]="loading" ></app-button3d>
-                  <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
-                </div>
-                <div *ngFor="let select of selects; let i = index">
-                  <app-autocomplete-filter (newItemEvent)="selectContent($event)" *ngIf="componentsFiltered.length > 0"
-                                           [class]="'w-full min-h-[0.5rem] col-span-12'"
-                                           [options]="componentsFiltered"
-                                           [formGroupParent]="formChilds.get(['childs'])"
-                                           [formGroupControlName]="'subcontent_' + (i + postContent.subcomponents.length)">
-                  </app-autocomplete-filter>
-                </div>
-                <div  *ngIf="postContent.subcomponents.length>0" [formGroup]="formChilds"
-                       class="flex flex-wrap w-full">
-                  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-                    @if (postContent){
-                      @for (subcomponent of postContent.subcomponents; track subcomponent) {
-                        <div class="example-box" cdkDrag>
-                          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-                          <p>{{subcomponent.component.name}}</p>
-                          <button (click)="removeContent(subcomponent)" type="button" class="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300" data-dismiss-target="#badge-dismiss-dark" aria-label="Remove">
-                            <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                            </svg>
-                          </button>
-                        </div>
-                      }
-                    }
-                  </div>
-
-
-                </div>
-
-
-              </div>
-
-
-            </form>
-
-          </div>
-          <ng-template #footerTemplate >
-            <div class="flex justify-end items-center gap-2 flex-wrap">
-              <app-button3d (click)="delete(postContent)" title="Delete" [type]="'btn_danger'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
-            </div>
-          </ng-template>
-        </app-card>
-      </div>
-  </div>
-</div>
--->

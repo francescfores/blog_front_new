@@ -165,17 +165,30 @@ export class CreateContentComponent implements OnInit{
     }
   }
 
-  selectContent(event: any) {
-    //const selectedType = event.target.value;
-    this.selectetContent=event.option.value.id;
-    let content = this.components.find(x => x.id == this.selectetContent);
+  selectContentByName(name:string){
+    let content = this.components.find(x => x.name === name);
     this.selectetContent= content;
-      this.form.get('component.name')?.setValue(content?.name);
-      this.form.get('component.desc')?.setValue(content?.desc);
-      this.form.get('component.type')?.setValue(content?.type.id);
-      this.form.get('component.subcontent')?.setValue(content?.id);
+    console.log(name)
+    console.log(this.selectContent)
+    this.loadComponent();
   }
 
+  selectContent(event: any) {
+    this.selectContentById(event.option.value.id);
+  }
+
+  selectContentById(id:any){
+    let content = this.components.find(x => x.id === id);
+    this.selectetContent= content;
+    this.loadComponent();
+  }
+   
+
+  loadComponent(){
+     this.form.get('component.name')?.setValue(this.selectetContent?.name);
+    this.form.get('component.type')?.setValue(this.selectetContent?.type.id);
+    this.form.get('component.subcontent')?.setValue(this.selectetContent?.id);
+  }
   checkRecycle(event: any) {
     const isChecked = event.target.checked;
 
