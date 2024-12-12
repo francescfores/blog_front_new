@@ -1,4 +1,4 @@
-  <div class="w-full  p-4 bg-bgPrim rounded  max-h-[90vh] overflow-y-scroll " *ngIf="postContent">
+  <div class="w-full  p-4 bg-bgPrim rounded  max-h-[80vh] overflow-y-scroll " *ngIf="postContent">
       <div  *ngIf="postContent"  class="py-2 flex flex-wrap " >
         <form  *ngIf="form" [formGroup]="form" class="grid grid-cols-12 w-full gap-4 ">
           <app-input-outsite [label]="'name'" class="col-span-6" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'"

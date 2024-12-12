@@ -63,7 +63,7 @@
       </app-card>
     </div>
   </div>
-  <div class="w-2/6 sticky flex flex-col  gap-2  top-16 z-10 overflow-hidden  p-2">
+  <div class="w-2/6 sticky h-full flex flex-col  gap-2  top-16 z-10 overflow-hidden  p-2">
     <ul class=" w-full grid grid-cols-3 justify-center   text-sm font-medium overflow-hidden gap-1" id="default-tab"  role="tablist">
       <li class=" flex-grow rounded transition-all ease-in-out duration-500 " [ngClass]="{ 'bg-bgTern': !creating, 'bg-bgPrim': creating, }">
         <button (click)="createComponent()"
@@ -81,9 +81,9 @@
     <div class="flex w-full overflow-hidden " >
       <app-add-content *ngIf="adding"
         (createContentEv)="getProduct($event)" class="w-full" [post_id]="this.id"></app-add-content>
-      <app-create-content *ngIf="creating"
+      <app-create-content class="w-full" *ngIf="creating"
         (createContentEv)="getProduct($event)" [post_id]="this.id"></app-create-content>
-      <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="col-span-4"
+      <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="w-full"
                           [postContent]="selectetContent"
                           (updatedContent)="getProduct($event)"></app-update-content>
     </div>

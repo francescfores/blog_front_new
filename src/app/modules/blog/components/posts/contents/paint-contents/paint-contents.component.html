@@ -9,7 +9,7 @@ text-slate-500 mt-2 leading-relaxed  break-words ml-2 p-24 px-10 max-w-screen-md
 grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 border-red-200 w-32 gap-24 space-y-10 w-[50vh] w-[20vh] gap-4 bg-textPrimary text-bgPrim border-8 border-10 border-l-8 -mx-2 md:w-1/2 lg:w-1/4 lg:w-1/2 hover:border-red-400  max-w-screen-2xl min-h-10 max-w-6xl whitespace-pre whitespace-pre-line absolute   left-0 top-0 bg-white rounded-full top-[70px] -translate-y-[24px] -translate-x-[24px] p-2 h-10 w-10 text-[24px] border-b-4 border-t-4 text-[#a499c9] gap-14 uppercase"></div>
 
 
-<div *ngIf="content && showEditor" [ngClass]="'w-full  '">
+<div *ngIf="content && showEditor" [ngClass]="'w-full  hidden'">
   <div class="flex justify-between py-6 text-textPrimary">
       <h3 class="font-semibold  text-2xl borde-8">Layout </h3>
       <i (click)="showTree=!showTree "  class="ml-auto fa fa-book p-2" aria-hidden="true"></i>

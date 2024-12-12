@@ -11,13 +11,19 @@
   --mat-expansion-header-hover-state-layer-color:transparent;
   --mat-standard-button-toggle-hover-state-layer-opacity:1;
   --mat-autocomplete-background-color:transparent;
-  --mdc-filled-text-field-input-text-color: hsl(var(--twc-textPrimary))
+  --mdc-filled-text-field-input-text-color: hsl(var(--twc-textPrimary));
+  --mdc-filled-text-field-input-text-placeholder-color: hsl(var(--twc-textPrimary));
+
 }
 
 
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-  @apply bg-bgPrim
+  @apply bg-bgPrim px-2 text-textPrimary text-sm flex items-center ;
+  padding: 0 10px;
 }
 ::ng-deep .cdk-overlay-pane{
   @apply bg-warmGray-50
+}
+
+::ng-deep .mdc-text-field {
 }
