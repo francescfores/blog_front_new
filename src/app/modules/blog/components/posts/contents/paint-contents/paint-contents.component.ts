@@ -4,6 +4,7 @@ import {PostContent} from "../../../../models/post-content";
 import {ViewportRuler} from "@angular/cdk/overlay";
 import {PostContentService} from "../../../../services/api/post-content.service";
 import {first} from "rxjs/operators";
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import {
   CdkDrag,
@@ -22,6 +23,7 @@ export class PaintContentsComponent {
 
   constructor(
     private postContentService: PostContentService,
+private sanitizer: DomSanitizer
   ){
   }
 
@@ -101,7 +103,7 @@ scroll(id: string) {
   }
 
   editing() {
-    return this.showEditor?'hover:border-2 hover:border-red-400/50 ':'';
+    return this.showEditor?'hover:border-2 hover:border-red-400/50 relative edit_component':'';
   }
 
   drop(event: CdkDragDrop<string[]>,content:any) {
@@ -209,6 +211,11 @@ drop2(event: DragEvent, index: number,content:any) {
   console.log(this.content?.subcomponents[1].subcomponents)
 }
 
+  svg!:SafeHtml;
+  renderSvg(svgContent: string): SafeHtml {
+      return this.sanitizer.bypassSecurityTrustHtml(svgContent);
+
+  }
 
 
 }
