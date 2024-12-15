@@ -32,8 +32,6 @@ export class PostContentService {
   }
 
   get(id:any) {
-    console.log('getpostById');
-    console.log(id);
     return this.http.get<any>(`${environment.apiUrl}api/post_content/${id}`);
   }
 
@@ -61,7 +59,6 @@ export class PostContentService {
   }
 
   add(post_id:any, component_id:any) {
-    console.log('destroypost');
     return this.http.post<any>(`${environment.apiUrl}api/post/${post_id}/content/${component_id}`, { params: {post_id,component_id} });
   }
   update(id: number, post: any, typeAttributes:any, attributes:any, subcontents:any) {
@@ -96,8 +93,6 @@ export class PostContentService {
       formData.append('subcomponent_attributes_'+key, value);
     });
     Object.keys(subcontents).forEach(key => {
-      console.log(key)
-      console.log(subcontents[key])
       const value = subcontents[key].value;
       formData.append(key, value);
     });
@@ -105,15 +100,12 @@ export class PostContentService {
   }
 
   delete(id:any) {
-    console.log('destroypost');
     return this.http.delete<any>(`${environment.apiUrl}api/post_content/${id}`, { params: id });
   }
   deleteSubComponent(id:any) {
-    console.log('destroypost');
     return this.http.delete<any>(`${environment.apiUrl}api/destroySubcomponent/${id}`, { params: id });
   }
   deleteRelation(post_id:any, content_id:any) {
-    console.log('destroypost');
     return this.http.delete<any>(`${environment.apiUrl}api/post/${post_id}/content/${content_id}`, { params: {post_id,content_id} });
   }
 

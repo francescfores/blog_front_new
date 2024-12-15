@@ -30,10 +30,11 @@ export class EditorPostComponent implements OnInit{
   queryObj:any;
   selectetContent: any;
   adding: boolean=false;
-  creating: boolean=true;
-  updating: boolean=false;
+  creating: boolean=false;
+  updating: boolean=true;
   hidden_update: boolean=true;
 
+  update_firts_time=true;
   constructor(
     private router: Router,
     private productService: PostService,
@@ -46,6 +47,8 @@ export class EditorPostComponent implements OnInit{
   ){
     this.post = new Post();
   }
+
+
   uploadImages() {
     const formData = new FormData();
     for (let image of this.selectedImages) {
@@ -61,25 +64,7 @@ export class EditorPostComponent implements OnInit{
 
   ngOnInit(): void {
     this.user=this.authAdminService.currentUserValue
-    // this.form = this.formBuilder.group({
-    //   post : this.formBuilder.group({
-    //     name: ['', Validators.required],
-    //     desc: ['', Validators.required],
-    //     img: ['', Validators.required],
-    //     category: ['', Validators.required]
-    //   }),
-    //   // 'identity' : this.formBuilder.group({
-    //   //   'firstname' : ['', Validators.required],
-    //   //   'lastname'  : ['', Validators.required],
-    //   //   'address' : this.formBuilder.group({
-    //   //     'street' : ['', Validators.required],
-    //   //     'city'  : ['', Validators.required],
-    //   //   })
-    //   // })
-    // });
-
     this.getParams();
-
   }
 
   getProduct(content:any){
@@ -91,12 +76,11 @@ export class EditorPostComponent implements OnInit{
           if (this.post) {
             console.log('this.post------------------------------')
             console.log(this.post)
-            // this.selectContent(content)
-            //this.subcategories= this.category.subcategories;
-            //init forms
-            // this.form.value.post.name=this.post.name;
-            // this.form.value.post.desc=this.post.desc;
-            // this.form.value.post.category=this.post.category.id;
+            if(this.update_firts_time){
+              this.selectetContent=this.post.components[0];
+
+              this.update_firts_time=false;
+            }
             this.form = this.formBuilder.group({
               post : this.formBuilder.group({
                 name: [this.post.name, Validators.required],
@@ -105,14 +89,7 @@ export class EditorPostComponent implements OnInit{
                 // img: ['', Validators.required],
                 category: [this.post.category && this.post.category.id ? this.post.category.id : null]
               }),
-              // 'identity' : this.formBuilder.group({
-              //   'firstname' : ['', Validators.required],
-              //   'lastname'  : ['', Validators.required],
-              //   'address' : this.formBuilder.group({
-              //     'street' : ['', Validators.required],
-              //     'city'  : ['', Validators.required],
-              //   })
-              // })
+            
             });
           }
         },
@@ -139,26 +116,19 @@ export class EditorPostComponent implements OnInit{
 
   update() {
     this.submit = true;
-    console.log(this.form.value);
-    console.log(this.category);
     if(!this.loading) {
       this.loading = true;
       if (this.form.valid) {
-
         let formData = this.form.value;
         this.post.name = formData.post.name;
         this.post.subname = formData.post.subname;
         this.post.desc = formData.post.desc;
         this.post.category = formData.post.category;
         // this.post.user = this.user.id;
-
         const formData2 = new FormData();
         for (let image of this.selectedImages) {
           formData2.append('images[]', image);
-          console.log('image')
-          console.log(image)
         }
-        console.log(this.selectedImages)
         this.post.img = this.selectedImages;
 
         this.productService.update(this.post.id, this.post)
@@ -205,8 +175,6 @@ export class EditorPostComponent implements OnInit{
     this.adding=false;
     this.updating=false;
   }
-
-
 
   updateComponent() {
     this.updating=true;

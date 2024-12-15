@@ -44,6 +44,7 @@ private sanitizer: DomSanitizer
   @Input() showEditor=false;
 
   onClick(content: any) {
+    console.log('click')
     this.selectContent.emit(content);
     this.showTree=false;
   }

@@ -1,11 +1,11 @@
 <div class="w-full flex flex-wrap p-2">
   <div  class=" w-full p-2 bg-bgPrim rounded" >
-    <div #headerTemplate >
+    <div>
       <div class="flex justify-between items-center ">
         <h5  class=" text-xl font-semibold leading-snug tracking-normal text-textPrimary antialiased">
           Update post
         </h5>
-      <svg (click)="hidden_update = !hidden_update" class="h-5 w-5 text-textPrimary fill-textPrimary"  xmlns="http://www.w3.org/2000/svg"
+      <svg  [ngClass]="{'-rotate-90': hidden_update}" (click)="hidden_update = !hidden_update" class="h-5 w-5 text-textPrimary fill-textPrimary transition-all duration-300 ease-in-out"  xmlns="http://www.w3.org/2000/svg"
        viewBox="0 0 24 24" fill="none">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z" />
         </svg>
@@ -25,7 +25,6 @@
       <div class="flex justify-end items-center gap-2 flex-wrap">
         <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
       </div>
-      <app-show-content class="w-full p-2  rounded bg-bgSeco" [post_id]="this.id"></app-show-content>
     </div>
   </div>
   <div class="w-4/6  top-0 flex  z-0 p-2 ">
@@ -35,54 +34,15 @@
                             (selectContent)="selectContent($event)"></app-paint-contents>
       </ng-container>
     </div>
-    <div class="w-full flex justify-center items-center h-screen  overflow-y-scroll bg-bgPrim  rounded"
-         *ngIf="post.components.length===0">
-      <app-card class="w-1/2 flex h-auto justify-center items-center p-4">
-        <ng-template #headerImgTemplate class="flex  justify-center ">
-          <div class="flex  justify-center items-center relative m-0 overflow-hidden rounded-none bg-transparent  shadow-none">
-            <img src="./assets/img/icons/icons8-light-100.png" alt="ui/ux review check"/>
-          </div>
-        </ng-template>
-        <!--<h2 class="flex justify-center text-2xl font-semibold leading-snug tracking-normal  antialiased">
-          Add a new component to this page
-        </h2>-->
-        <div class="flex justify-center items-center text-center">
-          <p class="text-textSecondary text-md font-normal">
-            Add a new component to this page
-          </p>
-        </div>
-        <ng-template #footerTemplate >
-          <div class="flex justify-center items-center mt-6">
-            <app-button3d title="Update"  class=""
-                          (click)="update()" [type]="'btn_primary'"
-                          [loading_type]="'waves'"
-                          [style]="'w-full'"
-                          [loading]="loading" ></app-button3d>
-          </div>
-        </ng-template>
-      </app-card>
-    </div>
   </div>
   <div class="w-2/6 sticky h-full flex flex-col  gap-2  top-16 z-10 overflow-hidden  p-2">
-    <ul class=" w-full grid grid-cols-3 justify-center   text-sm font-medium overflow-hidden gap-1" id="default-tab"  role="tablist">
-      <li class=" flex-grow rounded transition-all ease-in-out duration-500 " [ngClass]="{ 'bg-bgTern': !creating, 'bg-bgPrim': creating, }">
-        <button (click)="createComponent()"
-                class="w-full p-2  text-textPrimary " >New </button>
-      </li>
-      <li class=" flex-grow rounded transition-all ease-in-out duration-500 " [ngClass]="{ 'bg-bgTern': !adding, 'bg-bgPrim': adding, }">
-        <button (click)="addComponent()"
-                class="w-full p-2  text-textPrimary " >Add </button>
-      </li>
+    <ul class="hidden w-full justify-center   text-sm font-medium overflow-hidden gap-1" id="default-tab"  role="tablist">
       <li class=" flex-grow rounded transition-all ease-in-out duration-500 " [ngClass]="{ 'bg-bgTern': !updating, 'bg-bgPrim': updating, }">
         <button (click)="updateComponent()"
                 class="w-full p-2 border-textPrimary text-textPrimary">Update </button>
       </li>
     </ul>
     <div class="flex w-full overflow-hidden " >
-      <app-add-content *ngIf="adding"
-        (createContentEv)="getProduct($event)" class="w-full" [post_id]="this.id"></app-add-content>
-      <app-create-content class="w-full" *ngIf="creating"
-        (createContentEv)="getProduct($event)" [post_id]="this.id"></app-create-content>
       <app-update-content [ngClass]="{ 'hidden': !updating,'block': updating, }"  class="w-full"
                           [postContent]="selectetContent"
                           (updatedContent)="getProduct($event)"></app-update-content>

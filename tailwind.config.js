@@ -11,6 +11,17 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
+    extend: {
+      container: {
+        padding: {
+          DEFAULT: '1rem',
+          sm: '2rem',
+          lg: '5rem',
+          xl: '6rem',
+          '2xl': '8rem',
+        },
+      },
+    },
     colors: {
       ...colors,
       /*

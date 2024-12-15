@@ -60,10 +60,7 @@ export class Button3dComponent implements OnInit{
   ngOnChanges(changes: SimpleChanges): void {
 
     if(this.loading_type!==''){
-      console.log('loading_type')
       if (changes['loading']) {
-        console.log('changessssssss')
-
         const loading = changes['loading'].currentValue;
         const previousValue = changes['loading'].previousValue;
         if (loading !== previousValue && previousValue !==undefined) {

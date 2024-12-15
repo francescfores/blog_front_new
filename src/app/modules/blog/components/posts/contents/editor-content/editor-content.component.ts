@@ -59,7 +59,7 @@ export class EditorContentComponent {
   }
   getParams(){
     this.id = history.state.id;
-    this.getContent(null);
+    this.getContentPaint(null);
     this.getCategories();
   }
 
@@ -68,23 +68,24 @@ export class EditorContentComponent {
     this.getParams();
   }
 
-  getContent(id:any){
+  getContentPaint(id:any){
+    console.log('getContentPaint')
     this.PostContentService.get(id)
       .pipe(first())
       .subscribe(
         data => {
-          this.updateContent = data.data;
+          //this.updateContent = data.data;
           this.paintContent = data.data;
         },
         error => {
         });
   }
+
   getCategories(){
     this.categoryService.getAll()
       .pipe(first())
       .subscribe(
         res => {
-          console.log(res)
           this.categories = res.data.category;
         },
         error => {
@@ -102,18 +103,24 @@ export class EditorContentComponent {
   showContentEv(content:any) {
     this.paintContent=content;
     this.updateContent=content;
-    console.log('content',content)
+    console.log('showContentEv',content)
   }
 
   createContentEv(content:any) {
-    this.getContent(content);
+    this.getContentPaint(content);
   }
 
   updateContentEv(content:any) {
-    this.getContent(this.paintContent.id);
+    console.log('updateContentEv')
+   this.getContentPaint(this.paintContent.id);
+
+
   }
 
   paintContentEv(content:any) {
+    console.clear();
+    console.log('paintContentEv')
+    console.log(content)
     this.updateContent=content;
   }
 

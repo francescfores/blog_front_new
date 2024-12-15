@@ -55,7 +55,7 @@ export class UpdateContentComponent implements OnChanges {
   protected selectetContent: any;
   componentsFiltered: any[] =[];
 
-
+  hidden_update=true;
   showTree=false;
   constructor(
     private router: Router,
@@ -97,6 +97,8 @@ export class UpdateContentComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['postContent'] && !changes['postContent'].firstChange) {
+      console.error(this.postContent);
+      console.error(this.selectetContent);
       this.loading=false;
       this.form = this.formBuilder.group({
         post : this.formBuilder.group({
@@ -183,7 +185,8 @@ export class UpdateContentComponent implements OnChanges {
     }
   }
 
-  agregarSelect() {this.selects.push(null)
+  agregarSelect() {
+    this.selects.push(null)
     this.construirFormulario()
   }
 
@@ -226,6 +229,29 @@ export class UpdateContentComponent implements OnChanges {
     //this.form.value.post.img = event.target.files;
   }
 
+  addImages(){
+    const formData2 = new FormData();
+    for (let image of this.selectedImages) {
+          formData2.append('images[]', image);
+        }
+        this.post.img = this.selectedImages;
+  }
+
+  normalizarSubcomponente(subcomponente: any): any {
+
+    return {
+      id: subcomponente.component.id,
+      subcomponent_id: subcomponente.id,
+      name: subcomponente.component.name,
+      desc: subcomponente.component.desc,
+      order: subcomponente.order,
+      subcomponent_attributes: subcomponente.subcomponent_attributes,
+      subcomponents: subcomponente.subcomponents,
+      attributes: subcomponente.component.attributes,
+      type: subcomponente.component.type,
+    };
+  }
+
   update() {
     this.submit = true;
     if(!this.loading) {
@@ -238,15 +264,8 @@ export class UpdateContentComponent implements OnChanges {
         this.post.global = this.globalChecked;
         this.post.subcomponent_id = this.postContent.subcomponent_id;
         this.form.value.post.global=this.globalChecked;
-
-
-        const formData2 = new FormData();
-        for (let image of this.selectedImages) {
-          formData2.append('images[]', image);
-        }
-        this.post.img = this.selectedImages;
-        console.error(this.formChilds.value.childs)
-        console.error(this.formChilds.value.childs.value)
+        //this.addImages();
+       
         this.postContentService.update(
           this.postContent.id,
           this.post,
@@ -255,12 +274,19 @@ export class UpdateContentComponent implements OnChanges {
           this.formChilds.controls)
           .subscribe({
             next: res => {
-              this.postContent =res.data;
+              console.log('update')
+              console.log(res.subcomponent)
+              if(res.subcomponent){
+              this.postContent =this.normalizarSubcomponente(res.subcomponent) ;
+            }else{
+              this.postContent = res.data ;
+            }
+              console.log(this.postContent)
+              this.getContents();
               this.toastr.info(res.message);
               this.loading = false;
               this.selects=[];
-              this.updatedContent.emit(this.postContent);
-              // this.getContent();
+              this.updatedContent.emit([this.postContent,res.subcomponent]);
             },
             error: (err: any) => {
               this.loading = false;
@@ -321,20 +347,32 @@ export class UpdateContentComponent implements OnChanges {
     this.postContent = content;
   }
 
-  selectContent(event: any) {
-    //const selectedType = event.target.value;
-    this.selectetContent=event.option.value.id;
-    let content = this.components.find(x => x.id == this.selectetContent);
-    this.selectetContent= content;
-    const formControls: { [key: string]: any } = {};
-    console.log(this.postContent.subcomponents)
-    this.indexSubcontents++;
-    this.formChilds.addControl('subcontent_' + (this.components.length +this.indexSubcontents), new FormControl(this.selectetContent.id, Validators.required));
-    console.log(this.formChilds.controls)
-  }
-
   getNumberArray(selects: number) {
     return undefined;
+  }
+
+  selectContentByName(name:string){
+    let content = this.components.find(x => x.name === name);
+    this.selectetContent= content;
+    this.loadComponent();
+    this.update();
+  }
+
+  selectContent(event: any) {
+    this.selectContentById(event.option.value.id);
+  }
+
+  selectContentById(id:any){
+    let content = this.components.find(x => x.id === id);
+    this.selectetContent= content;
+    this.loadComponent();
+  }
+   
+
+  loadComponent(){
+    //const selectrols: { [key: string]: any } = {};
+    this.indexSubcontents++;
+    this.formChilds.addControl('subcontent_' + (this.components.length +this.indexSubcontents), new FormControl(this.selectetContent.id, Validators.required));
   }
 }
 

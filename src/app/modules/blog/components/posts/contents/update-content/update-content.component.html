@@ -1,78 +1,326 @@
-  <div class="w-full  p-4 bg-bgPrim rounded  max-h-[80vh] overflow-y-scroll " *ngIf="postContent">
+<div class="flex flex-col gap-2 max-h-[90vh] overflow-y-scroll" *ngIf="postContent">
+
+<div class="flex justify-between items-center bg-bgPrim p-2 rounded">
+         <h5  class=" text-xl font-semibold leading-snug tracking-normal text-textPrimary antialiased">
+            Add component
+         </h5>
+         <svg [ngClass]="{'-rotate-90   ': hidden_update}" (click)="hidden_update = !hidden_update" class="h-5 w-5 text-textPrimary fill-textPrimary transition-all duration-300 ease-in-out"  xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 8.29289C4.68342 7.90237 5.31658 7.90237 5.70711 8.29289L12 14.5858L18.2929 8.29289C18.6834 7.90237 19.3166 7.90237 19.7071 8.29289C20.0976 8.68342 20.0976 9.31658 19.7071 9.70711L12.7071 16.7071C12.3166 17.0976 11.6834 17.0976 11.2929 16.7071L4.29289 9.70711C3.90237 9.31658 3.90237 8.68342 4.29289 8.29289Z" />
+         </svg>
+      </div>
+   <div [ngClass]="{'hidden': hidden_update}">
+      <div class="w-full flex  flex-col gap-2 text-textPrimary">
+         <p class="mx-auto ">Basics</p>
+         <div class="text-textPrimary w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-1">
+            <div (click)="selectContentByName('container')"  class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" stroke-textPrimary h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M8 3H6.2C5.0799 3 4.51984 3 4.09202 3.21799C3.71569 3.40973 3.40973 3.71569 3.21799 4.09202C3 4.51984 3 5.0799 3 6.2V8M8 21H6.2C5.0799 21 4.51984 21 4.09202 20.782C3.71569 20.5903 3.40973 20.2843 3.21799 19.908C3 19.4802 3 18.9201 3 17.8V16M21 8V6.2C21 5.0799 21 4.51984 20.782 4.09202C20.5903 3.71569 20.2843 3.40973 19.908 3.21799C19.4802 3 18.9201 3 17.8 3H16M21 16V17.8C21 18.9201 21 19.4802 20.782 19.908C20.5903 20.2843 20.2843 20.5903 19.908 20.782C19.4802 21 18.9201 21 17.8 21H16M12 17L12 7M7 12H17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Container</p>
+            </div>
+            <div  (click)="selectContentByName('grid')" class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" text-textPrimary fill-textPrimary stroke-textPrimary h-10 w-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <defs>
+                        <style>.cls-1{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style>
+                     </defs>
+                     <g id="ic-layout-square-grid">
+                        <rect class="cls-1" x="2" y="2" width="20" height="20" rx="2"></rect>
+                        <line class="cls-1" x1="2" y1="12" x2="22" y2="12"></line>
+                        <line class="cls-1" x1="12" y1="2" x2="12" y2="22"></line>
+                     </g>
+                  </g>
+               </svg>
+               <p class="text-sm">Grid</p>
+            </div>
+            <div  (click)="selectContentByName('heading')"  class=" flex w-full  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" stroke-textPrimary h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M12 3V21M9 21H15M19 6V3H5V6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Heading</p>
+            </div>
+            <div  (click)="selectContentByName('text')" class=" flex w-full  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" fill-textPrimary stroke-textPrimary h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <g id="Edit / Text_Align_Left">
+                        <path id="Vector" d="M4 18H14M4 14H20M4 10H14M4 6H20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                     </g>
+                  </g>
+               </svg>
+               <p class="text-sm">Text</p>
+            </div>
+            <div (click)="selectContentByName('image')"  class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="text- fill- stroke-textPrimary h-10 w-10" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <title>image-picture</title>
+                     <desc>Created with Sketch Beta.</desc>
+                     <defs> </defs>
+                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                        <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-360.000000, -99.000000)" class="fill-textPrimary h-10 w-10">
+                           <path d="M368,109 C366.896,109 366,108.104 366,107 C366,105.896 366.896,105 368,105 C369.104,105 370,105.896 370,107 C370,108.104 369.104,109 368,109 L368,109 Z M368,103 C365.791,103 364,104.791 364,107 C364,109.209 365.791,111 368,111 C370.209,111 372,109.209 372,107 C372,104.791 370.209,103 368,103 L368,103 Z M390,116.128 L384,110 L374.059,120.111 L370,116 L362,123.337 L362,103 C362,101.896 362.896,101 364,101 L388,101 C389.104,101 390,101.896 390,103 L390,116.128 L390,116.128 Z M390,127 C390,128.104 389.104,129 388,129 L382.832,129 L375.464,121.535 L384,112.999 L390,118.999 L390,127 L390,127 Z M364,129 C362.896,129 362,128.104 362,127 L362,126.061 L369.945,118.945 L380.001,129 L364,129 L364,129 Z M388,99 L364,99 C361.791,99 360,100.791 360,103 L360,127 C360,129.209 361.791,131 364,131 L388,131 C390.209,131 392,129.209 392,127 L392,103 C392,100.791 390.209,99 388,99 L388,99 Z" id="image-picture" sketch:type="MSShapeGroup"> </path>
+                        </g>
+                     </g>
+                  </g>
+               </svg>
+               <p class="text-sm">Image</p>
+            </div>
+            <div (click)="selectContentByName('video')"  class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="fill-textPrimary h-10 w-10" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M 7.7148 49.5742 L 48.2852 49.5742 C 53.1836 49.5742 55.6446 47.1367 55.6446 42.3086 L 55.6446 13.6914 C 55.6446 8.8633 53.1836 6.4258 48.2852 6.4258 L 7.7148 6.4258 C 2.8398 6.4258 .3554 8.8398 .3554 13.6914 L .3554 42.3086 C .3554 47.1602 2.8398 49.5742 7.7148 49.5742 Z M 7.7851 45.8008 C 5.4413 45.8008 4.1288 44.5586 4.1288 42.1211 L 4.1288 13.8789 C 4.1288 11.4414 5.4413 10.1992 7.7851 10.1992 L 48.2147 10.1992 C 50.5350 10.1992 51.8708 11.4414 51.8708 13.8789 L 51.8708 42.1211 C 51.8708 44.5586 50.5350 45.8008 48.2147 45.8008 Z M 20.9804 35.6523 C 20.9804 36.7305 22.1757 37.1992 23.2070 36.5898 L 35.7460 29.1836 C 36.6601 28.6211 36.6366 27.3320 35.7460 26.8164 L 23.2070 19.3633 C 22.2460 18.8008 20.9804 19.2461 20.9804 20.3008 Z"></path>
+                  </g>
+               </svg>
+               <p>Video</p>
+            </div>
+            <div (click)="selectContentByName('button')"  class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="fill-textPrimary h-10 w-10" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <rect x="0" fill="none" width="20" height="20"></rect>
+                     <g>
+                        <path d="M17 5H3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm1 7c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v5z"></path>
+                     </g>
+                  </g>
+               </svg>
+               <p>Button</p>
+            </div>
+            <div (click)="selectContentByName('icon')"  class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="stroke-textPrimary h-10 w-10"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z" stroke-width="1.5"></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Icon</p>
+            </div>
+            <div (click)="selectContentByName('divider')" class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="stroke-textPrimary h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M3 12H3.01M7.5 12H7.51M16.5 12H16.51M12 12H12.01M21 12H21.01M21 21V20.2C21 19.0799 21 18.5198 20.782 18.092C20.5903 17.7157 20.2843 17.4097 19.908 17.218C19.4802 17 18.9201 17 17.8 17H6.2C5.0799 17 4.51984 17 4.09202 17.218C3.7157 17.4097 3.40973 17.7157 3.21799 18.092C3 18.5198 3 19.0799 3 20.2V21M21 3V3.8C21 4.9201 21 5.48016 20.782 5.90798C20.5903 6.28431 20.2843 6.59027 19.908 6.78201C19.4802 7 18.9201 7 17.8 7H6.2C5.0799 7 4.51984 7 4.09202 6.78201C3.71569 6.59027 3.40973 6.28431 3.21799 5.90798C3 5.48016 3 4.92011 3 3.8V3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Divider</p>
+            </div>
+            <div (click)="selectContentByName('spacer')"  class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="fill-textPrimary h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M3.25 3C3.25 2.58579 3.58579 2.25 4 2.25H20C20.4142 2.25 20.75 2.58579 20.75 3C20.75 3.41421 20.4142 3.75 20 3.75H4C3.58579 3.75 3.25 3.41421 3.25 3Z" ></path>
+                     <path d="M3.25 21C3.25 20.5858 3.58579 20.25 4 20.25H20C20.4142 20.25 20.75 20.5858 20.75 21C20.75 21.4142 20.4142 21.75 20 21.75H4C3.58579 21.75 3.25 21.4142 3.25 21Z" ></path>
+                     <path d="M12.5303 4.96967C12.2374 4.67678 11.7626 4.67678 11.4697 4.96967L8.46967 7.96967C8.17678 8.26256 8.17678 8.73744 8.46967 9.03033C8.76256 9.32322 9.23744 9.32322 9.53033 9.03033L11.25 7.31066V16.6893L9.53033 14.9697C9.23744 14.6768 8.76256 14.6768 8.46967 14.9697C8.17678 15.2626 8.17678 15.7374 8.46967 16.0303L11.4697 19.0303C11.7626 19.3232 12.2374 19.3232 12.5303 19.0303L15.5303 16.0303C15.8232 15.7374 15.8232 15.2626 15.5303 14.9697C15.2374 14.6768 14.7626 14.6768 14.4697 14.9697L12.75 16.6893V7.31066L14.4697 9.03033C14.7626 9.32322 15.2374 9.32322 15.5303 9.03033C15.8232 8.73744 15.8232 8.26256 15.5303 7.96967L12.5303 4.96967Z" ></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Spacer</p>
+            </div>
+         </div>
+      </div>
+      <div class="w-full flex  flex-col gap-2 text-textPrimary">
+         <p class="mx-auto ">General</p>
+         <div class="text-textPrimary w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-1">
+            <div  (click)="selectContentByName('codeplayground')" class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" text-textPrimary fill-textPrimary h-10 w-10" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M7 12C7.55228 12 8 11.5523 8 11C8 10.4477 7.55228 10 7 10C6.44772 10 6 10.4477 6 11C6 11.5523 6.44772 12 7 12Z" ></path>
+                     <path d="M11 11C11 11.5523 10.5523 12 10 12C9.44772 12 9 11.5523 9 11C9 10.4477 9.44772 10 10 10C10.5523 10 11 10.4477 11 11Z" ></path>
+                     <path d="M13 12C13.5523 12 14 11.5523 14 11C14 10.4477 13.5523 10 13 10C12.4477 10 12 10.4477 12 11C12 11.5523 12.4477 12 13 12Z" ></path>
+                     <path d="M3 5.5C3 4.11929 4.11929 3 5.5 3H14.5C15.8807 3 17 4.11929 17 5.5V14.5C17 15.8807 15.8807 17 14.5 17H5.5C4.11929 17 3 15.8807 3 14.5V5.5ZM5.5 4C4.67157 4 4 4.67157 4 5.5V14.5C4 15.3284 4.67157 16 5.5 16H14.5C15.3284 16 16 15.3284 16 14.5V7H9.5C8.67157 7 8 6.32843 8 5.5V4H5.5ZM16 5.5C16 4.67157 15.3284 4 14.5 4H9V5.5C9 5.77614 9.22386 6 9.5 6H16V5.5Z" ></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Tabs</p>
+            </div>
+            <div (click)="selectContentByName('button3d')"  class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="fill-textPrimary h-10 w-10" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve" >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <g>
+                        <path d="M4,0C3.724,0,3.5,0.224,3.5,0.5S3.724,1,4,1h23c0.276,0,0.5-0.224,0.5-0.5S27.276,0,27,0H4z"></path>
+                        <path  d="M30.5,5h-29C0.673,5,0,5.673,0,6.5v19C0,26.327,0.673,27,1.5,27h29c0.827,0,1.5-0.673,1.5-1.5v-19 C32,5.673,31.327,5,30.5,5z M31,25.5c0,0.275-0.225,0.5-0.5,0.5h-29C1.225,26,1,25.775,1,25.5v-19C1,6.225,1.225,6,1.5,6h29 C30.775,6,31,6.225,31,6.5V25.5z"></path>
+                        <path  d="M27,31H4c-0.276,0-0.5,0.224-0.5,0.5S3.724,32,4,32h23c0.276,0,0.5-0.224,0.5-0.5S27.276,31,27,31z"></path>
+                     </g>
+                  </g>
+               </svg>
+               <p>Accordion</p>
+            </div>
+            <div  (click)="selectContentByName('card')"  class=" flex w-full  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" stroke-textPrimary h-10 w-10"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M22 12C22 8.22876 22 6.34315 20.8284 5.17157C19.6569 4 17.7712 4 14 4H10C6.22876 4 4.34315 4 3.17157 5.17157C2 6.34315 2 8.22876 2 12C2 15.7712 2 17.6569 3.17157 18.8284C4.34315 20 6.22876 20 10 20H14C17.7712 20 19.6569 20 20.8284 18.8284C21.4816 18.1752 21.7706 17.3001 21.8985 16"  stroke-width="1.5" stroke-linecap="round"></path>
+                     <path d="M10 16H6"  stroke-width="1.5" stroke-linecap="round"></path>
+                     <path d="M14 16H12.5"  stroke-width="1.5" stroke-linecap="round"></path>
+                     <path d="M2 10L7 10M22 10L11 10"  stroke-width="1.5" stroke-linecap="round"></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Image box</p>
+            </div>
+            <div  (click)="selectContentByName('image3')" class=" flex w-full  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="stroke-textPrimary h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M12 8V12M12 16H12.01M7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Alert</p>
+            </div>
+         </div>
+      </div>
+      <div class="w-full flex  flex-col gap-2 text-textPrimary">
+         <p class="mx-auto ">Pro</p>
+         <div class="text-textPrimary w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-1">
+            <div  (click)="selectContentByName('codeplayground')" class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" text-textPrimary -textPrimary stroke-textPrimary h-10 w-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <g  stroke-linecap="round" stroke-width="2">
+                        <path stroke-linejoin="round" d="M7 8l-4 4 4 4"></path>
+                        <path d="M10.5 18l3-12"></path>
+                        <path stroke-linejoin="round" d="M17 8l4 4-4 4"></path>
+                     </g>
+                  </g>
+               </svg>
+               <p class="text-sm">Playground</p>
+            </div>
+            <div (click)="selectContentByName('button3d')"  class=" flex  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class="fill-textPrimary h-10 w-10" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <rect x="0" fill="none" width="20" height="20"></rect>
+                     <g>
+                        <path d="M17 5H3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm1 7c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h14c.6 0 1 .4 1 1v5z"></path>
+                     </g>
+                  </g>
+               </svg>
+               <p>Button 3D</p>
+            </div>
+            <div  (click)="selectContentByName('table_contents')"  class=" flex w-full  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" fill-textPrimary h-10 w-10"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M11,4 L5.5,4 C4.67157288,4 4,4.67157288 4,5.5 L4,18.5 C4,19.3284271 4.67157288,20 5.5,20 L11,20 L11,4 Z M12,4 L12,20 L18.5,20 C19.3284271,20 20,19.3284271 20,18.5 L20,5.5 C20,4.67157288 19.3284271,4 18.5,4 L12,4 Z M3,5.5 C3,4.11928813 4.11928813,3 5.5,3 L18.5,3 C19.8807119,3 21,4.11928813 21,5.5 L21,18.5 C21,19.8807119 19.8807119,21 18.5,21 L5.5,21 C4.11928813,21 3,19.8807119 3,18.5 L3,5.5 Z M5.5,7 C5.22385763,7 5,6.77614237 5,6.5 C5,6.22385763 5.22385763,6 5.5,6 L9.5,6 C9.77614237,6 10,6.22385763 10,6.5 C10,6.77614237 9.77614237,7 9.5,7 L5.5,7 Z M5.5,9 C5.22385763,9 5,8.77614237 5,8.5 C5,8.22385763 5.22385763,8 5.5,8 L8.5,8 C8.77614237,8 9,8.22385763 9,8.5 C9,8.77614237 8.77614237,9 8.5,9 L5.5,9 Z M5.5,11 C5.22385763,11 5,10.7761424 5,10.5 C5,10.2238576 5.22385763,10 5.5,10 L9.5,10 C9.77614237,10 10,10.2238576 10,10.5 C10,10.7761424 9.77614237,11 9.5,11 L5.5,11 Z M5.5,13 C5.22385763,13 5,12.7761424 5,12.5 C5,12.2238576 5.22385763,12 5.5,12 L8.5,12 C8.77614237,12 9,12.2238576 9,12.5 C9,12.7761424 8.77614237,13 8.5,13 L5.5,13 Z"></path>
+                  </g>
+               </svg>
+               <p class="text-sm">Sections</p>
+            </div>
+            <div  (click)="selectContentByName('image3d')" class=" flex w-full  flex-1 flex-col items-center justify-center gap-2 bg-bgPrim rounded p-4">
+               <svg class=" -textPrimary stroke-textPrimary h-10 w-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                     <path d="M2 9V7C2 4 4 2 7 2H17C20 2 22 4 22 7V9"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                     <path d="M2 15V17C2 20 4 22 7 22H17C20 22 22 20 22 17V15"  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                     <g opacity="1">
+                        <path d="M6.69922 9.26025L11.9992 12.3303L17.2592 9.28027"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M12 17.7703V12.3203"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M10.7602 6.29006L7.56023 8.07009C6.84023 8.47009 6.24023 9.48008 6.24023 10.3101V13.7001C6.24023 14.5301 6.83023 15.5401 7.56023 15.9401L10.7602 17.7201C11.4402 18.1001 12.5602 18.1001 13.2502 17.7201L16.4502 15.9401C17.1702 15.5401 17.7702 14.5301 17.7702 13.7001V10.3101C17.7702 9.48008 17.1802 8.47009 16.4502 8.07009L13.2502 6.29006C12.5602 5.90006 11.4402 5.90006 10.7602 6.29006Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                     </g>
+                  </g>
+               </svg>
+               <p class="text-sm">Image 3d</p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="w-full  p-4 bg-bgPrim rounded   " >
       <div  *ngIf="postContent"  class="py-2 flex flex-wrap " >
-        <form  *ngIf="form" [formGroup]="form" class="grid grid-cols-12 w-full gap-4 ">
-          <app-input-outsite [label]="'name'" class="col-span-6" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'"
-                             [value]="form.get(['post'])?.value?.name"></app-input-outsite>
-          <app-input-outsite [label]="'desc'" class="col-span-6"  [formGroupParent]="form.get(['post'])" [formGroupControlName]="'desc'"
-                             [value]="form.get(['post'])?.value?.desc"></app-input-outsite>
-          <app-select-outside *ngIf="types" class="col-span-6"  [label]="'Type'" [items]="types" [formGroupParent]="form.get(['post'])"
-                              [formGroupControlName]="'type'"  [value]="form.get(['post'])?.value?.type"></app-select-outside>
-          <div class="col-span-6 text-textPrimary flex flex-wrap items-center justify-between">
+         <form  *ngIf="form" [formGroup]="form" class="grid grid-cols-12 w-full gap-4 ">
+         <app-input-outsite [label]="'name'" class="col-span-6" [formGroupParent]="form.get(['post'])" [formGroupControlName]="'name'"
+         [value]="form.get(['post'])?.value?.name"></app-input-outsite>
+         <app-input-outsite [label]="'desc'" class="col-span-6"  [formGroupParent]="form.get(['post'])" [formGroupControlName]="'desc'"
+         [value]="form.get(['post'])?.value?.desc"></app-input-outsite>
+         <app-select-outside *ngIf="types" class="col-span-6"  [label]="'Type'" [items]="types" [formGroupParent]="form.get(['post'])"
+         [formGroupControlName]="'type'"  [value]="form.get(['post'])?.value?.type"></app-select-outside>
+         <div class="col-span-6 text-textPrimary flex flex-wrap items-center justify-between">
             <input class="flex-1 w-full p-2  rounded" type="file" multiple (change)="onFileChange($event)">
-          </div>
-          <div class="col-span-6 flex flex-col gap-8">
+         </div>
+         <div class="col-span-6 flex flex-col gap-2">
             <p class="text-textPrimary">Default attrs</p>
             <form  *ngIf="formAttr" [formGroup]="formAttr" class="flex flex-col gap-8 flex-wrap w-full">
-              <div *ngFor="let attribute of postContent?.attributes">
-                <app-input-outsite [label]="attribute.name" [formGroupParent]="formAttr.get(['attr'])" [formGroupControlName]="attribute.name"
-                                   [value]="formAttr.get(['attr'])?.value?.attribute?.name"></app-input-outsite>
-              </div>
+            <div *ngFor="let attribute of postContent?.attributes">
+               <app-input-outsite [label]="attribute.name" [formGroupParent]="formAttr.get(['attr'])" [formGroupControlName]="attribute.name"
+               [value]="formAttr.get(['attr'])?.value?.attribute?.name"></app-input-outsite>
+            </div>
             </form>
-          </div>
-          <div class="col-span-6 flex flex-col gap-8">
+         </div>
+         <div class="col-span-6 flex flex-col gap-2">
             <p class="col-span-2 text-textPrimary">Override attrs</p>
             <form  *ngIf="formAttr2" [formGroup]="formAttr2" class="flex flex-col gap-8 flex-wrap w-full">
-              <div *ngFor="let attribute of postContent?.attributes">
-                <app-input-outsite  [label]="attribute.name" [formGroupParent]="formAttr2.get(['attr'])" [formGroupControlName]="attribute.name" [value]="formAttr2.get(['attr'])?.value?.attribute?.name"></app-input-outsite>
-              </div>
+            <div *ngFor="let attribute of postContent?.attributes">
+               <app-input-outsite  [label]="attribute.name" [formGroupParent]="formAttr2.get(['attr'])" [formGroupControlName]="attribute.name" [value]="formAttr2.get(['attr'])?.value?.attribute?.name"></app-input-outsite>
+            </div>
             </form>
-          </div>
-          <div class=" col-span-12 flex flex-col gap-4">
+         </div>
+         <div class=" col-span-12 flex flex-col gap-2">
             <div class="flex items-center justify-between">
-              <p class=" text-textPrimary">Childs</p>
-              <div class="flex justify-between">
-                <app-button3d class="" title="Add child" (click)="agregarSelect()" [type]="'btn_primary'"
-                              [loading_type]="'waves'" [loading]="loading" ></app-button3d>
-              </div>
+               <p class=" text-textPrimary">Childs</p>
+               <div class="hidden flex justify-between">
+                  <app-button3d class="" title="Add child" (click)="agregarSelect()" [type]="'btn_primary'"
+                  [loading_type]="'waves'" [loading]="loading" ></app-button3d>
+               </div>
             </div>
             <div *ngFor="let select of selects; let i = index">
-              <app-autocomplete-filter (newItemEvent)="selectContent($event)" *ngIf="componentsFiltered.length > 0"
-                                       [class]="'w-full min-h-[0.5rem] col-span-12'"
-                                       [options]="componentsFiltered"
-                                       [formGroupParent]="formChilds.get(['childs'])"
-                                       [formGroupControlName]="'subcontent_' + (i + postContent.subcomponents.length)">
-              </app-autocomplete-filter>
+               <app-autocomplete-filter (newItemEvent)="selectContent($event)" *ngIf="componentsFiltered.length > 0"
+               [class]="'w-full min-h-[0.5rem] col-span-12'"
+               [options]="componentsFiltered"
+               [formGroupParent]="formChilds.get(['childs'])"
+               [formGroupControlName]="'subcontent'">
+               </app-autocomplete-filter>
             </div>
             <div  *ngIf="postContent.subcomponents.length>0" [formGroup]="formChilds"
-                  class="flex flex-wrap w-full">
-              <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-                @if (postContent){
-                @for (subcomponent of postContent.subcomponents; track subcomponent) {
-                <div class="example-box" cdkDrag>
+            class="flex flex-wrap w-full">
+            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+               @if (postContent){
+               @for (subcomponent of postContent.subcomponents; track subcomponent) {
+               <div class="example-box" cdkDrag>
                   <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
                   <p>{{subcomponent.component.name}}</p>
                   <button (click)="removeContent(subcomponent)" type="button" class="inline-flex items-center p-1 ms-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300" data-dismiss-target="#badge-dismiss-dark" aria-label="Remove">
-                    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
+                     <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                     </svg>
                   </button>
-                </div>
-                }
-                }
-              </div>
-
-
+               </div>
+               }
+               }
             </div>
-
-
-          </div>
-
-
-        </form>
-
+         </div>
+      </div>
+      </form>
       </div>
       <div class="flex justify-between items-center gap-4 flex-wrap">
-          <app-button3d title="Delete" (click)="delete(postContent)" [type]="'btn_disabled'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
-          <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
-        </div>
-  </div>
+         <app-button3d class="hidden" title="Delete" (click)="delete(postContent)" [type]="'btn_disabled'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
+         <app-button3d title="Update" (click)="update()" [type]="'btn_primary'" [loading_type]="'waves'" [loading]="loading" ></app-button3d>
+      </div>
+   </div>
+
+   
+</div>
