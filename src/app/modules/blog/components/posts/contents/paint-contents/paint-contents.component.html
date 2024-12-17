@@ -80,7 +80,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               </div>
           </div> 
       </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='codeplayground'; ">
+        <ng-container *ngIf="subcomponent?.type?.name==='codeplayground_v2'; ">
           <app-codeplayground_V2
             (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
            (dragover)="dragOver($event, subcomponent.order, component)"
@@ -259,7 +259,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               </div>
           </div>   
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='codeplayground'; ">
+        <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
           <app-codeplayground_V2
             (click)="onClick(content)" (click)="$event.stopPropagation()" class="flex w-full my-5"
             [id]="content.subcomponent_id"
@@ -373,7 +373,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     si agregamos un componente principal al post se ejecuta esto
     tambien si estamos creando un componente
   -->
-  <ng-container *ngIf="content?.type?.name==='codeplayground'; ">
+  <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
     <app-codeplayground_V2 class="flex w-full my-5"
                            [id]="content.id"
                            [height]="getAtt(content, 'height')"
@@ -509,7 +509,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               </div>
           </div> 
       </ng-container>
-      <ng-container *ngIf="subcomponent?.type?.name==='codeplayground'; ">
+      <ng-container *ngIf="subcomponent?.type?.name==='codeplayground_v2'; ">
         <app-codeplayground_V2 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles')" class="flex w-full my-5"
                                [id]="subcomponent.subcomponent_id"
                                [height]="getAtt(subcomponent, 'height')"
