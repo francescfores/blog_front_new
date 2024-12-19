@@ -38,8 +38,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
   </div>
 </div>
 
-<div *ngIf="content && showEditor" [ngClass]="'grid-background flex'" >
-
+<div [ngClass]="'grid-background flex'" >
   <div [ngClass]="getAtt(content, 'styles') + ' '+ editing()"  (click)="onClick(content)" (click)="$event.stopPropagation()"
   *ngIf="['grid', 'card', 'page','container'].includes(content?.type?.name)">
     <ng-container *ngFor="let subcomponent of content?.subcomponents; let i = index;" >
@@ -61,7 +60,6 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
       <ng-container *ngIf="!['grid', 'card', 'page','container'].includes(subcomponent?.type?.name)" (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"  >
       <ng-container *ngIf="subcomponent?.type?.name==='table_contents';">
           <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">
-                              
               <div class="flex flex-col gap-10">
                 <p class="text-3xl font-extrabold text-textPrimary  uppercase">Secciones</p>
                 <div class="flex flex-col gap-5">
@@ -368,11 +366,9 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
       </ng-container>
 </div>
 
+<!--
 <div *ngIf="content && !showEditor" (click)="onClick(content)"  [ngClass]="getAtt(content, 'styles')">
-  <!--
-    si agregamos un componente principal al post se ejecuta esto
-    tambien si estamos creando un componente
-  -->
+
   <ng-container *ngIf="content?.type?.name==='codeplayground'; ">
     <app-codeplayground_V2 class="flex w-full my-5"
                            [id]="content.id"
@@ -405,12 +401,10 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     </ng-container>
   </ng-container>
   <ng-container *ngIf="content?.type?.name==='image3d';">
-    <!--TODO change style.background-image-->
     <figure  [ngClass]="'dynamic-before ' + getAtt(content, 'styles') + ' '+ editing()" [ngStyle]="{'--bg-url': 'url(' + getAtt(content, 'img_bg_url') + ')'}"            
             class="figure " >
       <img [src]="getAtt(content, 'img_url')"
            alt="image" class="amt_2"/>
-      <!--<figcaption class="p-4">Rhino</figcaption>-->
     </figure>
   </ng-container>
   <ng-container *ngIf="content?.type?.name==='button3d';">
@@ -540,12 +534,10 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
         </ng-container>
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='image3d';">
-        <!--TODO change style.background-image-->
     <figure  [ngClass]="'dynamic-before ' + getAtt(subcomponent, 'styles') + ' '+ editing()" [ngStyle]="{'--bg-url': 'url(' + getAtt(subcomponent, 'img_bg_url') + ')'}"            
          (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" class="figure " >
           <img [src]="getAtt(subcomponent, 'img_url')"
                alt="image" class="amt_2"/>
-          <!--<figcaption class="p-4">Rhino</figcaption>-->
         </figure>
       </ng-container>
       <ng-container *ngIf="subcomponent?.type?.name==='button3d';">
@@ -612,3 +604,4 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     </ng-container>
   </ng-template>
 </div>
+-->
