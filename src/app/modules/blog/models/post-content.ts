@@ -23,4 +23,5 @@ export class PostContent {
   global!: any;
   copy_childs!: any;
   subcomponents:PostContent[]=[];
+  custom!: string;
 }

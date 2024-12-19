@@ -104,7 +104,7 @@ scroll(id: string) {
   }
 
   editing() {
-    return this.showEditor?'hover:border-2 hover:border-red-400/50 relative edit_component':'';
+    return this.showEditor?'hover:border-2 hover:border-red-400/50 ':'';
   }
 
   drop(event: CdkDragDrop<string[]>,content:any) {

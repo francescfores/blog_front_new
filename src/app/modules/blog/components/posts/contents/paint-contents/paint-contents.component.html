@@ -1,5 +1,5 @@
 <div class="hidden md:hidden lg:hidden xl:hidden bg-[#3197d6] text-2xl md:text-5xl xl:text-7xl active:border-gray-400/50
-focus:border-gray-400/50 text-textTertiary m-8
+focus:border-gray-400/50 text-textTertiary m-8 h-[100px]
 grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16
 text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter
 text-4xl lg:text-5xl font-bold lg:tracking-tight w-[100px]  pt-[162px] inline-grid place-self-center place-items-center place-content-center
@@ -10,7 +10,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
 
 
 <div *ngIf="content && showEditor" [ngClass]="'w-full  '">
-  <div class="flex justify-between  text-textPrimary">
+  <div class="flex justify-between py-1 text-textPrimary">
       <i (click)="showTree=!showTree "  class="ml-auto fa fa-book p-2" aria-hidden="true"></i>
   </div>
   <div class="p-1 text-xs bg-bgPrim mb-2 rounded" *ngIf="showTree">
@@ -80,7 +80,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               </div>
           </div> 
       </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='codeplayground_v2'; ">
+        <ng-container *ngIf="subcomponent?.type?.name==='codeplayground'; ">
           <app-codeplayground_V2
             (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
            (dragover)="dragOver($event, subcomponent.order, component)"
@@ -259,7 +259,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               </div>
           </div>   
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
+        <ng-container *ngIf="content?.type?.name==='codeplayground'; ">
           <app-codeplayground_V2
             (click)="onClick(content)" (click)="$event.stopPropagation()" class="flex w-full my-5"
             [id]="content.subcomponent_id"
@@ -373,7 +373,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     si agregamos un componente principal al post se ejecuta esto
     tambien si estamos creando un componente
   -->
-  <ng-container *ngIf="content?.type?.name==='codeplayground_v2'; ">
+  <ng-container *ngIf="content?.type?.name==='codeplayground'; ">
     <app-codeplayground_V2 class="flex w-full my-5"
                            [id]="content.id"
                            [height]="getAtt(content, 'height')"
@@ -509,7 +509,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               </div>
           </div> 
       </ng-container>
-      <ng-container *ngIf="subcomponent?.type?.name==='codeplayground_v2'; ">
+      <ng-container *ngIf="subcomponent?.type?.name==='codeplayground'; ">
         <app-codeplayground_V2 (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles')" class="flex w-full my-5"
                                [id]="subcomponent.subcomponent_id"
                                [height]="getAtt(subcomponent, 'height')"

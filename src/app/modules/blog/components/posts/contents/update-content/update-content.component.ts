@@ -194,6 +194,7 @@ export class UpdateContentComponent implements OnChanges {
 
 
   }
+@Input() custom_components!: PostContent[] | undefined;
 
   getContents(){
     this.postContentService.getAll()
@@ -206,6 +207,7 @@ export class UpdateContentComponent implements OnChanges {
               childs: this.formBuilder.group(formControls)
             });
           this.components =  data.data;
+          this.custom_components = data.data.filter((x:any) => x.custom === 1);
           this.componentsFiltered= this.components.map((x:any) => ({id:x.id, name:x.name}) );
           this.loading=false;
         },

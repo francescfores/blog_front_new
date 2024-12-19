@@ -11,12 +11,6 @@
               <app-paint-contents [showEditor]="true" *ngIf="paintContent" class="flex flex-col w-full overflow-auto h-full sticky"
               [content]="paintContent"
                                   (selectContent)="paintContentEv($event)"></app-paint-contents>
-              <div class=" gap-4 flex flex-col" *ngIf="!paintContent">
-                <div class=" flex justify-center">
-                  <img class="w-20" src="./assets/img/icons/icons8-light-100.png" >
-                </div>
-                <p class="text-textPrimary border-red-600">Add or create new component </p>
-              </div>
         </div>  
       </div>
   </div>
