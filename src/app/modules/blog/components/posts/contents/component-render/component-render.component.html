@@ -1,0 +1,128 @@
+  <ng-container [ngSwitch]="component?.type?.name">
+        <ng-container *ngSwitchCase="'table_components'">
+          <div (click)="onClick(component)" (click)="$event.stopPropagation()" [ngClass]="getAtt(component, 'styles') + ' '+ editing()">
+              <div class="flex flex-col gap-10">
+                <p class="text-3xl font-extrabold text-textPrimary  uppercase">Secciones</p>
+                <div class="flex flex-col gap-5">
+                  <div *ngFor="let item of getList(component, 'list')" class="group 
+                  flex items-center gap-4 text-lg font-semibold leading-snug
+                  tracking-normal antialiased " >
+                    <svg class="
+                    group-hover:translate-x-2  flex-none
+                    fas fa-light fa-arrow-right fill-textPrimary
+                    text-lg text-secondary transition-all duration-500 ease-in-out"
+                    fill="#000000" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_222_" d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001 c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213 C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606 C255,161.018,253.42,157.202,250.606,154.389z"></path> </g></svg>
+                   <p (click)="scroll(item)"  class="text-textPrimary">{{item}}</p>
+
+                  </div>
+                </div>
+              </div>
+          </div>   
+        </ng-container>
+        <ng-container *ngSwitchCase="'codeplayground'; ">
+          <app-codeplayground_V2
+            (click)="onClick(component)" (click)="$event.stopPropagation()" class="flex w-full my-5"
+            [id]="component.subcomponent_id"
+            [height]="getAtt(component, 'height')"
+            [bg_color_1]="getAtt(component, 'bg_color_1')"
+            [bg_color_2]="getAtt(component, 'bg_color_2')"
+            [text_color_1]="getAtt(component, 'text_color_1')"
+            [text_color_2]="getAtt(component, 'text_color_2')"
+            [rounded]="getAtt(component, 'rounded')"
+            [htmlCodes]="getAtt(component, 'html')"
+            [cssCodes]="getAtt(component, 'css')"
+            [jsCodes]="getAtt(component, 'js')"
+                               [show_iframe]="getAtt(component, 'show_iframe') === 'true'"
+          ></app-codeplayground_V2>
+        </ng-container>
+        <ng-container *ngSwitchCase="'heading';">
+          <h1 id="{{getAtt(component, 'anchor')}}" (click)="onClick(component)" (click)="$event.stopPropagation()"
+          [ngClass]="getAtt(component, 'styles') + ' '+ editing()">{{getAtt(component, 'text_label')}}</h1>
+        </ng-container>
+        <ng-container *ngSwitchCase="'text';">
+          <p id="{{getAtt(component, 'anchor')}}" (click)="onClick(component)" (click)="$event.stopPropagation()"
+          [ngClass]="getAtt(component, 'styles') + ' '+ editing()">{{getAtt(component, 'text_label')}}</p>
+        </ng-container>
+        <ng-container *ngSwitchCase="'icon';">
+          <i (click)="onClick(component)" (click)="$event.stopPropagation()"
+             [ngClass]="getAtt(component, 'styles') + ' '+ editing()"></i>
+        </ng-container>
+        <ng-container *ngSwitchCase="'image';">
+          <ng-container>
+            <img (click)="onClick(component)" (click)="$event.stopPropagation()"
+                 [ngClass]="getAtt(component, 'styles') + ' '+ editing()"
+                 [src]="getAtt(component, 'url')"
+                 alt="image" />
+          </ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'image3d';">
+          <!--TODO change style.background-image-->
+          <figure  [ngClass]="'dynamic-before ' + getAtt(component, 'styles') + ' '+ editing()" [ngStyle]="{'--bg-url': 'url(' + getAtt(component, 'img_bg_url') + ')'}" (click)="onClick(component)" (click)="$event.stopPropagation()"
+                  class="figure " >
+            <img [src]="getAtt(component, 'img_url')"
+                 alt="image" class="amt_2"/>
+            <!--<figcaption class="p-4">Rhino</figcaption>-->
+          </figure>
+        </ng-container>
+         <ng-container *ngSwitchCase="'button3d';">
+            @if (getAtt(component, 'url')!==''){
+             <a (click)="onClick(component)" (click)="$event.stopPropagation()"
+                href="{{getAtt(component, 'url')}}" target="_blank">
+                <app-button3d
+                  [ngClass]="getAtt(component, 'styles') + '  '"
+                  [title]="getAtt(component, 'label')"
+                  [type]="getAtt(component, 'styles_button')"
+                  [height]="getAtt(component, 'height')"
+                  [width]="getAtt(component, 'width')"
+                  [raise]="getAtt(component, 'raise')"
+                  [rounded]="getAtt(component, 'rounded')"
+                  [border]="getAtt(component, 'border')"
+                  [border_style]="getAtt(component, 'border_style')"
+                  [bg_front_color]="getAtt(component, 'bg_front_color')"
+                  [bg_shadow_color]="getAtt(component, 'bg_shadow_color')"
+                  [bg_back_color]="getAtt(component, 'bg_back_color')"
+                  [font_color]="getAtt(component, 'font_color')"
+                  [font_body_weight]="getAtt(component, 'font_body_weight')"
+                  [font_size]="getAtt(component, 'font_size')"
+                  [ripple]="!!getAtt(component, 'ripple')" >
+                </app-button3d>
+              </a>
+            } @else {
+            <app-button3d
+                 [ngClass]="getAtt(component, 'styles') + '  '"
+                  [title]="getAtt(component, 'label')"
+                  [type]="getAtt(component, 'styles_button')"
+                  [height]="getAtt(component, 'height')"
+                  [width]="getAtt(component, 'width')"
+                  [raise]="getAtt(component, 'raise')"
+                  [rounded]="getAtt(component, 'rounded')"
+                  [border]="getAtt(component, 'border')"
+                  [border_style]="getAtt(component, 'border_style')"
+                  [bg_front_color]="getAtt(component, 'bg_front_color')"
+                  [bg_shadow_color]="getAtt(component, 'bg_shadow_color')"
+                  [bg_back_color]="getAtt(component, 'bg_back_color')"
+                  [font_color]="getAtt(component, 'font_color')"
+                  [font_body_weight]="getAtt(component, 'font_body_weight')"
+                  [font_size]="getAtt(component, 'font_size')"
+                  [ripple]="!!getAtt(component, 'ripple')">
+            </app-button3d>
+            }
+        </ng-container>
+        <ng-container *ngSwitchCase="'button';">
+          <a (click)="onClick(component)" (click)="$event.stopPropagation()"
+           [ngClass]="getAtt(component, 'styles') + ' '+ editing()"
+          href="{{getAtt(component, 'url')}}" target="_blank">
+             {{getAtt(component, 'label')}}
+              </a>
+        </ng-container>
+        <ng-container *ngSwitchCase="'divider';">
+             <div (click)="onClick(component)" (click)="$event.stopPropagation()"
+             [ngClass]="getAtt(component, 'styles') + ' '+ editing()" [innerHTML]="renderSvg(getAtt(component, 'svg'))">
+                </div>
+          </ng-container>
+           <ng-container *ngSwitchCase="'spacer';">
+            <div (click)="onClick(component)" (click)="$event.stopPropagation()"
+             [ngClass]="getAtt(component, 'styles') + ' '+ editing()">
+                </div>
+          </ng-container>
+        </ng-container>

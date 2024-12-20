@@ -11,6 +11,7 @@ import {NavbarLanding2Component} from "./navbar_landing_2/navbar.component";
 import {Slider3Component} from "./slider-3/slider-3.component";
 import {ComponentsModule} from "../../../components/components.module";
 import { PaintContentsComponent } from './posts/contents/paint-contents/paint-contents.component';
+import { ComponentRenderComponent } from './posts/contents/component-render/component-render.component';
 import { EditorPostComponent } from './posts/editor-post/editor-post.component';
 import { EditorContentComponent } from './posts/contents/editor-content/editor-content.component';
 // import {ComponentsModule} from "../../../../../../components/components.module";
@@ -29,6 +30,7 @@ import {Slider1Component} from "./sliders/slider-1/slider-1.component";
     NavbarLanding2Component,
     SliderMarvelComponent,
     Slider1Component,
+    ComponentRenderComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import {Slider1Component} from "./sliders/slider-1/slider-1.component";
         NavbarLanding2Component,
         SliderMarvelComponent,
       Slider1Component,
+      ComponentRenderComponent
     ]
 })
 export class ComponentsModuleBlog { }

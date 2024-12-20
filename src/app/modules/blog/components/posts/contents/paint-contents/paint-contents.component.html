@@ -9,7 +9,7 @@ text-slate-500 mt-2 leading-relaxed  break-words ml-2 p-24 px-10 max-w-screen-md
 grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 border-red-200 w-32 gap-24 space-y-10 w-[50vh] w-[20vh] gap-4 bg-textPrimary text-bgPrim border-8 border-10 border-l-8 -mx-2 md:w-1/2 lg:w-1/4 lg:w-1/2 hover:border-red-400  max-w-screen-2xl min-h-10 max-w-6xl whitespace-pre whitespace-pre-line absolute   left-0 top-0 bg-white rounded-full top-[70px] -translate-y-[24px] text-5xl text-2xl -translate-x-[24px] min-h-screen h-screen  p-2 h-10 w-10 text-[24px] col-span-3 border-b-4 border-t-4 text-[#a499c9] gap-14 uppercase h-[20vh]"></div>
 
 
-<div *ngIf="content && showEditor" [ngClass]="'w-full  '">
+<div *ngIf="content && showEditor" [ngClass]="'w-full'">
   <div class="flex justify-between py-1 text-textPrimary">
       <i (click)="showTree=!showTree "  class="ml-auto fa fa-book p-2" aria-hidden="true"></i>
   </div>
@@ -37,13 +37,15 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
     </div>
   </div>
 </div>
-
 <div [ngClass]="'grid-background flex'" >
   <div [ngClass]="getAtt(content, 'styles') + ' '+ editing()"  (click)="onClick(content)" (click)="$event.stopPropagation()"
   *ngIf="['grid', 'card', 'page','container'].includes(content?.type?.name)">
     <ng-container *ngFor="let subcomponent of content?.subcomponents; let i = index;" >
+
+
       <ng-container *ngTemplateOutlet="recursiveContent4; context: { $implicit: normalizarSubcomponente(subcomponent), index: i,component:content  }"></ng-container>
     </ng-container>
+
     <ng-template #recursiveContent4 let-subcomponent  let-i="index" let-component="component">
       <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
            (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
@@ -58,7 +60,8 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
         </ng-container>
       </div>
       <ng-container *ngIf="!['grid', 'card', 'page','container'].includes(subcomponent?.type?.name)" (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"  >
-      <ng-container *ngIf="subcomponent?.type?.name==='table_contents';">
+        <ng-container [ngSwitch]="subcomponent?.type?.name">          
+        <ng-container *ngSwitchCase="'table_contents';">
           <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()" [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()">
               <div class="flex flex-col gap-10">
                 <p class="text-3xl font-extrabold text-textPrimary  uppercase">Secciones</p>
@@ -77,8 +80,8 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                 </div>
               </div>
           </div> 
-      </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='codeplayground'; ">
+        </ng-container>
+        <ng-container *ngSwitchCase="'codeplayground'; ">
           <app-codeplayground_V2
             (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
            (dragover)="dragOver($event, subcomponent.order, component)"
@@ -99,7 +102,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                                [show_iframe]="getAtt(subcomponent, 'show_iframe') === 'true'"
           ></app-codeplayground_V2> 
         </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='heading';">
+        <ng-container *ngSwitchCase="'heading';">
           <h1 id="{{getAtt(subcomponent, 'anchor')}}" (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
               (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
            (dragover)="dragOver($event, subcomponent.order, component)"
@@ -107,7 +110,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
               draggable="true">{{getAtt(subcomponent, 'text_label')}}</h1>
         </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='text';">
+        <ng-container *ngSwitchCase="'text';">
           <p id="{{getAtt(subcomponent, 'anchor')}}" (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
               (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
            (dragover)="dragOver($event, subcomponent.order, component)"
@@ -115,7 +118,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
               draggable="true">{{getAtt(subcomponent, 'text_label')}}</p>
         </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='icon';">
+        <ng-container *ngSwitchCase="'icon';">
           <i (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
              (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
            (dragover)="dragOver($event, subcomponent.order, component)"
@@ -123,7 +126,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
              [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
              draggable="true"></i>
         </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='image';">
+        <ng-container *ngSwitchCase="'image';">
           <ng-container>
             <img (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
                  (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
@@ -135,21 +138,21 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                  alt="image" />
           </ng-container>
         </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='image3d';">
+        <ng-container *ngSwitchCase="'image3d';">
           <!--TODO change style.background-image-->
-        <figure  [ngClass]="'dynamic-before ' + getAtt(subcomponent, 'styles') + ' '+ editing()" [ngStyle]="{'--bg-url': 'url(' + getAtt(subcomponent, 'img_bg_url') + ')'}"            
-           (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"                 
-          (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
-                  (dragover)="dragOver($event, subcomponent.order, component)"
-                  (drop)="drop2($event, subcomponent.order, component)"
-                  draggable="true"
-                  class="figure " >
-            <img [src]="getAtt(subcomponent, 'img_url')"
-                 alt="image" class="amt_2"/> 
-            <!--<figcaption class="p-4">Rhino</figcaption>-->
-          </figure>
-        </ng-container>
-         <ng-container *ngIf="subcomponent?.type?.name==='button3d';">
+          <figure  [ngClass]="'dynamic-before ' + getAtt(subcomponent, 'styles') + ' '+ editing()" [ngStyle]="{'--bg-url': 'url(' + getAtt(subcomponent, 'img_bg_url') + ')'}"            
+             (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"                 
+            (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
+                    (dragover)="dragOver($event, subcomponent.order, component)"
+                    (drop)="drop2($event, subcomponent.order, component)"
+                    draggable="true"
+                    class="figure " >
+              <img [src]="getAtt(subcomponent, 'img_url')"
+                   alt="image" class="amt_2"/> 
+              <!--<figcaption class="p-4">Rhino</figcaption>-->
+            </figure>
+          </ng-container>
+         <ng-container *ngSwitchCase="'button3d';">
             @if (getAtt(subcomponent, 'url')!==''){
              <a (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
                 href="{{getAtt(subcomponent, 'url')}}" target="_blank">
@@ -162,7 +165,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                   [title]="getAtt(subcomponent, 'label')"
                   [type]="getAtt(subcomponent, 'styles_button')"
                   [height]="getAtt(subcomponent, 'height')"
-                  [width]="getAtt(subcomponent, 'height')"
+                  [width]="getAtt(subcomponent, 'width')"
                   [raise]="getAtt(subcomponent, 'raise')"
                   [rounded]="getAtt(subcomponent, 'rounded')"
                   [border]="getAtt(subcomponent, 'border')"
@@ -201,7 +204,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                 </app-button3d>
             }
         </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='button';">
+        <ng-container *ngSwitchCase="'button';">
           <a (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
            [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
           href="{{getAtt(subcomponent, 'url')}}" target="_blank"
@@ -212,7 +215,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
              {{getAtt(content, 'label')}}
               </a>
         </ng-container>
-       <ng-container *ngIf="subcomponent?.type?.name==='divider';">
+        <ng-container *ngSwitchCase="'divider';">
           <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
            [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()" [innerHTML]="renderSvg(getAtt(subcomponent, 'svg'))"
                              (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
@@ -220,9 +223,8 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                   (drop)="drop2($event, subcomponent.order, component)"
                   draggable="true">
               </div>
-
         </ng-container>
-        <ng-container *ngIf="subcomponent?.type?.name==='spacer';">
+        <ng-container *ngSwitchCase="'spacer';">
           <div (click)="onClick(subcomponent)" (click)="$event.stopPropagation()"
            [ngClass]="getAtt(subcomponent, 'styles') + ' '+ editing()"
                              (dragstart)="dragStart($event, subcomponent.order, subcomponent)"
@@ -231,13 +233,21 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                   draggable="true">
               </div>
         </ng-container>
+        </ng-container>
       </ng-container>
     </ng-template>
 
 
   </div>
-  <ng-container>
-        <ng-container *ngIf="content?.type?.name==='table_contents';">
+  <app-component-render
+  [component]='content'
+  [subcomponent]='subcomponent'
+  [index]=''
+  [showEditor]='showEditor'
+  >
+  </app-component-render>
+  <ng-container [ngSwitch]="content?.type?.name">
+        <ng-container *ngSwitchCase="'table_contents'">
           <div (click)="onClick(content)" (click)="$event.stopPropagation()" [ngClass]="getAtt(content, 'styles') + ' '+ editing()">
               <div class="flex flex-col gap-10">
                 <p class="text-3xl font-extrabold text-textPrimary  uppercase">Secciones</p>
@@ -257,7 +267,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
               </div>
           </div>   
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='codeplayground'; ">
+        <ng-container *ngSwitchCase="'codeplayground'; ">
           <app-codeplayground_V2
             (click)="onClick(content)" (click)="$event.stopPropagation()" class="flex w-full my-5"
             [id]="content.subcomponent_id"
@@ -273,19 +283,19 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                                [show_iframe]="getAtt(content, 'show_iframe') === 'true'"
           ></app-codeplayground_V2>
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='heading';">
+        <ng-container *ngSwitchCase="'heading';">
           <h1 id="{{getAtt(content, 'anchor')}}" (click)="onClick(content)" (click)="$event.stopPropagation()"
           [ngClass]="getAtt(content, 'styles') + ' '+ editing()">{{getAtt(content, 'text_label')}}</h1>
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='text';">
+        <ng-container *ngSwitchCase="'text';">
           <p id="{{getAtt(content, 'anchor')}}" (click)="onClick(content)" (click)="$event.stopPropagation()"
           [ngClass]="getAtt(content, 'styles') + ' '+ editing()">{{getAtt(content, 'text_label')}}</p>
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='icon';">
+        <ng-container *ngSwitchCase="'icon';">
           <i (click)="onClick(content)" (click)="$event.stopPropagation()"
              [ngClass]="getAtt(content, 'styles') + ' '+ editing()"></i>
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='image';">
+        <ng-container *ngSwitchCase="'image';">
           <ng-container>
             <img (click)="onClick(content)" (click)="$event.stopPropagation()"
                  [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
@@ -293,7 +303,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
                  alt="image" />
           </ng-container>
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='image3d';">
+        <ng-container *ngSwitchCase="'image3d';">
           <!--TODO change style.background-image-->
           <figure  [ngClass]="'dynamic-before ' + getAtt(content, 'styles') + ' '+ editing()" [ngStyle]="{'--bg-url': 'url(' + getAtt(content, 'img_bg_url') + ')'}" (click)="onClick(content)" (click)="$event.stopPropagation()"
                   class="figure " >
@@ -302,7 +312,7 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
             <!--<figcaption class="p-4">Rhino</figcaption>-->
           </figure>
         </ng-container>
-         <ng-container *ngIf="content?.type?.name==='button3d';">
+         <ng-container *ngSwitchCase="'button3d';">
             @if (getAtt(content, 'url')!==''){
              <a (click)="onClick(content)" (click)="$event.stopPropagation()"
                 href="{{getAtt(content, 'url')}}" target="_blank">
@@ -346,24 +356,24 @@ grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24 border-4 bor
             </app-button3d>
             }
         </ng-container>
-        <ng-container *ngIf="content?.type?.name==='button';">
+        <ng-container *ngSwitchCase="'button';">
           <a (click)="onClick(content)" (click)="$event.stopPropagation()"
            [ngClass]="getAtt(content, 'styles') + ' '+ editing()"
           href="{{getAtt(content, 'url')}}" target="_blank">
              {{getAtt(content, 'label')}}
               </a>
         </ng-container>
-      <ng-container *ngIf="content?.type?.name==='divider';">
-           <div (click)="onClick(content)" (click)="$event.stopPropagation()"
-           [ngClass]="getAtt(content, 'styles') + ' '+ editing()" [innerHTML]="renderSvg(getAtt(content, 'svg'))">
-              </div>
+        <ng-container *ngSwitchCase="'divider';">
+             <div (click)="onClick(content)" (click)="$event.stopPropagation()"
+             [ngClass]="getAtt(content, 'styles') + ' '+ editing()" [innerHTML]="renderSvg(getAtt(content, 'svg'))">
+                </div>
+          </ng-container>
+           <ng-container *ngSwitchCase="'spacer';">
+            <div (click)="onClick(content)" (click)="$event.stopPropagation()"
+             [ngClass]="getAtt(content, 'styles') + ' '+ editing()">
+                </div>
+          </ng-container>
         </ng-container>
-         <ng-container *ngIf="content?.type?.name==='spacer';">
-          <div (click)="onClick(content)" (click)="$event.stopPropagation()"
-           [ngClass]="getAtt(content, 'styles') + ' '+ editing()">
-              </div>
-        </ng-container>
-      </ng-container>
 </div>
 
 <!--
