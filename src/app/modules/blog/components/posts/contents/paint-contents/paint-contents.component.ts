@@ -148,10 +148,10 @@ dragStart(event: DragEvent, index: number, content:any) {
     // Detiene la propagación del evento para evitar que el evento de arrastre se propague a otros elementos.
     event.stopPropagation();
     // Guarda el índice del elemento que se está arrastrando.
-    this.draggingIndex = index;
+    this.draggingIndex = content;
     // Guarda el elemento que se está arrastrando basado en su índice.
-    console.log(this.draggingIndex)
-    console.log(content.subcomponents.find((x: any) => x.order === index ) )
+    console.log(this.draggingIndex.subcomponent_id)
+/*     console.log(content.subcomponents.find((x: any) => x.order === index ) )*/
     this.draggedElement = content.subcomponents.find((x: any) => x.order === index )    // Obtiene el elemento HTML que está siendo arrastrado.
     const target = event.target as HTMLElement;
     // Almacena los datos del índice del elemento arrastrado en el objeto dataTransfer para que pueda ser recuperado durante el "drop".
@@ -160,16 +160,23 @@ dragStart(event: DragEvent, index: number, content:any) {
     setTimeout(() => target.classList.add('dragging'), 0);
 }
 
-dragOver(event: DragEvent, index: number,content:any) {
+dragOver(event: DragEvent, index: any,content:any) {
     // Previene el comportamiento por defecto del navegador que puede interferir con el evento de arrastre.
     event.preventDefault();
     // Detiene la propagación del evento para evitar que el evento se propague a otros elementos.
     event.stopPropagation();
     // Obtiene el elemento HTML sobre el que se está arrastrando.
     const target = event.target as HTMLElement;
+    const elements = document.querySelectorAll('.over');
+    elements.forEach(element => {
+      element.classList.remove('over');
+    });
+    //console.log(index.id)
+    console.log(content.subcomponent_id)
+    if(content.subcomponent_id===this.draggingIndex.subcomponent_id)
+      target.classList.add('over');
     // Añade una clase 'over' al elemento objetivo para aplicar algún estilo específico cuando se esté arrastrando un elemento sobre él.
-    target.classList.add('over');
-    console.error(target)
+    
   //moveItemInArray(content.subcomponents, this.draggingIndex,index);
 
 }
@@ -192,24 +199,28 @@ drop2(event: DragEvent, index: number,content:any) {
   // Resetea los índices y el elemento arrastrado.
   this.draggingIndex = null;
   this.draggedElement = null;
-  // Remueve la clase 'over' de todos los elementos que puedan tenerla.
-  const overElements = document.querySelectorAll('.over');
-  overElements.forEach(el => el.classList.remove('over'));
-  content.subcomponents.forEach((component: any, index: number) =>
-  component.order=index
+  if(content.subcomponent_id===this.draggingIndex.subcomponent_id)
+    {
+    // Remueve la clase 'over' de todos los elementos que puedan tenerla.
+    const overElements = document.querySelectorAll('.over');
+    overElements.forEach(el => el.classList.remove('over'));
+    content.subcomponents.forEach((component: any, index: number) =>
+    component.order=index
+  );
 
-  
-);
-    this.postContentService.orderSubcomponents(content.id, content.subcomponents)
-      .pipe(first())
-      .subscribe(
-        data => {
-          //this.postContent=data.data;
-          console.log('getContent',content);
-          //this.updatedContent.emit(this.postContent);
-        });
+  this.postContentService.orderSubcomponents(content.id, content.subcomponents)
+  .pipe(first())
+  .subscribe(
+    data => {
+      //this.postContent=data.data;
+      console.log('getContent',content);
+      //this.updatedContent.emit(this.postContent);
+    });
 
   console.log(this.content?.subcomponents[1].subcomponents)
+  }
+  
+
 }
 
   svg!:SafeHtml;
