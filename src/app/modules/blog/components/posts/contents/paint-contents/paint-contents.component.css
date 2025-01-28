@@ -10,24 +10,10 @@
   align-items: center;
   height: auto;
 }
-
-
-.container2 {
-  border: 1px solid #ccc;
-  padding: 10px;
-  cursor: move;
-  background-color: #f9f9f9;
-  display: flex;
-  flex-direction: row!important;
-  justify-content: center;
-  align-content: center;
-}
-.sub-container {
-  margin-left: 20px;
-}
 .over {
-  border: 2px dashed #000;
+  border: 2px dashed #666666;
 }
+
 
 
 .figure {
@@ -53,19 +39,6 @@
   filter: drop-shadow(0 0 20px rgba(255, 254, 254, 0));
   /*filter: drop-shadow(0 0 20px rgb(92, 51, 246));*/
 }
-
-/*.figure1 figcaption{*/
-/*  color: rgb(130, 100, 243);*/
-/*}*/
-/*.figure2 figcaption{*/
-/*  color: rgb(182, 211, 93);*/
-/*}*/
-/*.figure3 figcaption{*/
-/*  color: rgb(141, 141, 141);*/
-/*}*/
-/*.figure4 figcaption{*/
-/*  color:rgb(229, 38, 38);*/
-/*}*/
 .figure:before {
   content: "";
   position: absolute;
@@ -78,18 +51,6 @@
   border-radius:2px;
   /*height: 300px;  si las imagenes no tienen la misma altura mejor definir una*/
   width: 100%;
-}
-.edit_component:hover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50px;
-  height: 10px;
-  background: red; /* Solo como ejemplo */
-  margin-top:-10px;
-  opacity:0.5;
-  border-radius: 10px 10px 0px 0px;
 }
 
 .dynamic-before::before {
@@ -155,73 +116,4 @@ figcaption {
 .figure:hover::before {
   filter: brightness(.3);
   transform: perspective(500px) rotateX(60deg);
-}
-.figure:hover figcaption{
-/*   transform: perspective(500px)translateY(100%) rotateX(0);*/
-  transform: perspective(500px) translateY(-10px) rotateX(0);
-}
-.figure5:hover figcaption{
-  transform: perspective(500px) translateY(40px) rotateX(0);
-}
-.figure1:hover figcaption{
-    transform: perspective(500px) translateY(10px) rotateX(0);
-  }
-.svg_back  {
-  margin:auto;
-  width: 100%;
-  height:100%;
-  aspect-ratio: 1;
-  padding: 5px 20px 0;
-  box-sizing: border-box;
-  display: grid;
-  cursor: pointer;
-  /*position: relative;*/
-  filter: drop-shadow(0 0 20px rgb(0 0 0/50%));
-  position: absolute;
-  transition: .5s;
-  z-index: 2;
-  object-fit: cover;
-  /*transition: .5s;*/
-  animation: slide_right_left2 0.5s forwards;
-  /*filter: brightness(2);*/
-
-  /*   transition: clip-path 5.5s ease-in-out; /* Transición suave */
-}
-
-.svg_back_clip1 {
-  clip-path: polygon(64% 20%, 86% 0, 100% 0, 100% 70%, 100% 100%, 50% 100%, 26% 100%, 0 100%, 0 14%, 23% 20%);
-}
-.svg_back_clip2 {
-  clip-path: polygon(0 0, 42% 0, 41% 34%, 74% 27%, 75% 16%, 100% 0, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);}
-.svg_back_clip3 {
-  clip-path: polygon(0 0, 8% 29%, 17% 40%, 75% 36%, 75% 81%, 100% 68%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
-}
-.svg_back_clip4 {
-  transform:rotateY(30deg)  rotateX(30deg) rotateZ(10deg);
-  clip-path: polygon(0% 15%, 23% 15%, 34% 36%, 60% 36%, 69% 14%, 100% 15%, 100% 85%, 100% 100%, 85% 100%, 15% 100%, 0 100%, 0% 85%);
-}
-
-.figure:hover .svg_back {
-  /*transition: 0.5s;*/
-  filter: brightness(2);
-  /*  transform: perspective(500px) rotateX(60deg); */
-  animation: slide_left_right 0.5s forwards;
-  transform: perspective(400px) translateY(20%) rotateX(70deg);
-}
-
-@keyframes slide_left_right {
-  30% {
-    clip-path:none;
-  }
-  100% {
-    clip-path:none;
-
-  }
-
-}
-@keyframes slide_right_left2 {
-  0% {
-    clip-path: none;
-  }
-
 }

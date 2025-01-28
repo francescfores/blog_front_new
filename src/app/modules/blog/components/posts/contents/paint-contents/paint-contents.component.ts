@@ -183,6 +183,11 @@ dragOver(event: DragEvent, index: any,content:any) {
 
 
 drop2(event: DragEvent, index: number,content:any) {
+
+  const elements = document.querySelectorAll('.over');
+  elements.forEach(element => {
+    element.classList.remove('over');
+  });
   // Previene el comportamiento por defecto del navegador.
   event.preventDefault();
   // Detiene la propagación del evento para evitar que el evento se propague a otros elementos.
